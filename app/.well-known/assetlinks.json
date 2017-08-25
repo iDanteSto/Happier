@@ -1,0 +1,9 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.ciqno.happier",
+    "sha256_cert_fingerprints":
+    ["82:A9:24:7A:5B:DC:17:B4:7E:70:57:2C:46:7B:1A:1B:AD:86:BD:6D:07:8E:4C:ED:A9:B9:5B:C7:B9:C7:5B:32"]
+  }
+}]
