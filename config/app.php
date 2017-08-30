@@ -186,8 +186,7 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         //Cloudinary
         JD\Cloudder\CloudderServiceProvider::class,
-        //beautiful email
-        Snowfire\Beautymail\BeautymailServiceProvider::class,
+        
 
     ],
 
