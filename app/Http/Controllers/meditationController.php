@@ -60,7 +60,6 @@ public function meditationLoader(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;//place id on a variable to use it 
-
 $meditationInfo = DB::select('SELECT 
     meditation.meditation_Id,
     meditation.name,

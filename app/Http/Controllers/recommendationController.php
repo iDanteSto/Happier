@@ -100,8 +100,17 @@ public function recommendationComplete(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-$recommendationID = $request->recommendationID;
-DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and fk_recommendation_Id = ?' , [1,$userid,$recommendationID]);
+$userRecommendationID = $request->userRecommendationID;
+if($userRecommendationID == null or $userRecommendationID  == "")
+{
+      return 'Error!';
+}else
+{
+      DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and userRecommendation_Id = ?' , [1,$userid,$userRecommendationID]);
+      return 'Exito!';
+}
+
+
 }
                                       /*
                                       |--------------------------------------------------------------------------
@@ -115,8 +124,16 @@ public function recommendationRejecter(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-$recommendationID = $request->recommendationID;
-DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and fk_recommendation_Id = ?' , [3,$userid,$recommendationID]);
+$userRecommendationID = $request->userRecommendationID;
+if($userRecommendationID == null or $userRecommendationID  == "")
+{
+      return 'Error!';
+}else
+{
+      DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and userRecommendation_Id = ?' , [3,$userid,$userRecommendationID]);
+      return 'Exito!';
+}
+
 }
                                       /*
                                       |--------------------------------------------------------------------------
@@ -130,8 +147,8 @@ public function recommendationChanger(Request $request)
 { 
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-$recommendationID = $request->recommendationID;
-DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and fk_recommendation_Id = ?' , [3,$userid,$recommendationID]);
+$userRecommendationID = $request->userRecommendationID;
+DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and userRecommendation_Id = ?' , [3,$userid,$userRecommendationID]);
 
 $result = DB::select("call recomendationSetter($userid,@NOMBRE,@DESCRIPCION,@ID,@CATEGORIA,@DESCIMAGE,@CATIMAGE)");
 
@@ -169,7 +186,7 @@ $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden i
 $userid = $user->user_Id;//place id on a variable to use it 
 
 $recommendationInfo = DB::select('SELECT 
-    recommendation.recommendation_Id AS recom_Id,
+    userrecommendation.userRecommendation_Id AS userrecom_Id,
     recommendation.name AS recom_name,
     recommendation.description AS recom_desc,
     recommendation.image AS recom_image,
@@ -191,7 +208,7 @@ if (count($recommendationInfo)) {
 
 }else
 {
-  return 'Parece ser que por el momento no hay mas recomendaciones , espera a tu siguiente recomendacion :D';
+  return 'Parece ser que por el momento no hay mas recomendaciones , espera a tu siguiente recomendacion';
 }
 }
 }

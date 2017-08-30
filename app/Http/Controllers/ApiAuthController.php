@@ -17,6 +17,9 @@ use App\Http\Controllers\Config;
 use Socialite;
 use App\socialProvider;
 use App\socialProviders;
+
+use Illuminate\Support\Facades\Route;
+
 //use Laravel\Socialite\Facades\Socialite;
 //use Requests\userInfoRequest;
 //use App\http\Requests\rulesregister;
@@ -24,6 +27,27 @@ use App\socialProviders;
 
 class ApiAuthController extends Controller
 {
+
+    /*
+    |--------------------------------------------------------------------------
+    | user check existence Function
+    |--------------------------------------------------------------------------
+    |
+    | This function verify if the user email exist on the DB , 
+      if exist it returns a 1   , if not it returns a 0
+    | 
+    |
+    */
+    public function userCheckExistence(Request $request)
+    {
+      $userExist = DB::table('users')
+                     ->select(DB::raw('count(user_Id)as exist'))
+                     ->where('email', '=', $request->email)
+                     ->get();
+      return $userExist;               
+    }
+
+
     /*
     |--------------------------------------------------------------------------
     | UserAuth Function
@@ -80,16 +104,21 @@ if($userd->status == 1 )
   }
     
 //test function
-    public function show(Request $request)
+    public function dummyFunction(Request $request)
     {     
-$holder = [8,9,8,9];
-$holder2 = 'hola mundo';
-$holder3 = 777;
-$holder4 = 'hola mundos 2';
-foreach ($holder as $hold){echo $hold . '  ';}
-echo $holder2. '  ';
-echo $holder3. '  ';
-echo $holder4. '  ';
+
+
+$request = Request::create('api/user/newsLoader', 'GET');
+
+$response = app()->handle($request);
+
+$json = json_decode($response,true);
+        
+//return $response;
+
+//return $decodeResponse;
+return $json["title"];
+
 //return response()->json(['succes'=> 'Hello World!'], 200);
     }
 

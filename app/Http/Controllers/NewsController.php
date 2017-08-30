@@ -31,6 +31,9 @@ $author = DB::table('users')
 	
 	// in case we only need the news info without author    return $news
 
+
+//----------protect-----------------
+
 	return response()->json(array(
 		'Autor'=>$author[0]->nickname , 
 		'title' => $news[0]->title , 
@@ -38,6 +41,25 @@ $author = DB::table('users')
 		'image' => $news[0]->image ,
 		'date_created' => $news[0]->date_created ,
 		));
+		
+//-----------------------------------
+//-----test area----------------------
+/*
+ return response()->json([
+    'Autor'=>$author[0]->nickname , 
+	'title' => $news[0]->title , 
+    'content' => $news[0]->content ,
+	'image' => $news[0]->image ,
+	'date_created' => $news[0]->date_created ,
+]);
+
+*/
+//-------------------------------------
+
+
+
+
+
 }else
 {
 	return 'no hay noticias nuevas';

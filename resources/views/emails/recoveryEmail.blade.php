@@ -1,326 +1,235 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!-- THIS EMAIL WAS BUILT AND TESTED WITH LITMUS http://litmus.com -->
+<!-- IT WAS RELEASED UNDER THE MIT LICENSE https://opensource.org/licenses/MIT -->
+<!-- QUESTIONS? TWEET US @LITMUSAPP -->
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oxygen Welcome</title>
-
-  <style type="text/css">
-    /* Take care of image borders and formatting, client hacks */
-    img { max-width: 600px; outline: none; text-decoration: none; -ms-interpolation-mode: bicubic;}
-    a img { border: none; }
-    table { border-collapse: collapse !important;}
-    #outlook a { padding:0; }
-    .ReadMsgBody { width: 100%; }
-    .ExternalClass { width: 100%; }
-    .backgroundTable { margin: 0 auto; padding: 0; width: 100% !important; }
-    table td { border-collapse: collapse; }
-    .ExternalClass * { line-height: 115%; }
-    .container-for-gmail-android { min-width: 600px; }
-
-
-    /* General styling */
-    * {
-      font-family: Helvetica, Arial, sans-serif;
-    }
-
-    body {
-      -webkit-font-smoothing: antialiased;
-      -webkit-text-size-adjust: none;
-      width: 100% !important;
-      margin: 0 !important;
-      height: 100%;
-      color: #676767;
-    }
-
-    td {
-      font-family: Helvetica, Arial, sans-serif;
-      font-size: 14px;
-      color: #777777;
-      text-align: center;
-      line-height: 21px;
-    }
-
-    a {
-      color: #676767;
-      text-decoration: none !important;
-    }
-
-    .pull-left {
-      text-align: left;
-    }
-
-    .pull-right {
-      text-align: right;
-    }
-
-    .header-lg,
-    .header-md,
-    .header-sm {
-      font-size: 32px;
-      font-weight: 700;
-      line-height: normal;
-      padding: 35px 0 0;
-      color: #4d4d4d;
-    }
-
-    .header-md {
-      font-size: 24px;
-    }
-
-    .header-sm {
-      padding: 5px 0;
-      font-size: 18px;
-      line-height: 1.3;
-    }
-
-    .content-padding {
-      padding: 20px 0 30px;
-    }
-
-    .mobile-header-padding-right {
-      width: 290px;
-      text-align: right;
-      padding-left: 10px;
-    }
-
-    .mobile-header-padding-left {
-      width: 290px;
-      text-align: left;
-      padding-left: 10px;
-    }
-
-    .free-text {
-      width: 100% !important;
-      padding: 10px 60px 0px;
-    }
-
-    .block-rounded {
-      border-radius: 5px;
-      border: 1px solid #e5e5e5;
-      vertical-align: top;
-    }
-
-    .button {
-      padding: 30px 0;
-    }
-
-    .info-block {
-      padding: 0 20px;
-      width: 260px;
-    }
-
-    .block-rounded {
-      width: 260px;
-    }
-
-    .info-img {
-      width: 258px;
-      border-radius: 5px 5px 0 0;
-    }
-
-    .force-width-gmail {
-      min-width:600px;
-      height: 0px !important;
-      line-height: 1px !important;
-      font-size: 1px !important;
-    }
-
-    .button-width {
-      width: 228px;
-    }
-
-  </style>
-
-  <style type="text/css" media="screen">
-    @import url(http://fonts.googleapis.com/css?family=Oxygen:400,700);
-  </style>
-
-  <style type="text/css" media="screen">
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<style type="text/css">
+    /* FONTS */
     @media screen {
-      /* Thanks Outlook 2013! */
-      * {
-        font-family: 'Oxygen', 'Helvetica Neue', 'Arial', 'sans-serif' !important;
-      }
+        @font-face {
+          font-family: 'Lato';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: normal;
+          font-weight: 700;
+          src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: italic;
+          font-weight: 400;
+          src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+        }
+        
+        @font-face {
+          font-family: 'Lato';
+          font-style: italic;
+          font-weight: 700;
+          src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+        }
     }
-  </style>
+    
+    /* CLIENT-SPECIFIC STYLES */
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; }
 
-  <style type="text/css" media="only screen and (max-width: 480px)">
-    /* Mobile styles */
-    @media only screen and (max-width: 480px) {
+    /* RESET STYLES */
+    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    table { border-collapse: collapse !important; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
 
-      table[class*="container-for-gmail-android"] {
-        min-width: 290px !important;
-        width: 100% !important;
-      }
-
-      table[class="w320"] {
-        width: 320px !important;
-      }
-
-      img[class="force-width-gmail"] {
-        display: none !important;
-        width: 0 !important;
-        height: 0 !important;
-      }
-
-      a[class="button-width"],
-      a[class="button-mobile"] {
-        width: 248px !important;
-      }
-
-      td[class*="mobile-header-padding-left"] {
-        width: 160px !important;
-        padding-left: 0 !important;
-      }
-
-      td[class*="mobile-header-padding-right"] {
-        width: 160px !important;
-        padding-right: 0 !important;
-      }
-
-      td[class="header-lg"] {
-        font-size: 24px !important;
-        padding-bottom: 5px !important;
-      }
-
-      td[class="header-md"] {
-        font-size: 18px !important;
-        padding-bottom: 5px !important;
-      }
-
-      td[class="content-padding"] {
-        padding: 5px 0 30px !important;
-      }
-
-       td[class="button"] {
-        padding: 5px !important;
-      }
-
-      td[class*="free-text"] {
-        padding: 10px 18px 30px !important;
-      }
-
-      td[class="info-block"] {
-        display: block !important;
-        width: 280px !important;
-        padding-bottom: 40px !important;
-      }
-
-      td[class="info-img"],
-      img[class="info-img"] {
-        width: 278px !important;
-      }
+    /* iOS BLUE LINKS */
+    a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
     }
-  </style>
+    
+    /* MOBILE STYLES */
+    @media screen and (max-width:600px){
+        h1 {
+            font-size: 32px !important;
+            line-height: 32px !important;
+        }
+    }
+
+    /* ANDROID CENTER FIX */
+    div[style*="margin: 16px 0;"] { margin: 0 !important; }
+</style>
 </head>
+<body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
 
-<body bgcolor="#f7f7f7">
-<table align="center" cellpadding="0" cellspacing="0" class="container-for-gmail-android" width="100%">
-  <tr>
-    <td align="left" valign="top" width="100%" style="background:repeat-x url(http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg) #ffffff;">
-      <center>
-      <img src="http://s3.amazonaws.com/swu-filepicker/SBb2fQPrQ5ezxmqUTgCr_transparent.png" class="force-width-gmail">
-        <table cellspacing="0" cellpadding="0" width="100%" bgcolor="#ffffff" background="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" style="background-color:transparent">
-          <tr>
-            <td width="100%" height="80" valign="top" style="text-align: center; vertical-align:middle;">
-            <!--[if gte mso 9]>
-            <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="mso-width-percent:1000;height:80px; v-text-anchor:middle;">
-              <v:fill type="tile" src="http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg" color="#ffffff" />
-              <v:textbox inset="0,0,0,0">
+<!-- HIDDEN PREHEADER TEXT -->
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+    Bienvenida.
+</div>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <!-- LOGO -->
+    <tr>
+        <td bgcolor="#1b9943" align="center">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
             <![endif]-->
-              <center>
-                <table cellpadding="0" cellspacing="0" width="600" class="w320">
-                  <tr>
-                    <td class="pull-left mobile-header-padding-left" style="vertical-align: middle;">
-                      <a href=""><img width="137" height="47" src="http://s3.amazonaws.com/swu-filepicker/0zxBZVuORSxdc9ZCqotL_logo_03.gif" alt="logo"></a>
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                <tr>
+                    <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
+                        <a href="http://litmus.com" target="_blank">
+                            <img alt="Logo" src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_150/v1504031885/logov1.png" style="display: block; width: 150px; max-width: 150px; min-width: 150px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;" border="0">
+                        </a>
                     </td>
-                    <td class="pull-right mobile-header-padding-right" style="color: #4d4d4d;">
-                      <a href=""><img width="44" height="47" src="http://s3.amazonaws.com/swu-filepicker/k8D8A7SLRuetZspHxsJk_social_08.gif" alt="twitter" /></a>
-                      <a href=""><img width="38" height="47" src="http://s3.amazonaws.com/swu-filepicker/LMPMj7JSRoCWypAvzaN3_social_09.gif" alt="facebook" /></a>
-                      <a href=""><img width="40" height="47" src="http://s3.amazonaws.com/swu-filepicker/hR33ye5FQXuDDarXCGIW_social_10.gif" alt="rss" /></a>
-                    </td>
-                  </tr>
-                </table>
-              </center>
-              <!--[if gte mso 9]>
-              </v:textbox>
-            </v:rect>
-            <![endif]-->
-            </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="100%" style="background-color: #f7f7f7;" class="content-padding">
-      <center>
-        <table cellspacing="0" cellpadding="0" width="600" class="w320">
-          <tr>
-            <td class="header-lg">
-              Welcome to Awesome Inc!
-            </td>
-          </tr>
-          <tr>
-            <td class="free-text">
-              Thank you for signing up with awesome co! We hope you enjoy your time with us. Check out some of our newest offers below or the button to view your new account.
-            </td>
-          </tr>
-          <tr>
-            <td class="button">
-              <div><!--[if mso]>
-                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:155px;" arcsize="15%" strokecolor="#ffffff" fillcolor="#ff6f6f">
-                  <w:anchorlock/>
-                  <center style="color:#ffffff;font-family:Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;">My Account</center>
-                </v:roundrect>
-              <![endif]--><a class="button-mobile" href=href="{{route('sendRecoveryEmail',["email" => $user->email,"changeToken"=>$user->changeToken])}}"
-              style="background-color:#ff6f6f;border-radius:5px;color:#ffffff;display:inline-block;font-family:'Cabin', Helvetica, Arial, sans-serif;font-size:14px;font-weight:regular;line-height:45px;text-align:center;text-decoration:none;width:155px;-webkit-text-size-adjust:none;mso-hide:all;">Crear Contraseña</a></div>
-            </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="100%" style="background-color: #ffffff;  border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
-      <center>
-        <table cellpadding="0" cellspacing="0" width="600" class="w320">
-          <tr>
-            <td class="content-padding">
-              
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                  </td>
                 </tr>
-              </table>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
             </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" valign="top" width="100%" style="background-color: #f7f7f7; height: 100px;">
-      <center>
-        <table cellspacing="0" cellpadding="0" width="600" class="w320">
-          <tr>
-            <td style="padding: 25px 0 25px">
-              <strong>Awesome Inc</strong><br />
-              1234 Awesome St <br />
-              Wonderland <br /><br />
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- HERO -->
+    <tr>
+        <td bgcolor="#1b9943" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                <tr>
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 900; letter-spacing: 4px; line-height: 48px;">
+                      <h1 style="font-size: 20px; font-weight: 900; margin: 0;">Recuperacion de contraseña</h1>
+                    </td>
+                </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
             </td>
-          </tr>
-        </table>
-      </center>
-    </td>
-  </tr>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- COPY BLOCK -->
+    <tr>
+        <td bgcolor="#1b9943" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+              <!-- COPY -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">Se ha enviado una solicitud para crear una nueva contraseña , si no eres repsonsable de esta solicitud ignora este correo , en cambio si tu creaste esta solicitud solo tienes que presionar el boton de abajo para completar el proceso</p>
+                </td>
+              </tr>
+              <!-- BULLETPROOF BUTTON -->
+              <tr>
+                <td bgcolor="#ffffff" align="left">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 20px 30px;">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#17d32a"><a href="{{route('sendRecoveryEmail',["email" => $user->email,"changeToken"=>$user->changeToken])}}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #000000; text-decoration: none; color: #000000; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Cambiar Contraseña</a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <!-- COPY -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 5px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 25px;" >
+                  <p style="margin: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat pulvinar magna sit amet semper.</p>
+                </td>
+              </tr>
+              <!-- COPY -->
+               
+              <!-- COPY -->
+              
+              <!-- COPY -->
+              <tr>
+                <td bgcolor="#ffffff" align="left" style="padding: 15px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                  <p style="margin: 0;">Saludos,<br>Equipo Happier</p>
+                </td>
+              </tr>
+            </table>
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
+    <!-- SUPPORT CALLOUT -->
+   
+    <!-- FOOTER -->
+    <tr>
+        <td bgcolor="#f4f4f4" align="center" style="padding: 0px 10px 0px 10px;">
+            <!--[if (gte mso 9)|(IE)]>
+            <table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+            <tr>
+            <td align="center" valign="top" width="600">
+            <![endif]-->
+            
+            <!--[if (gte mso 9)|(IE)]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </td>
+    </tr>
 </table>
+
+    <!-- LITMUS ATTRIBUTION -->
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td bgcolor="#ffffff" align="center">
+                <!--[if (gte mso 9)|(IE)]>
+<table align="center" border="0" cellspacing="0" cellpadding="0" width="600">
+<tr>
+<td align="center" valign="top" width="600">
+<![endif]-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
+                    <tr>
+                        <td bgcolor="#ffffff" align="left" style="padding: 30px 30px 30px 30px; color: #666666; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 900; line-height: 18px;" >
+                            <p style="margin: 0;">Ciqno Studio   <br>Direccion : XXXXXXX  <br>Telefono : xxxxxx<a href="" style="color: #5db3ec;"></a></p>
+                        </td>
+                    </tr>
+                </table>
+                <!--[if (gte mso 9)|(IE)]>
+</td>
+</tr>
+</table>
+<![endif]-->
+            </td>
+        </tr>
+    </table>
+    <!-- END LITMUS ATTRIBUTION -->
+    
 </body>
 </html>
+
 
 <!--To create a new password  <a href="{{route('sendRecoveryEmail',["email" => $user->email,"changeToken"=>$user->changeToken])}}">click here </a>-->
 
