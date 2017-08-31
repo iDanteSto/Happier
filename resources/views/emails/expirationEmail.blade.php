@@ -93,7 +93,7 @@
       background:#F4A81C;
     }
     .bgBody{
-      background:#ffffff;
+      background:#dddcd7;
     }
 
   </style>
@@ -110,7 +110,7 @@
 </script>
 
 </head>
-<body>
+<body >
   <!-- Wrapper/Container Table: Use a wrapper table to control the width and the background color consistently of your email. Use this approach instead of setting attributes on the body tag. -->
   <table cellpadding="0" width="100%" cellspacing="0" border="0" id="backgroundTable" class='bgBody'>
     <tr>
@@ -134,7 +134,7 @@
                     <td width="200" valign="top" align="center">
                       <div class="contentEditableContainer contentTextEditable">
                         <div class="contentEditable" >
-                          <img src="images/logo.png" width="155" height='155' alt='Logo'  data-default="placeholder" />
+                          <img src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_150/v1504031885/logov1.png" width="150" height='90' alt='Logo'  data-default="placeholder" />
                         </div>
                       </div>
                     </td>
@@ -154,7 +154,7 @@
                     <td width="100%" colspan="3" align="center" style="padding-bottom:10px;padding-top:25px;">
                       <div class="contentEditableContainer contentTextEditable">
                         <div class="contentEditable" >
-                          <h2 >Welcome aboard!</h2>
+                          <h2 ><strong>LINK EXPIRADO</strong></h2>
                         </div>
                       </div>
                     </td>
@@ -164,7 +164,7 @@
                     <td width="400" align="center" style="padding-bottom:5px;">
                       <div class="contentEditableContainer contentTextEditable">
                         <div class="contentEditable" >
-                          <p >Thanks for signing up to our newsletter - you're all set and will be receiving the first email soon.</p>
+                          <p >Lo sentimos este link ya ha pasado a una mejor vida</p>
                         </div>
                       </div>
                     </td>
@@ -180,10 +180,10 @@
                     <td width="400" align="center" style="padding-top:25px;padding-bottom:115px;">
                       <table cellpadding="0" cellspacing="0" border="0" align="center" width="200" height="50">
                         <tr>
-                          <td bgcolor="#ED006F" align="center" style="border-radius:4px;" width="200" height="50">
+                          <td  align="center" style="border-radius:4px;" width="200" height="50">
                             <div class="contentEditableContainer contentTextEditable">
                               <div class="contentEditable" >
-                                <a target='_blank' href="[CLIENTS.WEBSITE]" class='link2'>Visit our Website</a>
+                                <img src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_300/v1504190832/deadface.png" width="300" height='300' alt='Logo'  data-default="placeholder" />
                               </div>
                             </div>
 
@@ -197,247 +197,12 @@
               </div>
 
 
-              <div class='movableContent'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="border-collapse:collapse;">
-                  <tr>
-                    <td style="color:#fff;" class='bgItem'>
-                      <table cellpadding="0" style="border-collapse:collapse;" cellspacing="0" border="0" align="center" width="600">
-                        <tr>
-                          <td width="200" style="vertical-align:bottom;">
-                            <div class="contentEditableContainer contentImageEditable">
-                              <div class="contentEditable" >
-                                <div style="padding-top:20px;text-align:center;">
-                                  <img src="images/6@2x.png" width="148" data-default="placeholder" data-max-width="200" style="margin-bottom:-3px;" />
-                                </div>
-                              </div>
-                            </div>
-                            
-                          </td>
-                          <td width="400" valign="top" style="padding-top:40px;padding-bottom:20px;">
-                            <br/>
-                            <div class="contentEditableContainer contentTextEditable">
-                              <div class="contentEditable" >
-                                <div style="font-size:23px;font-family:Heveltica, Arial, sans-serif;color:#fff;">A little bit about us</div>
-                              </div>
-                            </div>
-                            
-                            <div class="contentEditableContainer contentTextEditable">
-                              <div class="contentEditable"  style="padding:20px 10px 0 0;margin:0;font-family:Helvetica, Arial, sans-serif;font-size:15px;line-height:150%;">
-                                <p style='color:#FFEECE;'>Describe who you are, what you do and why you do it. You can also use this space as social proof (a tweet or post from a fan)</strong></p>
-                              </div>
-                            </div>
+          
+             
 
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+            
 
-              <div class='movableContent' align='center' style='text-align:center;'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-                  <tr>
-                    <td width="100%" colspan="3" align="center" style="padding-bottom:40px;padding-top:100px;">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable"  >
-                          <h2 >Our Core Values</h2>
-                        </div>
-                      </div>
-
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="50">&nbsp;</td>
-                    <td width="500" align="left">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <div style="font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;color:#181818;font-weight:bold;">Things you believe in are important to your business</div>
-                        </div>
-                      </div>
-                      <div style="height:20px;">&nbsp;</div>
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <p >Why you do what you do can be just as important as what you do. You could also use this area to list benefits of using your product.</p>
-                        </div>
-                      </div>
-                      <div style="height:20px;">&nbsp;</div>
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <div style="font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;color:#181818;font-weight:bold;">Things you believe in are important to your business</div>
-                        </div>
-                      </div>
-                      <div style="height:20px;">&nbsp;</div>
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <p >Why you do what you do can be just as important as what you do. You could also use this area to list benefits of using your product.</p>
-                        </div>
-                      </div>
-                      <div style="height:20px;">&nbsp;</div>
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <div style="font-family:Helvetica, Arial, sans-serif;font-size:16px;line-height:160%;color:#181818;font-weight:bold;">Things you believe in are important to your business</div>
-                        </div>
-                      </div>
-                      <div style="height:20px;">&nbsp;</div>
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <p >Why you do what you do can be just as important as what you do. You could also use this area to list benefits of using your product.</p>
-                        </div>
-                      </div>
-                      
-                    </td>
-                    <td width="50">&nbsp;</td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class='movableContent' align='center' style='text-align:center;'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-                  <tr>
-                    <td width="100%" align="center" style="padding-bottom:10px;padding-top:100px;">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <h2>The People that Make the Company</h2>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="100%" align="center">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <p >Add pictures of your company's employees or pictures taken at a special event.</p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class='movableContent' align='center' style='text-align:center;'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
-                  <tr>
-                    <td style="color:#fff;">
-                      <!-- Hey! Nice to see you there. Did you know? You can actually have the image extend as a tiled background image; just replace the above td's style to: style="background-color:#181818;background-image:url(location/YourImageName.filetype);background-repeat:repeat-x;background-size:600px 400px;background-position:center center;color:#fff;" -->
-                      <table cellpadding="0" style="border-collapse:collapse;" cellspacing="0" border="0" align="center" width="600">
-                        <tr>
-                          <td width="600" valign="top">
-                            <div style="text-align:center;margin-bottom:-3px;">
-                              <div class="contentEditableContainer contentImageEditable">
-                                <div class="contentEditable" >
-                                  <img src="images/pics.png" width="600" alt='design images'  data-default="placeholder" data-max-width="600" />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class='movableContent' align='center' style='text-align:center;'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-                  <tr>
-                    <td width="100%" align="center" style="padding-bottom:10px;padding-top:100px;">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <h2>Liked this email?</h2>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="100%" align="center">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <p >Get people to click on the thumbs up and the thumbs down to show their appreciation for this email, a question you can ask or what they think about a topic. Create landing pages for each response.
-                            <!-- For example, you can ask them if they're Star Wars fans, if they Love chocolate or if they would recommend your product to a friend or family member. -->
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class='movableContent' align='center' style='text-align:center;'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-                  <tr>
-                    <td width="100%" align="center">
-                      <div class="contentEditableContainer contentImageEditable" style="display:inline;">
-                        <div class="contentEditable" style="display:inline;">
-                          <img src="images/yes.gif" width="200"  alt='yes'  data-default="placeholder" data-max-width="200" style='padding-right:10px;'/>
-                        </div>
-                      </div>
-                      <div class="contentEditableContainer contentImageEditable" style="display:inline;">
-                        <div class="contentEditable" style="display:inline;">
-                          <img src="images/no.gif" width="200"  alt='no'  data-default="placeholder" data-max-width="200" style='padding-left:10px;'/>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-
-              <div class='movableContent'>
-                <table cellpadding="0" cellspacing="0" border="0" align="center" width="600">
-                  <tr>
-                    <td width="100%" colspan="2" style="padding-top:65px;">
-                      <hr style="height:1px;border:none;color:#333;background-color:#ddd;" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td width="60%" height="70" valign="middle" style="padding-bottom:20px;">
-                      <div class="contentEditableContainer contentTextEditable">
-                        <div class="contentEditable" >
-                          <span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">Sent to [email] by [CLIENTS.COMPANY_NAME]</span>
-                          <br/>
-                          <span style="font-size:11px;color:#555;font-family:Helvetica, Arial, sans-serif;line-height:200%;">[CLIENTS.ADDRESS] | [CLIENTS.PHONE]</span>
-                          <br/>
-                                    <span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-                            <a target='_blank' href="[FORWARD]" style='text-decoration:none;line-height: 20px;color:#555; font-size:13px;'>Forward to a friend</a></span>
-                          <br/>
-                          <span style="font-size:13px;color:#181818;font-family:Helvetica, Arial, sans-serif;line-height:200%;">
-                            <a target='_blank' href="[UNSUBSCRIBE]" style="text-decoration:none;color:#555">Click here to unsubscribe</a></span>
-                        </div>
-                      </div>
-                    </td>
-                    <td width="40%" height="70" align="right" valign="top" align='right' style="padding-bottom:20px;">
-                      <table width="100%" border="0" cellspacing="0" cellpadding="0" align='right'>
-                        <tr>
-                          <td width='57%'></td>
-                          <td valign="top" width='34'>
-                            <div class="contentEditableContainer contentFacebookEditable" style='display:inline;'>
-                              <div class="contentEditable" >
-                                <img src="images/facebook.png" data-default="placeholder" data-max-width="30" width='30' height='30' alt='facebook' style='margin-right:40x;' data-customIcon="true" >
-                              </div>
-                            </div>
-                          </td>
-                          <td valign="top" width='34'>
-                            <div class="contentEditableContainer contentTwitterEditable" style='display:inline;'>
-                              <div class="contentEditable" >
-                                <img src="images/twitter.png" data-default="placeholder" data-max-width="30" width='30' height='30' alt='twitter' style='margin-right:40x;' data-customIcon="true" >
-                              </div>
-                            </div>
-                          </td>
-                          <td valign="top" width='34'>
-                            <div class="contentEditableContainer contentImageEditable" style='display:inline;'>
-                              <div class="contentEditable" >
-                                <a target='_blank' href="#" data-default="placeholder"  style="text-decoration:none;">
-                                  <img src="images/pinterest.png" width="30" height="30" data-max-width="30" alt='pinterest' style='margin-right:40x;' />
-                                </a>
-                              </div>
-                            </div>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </div>
+            
 
             </td>
           </tr>
