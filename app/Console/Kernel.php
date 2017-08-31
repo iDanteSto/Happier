@@ -13,8 +13,10 @@ class Kernel extends ConsoleKernel
      *
      * @var array
      */
-    protected $commands = [
+    protected $commands = [//class referencing the command [*_*]
        Commands\deleteNotConfUsers::class,
+       Commands\recommendationSetter::class,
+       Commands\cleanDeleteUser::class,
     ];
 
     /**
@@ -24,9 +26,12 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected function schedule(Schedule $schedule)
-    {
+    {   //here you assign the commands to be executed at wich schedule [*_*]
+    
+        
         $schedule->command('users:delete')->dailyAt('19:00');
-                
+        
+        //corre daily at 7am to 11 am        
     }
 
     /**

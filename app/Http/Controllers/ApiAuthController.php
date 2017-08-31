@@ -109,16 +109,34 @@ if($userd->status == 1 )
     {     
 
 
-$request = Request::create('api/user/newsLoader', 'GET');
+$user = User::where('email', '=', 'megablastoise@golemico.com')->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;//place id on a variable to use it 
 
-$response = app()->handle($request);
+$frequencyChecker = DB::select('SELECT 
+    timesAtDay, description
+FROM
+    userfrequency,
+    frequency
+WHERE
+    frequency_Id = userfrequency.fk_frequency_Id
+        AND userfrequency.fk_user_Id = ?', [$userid]);
+$timesAtDay = $frequencyChecker[0]->timesAtDay;
 
-$json = json_decode($response,true);
-        
-//return $response;
 
-//return $decodeResponse;
-return $json["title"];
+if ($timesAtDay == 1)
+{
+   return 'fue 1';
+}
+elseif ($timesAtDay == 3)
+{
+   return 'fue 3';
+}
+elseif ($timesAtDay == 5)
+{
+   return 'fue 5';
+}
+
+
 
 //return response()->json(['succes'=> 'Hello World!'], 200);
     }
@@ -390,7 +408,7 @@ public function sendRecoveryEmail($email, $changeToken)
         //if it exist redirect to the app route with the parameters
           return redirect()->route('routeToApp' ,["email" =>$email,"changeToken" => $changeToken]);
 
-        }else{return 'Expired';} 
+        }else{return View::make('emails.expirationEmail');} 
     }
  // second part of the forgot account function
     public function passwordCreate(Request $request)

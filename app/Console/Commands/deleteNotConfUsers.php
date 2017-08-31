@@ -13,7 +13,7 @@ class deleteNotConfUsers extends Command
      *
      * @var string
      */
-    protected $signature = 'users:delete';
+    protected $signature = 'user:deleteNotConf';
 
     /**
      * The console command description.
