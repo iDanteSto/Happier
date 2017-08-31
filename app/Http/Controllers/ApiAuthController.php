@@ -19,6 +19,7 @@ use App\socialProvider;
 use App\socialProviders;
 
 use Illuminate\Support\Facades\Route;
+use View;
 
 //use Laravel\Socialite\Facades\Socialite;
 //use Requests\userInfoRequest;
@@ -251,7 +252,11 @@ foreach ($categsIds as $categ) {
 
 //-----------------------------------------------------------------------------
           return 'Exito! Se ha verificado correctamente';
-        }else{return 'Expired';} 
+        }else
+        {
+          //return 'Expired';
+        return View::make('emails.expirationEmail');
+        } 
     }
 /*
     |
