@@ -19,7 +19,7 @@ class recommendationSetter extends Command
      *
      * @var string
      */             //description of the command [*_*]
-    protected $description = 'Checks if the user interactued with its last recommendation assigned , if he did it will assignate a new one  , if not it will send a push notification to the user';
+    protected $description = 'Checks if the user can receive a new recommendation , if he can it will be assignate a new one';
 
     /**
      * Create a new command instance.
@@ -39,41 +39,102 @@ class recommendationSetter extends Command
     public function handle()
     {
         //logic to do [*_*]----------------------------------------------------------------------------------------------------------------------------------------
+ /*
+    |--------------------------------------------------------------------------
+    | Assign recommendation function
+    |--------------------------------------------------------------------------
+    |
+    | This function assignates recommendations to elegible users
+    |
+    */        
 //---------------------------------------------------------------------------------test area---------------------------------------------------------------------------
-$user = User::where('email', '=', 'megablastoise@golemico.com')->firstOrFail();//get hidden info of the session to compare and retrieve of the database
-$userid = $user->user_Id;//place id on a variable to use it 
-
-$frequencyChecker = DB::select('SELECT 
-    timesAtDay, description
+//select all users that are verified
+$users = DB::select('SELECT 
+    users.user_Id, frequency.timesAtDay
 FROM
-    userfrequency,
-    frequency
+    users,
+    frequency,
+    userfrequency
 WHERE
-    frequency_Id = userfrequency.fk_frequency_Id
-        AND userfrequency.fk_user_Id = ?', [$userid]);
-$timesAtDay = $frequencyChecker[0]->timesAtDay;
-
-
-if ($timesAtDay == 1)
+    userfrequency.fk_frequency_Id = frequency.frequency_Id
+        AND users.status = ?
+        AND fk_user_Id = user_Id', [1]);
+//for every user , do the logic
+foreach ($users as $usuarios) 
 {
-   return 'fue 1';
-}
-elseif ($timesAtDay == 3)
+$currentDate = date('Y-m-d');
+$userid = $usuarios->user_Id;
+$timesAtDay = $usuarios->timesAtDay;
+//count user recommendations within the current day
+$recomCountCollection = DB::table('userrecommendation')
+                     ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
+                     ->where('fk_user_Id', '=', $userid)
+                     ->whereDate('creation_date', $currentDate)
+                     ->get();
+$recomCount = $recomCountCollection[0]->recomCount;
+//compare the recomCount against the user frequency chosen to see if he can receive a new recommendation on the day
+if($recomCount < $timesAtDay)
 {
-   return 'fue 3';
-}
-elseif ($timesAtDay == 5)
+//retrieve the number of recommendations of the user that he has not interacted with 
+ $recomReadyCollection = DB::table('userrecommendation')
+                     ->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
+                     ->where('fk_user_Id', '=', $userid)
+                     ->where('fk_status_Id', '=', 2)
+                     ->whereDate('creation_date', $currentDate)
+                     ->get(); 
+//place the number of recommendations of the user that he has not interacted with on a variable to use it                 
+$recomReady = $recomReadyCollection[0]->recomCount2;
+//check if the user has a pending recommendation to interact with and if is eligible to get a new one
+if($recomReady == 0)
+{//the user is eligible to get a new recommendation
+//*****'The user is ready to receive a recommendation *****
+//--***********************************recommendation process***************------------------------------------------------
+$timeOfDay =0;
+//date("h:i:sa")
+//Current server time
+$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
+//Morning
+$beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
+$endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
+//Evening
+$beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
+$endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
+//Night
+$beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
+$endNight = DateTime::createFromFormat('H:i a', "9:00 pm");
+if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
 {
-   return 'fue 5';
+  //Morning
+  $timeOfDay = 1;   
+}else if($currentTime >= $beginEvening && $currentTime <= $endEvening)
+{ 
+  //Evening
+  $timeOfDay =2;
+}else if($currentTime >= $beginNight && $currentTime <= $endNight)
+{
+  //Night
+  $timeOfDay =3;
 }
-
-
-
-
-
-
-Log::info("Success");
-
+$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+//*****Succes ! a new recommendation has been assigned *****
+//|****************************************|
+//New one assigned Notificacion logic here
+//|****************************************|
+//------------------------------------------------------------------------------------------------------------------------
+}else
+{//the user its not eligible to get a new recommendation
+//*****'The user has not interacted with its last recommendation of the day *****
+//|***********************************************************************|
+//Interact with your current recommendation please Notificacion logic here
+//|***********************************************************************|
+}
+}
+else
+{//the user has reached the limit of recommendations that he can get on the day
+//*****'The user ran out of recommendations for the day' *****
+}  
+}
+//return nothing
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
     }
 }

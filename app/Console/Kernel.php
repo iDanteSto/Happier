@@ -28,10 +28,14 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {   //here you assign the commands to be executed at wich schedule [*_*]
     
+        //schedules for recommendations
+        $schedule->command('recommendation:setter')->dailyAt('8:00');
+        $schedule->command('recommendation:setter')->dailyAt('11:00');
+        $schedule->command('recommendation:setter')->dailyAt('13:00');
+        $schedule->command('recommendation:setter')->dailyAt('16:00');
+        $schedule->command('recommendation:setter')->dailyAt('18:00');
         
-        $schedule->command('users:delete')->dailyAt('19:00');
-        
-        //corre daily at 7am to 11 am        
+              
     }
 
     /**

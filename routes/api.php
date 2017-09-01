@@ -26,8 +26,8 @@ Route::group(['middleware' => 'cors'], function(){
 	Route::patch('/user/createNewPass', 'ApiAuthController@passwordCreate');//Create new pass--
 	Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificationEmail');//Resend email verification--
 	//Recommendation
-	Route::get('/user/recommendationChecker', 'recommendationController@recommendationChecker');//Timer-Checker
-	Route::post('/user/recommendationSetter', 'recommendationController@recommendationSet');//Timer-Setter
+	Route::get('/user/recommendationChecker', 'recommendationController@recommendationChecker');//*******Timer-Checker not gonna be used this 
+	Route::post('/user/recommendationSetter', 'recommendationController@recommendationSet');//************Timer-Setter not gonna be used this 
 	Route::patch('/user/recommendationComplete', 'recommendationController@recommendationComplete');//front-Completer--
 	Route::get('/user/recommendationLoader', 'recommendationController@recommendationLoader');//front-Loader--
 	Route::patch('/user/recommendationRejecter', 'recommendationController@recommendationRejecter');//front-Rejecter--
