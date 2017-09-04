@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
        Commands\deleteNotConfUsers::class,
        Commands\recommendationSetter::class,
        Commands\cleanDeleteUser::class,
+       Commands\testingcommand::class,
     ];
 
     /**
@@ -29,13 +30,18 @@ class Kernel extends ConsoleKernel
     {   //here you assign the commands to be executed at wich schedule [*_*]
     
         //schedules for recommendations
-        $schedule->command('recommendation:setter')->dailyAt('8:00');
-        $schedule->command('recommendation:setter')->dailyAt('11:00');
-        $schedule->command('recommendation:setter')->dailyAt('13:00');
-        $schedule->command('recommendation:setter')->dailyAt('16:00');
-        $schedule->command('recommendation:setter')->dailyAt('18:00');
-        
-              
+       // $schedule->command('recommendation:setter')->dailyAt('8:00');
+       // $schedule->command('recommendation:setter')->dailyAt('11:00');
+       // $schedule->command('recommendation:setter')->dailyAt('13:00');
+      //  $schedule->command('recommendation:setter')->dailyAt('16:00');
+      //  $schedule->command('recommendation:setter')->dailyAt('18:00');
+
+       // $schedule->command('user:test')->dailyAt('10:34'); 
+       // $schedule->command('user:test')->dailyAt('10:35'); 
+       // $schedule->command('user:test')->dailyAt('10:36');
+       // $schedule->command('user:test')->dailyAt('10:37');  
+       // $schedule->command('user:test')->dailyAt('10:38'); 
+       $schedule->command('user:test')->everyMinute();      
     }
 
     /**
