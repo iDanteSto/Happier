@@ -36,12 +36,8 @@ class Kernel extends ConsoleKernel
       //  $schedule->command('recommendation:setter')->dailyAt('16:00');
       //  $schedule->command('recommendation:setter')->dailyAt('18:00');
 
-       // $schedule->command('user:test')->dailyAt('10:34'); 
-       // $schedule->command('user:test')->dailyAt('10:35'); 
-       // $schedule->command('user:test')->dailyAt('10:36');
-       // $schedule->command('user:test')->dailyAt('10:37');  
-       // $schedule->command('user:test')->dailyAt('10:38'); 
-       $schedule->command('user:test')->everyMinute();      
+      
+       //$schedule->command('user:test')->everyMinute();      
     }
 
     /**
