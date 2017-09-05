@@ -49,73 +49,73 @@ class recommendationSetter extends Command
     */        
 //---------------------------------------------------------------------------------test area---------------------------------------------------------------------------
 //select all users that are verified
-$users = DB::select('SELECT 
-    users.user_Id, frequency.timesAtDay
-FROM
-    users,
-    frequency,
-    userfrequency
-WHERE
-    userfrequency.fk_frequency_Id = frequency.frequency_Id
+    $users = DB::select('SELECT 
+        users.user_Id, frequency.timesAtDay
+        FROM
+        users,
+        frequency,
+        userfrequency
+        WHERE
+        userfrequency.fk_frequency_Id = frequency.frequency_Id
         AND users.status = ?
         AND fk_user_Id = user_Id', [1]);
 //for every user , do the logic
-foreach ($users as $usuarios) 
-{
-$currentDate = date('Y-m-d');
-$userid = $usuarios->user_Id;
-$timesAtDay = $usuarios->timesAtDay;
+    foreach ($users as $usuarios) 
+    {
+        $currentDate = date('Y-m-d');
+        $userid = $usuarios->user_Id;
+        $timesAtDay = $usuarios->timesAtDay;
 //count user recommendations within the current day
-$recomCountCollection = DB::table('userrecommendation')
-                     ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
-                     ->where('fk_user_Id', '=', $userid)
-                     ->whereDate('creation_date', $currentDate)
-                     ->get();
-$recomCount = $recomCountCollection[0]->recomCount;
+        $recomCountCollection = DB::table('userrecommendation')
+        ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
+        ->where('fk_user_Id', '=', $userid)
+        ->whereDate('creation_date', $currentDate)
+        ->get();
+        $recomCount = $recomCountCollection[0]->recomCount;
 //compare the recomCount against the user frequency chosen to see if he can receive a new recommendation on the day
-if($recomCount < $timesAtDay)
-{
+        if($recomCount < $timesAtDay)
+        {
 //retrieve the number of recommendations of the user that he has not interacted with 
- $recomReadyCollection = DB::table('userrecommendation')
-                     ->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
-                     ->where('fk_user_Id', '=', $userid)
-                     ->where('fk_status_Id', '=', 2)
-                     ->whereDate('creation_date', $currentDate)
-                     ->get(); 
+           $recomReadyCollection = DB::table('userrecommendation')
+           ->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
+           ->where('fk_user_Id', '=', $userid)
+           ->where('fk_status_Id', '=', 2)
+           ->whereDate('creation_date', $currentDate)
+           ->get(); 
 //place the number of recommendations of the user that he has not interacted with on a variable to use it                 
-$recomReady = $recomReadyCollection[0]->recomCount2;
+           $recomReady = $recomReadyCollection[0]->recomCount2;
 //check if the user has a pending recommendation to interact with and if is eligible to get a new one
-if($recomReady == 0)
+           if($recomReady == 0)
 {//the user is eligible to get a new recommendation
 //*****'The user is ready to receive a recommendation *****
 //--***********************************recommendation process***************------------------------------------------------
-$timeOfDay =0;
+    $timeOfDay =0;
 //date("h:i:sa")
 //Current server time
-$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
+    $currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
 //Morning
-$beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
-$endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
+    $beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
+    $endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
 //Evening
-$beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
-$endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
+    $beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
+    $endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
 //Night
-$beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
-$endNight = DateTime::createFromFormat('H:i a', "9:00 pm");
-if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
-{
+    $beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
+    $endNight = DateTime::createFromFormat('H:i a', "9:00 pm");
+    if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
+    {
   //Morning
-  $timeOfDay = 1;   
-}else if($currentTime >= $beginEvening && $currentTime <= $endEvening)
-{ 
+      $timeOfDay = 1;   
+  }else if($currentTime >= $beginEvening && $currentTime <= $endEvening)
+  { 
   //Evening
-  $timeOfDay =2;
-}else if($currentTime >= $beginNight && $currentTime <= $endNight)
-{
+      $timeOfDay =2;
+  }else if($currentTime >= $beginNight && $currentTime <= $endNight)
+  {
   //Night
-  $timeOfDay =3;
-}
-$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+      $timeOfDay =3;
+  }
+  $assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
 //*****Succes ! a new recommendation has been assigned *****
 //|****************************************|
 //New one assigned Notificacion logic here
@@ -136,5 +136,5 @@ else
 }
 //return nothing
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    }
+}
 }

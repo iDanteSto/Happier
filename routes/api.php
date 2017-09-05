@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 												*/
 //Route::get('/', function(){return view('welcome');});
 
-Route::group(['middleware' => 'cors'], function(){
+    Route::group(['middleware' => 'cors'], function(){
 	//ApiAuthController(Login related)
 	Route::get('/user/userCheckExistence', 'ApiAuthController@userCheckExistence');//Dummy check
 	Route::get('/user/dummyFunction', 'ApiAuthController@dummyFunction');//Dummy check
@@ -53,6 +53,7 @@ Route::group(['middleware' => 'cors'], function(){
 	Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--
 	//DailyNews
 	Route::get('/user/newsLoader', 'NewsController@newsLoader');//Loader--
-	
+	//Firebase.Notifications 
+	Route::patch('/user/refreshtokenDB', 'notificationController@refreshtokenDB');//refresh
 });
 

@@ -186,6 +186,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         //Cloudinary
         JD\Cloudder\CloudderServiceProvider::class,
+        //FCM brozot/laravel-fcm
+        LaravelFCM\FCMServiceProvider::class,
         
 
     ],
@@ -240,6 +242,8 @@ return [
         'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class, //JWTAuth
         'Socialite' => Laravel\Socialite\Facades\Socialite::class, //Socialite
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class, //cloudinary
+        'FCM'      => LaravelFCM\Facades\FCM::class,
+        'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
 
     ],
 

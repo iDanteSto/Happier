@@ -21,6 +21,13 @@ use App\socialProviders;
 use Illuminate\Support\Facades\Route;
 use View;
 use DateTime;
+
+
+//FCM stuff
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
 //use Laravel\Socialite\Facades\Socialite;
 //use Requests\userInfoRequest;
 //use App\http\Requests\rulesregister;
@@ -107,92 +114,8 @@ if($userd->status == 1 )
 //test function
     public function dummyFunction(Request $request)
     {     
-$users = DB::select('SELECT 
-    users.user_Id, frequency.timesAtDay
-FROM
-    users,
-    frequency,
-    userfrequency
-WHERE
-    userfrequency.fk_frequency_Id = frequency.frequency_Id
-        AND users.status = ?
-        AND fk_user_Id = user_Id', [1]);
 
-foreach ($users as $usuarios) 
-{
-$currentDate = date('Y-m-d');
-$userid = $usuarios->user_Id;//place id on a variable to use it 
-$timesAtDay = $usuarios->timesAtDay;
-
-$recomCountCollection = DB::table('userrecommendation')
-                     ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
-                     ->where('fk_user_Id', '=', $userid)
-                     ->whereDate('creation_date', $currentDate)
-                     ->get();
-$recomCount = $recomCountCollection[0]->recomCount;
-//compare the recomCount against the user frequency chosen to see if he can receive a new recommendation on the day
-if($recomCount < $timesAtDay)
-{
-//retrieve the number of recommendations of the user that he has not interacted with 
- $recomReadyCollection = DB::table('userrecommendation')
-                     ->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
-                     ->where('fk_user_Id', '=', $userid)
-                     ->where('fk_status_Id', '=', 2)
-                     ->whereDate('creation_date', $currentDate)
-                     ->get(); 
-//place the number of recommendations of the user that he has not interacted with on a variable to use it                 
-$recomReady = $recomReadyCollection[0]->recomCount2;
-//check if the user has a pending recommendation to interact with and if is eligible to get a new one
-if($recomReady == 0)
-{//the user is eligible to get a new recommendation
-//*****'The user is ready to receive a recommendation *****
-//--***********************************chorizon del proceso de recommendacion***************------------------------------
-$timeOfDay =0;
-//date("h:i:sa")
-//Current server time
-$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
-//Morning
-$beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
-$endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
-//Evening
-$beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
-$endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
-//Night
-$beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
-$endNight = DateTime::createFromFormat('H:i a', "9:00 pm");
-if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
-{
-  //Morning
-  $timeOfDay = 1;   
-}else if($currentTime >= $beginEvening && $currentTime <= $endEvening)
-{ 
-  //Afternoon
-  $timeOfDay =2;
-}else if($currentTime >= $beginNight && $currentTime <= $endNight)
-{
-  //Night
-  $timeOfDay =3;
-}
-$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
-//*****Succes ! a new recommendation has been assigned *****
-//|****************************************|
-//New one assigned Notificacion logic here
-//|****************************************|
-//------------------------------------------------------------------------------------------------------------------------
-}else
-{//the user its not eligible to get a new recommendation
-//*****'The user has not interacted with its last recommendation of the day *****
-//|***********************************************************************|
-//Interact with your current recommendation please Notificacion logic here
-//|***********************************************************************|
-}
-}
-else
-{//the user has reached the limit of recommendations that he can get on the day
-//*****'The user ran out of recommendations for the day' *****
-}  
-}
-//return nothing
+return 'dummy function';
     }
 
     /*
