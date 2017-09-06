@@ -149,6 +149,7 @@ $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
 $notificationBuilder->setBody('Text holder')
+			->setClickAction('ACTIVITY_REC');
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
@@ -173,6 +174,7 @@ $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Aun tienes que interactuar con una recomendacion pendiente!');
 $notificationBuilder->setBody('Text holder')
+			->setClickAction('ACTIVITY_REC');
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
