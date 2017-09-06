@@ -21,7 +21,7 @@ class dummyController extends Controller
 
 public function dummyFunction(Request $request)
     {     
-  	
+ 
 $user = User::where('email', '=', $request->email)->firstOrFail();
 $userdeviceToken = $user->devicetoken;
 //<-------------------Push Notification---------------------------------------------------->
@@ -29,7 +29,8 @@ $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
 $notificationBuilder->setBody('Text holder')
-				    ->setSound('default');
+				    ->setSound('default')
+				    ->setClickAction('ACTIVITY_REC');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
 $option = $optionBuilder->build();
@@ -56,6 +57,14 @@ $downstreamResponse->numberModification();
 
 
 /*
+
+
+*/
+return 'Succes!';
+    }
+
+public function dummyFunction2(Request $request)
+    {   
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified
     $users = DB::select('SELECT 
@@ -67,7 +76,8 @@ $downstreamResponse->numberModification();
         WHERE
         userfrequency.fk_frequency_Id = frequency.frequency_Id
         AND users.status = ?
-        AND fk_user_Id = user_Id', [1]);
+        AND fk_user_Id = user_Id
+        AND devicetoken != ?', [1,""]);
 //for every user , do the logic
     foreach ($users as $usuarios) 
     {
@@ -181,11 +191,14 @@ else
 //return nothing
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 
-*/
+
+
 return 'Succes!';
+
+
+
+
     }
-
-
 
 
 
