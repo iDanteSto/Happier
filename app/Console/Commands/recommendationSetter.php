@@ -5,6 +5,10 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\User;
 use DB;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
 class recommendationSetter extends Command
 {
     /**
@@ -47,7 +51,7 @@ class recommendationSetter extends Command
     | This function assignates recommendations to elegible users
     |
     */        
-//---------------------------------------------------------------------------------test area---------------------------------------------------------------------------
+//<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified
     $users = DB::select('SELECT 
         users.user_Id, frequency.timesAtDay
@@ -170,6 +174,6 @@ else
 }  
 }
 //return nothing
-//------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 }
 }
