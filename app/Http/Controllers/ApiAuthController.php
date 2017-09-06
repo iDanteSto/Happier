@@ -21,13 +21,6 @@ use App\socialProviders;
 use Illuminate\Support\Facades\Route;
 use View;
 use DateTime;
-
-
-//FCM stuff
-use LaravelFCM\Message\OptionsBuilder;
-use LaravelFCM\Message\PayloadDataBuilder;
-use LaravelFCM\Message\PayloadNotificationBuilder;
-use FCM;
 //use Laravel\Socialite\Facades\Socialite;
 //use Requests\userInfoRequest;
 //use App\http\Requests\rulesregister;
@@ -111,12 +104,7 @@ if($userd->status == 1 )
      
   }
     
-//test function
-    public function dummyFunction(Request $request)
-    {     
 
-return 'dummy function';
-    }
 
     /*
     |--------------------------------------------------------------------------
