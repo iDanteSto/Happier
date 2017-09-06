@@ -23,34 +23,28 @@ public function dummyFunction(Request $request)
     {     
 $user = User::where('email', '=', $request->email)->firstOrFail();
 $userdeviceToken = $user->devicetoken;
-
+//<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-
 $notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
 $notificationBuilder->setBody('Text holder')
 				    ->setSound('default');
-				    
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
-
 $option = $optionBuilder->build();
 $notification = $notificationBuilder->build();
 $data = $dataBuilder->build();
-
 $token = $userdeviceToken;
-
 $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
-
 $downstreamResponse->numberSuccess();
 $downstreamResponse->numberFailure();
 $downstreamResponse->numberModification();
-
+//<-------------------Push Notification---------------------------------------------------->
 
 
 
 //return Array - you must remove all this tokens in your database
-$ekizde = $downstreamResponse->tokensToDelete(); 
+//$ekizde = $downstreamResponse->tokensToDelete(); 
 
 //return Array (key : oldToken, value : new token - you must change the token in your database )
 //$downstreamResponse->tokensToModify(); 
@@ -61,7 +55,7 @@ $ekizde = $downstreamResponse->tokensToDelete();
 
 
 
-return $ekizde;
+return 'Succes!';
     }
 
 

@@ -64,6 +64,7 @@ class recommendationSetter extends Command
     {
         $currentDate = date('Y-m-d');
         $userid = $usuarios->user_Id;
+        $userDeviceToken = $usuarios->devicetoken;
         $timesAtDay = $usuarios->timesAtDay;
 //count user recommendations within the current day
         $recomCountCollection = DB::table('userrecommendation')
@@ -119,6 +120,23 @@ class recommendationSetter extends Command
 //*****Succes ! a new recommendation has been assigned *****
 //|****************************************|
 //New one assigned Notificacion logic here
+//<-------------------Push Notification---------------------------------------------------->
+$optionBuilder = new OptionsBuilder();
+$optionBuilder->setTimeToLive(60*20);
+$notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
+$notificationBuilder->setBody('Text holder')
+            ->setSound('default');
+$dataBuilder = new PayloadDataBuilder();
+$dataBuilder->addData(['a_data' => 'my_data']);
+$option = $optionBuilder->build();
+$notification = $notificationBuilder->build();
+$data = $dataBuilder->build();
+$token = $userdeviceToken;
+$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+$downstreamResponse->numberSuccess();
+$downstreamResponse->numberFailure();
+$downstreamResponse->numberModification();
+//<-------------------Push Notification---------------------------------------------------->
 //|****************************************|
 //------------------------------------------------------------------------------------------------------------------------
 }else
@@ -126,6 +144,23 @@ class recommendationSetter extends Command
 //*****'The user has not interacted with its last recommendation of the day *****
 //|***********************************************************************|
 //Interact with your current recommendation please Notificacion logic here
+//<-------------------Push Notification---------------------------------------------------->
+$optionBuilder = new OptionsBuilder();
+$optionBuilder->setTimeToLive(60*20);
+$notificationBuilder = new PayloadNotificationBuilder('Aun tienes que interactuar con una recomendacion pendiente!');
+$notificationBuilder->setBody('Text holder')
+            ->setSound('default');
+$dataBuilder = new PayloadDataBuilder();
+$dataBuilder->addData(['a_data' => 'my_data']);
+$option = $optionBuilder->build();
+$notification = $notificationBuilder->build();
+$data = $dataBuilder->build();
+$token = $userdeviceToken;
+$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+$downstreamResponse->numberSuccess();
+$downstreamResponse->numberFailure();
+$downstreamResponse->numberModification();
+//<-------------------Push Notification---------------------------------------------------->  
 //|***********************************************************************|
 }
 }
