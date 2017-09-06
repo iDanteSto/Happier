@@ -54,7 +54,7 @@ class recommendationSetter extends Command
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified
     $users = DB::select('SELECT 
-        users.user_Id, frequency.timesAtDay
+        users.user_Id, frequency.timesAtDay, users.devicetoken
         FROM
         users,
         frequency,
@@ -62,7 +62,11 @@ class recommendationSetter extends Command
         WHERE
         userfrequency.fk_frequency_Id = frequency.frequency_Id
         AND users.status = ?
-        AND fk_user_Id = user_Id', [1]);
+        AND fk_user_Id = user_Id
+        AND devicetoken != ?', [1,""]);
+//if there is no confirmed users
+if (count($users))
+{
 //for every user , do the logic
     foreach ($users as $usuarios) 
     {
@@ -129,13 +133,14 @@ $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
 $notificationBuilder->setBody('Text holder')
+      ->setClickAction('ACTIVITY_REC')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
 $option = $optionBuilder->build();
 $notification = $notificationBuilder->build();
 $data = $dataBuilder->build();
-$token = $userdeviceToken;
+$token = $userDeviceToken;
 $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 $downstreamResponse->numberSuccess();
 $downstreamResponse->numberFailure();
@@ -153,13 +158,14 @@ $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Aun tienes que interactuar con una recomendacion pendiente!');
 $notificationBuilder->setBody('Text holder')
+      ->setClickAction('ACTIVITY_REC')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
 $option = $optionBuilder->build();
 $notification = $notificationBuilder->build();
 $data = $dataBuilder->build();
-$token = $userdeviceToken;
+$token = $userDeviceToken;
 $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 $downstreamResponse->numberSuccess();
 $downstreamResponse->numberFailure();
@@ -174,6 +180,23 @@ else
 }  
 }
 //return nothing
-//<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
+
+   
+
+
+
+}else
+{
+  //Do nothing
+  
 }
+
+
+
+//Exiting
+
+
+
+//<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
+    }
 }
