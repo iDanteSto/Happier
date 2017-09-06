@@ -70,7 +70,7 @@ public function dummyFunction2(Request $request)
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified
     $users = DB::select('SELECT 
-        users.user_Id, frequency.timesAtDay
+        users.user_Id, frequency.timesAtDay, users.devicetoken
         FROM
         users,
         frequency,
@@ -88,9 +88,7 @@ if (count($users))
     {
         $currentDate = date('Y-m-d');
         $userid = $usuarios->user_Id;
-        return $users;
         $userDeviceToken = $usuarios->devicetoken;
-         echo $userDeviceToken;
         $timesAtDay = $usuarios->timesAtDay;
 //count user recommendations within the current day
         $recomCountCollection = DB::table('userrecommendation')
