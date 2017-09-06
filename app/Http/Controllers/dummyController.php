@@ -21,6 +21,8 @@ class dummyController extends Controller
 
 public function dummyFunction(Request $request)
     {     
+$user = User::where('email', '=', $request->email)->firstOrFail();
+$userdeviceToken = $user->devicetoken;
 
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
@@ -36,7 +38,7 @@ $option = $optionBuilder->build();
 $notification = $notificationBuilder->build();
 $data = $dataBuilder->build();
 
-$token = "d5xhIvkF6Bw:APA91bFPdRyVa5fdCf0VUpdCF4QKMelPuNZSCoSyfTsCM79NsiOhXiozKhLOOZ9i2QlID2S8Q40D1vSSt6gMseCfCzsta5rnId_aPr9n2N4LHF4zk9sOuR44p1kMJvIZSBw1OXh2MiHd";
+$token = $userdeviceToken;
 
 $downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
 
@@ -52,7 +54,6 @@ $downstreamResponse->tokensToDelete();
 
 //return Array - you should try to resend the message to the tokens in the array
 //$downstreamResponse->tokensToRetry();
-
 
 
 
