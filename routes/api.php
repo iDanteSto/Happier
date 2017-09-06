@@ -18,6 +18,7 @@ use Illuminate\Http\Request;
     Route::group(['middleware' => 'cors'], function(){
     //Dummy
     Route::get('/user/dummyFunction', 'dummyController@dummyFunction');//Dummy check	
+    Route::get('/user/dummyFunction2', 'dummyController@dummyFunction2');//Dummy check	
 	//ApiAuthController(Login related)
 	Route::get('/user/userCheckExistence', 'ApiAuthController@userCheckExistence');//Dummy check
 	Route::post('/user/auth_login', 'ApiAuthController@userAuth');//Login Authorizer--
