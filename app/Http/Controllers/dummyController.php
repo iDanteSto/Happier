@@ -10,6 +10,8 @@ use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
 use App\User;
 use DB;
+use DateTime;
+
 
 class dummyController extends Controller
 {
@@ -86,7 +88,9 @@ if (count($users))
     {
         $currentDate = date('Y-m-d');
         $userid = $usuarios->user_Id;
+        echo $userid;
         $userDeviceToken = $usuarios->devicetoken;
+         echo $userDeviceToken;
         $timesAtDay = $usuarios->timesAtDay;
 //count user recommendations within the current day
         $recomCountCollection = DB::table('userrecommendation')
