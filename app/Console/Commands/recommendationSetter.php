@@ -52,7 +52,7 @@ class recommendationSetter extends Command
     |
     */        
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
-//select all users that are verified
+//select all users that are verified and has ever logged in once 
     $users = DB::select('SELECT 
         users.user_Id, frequency.timesAtDay, users.devicetoken
         FROM

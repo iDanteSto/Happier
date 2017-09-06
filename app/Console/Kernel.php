@@ -29,15 +29,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {   //here you assign the commands to be executed at wich schedule [*_*]
     
-        //schedules for recommendations
-       // $schedule->command('recommendation:setter')->dailyAt('8:00');
-       // $schedule->command('recommendation:setter')->dailyAt('11:00');
-       // $schedule->command('recommendation:setter')->dailyAt('13:00');
-      //  $schedule->command('recommendation:setter')->dailyAt('16:00');
-      //  $schedule->command('recommendation:setter')->dailyAt('18:00');
-
-      
-       //$schedule->command('user:test')->everyMinute();      
+      //<-------------Schedule for recommendations----------------------------------->
+      // $schedule->command('recommendation:setter')->dailyAt('8:00');
+      // $schedule->command('recommendation:setter')->dailyAt('11:00');
+      // $schedule->command('recommendation:setter')->dailyAt('13:00');
+      // $schedule->command('recommendation:setter')->dailyAt('18:00');
+      // $schedule->command('recommendation:setter')->dailyAt('21:00');
+      //<-------------Schedule for recommendations----------------------------------->
+      //<-------------Schedule for moods--------------------------------------------->
+      // $schedule->command('recommendation:setter')->weekly()->sundays()->at('12:00');
+      //<-------------Schedule for moods--------------------------------------------->
+           
     }
 
     /**
