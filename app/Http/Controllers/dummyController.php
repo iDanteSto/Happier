@@ -21,7 +21,7 @@ class dummyController extends Controller
 
 public function dummyFunction(Request $request)
     {     
- /*   	
+  	
 $user = User::where('email', '=', $request->email)->firstOrFail();
 $userdeviceToken = $user->devicetoken;
 //<-------------------Push Notification---------------------------------------------------->
@@ -52,7 +52,10 @@ $downstreamResponse->numberModification();
 
 //return Array - you should try to resend the message to the tokens in the array
 //$downstreamResponse->tokensToRetry();
-*/
+
+
+
+/*
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified
     $users = DB::select('SELECT 
@@ -177,6 +180,8 @@ else
 }
 //return nothing
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
+
+*/
 return 'Succes!';
     }
 
