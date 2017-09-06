@@ -27,8 +27,8 @@ $userdeviceToken = $user->devicetoken;
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 
-$notificationBuilder = new PayloadNotificationBuilder('Laravel say hi!');
-$notificationBuilder->setBody('Hello world')
+$notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
+$notificationBuilder->setBody('Text holder')
 				    ->setSound('default');
 				    
 $dataBuilder = new PayloadDataBuilder();
@@ -46,8 +46,11 @@ $downstreamResponse->numberSuccess();
 $downstreamResponse->numberFailure();
 $downstreamResponse->numberModification();
 
+
+
+
 //return Array - you must remove all this tokens in your database
-$downstreamResponse->tokensToDelete(); 
+$ekizde = $downstreamResponse->tokensToDelete(); 
 
 //return Array (key : oldToken, value : new token - you must change the token in your database )
 //$downstreamResponse->tokensToModify(); 
@@ -58,7 +61,7 @@ $downstreamResponse->tokensToDelete();
 
 
 
-return 'dummy function :D';
+return $ekizde;
     }
 
 
