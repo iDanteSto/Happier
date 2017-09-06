@@ -88,7 +88,7 @@ if (count($users))
     {
         $currentDate = date('Y-m-d');
         $userid = $usuarios->user_Id;
-        echo $userid;
+        echo $users;
         $userDeviceToken = $usuarios->devicetoken;
          echo $userDeviceToken;
         $timesAtDay = $usuarios->timesAtDay;
