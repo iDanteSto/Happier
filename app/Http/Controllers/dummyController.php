@@ -78,6 +78,9 @@ public function dummyFunction2(Request $request)
         AND users.status = ?
         AND fk_user_Id = user_Id
         AND devicetoken != ?', [1,""]);
+//if there is no confirmed users
+if (count($users))
+{
 //for every user , do the logic
     foreach ($users as $usuarios) 
     {
@@ -190,10 +193,19 @@ else
 }
 //return nothing
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
+   
 
 
 
-return 'Succes!';
+}else
+{
+	//Do nothing
+	return 'nothing';
+}
+
+
+
+//Exiting
 
 
 
