@@ -375,7 +375,14 @@ public function sendRecoveryEmail($email, $changeToken)
 
         }else{return View::make('emails.expirationEmail');} 
     }
- // second part of the forgot account function
+                                               /*
+                                          |--------------------------------------------------------------------------
+                                          | Saves the new password 
+                                          |--------------------------------------------------------------------------
+                                          |
+                                          |This function is the second part of the forgot account function to save the entered password
+                                          |
+                                          */
     public function passwordCreate(Request $request)
     {
 /*
