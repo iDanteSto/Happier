@@ -92,7 +92,7 @@ if($userd->status == 1 or $userd->status == 2)
     //return response()->json(compact('token'));
             echo 'Login succesful';
 
-            return response()->json(array('token'=>$token,'nickname'=>$userd->nickname,'image'=>$userd->imagelink));
+            return response()->json(array('token'=>$token,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
   }else
   {//error from if [2]
     return response()->json(['error'=> 'This email its not Confirmed , Please check your email']);
