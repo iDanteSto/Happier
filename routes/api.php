@@ -28,7 +28,7 @@ use Illuminate\Http\Request;
 	Route::patch('/user/createNewPass', 'ApiAuthController@passwordCreate');//Create new pass from the app after being redirected by the email--*
 	Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificationEmail');//Resend email verification--*
 	//Recommendation--------------------------------------------------------------------------------------------------------------------------------------
-	Route::get('/user/recommendationChecker', 'recommendationController@recommendationChecker');//*******Checker to see if button appears
+	Route::get('/user/recommendationChecker', 'recommendationController@recommendationChecker');//Front-Checker to see if button appears--
 	Route::post('/user/recommendationSetter', 'recommendationController@recommendationSet');//************Timer-Setter not gonna be used this <----
 	Route::patch('/user/recommendationComplete', 'recommendationController@recommendationComplete');//front-Completer--*
 	Route::get('/user/recommendationLoader', 'recommendationController@recommendationLoader');//front-Loader--*
@@ -46,11 +46,11 @@ use Illuminate\Http\Request;
 	//Profile.Avatar---------------------------------------------------------------------------------------------------------------------------------------
 	Route::get('/user/avatarLoader', 'ProfileController@avatarLoader');//Loader--not gonna be used
 	Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--
-	//Profile.Mood-----------------------------------------------------------------------------------------------------------------------------------------
-	Route::post('/user/moodSetter', 'ProfileController@moodSetter');//timer-Setter not gonna be used <----
-	Route::get('/user/moodChecker', 'ProfileController@moodChecker');//timer-Checker not gonna be used <----
-	Route::get('/user/moodLoader', 'ProfileController@moodLoader');//front-Loader
-	Route::patch('/user/moodCompleter', 'ProfileController@moodCompleter');//front-Completer
+	//Mood-----------------------------------------------------------------------------------------------------------------------------------------
+	Route::post('/user/moodSetter', 'moodController@moodSetter');//timer-Setter not gonna be used <----
+	Route::get('/user/moodChecker', 'moodController@moodChecker');//front checker
+	Route::get('/user/moodLoader', 'moodController@moodLoader');//front-Loader
+	Route::patch('/user/moodCompleter', 'moodController@moodCompleter');//front-Completer
 	//Profile.Summary--------------------------------------------------------------------------------------------------------------------------------------
 	Route::get('/user/summaryLoader', 'ProfileController@summaryLoader');//Loader--*
 	Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--*
