@@ -47,8 +47,25 @@ class ApiAuthController extends Controller
                      ->get();
       return $userExist;               
     }
+/*
+    |--------------------------------------------------------------------------
+    | user upgrade status 
+    |--------------------------------------------------------------------------
+    |
+    | Changes the user status to [2]: confirmed and not first time logging in 
+    | 
+    | 
+    |
+    */
+    public function upgradeStatus(Request $request)
+    {
+    $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+    $userid = $user->user_Id;//place id on a variable to use it 
 
-
+      DB::table('users')
+            ->where('user_Id', $userid)
+            ->update(array('status' => 2));            
+    }
     /*
     |--------------------------------------------------------------------------
     | UserAuth Function
