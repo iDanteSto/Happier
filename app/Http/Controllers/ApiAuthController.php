@@ -162,7 +162,14 @@ if($userd->status == 1 or $userd->status == 2)
      //    return response()->json(['status'=>false,'No se pudo registrar'],500);
       //} 
     }
-  
+    /*
+    |--------------------------------------------------------------------------
+    | Resend verification Email
+    |--------------------------------------------------------------------------
+    |
+    | This function resend the verification email to the user 
+    |
+    */
     public function resendVerificationEmail(Request $request)
     {
         

@@ -26,23 +26,30 @@ public function recommendationChecker(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;//place id on a variable to use it 
-//result 1 = user can receive a new recommendation   ,  0 = user has not interacted with its last interaction
+$currentDate = date('Y-m-d');
+//result 1 = user has a recom to be seen  ,  0 = user has not a recommendation to be seen
 $checkerResult;
-$recomCounter = DB::select('SELECT 
-    distinct(userRecommendation_Id)
-FROM
-    happier.userrecommendation
-WHERE
-    fk_user_Id = ? AND fk_status_Id = ?;', [$userid, 2]);
+//------------------------------------------------------------------
+//count user recommendations within the current day 
+        $recomCounter = DB::table('userrecommendation')
+        ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
+        ->where('fk_user_Id', '=', $userid)
+        ->where('fk_status_Id', '=', 2)
+        ->whereDate('creation_date', $currentDate)
+        ->get();
+        $recomCount = $recomCounter[0]->recomCount;
+//--------------------------------------------------------------
 
-if($recomCounter == null or $recomCounter == "")
+if(!$recomCount == null or !$recomCount == "")
 {
 $checkerResult =1;
-echo 'Se le puede enviar ';
+
+//echo 'Despliega boton';
 }else
 {
 $checkerResult =0;
-echo 'No se le puede enviar ';
+
+//echo 'No Despliegues boton';
 }
 return $checkerResult;
 }
