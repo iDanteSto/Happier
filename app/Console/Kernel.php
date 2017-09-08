@@ -39,7 +39,7 @@ class Kernel extends ConsoleKernel
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
-      //<-------------Schedule for recommendations----------------------------------->
+      //<-------------clean for recommendations-------------------------------------->
       // $schedule->command('recommendation:cleaner')->dailyAt('4:00');
       //
       // notes :important to keep the system running stable
@@ -51,7 +51,6 @@ class Kernel extends ConsoleKernel
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
-      
     }
 
     /**

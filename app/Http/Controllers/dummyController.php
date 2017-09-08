@@ -108,7 +108,7 @@ public function dummyFunction2(Request $request)
         userfrequency.fk_frequency_Id = frequency.frequency_Id
         AND users.status = ?
         AND fk_user_Id = user_Id
-        AND devicetoken != ?', [1,""]);
+        AND devicetoken != ?', [2,""]);
 //if there is no confirmed users
 if (count($users))
 {
