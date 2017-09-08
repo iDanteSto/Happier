@@ -8,14 +8,14 @@ use DB;
 
 class NewsController extends Controller
 {
-                                           /*
-                                          |--------------------------------------------------------------------------
-                                          | News Loader
-                                          |--------------------------------------------------------------------------
-                                          |
-                                          | Loads all the news info of the respective day with active status
-                                          |
-                                          */    
+/*
+|--------------------------------------------------------------------------
+| News Loader
+|--------------------------------------------------------------------------
+|
+| Loads all the news info of the respective day with active status
+|
+*/    
 public function newsLoader(Request $request)
 {
 $news = DB::table('news')
@@ -28,29 +28,29 @@ if (count($news))
 $author = DB::table('users')
 ->where('user_Id', '=',$news[0]->fk_user_Id)
 ->get();
-	
-	// in case we only need the news info without author    return $news
+
+// in case we only need the news info without author    return $news
 
 
 //----------protect-----------------
 
-	return response()->json(array(
-		'Autor'=>$author[0]->nickname , 
-		'title' => $news[0]->title , 
-		'content' => $news[0]->content ,
-		'image' => $news[0]->image ,
-		'date_created' => $news[0]->date_created ,
-		));
-		
+return response()->json(array(
+'Autor'=>$author[0]->nickname , 
+'title' => $news[0]->title , 
+'content' => $news[0]->content ,
+'image' => $news[0]->image ,
+'date_created' => $news[0]->date_created ,
+));
+
 //-----------------------------------
 //-----test area----------------------
 /*
- return response()->json([
-    'Autor'=>$author[0]->nickname , 
-	'title' => $news[0]->title , 
-    'content' => $news[0]->content ,
-	'image' => $news[0]->image ,
-	'date_created' => $news[0]->date_created ,
+return response()->json([
+'Autor'=>$author[0]->nickname , 
+'title' => $news[0]->title , 
+'content' => $news[0]->content ,
+'image' => $news[0]->image ,
+'date_created' => $news[0]->date_created ,
 ]);
 
 */
@@ -62,7 +62,7 @@ $author = DB::table('users')
 
 }else
 {
-	return 'no hay noticias nuevas';
+return 'no hay noticias nuevas';
 }
 
 }
