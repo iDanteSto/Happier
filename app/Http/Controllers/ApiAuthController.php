@@ -255,10 +255,9 @@ foreach ($categsIds as $categ) {
           ['fk_user_Id' => $user->user_Id, 'fk_avatar_Id' => $avatars->avatar_Id]
           );
 }
-
-
 //-----------------------------------------------------------------------------
-          return 'Exito! Se ha verificado correctamente';
+          //return 'Exito! Se ha verificado correctamente';
+          return View::make('emails.successEmail');
         }else
         {
           //return 'Expired';
