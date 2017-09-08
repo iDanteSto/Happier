@@ -235,7 +235,7 @@ if($userd->status == 1 or $userd->status == 2)
           );
 
 
-    //Asignate every category available to the user as a standar
+    //Asignate every category available to the user as a standard
     $categsIds = DB::select('SELECT distinct(category_Id) FROM category;');
     
 foreach ($categsIds as $categ) {
@@ -247,7 +247,7 @@ foreach ($categsIds as $categ) {
 
 
 
-//test area of avatar permissions-----------------------------------------------------------------------  
+//assignate standard avatars-----------------------------------------------------------------------  
 
  $avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
   foreach ($avatarIds as $avatars) {

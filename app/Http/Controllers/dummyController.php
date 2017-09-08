@@ -15,9 +15,13 @@ use DateTime;
 
 class dummyController extends Controller
 {
-    
-
-
+ 
+public function dummyFunction0(Request $request)
+  {   
+//Cleans all the pending recommendations
+ DB::table('userrecommendation')->where('fk_status_Id', '=', 2)->delete();
+ return 'Success cleaning all pending recommendations';
+  }
 
 
 

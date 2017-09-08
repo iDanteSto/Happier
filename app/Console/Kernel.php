@@ -35,11 +35,23 @@ class Kernel extends ConsoleKernel
       // $schedule->command('recommendation:setter')->dailyAt('13:00');
       // $schedule->command('recommendation:setter')->dailyAt('18:00');
       // $schedule->command('recommendation:setter')->dailyAt('21:00');
+      //
+      // notes :important to keep the system running stable
+      //<---------------------------------------------------------------------------->
+
       //<-------------Schedule for recommendations----------------------------------->
+      // $schedule->command('recommendation:cleaner')->dailyAt('4:00');
+      //
+      // notes :important to keep the system running stable
+      //<---------------------------------------------------------------------------->
+
       //<-------------Schedule for moods--------------------------------------------->
       // $schedule->command('mood:setter')->weekly()->sundays()->at('12:00');
-      //<-------------Schedule for moods--------------------------------------------->
-           
+      //
+      // notes :important to keep the system running stable
+      //<---------------------------------------------------------------------------->
+
+      
     }
 
     /**

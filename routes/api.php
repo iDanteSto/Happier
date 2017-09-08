@@ -15,6 +15,7 @@ use Illuminate\Http\Request;
 												*/
     Route::group(['middleware' => 'cors'], function(){
     //Dummy-----------------------------------------------------------------------------------------------------------------------------------------------|
+    Route::get('/user/dummyFunction0', 'dummyController@dummyFunction0');//Dummy check	
     Route::get('/user/dummyFunction', 'dummyController@dummyFunction');//Dummy check															          |
     Route::get('/user/dummyFunction2', 'dummyController@dummyFunction2');//Dummy check																      |
     //----------------------------------------------------------------------------------------------------------------------------------------------------|
