@@ -17,7 +17,8 @@ Route::group(['middleware' => 'cors'], function(){
 //Dummy-----------------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/dummyFunction0', 'dummyController@dummyFunction0');//Dummy check	
 Route::get('/user/dummyFunction', 'dummyController@dummyFunction');//Dummy check															          |
-Route::get('/user/dummyFunction2', 'dummyController@dummyFunction2');//Dummy check																      |
+Route::get('/user/dummyFunction2', 'dummyController@dummyFunction2');//Dummy check	
+Route::get('/user/dummyFunctionSP', 'dummyController@SPManagerAndroid');//Dummy check																      |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //ApiAuthController(Login related)--------------------------------------------------------------------------------------------------------------------|
@@ -54,7 +55,7 @@ Route::post('/user/userCategsAndFrequencySetter', 'configurationController@userC
 
 //Profile.Avatar--------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/avatarLoader', 'ProfileController@avatarLoader');//Loader--not gonna be used 													      |
-Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--															              |
+Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--	*														              |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 //Profile.Summary-------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/summaryLoader', 'ProfileController@summaryLoader');//Loader--*																	  |
@@ -73,7 +74,7 @@ Route::get('/user/newsLoader', 'NewsController@newsLoader');//Loader--*									
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Firebase.Notifications -----------------------------------------------------------------------------------------------------------------------------|
-Route::patch('/user/refreshtokenDB', 'notificationController@refreshtokenDB');//refresh--															  |
+Route::patch('/user/refreshtokenDB', 'notificationController@refreshtokenDB');//refresh--*															  |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 });
 

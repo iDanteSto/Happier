@@ -40,6 +40,6 @@ class deleteNotConfUsers extends Command
     public function handle()
     {
         User::where('status',0)->delete();
-        Log::info("Users Deleted");
+        //Log::info("Users Deleted");
     }
 }

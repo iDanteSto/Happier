@@ -49,6 +49,7 @@ class cleanDeleteUser extends Command
         DB::table('userfrequency')->where('fk_user_Id', '=', $id)->delete();
         DB::table('usermood')->where('fk_user_Id', '=', $id)->delete();
         DB::table('userrecommendation')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('social_provider')->where('fk_user_Id', '=', $id)->delete();
         DB::table('users')->where('user_Id', '=', $id)->delete();
 
     }
