@@ -18,8 +18,6 @@ Route::group(['middleware' => 'cors'], function(){
 Route::get('/user/dummyFunction0', 'dummyController@dummyFunction0');//Dummy check	
 Route::get('/user/dummyFunction', 'dummyController@dummyFunction');//Dummy check															          |
 Route::get('/user/dummyFunction2', 'dummyController@dummyFunction2');//Dummy check	
-Route::patch('/user/SPManagerAndroidUpdater', 'dummyController@SPManagerAndroidUpdater');//Dummy updater	
-Route::get('/user/SPManagerAndroidChecker', 'dummyController@SPManagerAndroidChecker');//Dummy android SP checker
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //ApiAuthController(Login related)--------------------------------------------------------------------------------------------------------------------|
@@ -30,7 +28,10 @@ Route::patch('/user/update', 'ApiAuthController@updatepassword');//Hard Update p
 Route::patch('/user/recoverEmail', 'ApiAuthController@recoverEmail');//Recover email sender--*														  |
 Route::patch('/user/createNewPass', 'ApiAuthController@passwordCreate');//Create new pass from the app after being redirected by the email--*	      |
 Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificationEmail');//Resend email verification--*						      |
-Route::patch('/user/upgradeStatus', 'ApiAuthController@upgradeStatus');//Changes the user status to [2]: confirmed and not first time logging in      | 
+Route::patch('/user/upgradeStatus', 'ApiAuthController@upgradeStatus');//Changes the user status to [2]: confirmed and not first time logging in      |
+//SP 																																				  |
+Route::patch('/user/SPManagerAndroidUpdater', 'ApiAuthController@SPManagerAndroidUpdater');//Dummy updater	                                          |
+Route::get('/user/SPManagerAndroidChecker', 'ApiAuthController@SPManagerAndroidChecker');//Dummy android SP checker                                   |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Recommendation--------------------------------------------------------------------------------------------------------------------------------------|

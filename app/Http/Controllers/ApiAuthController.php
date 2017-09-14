@@ -325,6 +325,118 @@ User::where('email', '=', $request->email)
 'changeToken' => null
 ]);
 }
+//------------------------------------------------------------------------functions to test facebook login functions-------------------------------------------------------------------------
+
+public function SPManagerAndroidUpdater(Request $request)
+{//obtained during session stored info on the app that will be erased after process ends
+$userEmail =$request->email;
+$check = $request->check;
+$provider = $request->provider;
+$providerId = $request->providerId;
+$token = $request->token;
+$devicetoken = $request->devicetoken;
+$nickname = $request->nickname;
+$date = date("Y-m-d H:i:s");
+//.......
+//check if exist already
+//$check = DB::select('SELECT distinct(id) FROM social_providers where user_id = ? and social_providers.provider = ?', [$userId,$provider]);
+//$check = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
+if ($check == 1)
+{
+//if there exist************************************ 
+DB::table('users')
+->where('email', $userEmail)
+->update(array( 
+"remember_token" => $token,
+"devicetoken" => $devicetoken,
+));
+//**************************************************
+}
+else
+{
+//if does not exist*********************************
+//create it the user model  
+$person = User::firstOrCreate(
+['email'=> $userEmail,
+'nickname'=> $nickname,
+"remember_token" => $token,
+'devicetoken' => $devicetoken]
+);
+$userId = $person->id;
+//user creation dependancys to protect the system as if it was registered and confirmed@@@@@@@@@@@@@@@@@@@@@@@@
+User::where(['email'=>$userEmail])->update(['status' =>'1','verifyToken'=>NULL]);
+DB::table('userfrequency')->insert(
+['fk_frequency_Id' => 3, 'fk_user_Id' => $userId]
+);
+//Asignate every category available to the user as a standard
+$categsIds = DB::select('SELECT distinct(category_Id) FROM category;');
+foreach ($categsIds as $categ) {
+DB::table('preferred_categories')->insert(
+['fk_user_Id' => $userId, 'fk_category_Id' => $categ->category_Id]
+);
+}
+//assignate standard avatars-----------------------------------------------------------------------  
+$avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
+foreach ($avatarIds as $avatars) {
+DB::table('avatar_permission')->insert(
+['fk_user_Id' => $userId, 'fk_avatar_Id' => $avatars->avatar_Id]
+);
+}
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+//create social provider dependancys
+DB::table('social_provider')->insert(
+['fk_user_Id' => $userId, 
+'provider_Id' => $providerId,
+'provider' => $provider]
+);
+//**************************************************
+}  
+}
+
+public function SPManagerAndroidChecker(Request $request)
+{
+$check;
+$userEmail =$request->email;
+$provider = $request->provider;	
+$checks = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
+if (count($checks))
+{
+$check = 1;
+}else
+{
+$check = 0;
+}
+return $check;
+}
+//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //<---------------------------------------------------------------------------not gonna be used-------------------------------------------------------------------------->
 /*
 |--------------------------------------------------------------------------
