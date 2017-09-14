@@ -18,7 +18,8 @@ Route::group(['middleware' => 'cors'], function(){
 Route::get('/user/dummyFunction0', 'dummyController@dummyFunction0');//Dummy check	
 Route::get('/user/dummyFunction', 'dummyController@dummyFunction');//Dummy check															          |
 Route::get('/user/dummyFunction2', 'dummyController@dummyFunction2');//Dummy check	
-Route::get('/user/dummyFunctionSP', 'dummyController@SPManagerAndroid');//Dummy check																      |
+Route::get('/user/SPManagerAndroidUpdater', 'dummyController@SPManagerAndroidUpdater');//Dummy updater	
+Route::get('/user/SPManagerAndroidChecker', 'dummyController@SPManagerAndroidChecker');//Dummy android SP checker
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //ApiAuthController(Login related)--------------------------------------------------------------------------------------------------------------------|

@@ -17,23 +17,21 @@ class dummyController extends Controller
 {
 //------------------------------------------------------------------------Dummy functions to test facebook login functions-------------------------------------------------------------------------
 
-public function SPManagerAndroid(Request $request)
-{
+public function SPManagerAndroidUpdater(Request $request)
+{//obtained during session stored info on the app that will be erased after process ends
 $userEmail =$request->email;
-//$user = User::where('email', '=', $userEmail)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
-//$userId = $user->user_Id;//place id on a variable to use it
+$check = $request->check;
 $provider = $request->provider;
 $providerId = $request->providerId;
 $token = $request->token;
 $devicetoken = $request->devicetoken;
 $date = date("Y-m-d H:i:s");
-//obtained trough facebook
 $nickname = $request->nickname;
 //.......
 //check if exist already
 //$check = DB::select('SELECT distinct(id) FROM social_providers where user_id = ? and social_providers.provider = ?', [$userId,$provider]);
-$check = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = "facebook"', [$userEmail,$provider]);
-if (count($check))
+//$check = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
+if ($check == 1)
 {
 //if there exist************************************ 
 DB::table('users')
@@ -85,7 +83,21 @@ DB::table('social_provider')->insert(
 }  
 }
 
-
+public function SPManagerAndroidChecker(Request $request)
+{
+$check;
+$userEmail =$request->email;
+$provider = $request->provider;	
+$checks = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
+if (count($checks))
+{
+$check = 1;
+}else
+{
+$check = 0;
+}
+return $check;
+}
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------Dummy functions to test recommendationSetter commands------------------------------------------------------------------------
