@@ -27,7 +27,8 @@ Route::post('/user/register', 'ApiAuthController@registeruser');//Register--*			
 Route::patch('/user/update', 'ApiAuthController@updatepassword');//Hard Update password--*															  |
 Route::patch('/user/recoverEmail', 'ApiAuthController@recoverEmail');//Recover email sender--*														  |
 Route::patch('/user/createNewPass', 'ApiAuthController@passwordCreate');//Create new pass from the app after being redirected by the email--*	      |
-Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificationEmail');//Resend email verification--*						      |
+Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificationEmail');//Resend email verification--*
+//after first login tutorial
 Route::patch('/user/upgradeStatus', 'ApiAuthController@upgradeStatus');//Changes the user status to [2]: confirmed and not first time logging in      |
 //SP 																																				  |
 Route::patch('/user/SPManagerAndroidUpdater', 'ApiAuthController@SPManagerAndroidUpdater');//Dummy updater	                                          |
@@ -52,7 +53,7 @@ Route::get('/user/meditationLoader', 'meditationController@meditationLoader');//
 
 //Configuration.categories and frequency--------------------------------------------------------------------------------------------------------------|
 Route::get('/user/userCategsAndFrequencyLoader', 'configurationController@userCategsAndFrequencyLoader');//Loader--*								  |
-Route::post('/user/userCategsAndFrequencySetter', 'configurationController@userCategsAndFrequencySetter');//Setter--*								  |
+Route::post('/user/userCategsAndFrequencySetter', 'configurationController@userCategsAndFrequencySetter');//Setter--*	
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Profile.Avatar--------------------------------------------------------------------------------------------------------------------------------------|
@@ -61,7 +62,7 @@ Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--	
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 //Profile.Summary-------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/summaryLoader', 'ProfileController@summaryLoader');//Loader--*																	  |
-Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--*												  |
+Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--*												  
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Mood------------------------------------------------------------------------------------------------------------------------------------------------|

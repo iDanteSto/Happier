@@ -25,8 +25,8 @@ $provider = $request->provider;
 $providerId = $request->providerId;
 $token = $request->token;
 $devicetoken = $request->devicetoken;
-$date = date("Y-m-d H:i:s");
 $nickname = $request->nickname;
+$date = date("Y-m-d H:i:s");
 //.......
 //check if exist already
 //$check = DB::select('SELECT distinct(id) FROM social_providers where user_id = ? and social_providers.provider = ?', [$userId,$provider]);
