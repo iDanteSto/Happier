@@ -32,7 +32,8 @@ Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificati
 Route::patch('/user/upgradeStatus', 'ApiAuthController@upgradeStatus');//Changes the user status to [2]: confirmed and not first time logging in      |
 //SP 																																				  |
 Route::patch('/user/SPManagerAndroidUpdater', 'ApiAuthController@SPManagerAndroidUpdater');//Dummy updater	                                          |
-Route::get('/user/SPManagerAndroidChecker', 'ApiAuthController@SPManagerAndroidChecker');//Dummy android SP checker                                   |
+Route::patch('/user/SPManagerAndroidChecker', 'ApiAuthController@SPManagerAndroidChecker');//Dummy android SP checker  
+Route::get('/user/SPManagerAndroidExistence', 'ApiAuthController@SPManagerAndroidExistence');//Dummy android SP checker                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Recommendation--------------------------------------------------------------------------------------------------------------------------------------|

@@ -351,40 +351,52 @@ User::where('email', '=', $request->email)
 public function SPManagerAndroidUpdater(Request $request)
 {//obtained during session stored info on the app that will be erased after process ends
 $userEmail =$request->email;
-$check = $request->check;
+//$check = $request->check;
 $provider = $request->provider;
 $providerId = $request->providerId;
 $token = $request->token;
-$devicetoken = $request->devicetoken;
+//$devicetoken = $request->devicetoken;
 $nickname = $request->nickname;
+$hasnick = $request->hasnick;
 $date = date("Y-m-d H:i:s");
 //.......
 //check if exist already
 //$check = DB::select('SELECT distinct(id) FROM social_providers where user_id = ? and social_providers.provider = ?', [$userId,$provider]);
 //$check = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
-if ($check == 1)
+//if ($check == 1)
+if($hasnick == 1)
 {
+$person = User::firstOrCreate(
+['email'=> $userEmail]
+);
+$userId = $person->id;
+if($userId == null){$userId = $person->user_Id;}
+User::where(['user_Id'=>$userId])->update(['remember_token' => $token]);
+}else{   
+//{
 //if there exist************************************ 
-DB::table('users')
+/*DB::table('users')
 ->where('email', $userEmail)
 ->update(array( 
 "remember_token" => $token,
 "devicetoken" => $devicetoken,
-));
+));*/
 //**************************************************
-}
-else
-{
+//}
+//else
+//{
 //if does not exist*********************************
 //create it the user model  
 $person = User::firstOrCreate(
 ['email'=> $userEmail,
 'nickname'=> $nickname,
-"remember_token" => $token,
-'devicetoken' => $devicetoken]
+"remember_token" => $token]
 );
 $userId = $person->id;
 if($userId == null){$userId = $person->user_Id;}
+
+} //end of if
+
 if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
 //create social provider dependancys
 DB::table('social_provider')->insert(
@@ -393,23 +405,65 @@ DB::table('social_provider')->insert(
 'provider' => $provider]
 );
 //**************************************************
-}  
+//}  
 }
 
 public function SPManagerAndroidChecker(Request $request)
-{
+{	
 $check;
-$userEmail =$request->email;
+$hasnick;
+$userEmail = $request->email;
+$checkExistence = 0;
 $provider = $request->provider;	
-$checks = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
+$token=$request->token;
+//$devicetoken=$request->devicetoken;
+//$checks = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
+/*
+$checks = DB::select('SELECT DISTINCT
+nickname , email
+FROM
+social_provider,
+users
+WHERE
+social_provider.fk_user_Id = users.user_Id
+AND social_provider.provider_Id = ? and social_provider.provider = ?', [$SPId,$provider]);
+*/
+$checks = DB::select('SELECT DISTINCT
+social_provider_Id
+FROM
+social_provider,
+users
+WHERE
+users.email = ?
+AND social_provider.fk_user_Id = users.user_Id
+AND social_provider.provider = ?', [$userEmail,$provider]);
+//$checkExistences = DB::select('SELECT nickname from users where email = ?', [$userEmail]);
+//if(count($checkExistences)){$checkExistences = 1;}
 if (count($checks))
 {
 $check = 1;
+//$usernickanme = $checks[0]->email;
+DB::table('users')
+->where('email', $userEmail)
+->update(array( 
+"remember_token" => $token,
+));
 }else
 {
 $check = 0;
 }
-return $check;
+return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail));
+//return $check;
+}
+
+public function SPManagerAndroidExistence(Request $request)
+{
+$userEmail = $request->email;
+$hasnick=0;
+$checknicks = DB::select('select nickname from users where email = ?', [$userEmail]);
+if (count($checknicks)){$hasnick = 1;}
+//return $hasnick;
+return response()->json(['hasnick'=> $hasnick]);
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
