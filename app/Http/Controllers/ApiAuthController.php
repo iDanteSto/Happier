@@ -347,7 +347,17 @@ User::where('email', '=', $request->email)
 ]);
 }
 //------------------------------------------------------------------------functions to test facebook login functions-------------------------------------------------------------------------
-
+/*
+|--------------------------------------------------------------------------
+| Updater
+|--------------------------------------------------------------------------
+|
+| if hasnick ==1
+| requires : -email
+| 
+| 
+|
+*/
 public function SPManagerAndroidUpdater(Request $request)
 {//obtained during session stored info on the app that will be erased after process ends
 $userEmail =$request->email;
@@ -404,10 +414,22 @@ DB::table('social_provider')->insert(
 'provider_Id' => $providerId,
 'provider' => $provider]
 );
+$userd = User::where('email', '=', $userEmail)->firstOrFail();
+return response()->json(array('token'=>$userd->remember_token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 //**************************************************
 //}  
 }
-
+/*
+|--------------------------------------------------------------------------
+| Check existance on social_providers and let pass existing ones
+|--------------------------------------------------------------------------
+|
+| Checks if the user exist with the given email
+| requires : -email , -provider , -token
+| 
+| 
+|
+*/
 public function SPManagerAndroidChecker(Request $request)
 {	
 $check;
@@ -448,6 +470,9 @@ DB::table('users')
 ->update(array( 
 "remember_token" => $token,
 ));
+$userd = User::where('email', '=', $userEmail)->firstOrFail();
+return response()->json(array('checkSPExistence'=>$check,'token'=>$token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
+//return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail));
 }else
 {
 $check = 0;
@@ -456,6 +481,17 @@ return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail));
 //return $check;
 }
 
+/*
+|--------------------------------------------------------------------------
+| Check existance on users table
+|--------------------------------------------------------------------------
+|
+| Checks if the user exist with the given email  if it exist return 1 , if its not 0
+| requires : -email
+| 
+| 
+|
+*/
 public function SPManagerAndroidExistence(Request $request)
 {
 $userEmail = $request->email;

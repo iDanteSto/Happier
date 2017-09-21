@@ -14,6 +14,7 @@ namespace App\Http\Controllers;
 |
 | refresh token of the device on DB
 | expects : email and devicetoken
+  activates after login
 */
 public function refreshtokenDB(Request $request)
 {
