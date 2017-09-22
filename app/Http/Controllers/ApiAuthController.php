@@ -364,7 +364,7 @@ public function SPManagerAndroidUpdater(Request $request)
 $userEmail =$request->email;
 //$check = $request->check;
 $provider = $request->provider;
-$providerId = $request->providerId;
+//$providerId = $request->providerId;
 $token = $request->token;
 //$devicetoken = $request->devicetoken;
 $nickname = $request->nickname;
@@ -422,7 +422,7 @@ if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>
 //create social provider dependancys
 DB::table('social_provider')->insert(
 ['fk_user_Id' => $userId, 
-'provider_Id' => $providerId,
+//'provider_Id' => $providerId,
 'provider' => $provider]
 );
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
