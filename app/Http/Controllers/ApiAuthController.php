@@ -63,20 +63,20 @@ $userid = $user->user_Id;//place id on a variable to use it
 //user creation dependancys to protect the system as if it was registered and confirmed@@@@@@@@@@@@@@@@@@@@@@@@
 User::where(['email'=>$request->email])->update(['status' =>'2','verifyToken'=>NULL]);
 DB::table('userfrequency')->insert(
-['fk_frequency_Id' => 3, 'fk_user_Id' => $userId]
+['fk_frequency_Id' => 3, 'fk_user_Id' => $userid]
 );
 //Asignate every category available to the user as a standard
 $categsIds = DB::select('SELECT distinct(category_Id) FROM category;');
 foreach ($categsIds as $categ) {
 DB::table('preferred_categories')->insert(
-['fk_user_Id' => $userId, 'fk_category_Id' => $categ->category_Id]
+['fk_user_Id' => $userid, 'fk_category_Id' => $categ->category_Id]
 );
 }
 //assignate standard avatars-----------------------------------------------------------------------  
 $avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
 foreach ($avatarIds as $avatars) {
 DB::table('avatar_permission')->insert(
-['fk_user_Id' => $userId, 'fk_avatar_Id' => $avatars->avatar_Id]
+['fk_user_Id' => $userid, 'fk_avatar_Id' => $avatars->avatar_Id]
 );
 }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
