@@ -61,7 +61,7 @@ public function upgradeStatus(Request $request)
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;//place id on a variable to use it 
 //user creation dependancys to protect the system as if it was registered and confirmed@@@@@@@@@@@@@@@@@@@@@@@@
-User::where(['email'=>$userEmail])->update(['status' =>'1','verifyToken'=>NULL]);
+User::where(['user_Id'=>$userid])->update(['status' =>'2','verifyToken'=>NULL]);
 DB::table('userfrequency')->insert(
 ['fk_frequency_Id' => 3, 'fk_user_Id' => $userId]
 );
@@ -80,9 +80,11 @@ DB::table('avatar_permission')->insert(
 );
 }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+/*
 DB::table('users')
 ->where('user_Id', $userid)
-->update(array('status' => 2));            
+->update(array('status' => 2));
+*/            
 }
 /*
 |--------------------------------------------------------------------------
