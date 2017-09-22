@@ -352,8 +352,9 @@ User::where('email', '=', $request->email)
 | Updater
 |--------------------------------------------------------------------------
 |
-| if hasnick ==1
-| requires : -email
+| if hasnick ==1 , retrieves the existing user email and register it with its dependency on the social_provider  then updates the remember token for the user
+| if hasnick ==0 , creates the user with given nickname and retrieves the existing user email and register it with its dependency on the social_provider  then updates the remember token for the user
+| requires : -email , -hasnick , -nickaname
 | 
 | 
 |
@@ -396,7 +397,17 @@ User::where(['user_Id'=>$userId])->update(['remember_token' => $token]);
 //else
 //{
 //if does not exist*********************************
-//create it the user model  
+//create it the user model
+//--test
+$reqv = Validator::make($request->all(), [
+'nickname' => 'required|unique:users|max:18|alpha_num|min:6',
+]);
+//if fails to succes one of the rules , display errors
+if ($reqv->fails())
+{
+return $reqv->errors();
+}
+//-------
 $person = User::firstOrCreate(
 ['email'=> $userEmail,
 'nickname'=> $nickname,
@@ -476,8 +487,13 @@ return response()->json(array('checkSPExistence'=>$check,'token'=>$token,'email'
 }else
 {
 $check = 0;
+$hasnick=0;
+$checknicks = DB::select('select nickname from users where email = ?', [$userEmail]);
+if (count($checknicks)){$hasnick = 1;}
+//return $hasnick;
+//return response()->json(['hasnick'=> $hasnick]);
 }
-return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail));
+return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail,'hasNick'=>$hasnick));
 //return $check;
 }
 
@@ -492,6 +508,7 @@ return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail));
 | 
 |
 */
+/*
 public function SPManagerAndroidExistence(Request $request)
 {
 $userEmail = $request->email;
@@ -501,7 +518,9 @@ if (count($checknicks)){$hasnick = 1;}
 //return $hasnick;
 return response()->json(['hasnick'=> $hasnick]);
 }
+*/
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 
 

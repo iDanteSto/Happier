@@ -33,7 +33,7 @@ Route::patch('/user/upgradeStatus', 'ApiAuthController@upgradeStatus');//Changes
 //SP 																																				  |
 Route::patch('/user/SPManagerAndroidUpdater', 'ApiAuthController@SPManagerAndroidUpdater');//Dummy updater	                                          |
 Route::patch('/user/SPManagerAndroidChecker', 'ApiAuthController@SPManagerAndroidChecker');//Dummy android SP checker  
-Route::get('/user/SPManagerAndroidExistence', 'ApiAuthController@SPManagerAndroidExistence');//Dummy android SP checker                                   
+//Route::get('/user/SPManagerAndroidExistence', 'ApiAuthController@SPManagerAndroidExistence');//Dummy android SP checker                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Recommendation--------------------------------------------------------------------------------------------------------------------------------------|
