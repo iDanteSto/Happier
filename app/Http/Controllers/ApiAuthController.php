@@ -332,14 +332,14 @@ if($user)
 return redirect()->route('routeToApp' ,["email" =>$email,"changeToken" => $changeToken]);
 }else{return View::make('emails.expirationEmail');} 
 }
-    /*
-    |--------------------------------------------------------------------------
-    | Saves the new password 
-    |--------------------------------------------------------------------------
-    |
-    |This function is the second part of the forgot account function to save the entered password
-    |
-    */
+/*
+|--------------------------------------------------------------------------
+| Saves the new password 
+|--------------------------------------------------------------------------
+|
+|This function is the second part of the forgot account function to save the entered password
+|
+*/
 public function passwordCreate(Request $request)
 {
 User::where('email', '=', $request->email)
@@ -372,35 +372,15 @@ $token = $request->token;
 $nickname = $request->nickname;
 $hasnick = $request->hasnick;
 $date = date("Y-m-d H:i:s");
-//.......
-//check if exist already
-//$check = DB::select('SELECT distinct(id) FROM social_providers where user_id = ? and social_providers.provider = ?', [$userId,$provider]);
-//$check = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
-//if ($check == 1)
 if($hasnick == 1)
-{
+{//if has nick
 $person = User::firstOrCreate(
 ['email'=> $userEmail]
 );
 $userId = $person->id;
 if($userId == null){$userId = $person->user_Id;}
 User::where(['user_Id'=>$userId])->update(['remember_token' => $token]);
-}else{   
-//{
-//if there exist************************************ 
-/*DB::table('users')
-->where('email', $userEmail)
-->update(array( 
-"remember_token" => $token,
-"devicetoken" => $devicetoken,
-));*/
-//**************************************************
-//}
-//else
-//{
-//if does not exist*********************************
-//create it the user model
-//--test
+}else{//if doesnt have nick
 $reqv = Validator::make($request->all(), [
 'nickname' => 'required|unique:users|max:18|alpha_num|min:6',
 ]);
@@ -409,7 +389,7 @@ if ($reqv->fails())
 {
 return $reqv->errors();
 }
-//-------
+//create the user with given nickname
 $person = User::firstOrCreate(
 ['email'=> $userEmail,
 'nickname'=> $nickname,
@@ -417,9 +397,7 @@ $person = User::firstOrCreate(
 );
 $userId = $person->id;
 if($userId == null){$userId = $person->user_Id;}
-
 } //end of if
-
 if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
 //create social provider dependancys
 DB::table('social_provider')->insert(
@@ -429,8 +407,6 @@ DB::table('social_provider')->insert(
 );
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
 return response()->json(array('token'=>$userd->remember_token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
-//**************************************************
-//}  
 }
 /*
 |--------------------------------------------------------------------------
@@ -451,18 +427,6 @@ $userEmail = $request->email;
 $checkExistence = 0;
 $provider = $request->provider;	
 $token=$request->token;
-//$devicetoken=$request->devicetoken;
-//$checks = DB::select('SELECT distinct(social_provider_Id) FROM social_provider , users where users.email = ? and social_provider.fk_user_Id = users.user_Id and social_provider.provider = ?', [$userEmail,$provider]);
-/*
-$checks = DB::select('SELECT DISTINCT
-nickname , email
-FROM
-social_provider,
-users
-WHERE
-social_provider.fk_user_Id = users.user_Id
-AND social_provider.provider_Id = ? and social_provider.provider = ?', [$SPId,$provider]);
-*/
 $checks = DB::select('SELECT DISTINCT
 social_provider_Id
 FROM
@@ -472,12 +436,9 @@ WHERE
 users.email = ?
 AND social_provider.fk_user_Id = users.user_Id
 AND social_provider.provider = ?', [$userEmail,$provider]);
-//$checkExistences = DB::select('SELECT nickname from users where email = ?', [$userEmail]);
-//if(count($checkExistences)){$checkExistences = 1;}
 if (count($checks))
 {
 $check = 1;
-//$usernickanme = $checks[0]->email;
 DB::table('users')
 ->where('email', $userEmail)
 ->update(array( 
@@ -485,23 +446,19 @@ DB::table('users')
 ));
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
 return response()->json(array('checkSPExistence'=>$check,'token'=>$token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
-//return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail));
 }else
 {
 $check = 0;
 $hasnick=0;
 $checknicks = DB::select('select nickname from users where email = ?', [$userEmail]);
 if (count($checknicks)){$hasnick = 1;}
-//return $hasnick;
-//return response()->json(['hasnick'=> $hasnick]);
 }
 return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail,'hasNick'=>$hasnick));
-//return $check;
 }
 
 /*
 |--------------------------------------------------------------------------
-| Check existance on users table
+| NOT GONNA BE USED--Check existance on users table --NOT GONNA BE USED
 |--------------------------------------------------------------------------
 |
 | Checks if the user exist with the given email  if it exist return 1 , if its not 0
@@ -551,7 +508,7 @@ return response()->json(['hasnick'=> $hasnick]);
 
 
 
-//<---------------------------------------------------------------------------not gonna be used-------------------------------------------------------------------------->
+//<---------------------------------------------------------------------------TRASH-------------------------------------------------------------------------->
 /*
 |--------------------------------------------------------------------------
 | Social Media : Google+ login
