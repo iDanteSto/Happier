@@ -31,8 +31,8 @@ Route::post('/user/resendVerificationEmail', 'ApiAuthController@resendVerificati
 //after first login tutorial
 Route::patch('/user/upgradeStatus', 'ApiAuthController@upgradeStatus');//Changes the user status to [2]: confirmed and not first time logging in and assign security data
 //SP 																																				  |
-Route::patch('/user/SPManagerAndroidChecker', 'ApiAuthController@SPManagerAndroidChecker');//Dummy android SP checker  
-Route::patch('/user/SPManagerAndroidUpdater', 'ApiAuthController@SPManagerAndroidUpdater');//Dummy updater	                                          |
+Route::patch('/user/SPManagerAndroidChecker', 'ApiAuthController@SPManagerAndroidChecker');//android SP checker  
+Route::patch('/user/SPManagerAndroidUpdater', 'ApiAuthController@SPManagerAndroidUpdater');//android SP updater	                                          |
 //Route::get('/user/SPManagerAndroidExistence', 'ApiAuthController@SPManagerAndroidExistence');//Dummy android SP checker                                   
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
@@ -63,7 +63,8 @@ Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--	
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 //Profile.Summary-------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/summaryLoader', 'ProfileController@summaryLoader');//Loader--*																	  |
-Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--*												  
+Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--*	
+Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHistoryAllLoader');//Loader												  
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Mood------------------------------------------------------------------------------------------------------------------------------------------------|

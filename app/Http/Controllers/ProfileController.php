@@ -186,8 +186,39 @@ return $allRecoms;
 {
 return response()->json(['error'=> 'There was an error']);
 }
+}
 
 
+
+
+
+
+public function userRecomsHistoryAllLoader(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();
+$userid = $user->user_Id;
+$allRecomsGlobal = DB::select('SELECT 
+fk_recommendation_Id,
+recommendation.name,
+recommendation.description,
+recommendation.image,
+creation_date,
+status.description as status
+FROM
+userrecommendation,
+recommendation,
+status
+WHERE
+fk_user_Id = 326
+AND fk_recommendation_Id = recommendation.recommendation_Id
+AND fk_status_Id = status_Id order by creation_date desc' , [$userid]);
+if (count($allRecomsGlobal)) 
+{
+return $allRecomsGlobal;
+}else
+{
+return response()->json(['error'=> 'No hay recomendaciones']);
+}
 }
 
 
