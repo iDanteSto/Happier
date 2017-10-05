@@ -401,7 +401,7 @@ if($userId == null){$userId = $person->user_Id;}
 if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
 //create social provider dependancys
 DB::table('social_provider')->insert(
-['fk_user_Id' => $userId, .
+['fk_user_Id' => $userId,
 //'provider_Id' => $providerId,
 'provider' => $provider]
 );
