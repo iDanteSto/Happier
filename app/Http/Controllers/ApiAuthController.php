@@ -121,12 +121,6 @@ DB::table('users')
 ->where('email', $request->email)
 ->update(['remember_token' => $token]);
 //echo 'Login succesful';
-/*
-return response()->json([
-    'token' => $token,
-    'state' => 'CA'
-]);
-*/
 return response()->json(array('token'=>$token,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 }else
 {//error from if [2]
