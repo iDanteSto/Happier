@@ -120,7 +120,13 @@ return response()->json(['error'=> 'Something_went_wrong'], 500);
 DB::table('users')
 ->where('email', $request->email)
 ->update(['remember_token' => $token]);
-echo 'Login succesful';
+//echo 'Login succesful';
+/*
+return response()->json([
+    'token' => $token,
+    'state' => 'CA'
+]);
+*/
 return response()->json(array('token'=>$token,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 }else
 {//error from if [2]
@@ -401,7 +407,7 @@ if($userId == null){$userId = $person->user_Id;}
 if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
 //create social provider dependancys
 DB::table('social_provider')->insert(
-['fk_user_Id' => $userId, 
+['fk_user_Id' => $userId, .
 //'provider_Id' => $providerId,
 'provider' => $provider]
 );
