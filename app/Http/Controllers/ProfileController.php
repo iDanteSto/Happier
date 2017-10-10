@@ -217,7 +217,7 @@ if (count($allRecomsGlobal))
 return $allRecomsGlobal;
 }else
 {
-return response()->json(['error'=> 'No hay recomendaciones']);
+return response()->json(['error'=> 'There was an error']);
 }
 }
 
