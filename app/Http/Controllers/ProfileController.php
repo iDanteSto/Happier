@@ -209,7 +209,7 @@ userrecommendation,
 recommendation,
 status
 WHERE
-fk_user_Id = 326
+fk_user_Id = ?
 AND fk_recommendation_Id = recommendation.recommendation_Id
 AND fk_status_Id = status_Id order by creation_date desc' , [$userid]);
 if (count($allRecomsGlobal)) 
