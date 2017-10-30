@@ -35,7 +35,7 @@ $recomCounter = DB::table('userrecommendation')
 ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
 ->where('fk_user_Id', '=', $userid)
 ->where('fk_status_Id', '=', 2)
-->whereDate('creation_date', $currentDate)
+//->whereDate('creation_date', $currentDate)
 ->get();
 $recomCount = $recomCounter[0]->recomCount;
 //--------------------------------------------------------------
