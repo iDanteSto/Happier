@@ -188,6 +188,8 @@ return [
         JD\Cloudder\CloudderServiceProvider::class,
         //FCM brozot/laravel-fcm
         LaravelFCM\FCMServiceProvider::class,
+        //laravel collective
+        Collective\Html\HtmlServiceProvider::class,
         
 
     ],
@@ -244,7 +246,8 @@ return [
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class, //cloudinary
         'FCM'      => LaravelFCM\Facades\FCM::class,
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
-
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];

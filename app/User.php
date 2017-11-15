@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
+    use \Illuminate\Auth\Authenticatable;
 
     /**
      * The attributes that are mass assignable.
@@ -24,7 +25,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'user_Id','remember_token','devicetoken',
+        'password', 'user_Id','remember_token','devicetoken','status',
     ];
 
     //protected $primaryKey = 'user_Id';
@@ -35,4 +36,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(socialProvider::class);
     }
+   
 }
