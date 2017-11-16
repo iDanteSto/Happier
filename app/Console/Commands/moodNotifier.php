@@ -6,23 +6,28 @@ use Illuminate\Console\Command;
 use App\User;
 use DB;
 use DateTime;
+use Carbon\Carbon;
+use App\UserMood;
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
 
-
-class moodSetter extends Command
+class moodNotifier extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'mood:setter';
+    protected $signature = 'mood:notifier';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Checks if the user can receive a new mood , if it can creates the holder of the mood';
+    protected $description = 'Checks if the user has an entry on the day , if he doesnt it will send a notification to remember him to do it';
 
     /**
      * Create a new command instance.
@@ -41,7 +46,7 @@ class moodSetter extends Command
      */
     public function handle()
     {
-$users = DB::select('SELECT 
+      $users = DB::select('SELECT 
         users.user_Id, users.devicetoken
         FROM
         users
@@ -60,28 +65,18 @@ if (count($users))
 
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 //$userid = $user->user_Id;//place id on a variable to use it 
-$currentDate = date('Y-m-d');
-//result 1 = user has a recom to be seen  ,  0 = user has not a recommendation to be seen
-$checkermoodResult;
-//------------------------------------------------------------------
-//count user moods with status [2] pending 
-        $moodCounter = DB::table('usermood')
-        ->select(DB::raw('count(userMood_Id) as moodCount'))
-        ->where('fk_user_Id', '=', $userid)
-        ->where('fk_status', '=', 2)
-        //->whereDate('creation_date', $currentDate)
-        ->get();
-        $moodCount = $moodCounter[0]->moodCount;
-//--------------------------------------------------------------
-
-if(!$moodCount == null or !$moodCount == "")
-{//if it has atleast one
-$checkermoodResult =1;
-}else
-{//if it doesnt have any of this
-DB::table('usermood')->insert(
-    ['fk_user_Id' => $userid]
-);
+$currentDate = Carbon::now()->format('Y-m-d');
+$checkToSendNotification = DB::table('usermood')
+         ->where('fk_user_Id', $userid)
+         ->where('created_at', $currentDate)
+         //->orderBy('created_at','descendant')
+         ->pluck('created_at')->first();
+if (count($checkToSendNotification)) 
+{
+return "Did  nothing!";
+}
+else
+{
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
@@ -100,16 +95,14 @@ $downstreamResponse->numberSuccess();
 $downstreamResponse->numberFailure();
 $downstreamResponse->numberModification();
 //<-------------------Push Notification---------------------------------------------------->
-}
+return "Notification Sent!";
+} 
 }//close foreach
 }//close if
 
 
 
+    }  
+
     }
-
-
-
-    
-
 }

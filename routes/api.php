@@ -43,7 +43,8 @@ Route::patch('/user/recommendationComplete', 'recommendationController@recommend
 Route::get('/user/recommendationLoader', 'recommendationController@recommendationLoader');//front-Loader--*											  |
 Route::patch('/user/recommendationRejecter', 'recommendationController@recommendationRejecter');//front-Rejecter--*									  |
 Route::patch('/user/recommendationChanger', 'recommendationController@recommendationChanger');//front-Changer maybe not gonna be used <----			  |
-Route::patch('/user/recommendationSaver', 'recommendationController@recommendationSaver');//Saver maybe not gonna be used <----						  |
+Route::patch('/user/recommendationSaver', 'recommendationController@recommendationSaver');//Saver maybe not gonna be used <----		                  |
+Route::get('/user/recommendationSmallHistory', 'recommendationController@recommendationSmallHistory');//retrieves last 50 recoms for a small peek     |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Meditation------------pending ----------------------------------------------------------------------------------------------------------------------|
@@ -68,11 +69,11 @@ Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHist
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Mood------------------------------------------------------------------------------------------------------------------------------------------------|
-Route::post('/user/moodSetter', 'moodController@moodSetter');//timer-Setter not gonna be used <----											          |
-Route::get('/user/moodChecker', 'moodController@moodChecker');//front checker 																		  |
-Route::get('/user/moodLoader', 'moodController@moodLoader');//front-Loader																			  |
-Route::patch('/user/moodCompleter', 'moodController@moodCompleter');//front-Completer	
-Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//front-Completer																  |
+//Route::post('/user/moodSetter', 'moodController@moodSetter');//timer-Setter not gonna be used <----											          |
+//Route::get('/user/moodChecker', 'moodController@moodChecker');//front checker 																		  |
+Route::get('/user/moodLoader', 'moodController@moodLoader');//																	  |
+Route::get('/user/moodCheckerNotifier', 'moodController@moodCheckerNotifier');//
+Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//															  |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //DailyNews-------------------------------------------------------------------------------------------------------------------------------------------|

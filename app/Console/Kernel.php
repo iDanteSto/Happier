@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
        Commands\recommendationSetter::class,
        Commands\cleanDeleteUser::class,
        Commands\testingcommand::class,
+       Commands\moodNotifier::class,
     ];
 
     /**
@@ -46,7 +47,7 @@ class Kernel extends ConsoleKernel
       //<---------------------------------------------------------------------------->
 
       //<-------------Schedule for moods--------------------------------------------->
-      // $schedule->command('mood:setter')->weekly()->sundays()->at('12:00');
+      // $schedule->command('mood:notifier')->dailyAt('14:00');
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->

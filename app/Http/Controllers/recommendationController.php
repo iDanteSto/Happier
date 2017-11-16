@@ -198,6 +198,7 @@ recommendation.name AS recom_name,
 recommendation.description AS recom_desc,
 recommendation.image AS recom_image,
 category.description AS cat_desc,
+category.category_Id AS category_Id,
 category.image AS cat_image
 FROM
 recommendation,
@@ -218,4 +219,48 @@ return response()->json(array('recommendation_Info'=>$recommendationInfo));
 return 'Parece ser que por el momento no hay mas recomendaciones , espera a tu siguiente recomendacion';
 }
 }
+/*
+|--------------------------------------------------------------------------
+| Load recommendationSmallHistory
+|--------------------------------------------------------------------------
+|
+| This function loads  the last 50 recommendations completed or rejected on the given category
+|
+*/  
+public function recommendationSmallHistory(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();
+$userid = $user->user_Id;
+$category_Id = $request->category_Id;
+
+$LastRecomms = DB::select('SELECT 
+    fk_recommendation_Id,
+    recommendation.name,
+    recommendation.description,
+    recommendation.image,
+    creation_date,
+    status.description AS status
+FROM
+    userrecommendation,
+    recommendation,
+    status
+WHERE
+    fk_user_Id = ?
+        AND fk_recommendation_Id = recommendation.recommendation_Id
+        AND recommendation.fk_category_Id = ?
+        AND userrecommendation.fk_status_Id IN (1 , 3)
+        AND fk_status_Id = status_Id
+ORDER BY creation_date DESC
+LIMIT 50' , [$userid, $category_Id]);
+if (count($LastRecomms)) 
+{
+return $LastRecomms;
+}else
+{
+return response()->json(['error'=> 'There is no recommendations!']);
+}
+
+}
+
+
 }

@@ -8,6 +8,12 @@ use DB;
 use DateTime;
 use Carbon\Carbon;
 use App\UserMood;
+
+use LaravelFCM\Message\OptionsBuilder;
+use LaravelFCM\Message\PayloadDataBuilder;
+use LaravelFCM\Message\PayloadNotificationBuilder;
+use FCM;
+
 class moodController extends Controller
 {
 //
@@ -184,4 +190,70 @@ $Mood = UserMood::updateOrCreate([
 ]);
 return "Succes Updating";
 }
+
+
+/*
+|--------------------------------------------------------------------------
+| Mood Checker Notifier
+|--------------------------------------------------------------------------
+|
+| Checks if the user has an entry on the day , if he doesnt it will send a notification to remember him to do it
+|
+*/
+public function moodCheckerNotifier(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;//place id on a variable to use it 
+$currentDate = Carbon::now()->format('Y-m-d');
+/*
+$Mood = App\UserMood::updateOrCreate(
+    ['date' => $currentDate, 'date' => $currentDate,'fk_user_Id' => $userid, 'date' => $currentDate],
+
+    ['price' => 99]
+);
+fk_user_Id
+mood
+fk_status
+date
+'2017-12-15'
+*/
+
+$checkToSendNotification = DB::table('usermood')
+         ->where('fk_user_Id', $userid)
+         ->where('created_at', $currentDate)
+         //->orderBy('created_at','descendant')
+         ->pluck('created_at')->first();
+if (count($checkToSendNotification)) 
+{
+return "Did  nothing!";
+}
+else
+{
+//<-------------------Push Notification---------------------------------------------------->
+$optionBuilder = new OptionsBuilder();
+$optionBuilder->setTimeToLive(60*20);
+$notificationBuilder = new PayloadNotificationBuilder('Como te sientes esta semana?');
+$notificationBuilder->setBody('Text holder')
+      ->setClickAction('ACTIVITY_PROF')
+            ->setSound('default');
+$dataBuilder = new PayloadDataBuilder();
+$dataBuilder->addData(['a_data' => 'my_data']);
+$option = $optionBuilder->build();
+$notification = $notificationBuilder->build();
+$data = $dataBuilder->build();
+$token = $userDeviceToken;
+$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+$downstreamResponse->numberSuccess();
+$downstreamResponse->numberFailure();
+$downstreamResponse->numberModification();
+//<-------------------Push Notification---------------------------------------------------->
+return "Notification Sent!";
+} 
+
+/*
+
+*/
+}
+
+
 }
