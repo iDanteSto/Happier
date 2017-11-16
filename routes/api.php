@@ -71,7 +71,8 @@ Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHist
 Route::post('/user/moodSetter', 'moodController@moodSetter');//timer-Setter not gonna be used <----											          |
 Route::get('/user/moodChecker', 'moodController@moodChecker');//front checker 																		  |
 Route::get('/user/moodLoader', 'moodController@moodLoader');//front-Loader																			  |
-Route::patch('/user/moodCompleter', 'moodController@moodCompleter');//front-Completer																  |
+Route::patch('/user/moodCompleter', 'moodController@moodCompleter');//front-Completer	
+Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//front-Completer																  |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //DailyNews-------------------------------------------------------------------------------------------------------------------------------------------|

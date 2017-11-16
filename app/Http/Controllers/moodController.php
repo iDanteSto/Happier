@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\User;
 use DB;
 use DateTime;
-
+use Carbon\Carbon;
+use App\UserMood;
 class moodController extends Controller
 {
 //
@@ -18,6 +19,7 @@ class moodController extends Controller
 | Checks if the user has interacted with his last mood assigned
 |
 */
+/*
 public function moodChecker(Request $request)
 {     
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
@@ -49,6 +51,7 @@ $checkermoodResult =0;
 return $checkermoodResult;
 //return 'Succes holder creado!';
 }
+*/
 /*
 |--------------------------------------------------------------------------
 | Mood Setter
@@ -56,31 +59,31 @@ return $checkermoodResult;
 |
 | Assign  a mood holder 
 |
-*/
+
 public function moodSetter(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-
-
 DB::table('usermood')->insert(
 ['fk_user_Id' => $userid]
 );
 return response()->json(['succes'=> 'Se creo el holder!'], 200);
 }
+*/
 /*
 |--------------------------------------------------------------------------
 | Mood Loader
 |--------------------------------------------------------------------------
 |
-| Loads  user last assigned mood to be modified
+| Loads  user last value of the mood in order to update the mood bar on the front end
 |
 */
 public function moodLoader(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-
+$defaultNumber = 5;
+/*
 $moodInfo = DB::select('SELECT 
 userMood_Id AS moodId
 FROM
@@ -89,25 +92,36 @@ WHERE
 fk_user_Id = ? AND fk_status = ?
 ORDER BY RAND()
 LIMIT 0 , 1;', [$userid, 2]);//retrieve peferred_categories from the user
-
-
 if (count($moodInfo)) {
 return $moodInfo;
-
 }else
 {
 return 'No hay!';
 }
 //return response()->json(['succes'=> 'Hello World!'], 200);
+*/
+$LatestMoodLoader = DB::table('usermood')
+         ->where('fk_user_Id', $userid)
+         ->orderBy('created_at','descendant')
+         ->pluck('mood')->first();
+if (!count($LatestMoodLoader)) 
+{
+	return $defaultNumber;
+}
+else
+{
+	return $LatestMoodLoader;
+}         
 }
 /*
+
 |--------------------------------------------------------------------------
 | Mood Completer
 |--------------------------------------------------------------------------
 |
 | Updates the designated holder with the value of valoration given by the user
 |
-*/
+
 public function moodCompleter(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
@@ -120,5 +134,54 @@ DB::table('usermood')
 ->update(array('mood' => $moodValoration , 'fk_status' => 1));
 return response()->json(['succes'=> 'Update Succesful!'], 200);
 }
+*/
+/*
+|--------------------------------------------------------------------------
+| Mood moodCreateorUpdater
+|--------------------------------------------------------------------------
+|
+| Creates and updates the Mood of the day obtained from laravel server time zone on config\app.php
+|
+*/
+public function moodCreateorUpdater(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;//place id on a variable to use it 
+//$moodId = $request->moodId;
+$moodValoration =$request->moodValoration;
+/*
+DB::table('usermood')
+->where('userMood_Id', $moodId)
+->update(array('mood' => $moodValoration , 'fk_status' => 1));
+*/
+$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
+//$ekizde = date("h:i:sa");
+$currentDate = Carbon::now()->format('Y-m-d');
+$currentDatefull = Carbon::now();
+//echo $mytime->toDateTimeString();
 
+/*
+$Mood = App\UserMood::updateOrCreate(
+    ['date' => $currentDate, 'date' => $currentDate,'fk_user_Id' => $userid, 'date' => $currentDate],
+
+    ['price' => 99]
+);
+fk_user_Id
+mood
+fk_status
+date
+'2017-12-15'
+*/
+//Currently we just see with the Date(Y-m-d), in a future we could change this to obtain the exact hours and minutes of Updates  but we would have to change the DB Structure to enable timestamps and here on laravel to stop ignoring timestamps on the model .
+$Mood = UserMood::updateOrCreate([
+    'fk_user_Id'   => $userid,
+    'created_at'   => $currentDate,
+],[
+   // 'user_id'   => Auth::user()->id,
+    'mood'     => $moodValoration,
+   // 'fk_status' => '1'
+    'created_at' => $currentDate
+]);
+return "Succes Updating";
+}
 }
