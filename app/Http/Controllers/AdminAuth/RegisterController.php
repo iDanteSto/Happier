@@ -6,6 +6,10 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\AdminUser;
+use Hash;
 
 class RegisterController extends Controller
 {
@@ -67,5 +71,40 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+     public function showRegistrationForm()
+    {
+         if(Auth::guard('admin_user')->user())
+            {
+                return view('admin-auth.register');
+            }
+            return redirect('/dashboard');
+        //return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+
+        /*
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
+*/
+//if fails to succes one of the rules , display errors
+$AdminUser = new AdminUser([
+//fields to be taken from the post and placed on the DB
+'name' => $request->input('name'),
+'email' => $request->input('email'),
+'password' => Hash::make($request->input('password')),
+]);
+$AdminUser->save();//if success will throw a succes message      
+
+return redirect('/admin_register');           
     }
 }
