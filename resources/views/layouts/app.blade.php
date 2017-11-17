@@ -13,12 +13,25 @@
     background-color: #576072
     
 }
+.spacer {
+    padding: 40px;
+    color: #0A416B;
+    clear:both;
+}
+.left, .center, .right{
+    float:left;
+    width:32%;
+    border:1px solid #CEDCEA; 
+    padding:5px;
+
+}
 </style>
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
   <!-- Bootstrap CSS -->
+
   <!-- bootstrap theme -->
   {!!Html::style('css/bootstrap.min.css')!!}
   {!!Html::style('css/bootstrap-theme.css')!!}
@@ -51,7 +64,10 @@
                         @if (Auth::guard('admin_user')->user())
                             @include('admin_panel.header.header')
                             @include('admin_panel.sidebar.sidebar')
+                 <section id="contenido" class="">
                             @yield('content')
+                 </section>           
+                           
                        
                         @elseif (!Auth::guest())
                            
