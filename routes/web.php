@@ -74,11 +74,11 @@ http://192.168.1.74:8000/newPassword?email=email,changeToken=changeToken
 //});
 
 //Auth::routes();
-Route::get('admin_login','AdminAuth\LoginController@showLoginForm')->name('admin_login');                
+Route::get('admin_login','AdminAuth\LoginController@showLoginForm')->name('admin_login');   //             
   
-Route::post('admin_login','AdminAuth\LoginController@login')->name('admin_login');                         
+Route::post('admin_login','AdminAuth\LoginController@login')->name('admin_login');         //                
   
-Route::post('admin_logout','AdminAuth\LoginController@logout')->name('admin_logout');                      
+Route::post('admin_logout','AdminAuth\LoginController@logout')->name('admin_logout');     //                 
   
 Route::post('admin_password/email','AdminAuth\ForgotPasswordController@sendResetLinkEmail')->name('admin_password/email');   
   
@@ -86,7 +86,9 @@ Route::get('admin_password/reset','AdminAuth\ForgotPasswordController@showLinkRe
  
 Route::post('admin_password/reset','AdminAuth\ResetPasswordController@reset')->name('admin_password/reset');                  
   
-Route::get('admin_password/reset/{token}','AdminAuth\ResetPasswordController@showResetForm')->name('admin_password/reset/{token}');         
+Route::get('admin_password/reset/{token}','AdminAuth\ResetPasswordController@showResetForm')->name('admin_password/reset/{token}');        
+
+ 
   
 Route::get('admin_register','AdminAuth\RegisterController@showRegistrationForm')->name('admin_register');        
   

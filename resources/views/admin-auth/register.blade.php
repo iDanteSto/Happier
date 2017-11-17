@@ -1,11 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+.positioner {
+   
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+</style>
 <div class="container">
-    <div class="row">
+    <div class="positioner">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Register a new Admin</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('admin_register') }}">
@@ -66,6 +77,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     Register
                                 </button>
+                                
                             </div>
                         </div>
                     </form>

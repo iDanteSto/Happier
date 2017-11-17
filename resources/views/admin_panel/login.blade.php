@@ -1,4 +1,4 @@
-@extends('admin_panel.layout')
+@extends('layouts.app')
 @section('content')
 <body class="login-img3-body">
   <div class="container">
