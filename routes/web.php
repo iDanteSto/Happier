@@ -97,4 +97,11 @@ Route::post('admin_register','AdminAuth\RegisterController@register')->name('adm
 
 
 Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
+
+//home made routes------------------------------------------------------------------------------------------
+Route::get('avatar_categories','AdminAuth\AvatarContent@showAvatarContent')->name('avatar_categories');     
+//home made routes------------------------------------------------------------------------------------------
+
+
+
 //Route::get('/home', 'HomeController@index')->name('home');

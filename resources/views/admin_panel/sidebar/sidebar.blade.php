@@ -40,7 +40,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="general.html">Avatar_categories</a></li>
+              <li><a class="" href="{!!url('avatar_categories')!!}">Avatar_categories</a></li>
               <li><a class="" href="buttons.html">Avatars</a></li>
               <li><a class="" href="grids.html">Recom_Categorys</a></li>
               <li><a class="" href="grids.html">Recommendations</a></li>
