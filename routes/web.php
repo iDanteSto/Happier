@@ -99,7 +99,9 @@ Route::post('admin_register','AdminAuth\RegisterController@register')->name('adm
 Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
 
 //home made routes------------------------------------------------------------------------------------------
-Route::get('avatar_categories','AdminAuth\AvatarContent@showAvatarContent')->name('avatar_categories');     
+Route::get('avatar_categories','AdminAuth\AvatarContent@showAvatarContent')->name('avatar_categories'); 
+Route::post('avatar_categ_register','AdminAuth\AvatarContent@registerCategory')->name('avatar_categ_register');   
+Route::get('avatar_categ_edit','AdminAuth\AvatarContent@editCategory')->name('avatar_categ_edit');   
 //home made routes------------------------------------------------------------------------------------------
 
 
