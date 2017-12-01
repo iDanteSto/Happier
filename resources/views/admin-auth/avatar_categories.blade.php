@@ -67,13 +67,26 @@ tr:nth-child(even) {
 
                         <div class="col-md-5">
                             <label for="password-confirm" class="">Description</label>
+
+
+
+
+
+
+
+
+
+
+
 @foreach($availableCategories as $categs)
+
     <tr>
-        <?php   $idtest = 7;        ?>
-        <td>{{$categs->avatar_categories_Id}}</td>
+        <td>{{$categs->avatar_categories_Id}}</td> <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
         <td>{{$categs->name}}</td>
         <td>{{$categs->description}}</td>
-        <td><button class="button button1">Edit</button><button class="button button1">Delete</button></td>
+        <td><a class="button Edit" name="{{$categs->avatar_categories_Id}}" >Edit</a>
+        <br>
+        <a class="button Delete" name="{{$categs->avatar_categories_Id}}" >Delete</a>
     </tr> 
 
 @endforeach
@@ -143,4 +156,21 @@ tr:nth-child(even) {
         </div>
     </div>
 </div>
+
+<script>
+
+$(document).on("click", ".Edit", function() {
+//   console.log("inside";   <-- here it is
+    console.log($(this).attr('name'));
+    window.location.href = "/avatar_categ_edit/"+$(this).attr('name');
+ });
+
+
+$(document).on("click", ".Delete", function() {
+//   console.log("inside";   <-- here it is
+    console.log($(this).attr('name'));
+    window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
+ });
+
+</script>
 @endsection

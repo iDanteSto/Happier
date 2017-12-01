@@ -31,9 +31,15 @@ public function showAvatarContent()
 
 						/*$availableCategories = DB::table('avatar_categories')->get();*/
 						$availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();
+						//-----------------
+$checkIfEditable ['checkIfEditable'] = DB::select('SELECT distinct(fk_avatar_categories_Id) from avatar');
+//$checkIfEditable ['checkIfEditable'] = DB::table('avatar')->distinct('fk_avatar_categories_Id')->get();
+//dd($checkIfEditable);
+//dd($checkIfEditable);
+						//-----------------
 						if(count($availableCategories)>0)
 						{
-							return view('admin-auth.avatar_categories', $availableCategories);
+							return view('admin-auth.avatar_categories', $availableCategories,$checkIfEditable);
 						}else
 						{
 							return view('admin-auth.avatar_categories');
@@ -56,7 +62,7 @@ return redirect('/avatar_categories');
 }
 
 
-public function editCategory(Request $request)
+public function editCategory($id)
 {
 	/*
 DB::table('avatar_categories')
@@ -65,19 +71,31 @@ DB::table('avatar_categories')
 return redirect('/avatar_categories');    
 */
 //$idtest = $categs->avatar_categories_Id;
-return view('admin-auth.avatar_categories_edit',$data);
+$InfoCateg ['InfoCateg'] = DB::table('avatar_categories')->where('avatar_categories_Id', $id)->get();
+//$InfoCateg = DB::table('avatar_categories')->where('avatar_categories_Id', $id)->get();
+//dd($id);
+return view('admin-auth.avatar_categories_edit', $InfoCateg);
 //return view::make('admin-auth.avatar_categories_edit')->with('categs', $idtest);      
 }
- /*   
-public function showavatar_categories
+
+public function UpdateCategory(Request $request)
 {
-$availableCategories = DB::table('avatar_categories')
-->select(DB::raw('SELECT avatar_categories_Id , name , description FROM happier.avatar_categories'))
-->get();
-}     
 
 
-*/
+//dd($request->input('description'));	
+DB::table('avatar_categories')
+            ->where('avatar_categories_Id', $request->input('id'))
+            ->update(array('name' => $request->input('name'),'description' => $request->input('description')));
+return redirect('/avatar_categories');
+//return view::make('admin-auth.avatar_categories_edit')->with('categs', $idtest);      
+}
+
+public function DeleteCategory($id)
+{
+//dd("hola");
+DB::table('avatar_categories')->where('avatar_categories_Id', '=', $id)->delete();
+return redirect('/avatar_categories');           
+}
 
 
 

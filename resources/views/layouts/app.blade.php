@@ -42,33 +42,7 @@
   {!!Html::style('css/xcharts.min.css')!!}
   {!!Html::style('css/jquery-ui-1.10.4.min.css')!!}
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body class="body">
-    
-<section id="container" class="">
-
-                        @if (Auth::guard('admin_user')->user())
-                            @include('admin_panel.header.header')
-                            @include('admin_panel.sidebar.sidebar')
-                            @yield('content')
-                            @yield('content_god')
-                        @elseif (!Auth::guest())
-                           
-                        @else
-                            @yield('content')
-                        @endif
-                    
-                    
-          
-            
-</section>
-
-
-    <!-- Scripts -->
-    
-</body>
-<!--<script src="{{ asset('js/app.js') }}"></script> --!>
+    <!--<script src="{{ asset('js/app.js') }}"></script> --!>
     <!-- javascripts -->
   {!!Html::script('js/jquery.js')!!}
   {!!Html::script('js/jquery-ui-1.10.4.min.js')!!}
@@ -109,4 +83,31 @@
   {!!Html::script('js/sparklines.js')!!}  
   {!!Html::script('js/charts.js')!!}        
   {!!Html::script('js/jquery.slimscroll.min.js')!!} 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body class="body">
+    
+<section id="container" class="">
+
+                        @if (Auth::guard('admin_user')->user())
+                            @include('admin_panel.header.header')
+                            @include('admin_panel.sidebar.sidebar')
+                            @yield('content')
+                            @yield('content_god')
+                        @elseif (!Auth::guest())
+                           
+                        @else
+                            @yield('content')
+                        @endif
+                    
+                    
+          
+            
+</section>
+
+
+    <!-- Scripts -->
+    
+</body>
+
 </html>
