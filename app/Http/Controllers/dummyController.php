@@ -98,6 +98,69 @@ $check = 0;
 }
 return $check;
 }
+
+public function dummyFunctionMoodnotif(Request $request)
+{   
+$users = DB::select('SELECT 
+        users.user_Id, users.devicetoken
+        FROM
+        users
+        WHERE
+        users.status = ?
+        AND devicetoken != ?', [2,""]);
+//if there is no confirmed users
+if (count($users))
+{
+//for every user , do the logic
+    foreach ($users as $usuarios) 
+    {
+        $userid = $usuarios->user_Id;
+        $userDeviceToken = $usuarios->devicetoken;
+
+
+//$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+//$userid = $user->user_Id;//place id on a variable to use it 
+$currentDate = Carbon::now()->format('Y-m-d');
+$checkToSendNotification = DB::table('usermood')
+         ->where('fk_user_Id', $userid)
+         ->where('created_at', $currentDate)
+         //->orderBy('created_at','descendant')
+         ->pluck('created_at')->first();
+if (count($checkToSendNotification)) 
+{
+return "Did  nothing!";
+}
+else
+{
+//<-------------------Push Notification---------------------------------------------------->
+$optionBuilder = new OptionsBuilder();
+$optionBuilder->setTimeToLive(60*20);
+$notificationBuilder = new PayloadNotificationBuilder('Como te sientes hoy?');
+$notificationBuilder->setBody('Text holder')
+      ->setClickAction('ACTIVITY_PROF')
+            ->setSound('default');
+$dataBuilder = new PayloadDataBuilder();
+$dataBuilder->addData(['a_data' => 'my_data']);
+$option = $optionBuilder->build();
+$notification = $notificationBuilder->build();
+$data = $dataBuilder->build();
+$token = $userDeviceToken;
+$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+$downstreamResponse->numberSuccess();
+$downstreamResponse->numberFailure();
+$downstreamResponse->numberModification();
+//<-------------------Push Notification---------------------------------------------------->
+return "Notification Sent!";
+
+} 
+}//close foreach
+}//close if
+
+
+
+}
+
+
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------Dummy functions to test recommendationSetter commands------------------------------------------------------------------------

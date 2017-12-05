@@ -73,7 +73,9 @@ Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHist
 //Route::get('/user/moodChecker', 'moodController@moodChecker');//front checker 																		  |
 Route::get('/user/moodLoader', 'moodController@moodLoader');//																	  |
 Route::get('/user/moodCheckerNotifier', 'moodController@moodCheckerNotifier');//
-Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//															  |
+Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//	
+//dummy test
+Route::get('/user/dummyFunctionMoodnotif', 'dummyController@dummyFunctionMoodnotif');//Dummy test notifs	
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //DailyNews-------------------------------------------------------------------------------------------------------------------------------------------|
