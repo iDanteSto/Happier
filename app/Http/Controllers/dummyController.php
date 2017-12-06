@@ -121,11 +121,19 @@ if (count($users))
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 //$userid = $user->user_Id;//place id on a variable to use it 
 $currentDate = Carbon::now()->format('Y-m-d');
+
+$checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
+->where('created_at', $currentDate)
+->firstOrFail();
+/*
 $checkToSendNotification = DB::table('usermood')
          ->where('fk_user_Id', $userid)
          ->where('created_at', $currentDate)
          //->orderBy('created_at','descendant')
          ->pluck('created_at')->first();
+*/
+//dd($checkToSendNotification->created_at);
+
 if (count($checkToSendNotification)) 
 {
 return "Did  nothing!";
