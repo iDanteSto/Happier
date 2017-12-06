@@ -137,7 +137,7 @@ $notificationBuilder->setBody('Text holder')
       ->setClickAction('ACTIVITY_PROF')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
-$dataBuilder->addData(['a_data' => 'my_data']);
+$dataBuilder->addData(['moodOn' => 'yes']);
 $option = $optionBuilder->build();
 $notification = $notificationBuilder->build();
 $data = $dataBuilder->build();
