@@ -124,7 +124,7 @@ $currentDate = Carbon::now()->format('Y-m-d');
 
 $checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
 ->where('created_at','=', $currentDate)
-->firstOrFail();
+->first();
 /*
 $checkToSendNotification = DB::table('usermood')
          ->where('fk_user_Id', $userid)
@@ -132,7 +132,7 @@ $checkToSendNotification = DB::table('usermood')
          //->orderBy('created_at','descendant')
          ->pluck('created_at')->first();
 */
-//dd($checkToSendNotification->created_at);
+//dd($checkToSendNotification);
 
 if (count($checkToSendNotification)) 
 {
