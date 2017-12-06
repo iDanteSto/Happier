@@ -106,32 +106,32 @@ return $check;
 
 public function dummyFunctionMoodnotif(Request $request)
 {  
-/* 
-$users = DB::select('SELECT 
-        users.user_Id, users.devicetoken
-        FROM
-        users
-        WHERE
-        users.status = ?
-        AND devicetoken != ?', [2,""]);*/
+//array of all users
+$users = User::where('status', '=', 2)->get();
 //if there is no confirmed users
-//if (count($users))
-//{
+if (count($users))
+{
 //for every user , do the logic
-  //  foreach ($users as $usuarios) 
-  //  {
-$user = User::where('email', '=', $request->email)->firstOrFail();
-
-        //$userid = 326;
-        //$userDeviceToken = "c-G9kH05PMU:APA91bFfluPZlWwcj3oSyaElCiAuoqwaDf9K2fyxjCmev6ZHA3Z73NVBdj5Ju0EJzoUhO1wOBdnkqQM4dwOjz94Q2KK3v9fFyifOe3X1D3kcv5zKubkMcgcw2LeoNJG6tAZ60PjdIzot";
-return $user->devicetoken;
+    foreach ($users as $user) 
+    {
+        $userid = $user->user_Id;
+        $userDeviceToken = $user->devicetoken;
 
 
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 //$userid = $user->user_Id;//place id on a variable to use it 
-
-
-
+$currentDate = Carbon::now()->format('Y-m-d');
+$checkToSendNotification = DB::table('usermood')
+         ->where('fk_user_Id', $userid)
+         ->where('created_at', $currentDate)
+         //->orderBy('created_at','descendant')
+         ->pluck('created_at')->first();
+if (count($checkToSendNotification)) 
+{
+return "Did  nothing!";
+}
+else
+{
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
@@ -151,13 +151,9 @@ $downstreamResponse->numberFailure();
 $downstreamResponse->numberModification();
 //<-------------------Push Notification---------------------------------------------------->
 return "Notification Sent!";
-
-
-//}//close foreach
-//}//close if
-
-
-
+} 
+}//close foreach
+}//close if
 }
 
 
