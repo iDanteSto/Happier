@@ -120,8 +120,9 @@ $users = DB::select('SELECT
 //for every user , do the logic
   //  foreach ($users as $usuarios) 
   //  {
-        $userid = 326;
-        $userDeviceToken = "dOz1qkcILTY:APA91bEqsiYCTe-yyR4TPBs4OZ0SSDCO4RGQ9ik8Nsmr_rUdxdZ3ajTIVbzuI7tq0GhPFBcxPdkvSzsb8bbdRnYDxYlAmUxbTPIUZcd890RmW4x2LoSeSPY6hRpPNo2KToC94U6gypWx";
+  $user = User::where('email', '=', $request->email)->firstOrFail();        
+        $userid = $user->user_Id;
+        $userDeviceToken = $user->devicetoken;
 
 
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
