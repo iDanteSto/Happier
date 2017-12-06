@@ -133,11 +133,11 @@ $users = DB::select('SELECT
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Como te sientes hoy?');
-$notificationBuilder->setBody('Text holder')
+$notificationBuilder->setBody('Clickea aqui para ir a la app a ver tu mood')
       ->setClickAction('ACTIVITY_PROF')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
-$dataBuilder->addData(['a_data' => 'my_data']);
+$dataBuilder->addData(['moodOn' => 'yes']);
 $option = $optionBuilder->build();
 $notification = $notificationBuilder->build();
 $data = $dataBuilder->build();
