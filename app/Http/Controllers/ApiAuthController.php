@@ -39,12 +39,28 @@ if exist it returns a 1   , if not it returns a 0
 |
 */
 public function userCheckExistence(Request $request)
-{
+{//get the info of the user to check
+$user = User::where('email', '=', $request->email)->get();
+/*
 $userExist = DB::table('users')
 ->select(DB::raw('count(user_Id)as exist'))
 ->where('email', '=', $request->email)
 ->get();
-return $userExist;               
+return $userExist;  */ 
+if (count($user))//if it exist records 
+{
+//dd($user[0]->remember_token);
+			if($request->remember_token != $user[0]->remember_token)//compare remember token from db to given by the app
+			{
+			return 	0;//Force logout
+			}else
+			{
+			return 1;//All Fine
+			}
+}else//if doesn't exist records 
+{
+return 0;//Force logout	
+} 
 }
 /*
 |--------------------------------------------------------------------------
