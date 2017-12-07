@@ -136,7 +136,7 @@ $checkToSendNotification = DB::table('usermood')
 
 if (count($checkToSendNotification)) 
 {
-return "Did  nothing!";
+//return "Did  nothing!";
 }
 else
 {
@@ -158,7 +158,7 @@ $downstreamResponse->numberSuccess();
 $downstreamResponse->numberFailure();
 $downstreamResponse->numberModification();
 //<-------------------Push Notification---------------------------------------------------->
-return "Notification Sent!";
+//return "Notification Sent!";
 } 
 }//close foreach
 }//close if
