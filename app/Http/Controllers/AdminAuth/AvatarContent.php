@@ -36,6 +36,7 @@ $checkIfEditable ['checkIfEditable'] = DB::select('SELECT distinct(fk_avatar_cat
 //$checkIfEditable ['checkIfEditable'] = DB::table('avatar')->distinct('fk_avatar_categories_Id')->get();
 //dd($checkIfEditable);
 //dd($checkIfEditable);
+//test
 						//-----------------
 						if(count($availableCategories)>0)
 						{

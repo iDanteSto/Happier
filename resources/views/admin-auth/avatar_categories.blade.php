@@ -69,13 +69,26 @@ tr:nth-child(even) {
                             <label for="password-confirm" class="">Description</label>
 
 
+<?php 
+$editableArray = [];
+$editlenght = count($checkIfEditable);
+/*
+foreach ($checkIfEditable as $checkIfEditables)
+{
+$editableArray = array_fill(0, $editlenght, $checkIfEditables->fk_avatar_categories_Id);
+}
+*/
+//$checkIfEditable->toArray();
 
-
-
-
-
-
-
+//dd($checkIfEditable); 
+/*
+if (in_array(4, {{$checkIfEditable->fk_avatar_categories_Id}})) {
+        echo "si";
+    } else {
+        echo "no";
+    }
+*/
+?>
 
 
 @foreach($availableCategories as $categs)
