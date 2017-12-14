@@ -41,11 +41,11 @@
                       </a>
             <ul class="sub">
               <li><a class="" href="{!!url('avatar_categories')!!}">Avatar_categories</a></li>
-              <li><a class="" href="buttons.html">Avatars</a></li>
-              <li><a class="" href="grids.html">Recom_Categorys</a></li>
-              <li><a class="" href="grids.html">Recommendations</a></li>
+              <li><a class="" href="{!!url('avatars')!!}">Avatars</a></li>
+              <li><a class="" href="{!!url('recommendation_categories')!!}">Recom_Categorys</a></li>
+              <li><a class="" href="{!!url('recommendations')!!}">Recommendations</a></li>
              <!-- <li><a class="" href="grids.html">Meditations</a></li>  -->
-              <li><a class="" href="grids.html">News</a></li>
+              <li><a class="" href="{!!url('news')!!}">News</a></li>
             </ul>
           </li>
           <li class="sub-menu">
@@ -55,9 +55,9 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="basic_table.html">Users</a></li>
-              <li><a class="" href="basic_table.html">Recommendations</a></li>
-              <li><a class="" href="basic_table.html">Metrics</a></li>
+              <li><a class="" href="{!!url('users_report')!!}">Users</a></li>
+              <li><a class="" href="{!!url('recommendations_report')!!}">Recommendations</a></li>
+              <li><a class="" href="{!!url('metrics_report')!!}">Metrics</a></li>
             </ul>
           </li>
         </ul>

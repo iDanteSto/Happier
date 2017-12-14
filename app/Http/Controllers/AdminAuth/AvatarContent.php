@@ -13,13 +13,7 @@ class AvatarContent extends Controller
 {
     
 
-
-
-
-
-
-
-
+//Avatars_categories content
 public function showAvatarContent()
     {
             if(Auth::guard('admin_user')->user())
@@ -104,18 +98,16 @@ return redirect('/avatar_categories');
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Avatars content
+public function ShowAvatars()
+{
+if(Auth::guard('admin_user')->user())
+            {
+			return view('admin-auth.avatars');  		
+            }
+return redirect('/dashboard');
+           
+}
 
 
 }

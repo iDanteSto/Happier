@@ -90,24 +90,45 @@ Route::get('admin_password/reset/{token}','AdminAuth\ResetPasswordController@sho
 
  
   
-Route::get('admin_register','AdminAuth\RegisterController@showRegistrationForm')->name('admin_register');        
-  
-Route::post('admin_register','AdminAuth\RegisterController@register')->name('admin_register');                
+         
 
-
-
+//[Admin panel*********************************************************************************************************************]
+//dashboard
 Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
 
-//home made routes------------------------------------------------------------------------------------------
+//Admins------------------------------------------------------------------------------------------------------------------------
+Route::get('admin_register','AdminAuth\RegisterController@showRegistrationForm')->name('admin_register');        
+Route::post('admin_register','AdminAuth\RegisterController@register')->name('admin_register');       
+//------------------------------------------------------------------------------------------------------------------------------
+
+
+//App Users---------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------------
+
+//Content-----------------------------------------------------------------------------------------------------------------------
+//avatar_categories routes--------------------------------------------------------------------------------------------------
 Route::get('avatar_categories','AdminAuth\AvatarContent@showAvatarContent')->name('avatar_categories'); 
 Route::post('avatar_categ_register','AdminAuth\AvatarContent@registerCategory')->name('avatar_categ_register');   
 Route::get('avatar_categ_edit/{id}','AdminAuth\AvatarContent@editCategory')->name('avatar_categ_edit');  
 Route::post('avatar_categ_update','AdminAuth\AvatarContent@UpdateCategory')->name('avatar_categ_update');   
-
-//test route for delete
 Route::get('avatar_categories_delete/{id}','AdminAuth\AvatarContent@DeleteCategory')->name('avatar_categories_delete'); 
-//home made routes------------------------------------------------------------------------------------------
+///avatars routes-----------------------------------------------------------------------------------------------------------
+Route::get('avatars','AdminAuth\AvatarContent@ShowAvatars')->name('avatars'); //*
+///Recommendation_categories routes-----------------------------------------------------------------------------------------
+Route::get('recommendation_categories','AdminAuth\RecommendationContent@ShowCategs')->name('recommendation_categories'); //*
+///Recommendations routes---------------------------------------------------------------------------------------------------
+Route::get('recommendations','AdminAuth\RecommendationContent@ShowRecommendations')->name('recommendations'); //*
+///News routes--------------------------------------------------------------------------------------------------------------
+Route::get('news','AdminAuth\NewsContent@ShowNews')->name('news'); 
+//------------------------------------------------------------------------------------------------------------------------------
 
 
-
-//Route::get('/home', 'HomeController@index')->name('home');
+//Reports-----------------------------------------------------------------------------------------------------------------------
+//Users routes--------------------------------------------------------------------------------------------------
+Route::get('users_report','AdminAuth\ReportsManager@Show_users_report')->name('users_report'); 
+//Recommendations routes--------------------------------------------------------------------------------------------------
+Route::get('recommendations_report','AdminAuth\ReportsManager@Show_recommendations_report')->name('recommendations_report'); 
+//Metrics routes--------------------------------------------------------------------------------------------------
+Route::get('metrics_report','AdminAuth\ReportsManager@Show_metrics_report')->name('metrics_report'); 
+//------------------------------------------------------------------------------------------------------------------------------
+//[Admin panel*********************************************************************************************************************]

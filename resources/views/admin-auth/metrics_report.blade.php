@@ -42,110 +42,13 @@ tr:nth-child(even) {
 }
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<form class="form-edit" method="GET" action="{{ url('avatar_categ_edit') }}">
-<div class="container">
-    <div class="fixposition">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Show</div>
-
-                <div class="panel-body" align="left">
-                   
-                        
-<table>                        
-                        <div class="col-md-5">
-                            <label for="name" class="">Name</label>
-
-                         <br>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Decription</th>
-        <th>Commands</th>
-    </tr>  
-                        </div>
-
-                        <div class="col-md-5">
-                            <label for="password-confirm" class="">Description</label>
-
-
-<?php 
-$editableArray = [];
-$editlenght = count($checkIfEditable);
-/*
-foreach ($checkIfEditable as $checkIfEditables)
-{
-$editableArray = array_fill(0, $editlenght, $checkIfEditables->fk_avatar_categories_Id);
-}
-*/
-//$checkIfEditable->toArray();
-
-//dd($checkIfEditable); 
-/*
-if (in_array(4, {{$checkIfEditable[0]->fk_avatar_categories_Id}})) {
-        echo "si";
-    } else {
-        echo "no";
-    }
-
-
-
-    foreach ($checkIfEditable[0]->fk_avatar_categories_Id as $obj) {
-        # code...
-    }
-*/
-
-?>
-@foreach($availableCategories as $categs)
-<?php 
-    $disponible = true; 
-    foreach ($checkIfEditable as $obj) { 
-        if($categs->avatar_categories_Id == $obj->fk_avatar_categories_Id){ 
-            $disponible = false;
-        }
-    } 
-
-    if($disponible){ ?>
-        <tr>
-            <td>{{$categs->avatar_categories_Id}}</td> <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
-            <td>{{$categs->name}}</td>
-            <td>{{$categs->description}}</td>
-
-            <td><a class="button Edit" name="{{$categs->avatar_categories_Id}}" >Edit</a></td>
-            <td><a class="button Delete" name="{{$categs->avatar_categories_Id}}" >Delete</a></td>
-        </tr>
-    <?php }else{ ?>
-        <tr>
-            <td>{{$categs->avatar_categories_Id}}</td> <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
-            <td>{{$categs->name}}</td>
-            <td>{{$categs->description}}</td>
-
-            <td><img src="http://www.endlessicons.com/wp-content/uploads/2012/12/lock-icon-614x460.png" alt="lock" width="42" height="42"></td>
-            <td><img src="http://www.endlessicons.com/wp-content/uploads/2012/12/lock-icon-614x460.png" alt="lock" width="42" height="42"></td>
-        </tr>
-    <?php 
-        } 
-    ?>
-@endforeach
-
-
-                            
-                        </div>
-</table>
-                        
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
 
 
 <div class="container">
     <div class="fixposition2">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Avatar Categories Creator</div>
+                <div class="panel-heading">metrics_report page</div>
 
 <form class="form-horizontal" method="POST" action="{{ url('avatar_categ_register') }}">
                 <div class="panel-body">
