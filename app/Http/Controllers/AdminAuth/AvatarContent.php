@@ -104,10 +104,12 @@ return redirect('/avatar_categories');
 public function ShowAvatars()
 {
 $availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();	
-
+//-
+$existingAvatars ['existingAvatars'] = DB::table('avatar')->get();
+//-
 if(Auth::guard('admin_user')->user())
             {
-			return view('admin-auth.avatars',$availableCategories);
+			return view('admin-auth.avatars',$availableCategories,$existingAvatars);
             }
 return redirect('/dashboard');
            
@@ -115,12 +117,31 @@ return redirect('/dashboard');
 
 public function CreateAvatar(Request $request)
 {
+//insert on cloudinary-------------------------	
 $filename = $request->file;
 //dd($filename);
 $randomgen = Str::random(5);
 $publicId = $request->name.$randomgen;
 Cloudder::upload($filename, $publicId);
+$arrayOfImageData=Cloudder::getResult();
+//Function to format the url and remove ""
+//$urlFormatted = str_replace(array('"'), null,$arrayOfImageData['url']);
+//dd($urlFormatted);
+//--------------------------------------------
+//insert on DB--------------------------------
+DB::table('avatar')->insert(
+    ['name' => $request->name, 'description' => $request->description , 'link' => $arrayOfImageData['url'] , 'fk_avatar_categories_Id' => $request->fkCategId]
+);
+//--------------------------------------------
 return redirect('/avatars');
 }
+
+public function DeleteAvatar()
+{
+
+}
+
+
+
 
 }
