@@ -115,10 +115,10 @@ return redirect('/dashboard');
 
 public function CreateAvatar(Request $request)
 {
-$filename = $request->file;
+$filename = realpath($request->file);
 $randomgen = Str::random(5);
 $publicId = $request->file.$randomgen;
-Cloudder::upload(realpath($filename), $publicId);
+Cloudder::upload($filename, $publicId);
 return redirect('/avatars');
 }
 
