@@ -20,7 +20,7 @@
                 <div class="panel-heading">Avatar Creator</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('CreateAvatar') }}">
+                    <form class="form-horizontal" method="POST" action="{{ url('CreateAvatar') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group">
@@ -47,7 +47,7 @@
                             <label for="password" class="col-md-4 control-label">Image</label>
 
                             <div class="col-md-6">
-                               <input type="file" name="file" id="file">
+                               <input type="file" name="file" id="file" multiple>
                               
                             </div>
                         </div>
