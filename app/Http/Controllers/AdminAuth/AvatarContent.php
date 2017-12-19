@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\Auth;
 use App\AdminUser;
 use Hash;
 use DB;
+use Illuminate\Support\Str;
+use JD\Cloudder\Facades\Cloudder;
 
 class AvatarContent extends Controller
 {
     
 
-//Avatars_categories content
+//Avatars_categories content------------------------------------------------------------------------------------------------------------
 public function showAvatarContent()
     {
             if(Auth::guard('admin_user')->user())
@@ -98,16 +100,26 @@ return redirect('/avatar_categories');
 
 
 
-//Avatars content
+//Avatars content-------------------------------------------------------------------------------------------------------
 public function ShowAvatars()
 {
+$availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();	
+
 if(Auth::guard('admin_user')->user())
             {
-			return view('admin-auth.avatars');  		
+			return view('admin-auth.avatars',$availableCategories);
             }
 return redirect('/dashboard');
            
 }
 
+public function CreateAvatar(Request $request)
+{
+$fileToUpload = $request->file;
+$randomgen = Str::random(5);
+$publicId =$request->name;
+Cloudder::upload($fileToUpload, $publicId);
+return redirect('/avatars');
+}
 
 }

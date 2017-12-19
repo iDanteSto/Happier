@@ -114,6 +114,7 @@ Route::post('avatar_categ_update','AdminAuth\AvatarContent@UpdateCategory')->nam
 Route::get('avatar_categories_delete/{id}','AdminAuth\AvatarContent@DeleteCategory')->name('avatar_categories_delete'); 
 ///avatars routes-----------------------------------------------------------------------------------------------------------
 Route::get('avatars','AdminAuth\AvatarContent@ShowAvatars')->name('avatars'); //*
+Route::post('CreateAvatar','AdminAuth\AvatarContent@CreateAvatar')->name('CreateAvatar');  
 ///Recommendation_categories routes-----------------------------------------------------------------------------------------
 Route::get('recommendation_categories','AdminAuth\RecommendationContent@ShowCategs')->name('recommendation_categories'); //*
 ///Recommendations routes---------------------------------------------------------------------------------------------------
