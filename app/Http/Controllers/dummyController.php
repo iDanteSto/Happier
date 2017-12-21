@@ -171,9 +171,20 @@ $downstreamResponse->numberModification();
 public function dummyFunction0(Request $request)
 {   
 //Cleans all the pending recommendations
-DB::table('userrecommendation')->where('fk_status_Id', '=', 2)->delete();
-return 'Success cleaning all pending recommendations';
+//DB::table('userrecommendation')->where('fk_status_Id', '=', 2)->delete();
+//return 'Success cleaning all pending recommendations';
+    $id = $request->id;
+        DB::table('usermeditation')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('avatar_permission')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('preferred_categories')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('usermeditation')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('userfrequency')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('usermood')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('userrecommendation')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('social_provider')->where('fk_user_Id', '=', $id)->delete();
+        DB::table('users')->where('user_Id', '=', $id)->delete();
 }
+
 
 
 
