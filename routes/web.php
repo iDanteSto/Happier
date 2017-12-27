@@ -115,8 +115,16 @@ Route::get('avatar_categories_delete/{id}','AdminAuth\AvatarContent@DeleteCatego
 ///avatars routes-----------------------------------------------------------------------------------------------------------
 Route::get('avatars','AdminAuth\AvatarContent@ShowAvatars')->name('avatars'); //*
 Route::post('CreateAvatar','AdminAuth\AvatarContent@CreateAvatar')->name('CreateAvatar');  
+Route::get('avatar_delete/{id}','AdminAuth\AvatarContent@DeleteAvatar')->name('avatar_delete'); 
+Route::get('avatar_edit/{id}','AdminAuth\AvatarContent@EditAvatar')->name('avatar_edit');  
+Route::post('avatar_update','AdminAuth\AvatarContent@UpdateAvatar')->name('avatar_update'); 
 ///Recommendation_categories routes-----------------------------------------------------------------------------------------
 Route::get('recommendation_categories','AdminAuth\RecommendationContent@ShowCategs')->name('recommendation_categories'); //*
+
+Route::post('categ_create','AdminAuth\RecommendationContent@CreateCateg')->name('categ_create');  
+Route::get('categ_delete/{id}','AdminAuth\RecommendationContent@DeleteCateg')->name('categ_delete'); 
+Route::get('categ_edit/{id}','AdminAuth\RecommendationContent@EditCateg')->name('categ_edit');  
+Route::post('categ_update','AdminAuth\RecommendationContent@UpdateCateg')->name('categ_update'); 
 ///Recommendations routes---------------------------------------------------------------------------------------------------
 Route::get('recommendations','AdminAuth\RecommendationContent@ShowRecommendations')->name('recommendations'); //*
 ///News routes--------------------------------------------------------------------------------------------------------------

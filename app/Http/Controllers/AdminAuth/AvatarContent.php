@@ -26,8 +26,8 @@ public function showAvatarContent()
 */
 
 						/*$availableCategories = DB::table('avatar_categories')->get();*/
-						$availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();
-						//-----------------
+$availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();
+
 $checkIfEditable ['checkIfEditable'] = DB::select('SELECT distinct(fk_avatar_categories_Id) from avatar');
 //$checkIfEditable ['checkIfEditable'] = DB::table('avatar')->distinct('fk_avatar_categories_Id')->get();
 //dd($checkIfEditable);
@@ -100,7 +100,7 @@ return redirect('/avatar_categories');
 
 
 
-//Avatars content-------------------------------------------------------------------------------------------------------
+//Avatars content--------------------------------------------------------------------------------------------------------------------------------------------
 public function ShowAvatars()
 {
 $availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();	
@@ -136,12 +136,57 @@ DB::table('avatar')->insert(
 return redirect('/avatars');
 }
 
-public function DeleteAvatar()
+public function EditAvatar($id)
 {
-
+$availableCategories ['availableCategories'] = DB::table('avatar_categories')->get();	
+$avatarInfo ['avatarInfo'] = DB::table('avatar')->where('avatar_Id', $id)->get();
+return view('admin-auth.avatar_edit', $availableCategories,$avatarInfo);
 }
 
+public function UpdateAvatar(Request $request)
+{
+//--------------------Delete from cloudinary-----------------
+/*	
+$AvatarInfo = DB::table('avatar')->where('avatar_Id', $request->avatar_id)->get();
+$slice1 = str_after($AvatarInfo[0]->link, 'v');
+$slice2 = str_after($slice1, '/');
+$firstswap = strrev($slice2);
+$slice3 = str_after($firstswap, '.');
+$secondswap = strrev($slice3);
+$publicId = $secondswap;
+Cloudder::delete($publicId);
+//-----------------------------------------------------------
+*/
+/*
+//--------------------upload to cloudinary-------------------
+$filename = $request->file;
+$randomgen = Str::random(5);
+$publicId = $request->name.$randomgen;
+Cloudder::upload($filename, $publicId);
+//obtain info of cloudinary img-----------------------------
+$arrayOfImageData=Cloudder::getResult();
+//----------------------------------------------------------
+*/
+//--------------------update on DB--------------------------
+DB::table('avatar')
+->where('avatar_Id', $request->avatar_id)
+->update(array('name' => $request->name,'description' => $request->description,'fk_avatar_categories_Id' => $request->fkCategId));
+//----------------------------------------------------------
+return redirect('/avatars');  
+}
 
-
+public function DeleteAvatar($id)
+{
+$AvatarInfo = DB::table('avatar')->where('avatar_Id', $id)->get();
+$slice1 = str_after($AvatarInfo[0]->link, 'v');
+$slice2 = str_after($slice1, '/');
+$firstswap = strrev($slice2);
+$slice3 = str_after($firstswap, '.');
+$secondswap = strrev($slice3);
+$publicId = $secondswap;
+Cloudder::delete($publicId);
+DB::table('avatar')->where('avatar_Id', '=', $id)->delete();
+return redirect('/avatars');   
+}
 
 }

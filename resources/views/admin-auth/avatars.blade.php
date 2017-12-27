@@ -80,7 +80,7 @@ tr:nth-child(even) {
             <td>{{$Avatars->avatar_Id}}</td> <input type="hidden" name="Id" value="{{$Avatars->avatar_Id}}">
             <td>{{$Avatars->name}}</td>
             <td>{{$Avatars->description}}</td>
-            <td>{{$Avatars->link}}</td>
+            <td><img src="{{$Avatars->link}}" alt="img"></td>
             <td>{{$Avatars->fk_avatar_categories_Id}}</td>
             <td><a class="button Edit" name="{{$Avatars->avatar_Id}}" >Edit</a></td>
             <td><a class="button Delete" name="{{$Avatars->avatar_Id}}" >Delete</a></td>
@@ -168,4 +168,19 @@ tr:nth-child(even) {
         </div>
     </div>
 </div>
+
+<script>
+$(document).on("click", ".Edit", function() {
+//   console.log("inside";   <-- here it is
+    console.log($(this).attr('name'));
+    window.location.href = "/avatar_edit/"+$(this).attr('name');
+ });
+
+
+$(document).on("click", ".Delete", function() {
+//   console.log("inside";   <-- here it is
+    console.log($(this).attr('name'));
+    window.location.href = "/avatar_delete/"+$(this).attr('name');
+ });
+</script>
 @endsection
