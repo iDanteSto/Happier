@@ -9,6 +9,12 @@ use LaravelFCM\Message\OptionsBuilder;
 use LaravelFCM\Message\PayloadDataBuilder;
 use LaravelFCM\Message\PayloadNotificationBuilder;
 use FCM;
+use DateTime;
+use Carbon\Carbon;
+use App\UserMood;
+
+
+
 class recommendationSetter extends Command
 {
     /**
@@ -51,6 +57,7 @@ class recommendationSetter extends Command
     | This function assignates recommendations to elegible users
     |
     */        
+
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified and has ever logged in once 
     $users = DB::select('SELECT 
