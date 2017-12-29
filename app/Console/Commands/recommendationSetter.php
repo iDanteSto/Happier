@@ -138,8 +138,8 @@ if (count($users))
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
-$notificationBuilder->setBody('Text holder')
+$notificationBuilder = new PayloadNotificationBuilder('Sorpresa!');
+$notificationBuilder->setBody('Tienes una nueva recomendacion')
       ->setClickAction('ACTIVITY_REC')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
@@ -163,8 +163,8 @@ $downstreamResponse->numberModification();
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('Aun tienes que interactuar con una recomendacion pendiente!');
-$notificationBuilder->setBody('Text holder')
+$notificationBuilder = new PayloadNotificationBuilder('No te olvides de nosotros!');
+$notificationBuilder->setBody('Aun tienes que interactuar con una recomendacion pendiente')
       ->setClickAction('ACTIVITY_REC')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
