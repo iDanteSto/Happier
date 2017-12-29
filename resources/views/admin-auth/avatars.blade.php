@@ -80,7 +80,7 @@ tr:nth-child(even) {
             <td>{{$Avatars->avatar_Id}}</td> <input type="hidden" name="Id" value="{{$Avatars->avatar_Id}}">
             <td>{{$Avatars->name}}</td>
             <td>{{$Avatars->description}}</td>
-            <td><img src="{{$Avatars->link}}" alt="img"></td>
+            <td><img src="{{$Avatars->link}}" alt="img" width="100" height="100"></td>
             <td>{{$Avatars->fk_avatar_categories_Id}}</td>
             <td><a class="button Edit" name="{{$Avatars->avatar_Id}}" >Edit</a></td>
             <td><a class="button Delete" name="{{$Avatars->avatar_Id}}" >Delete</a></td>

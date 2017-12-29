@@ -31,23 +31,23 @@ class Kernel extends ConsoleKernel
     {   //here you assign the commands to be executed at wich schedule [*_*]
     
       //<-------------Schedule for recommendations----------------------------------->
-      // $schedule->command('recommendation:setter')->dailyAt('8:00');
-      // $schedule->command('recommendation:setter')->dailyAt('11:00');
-      // $schedule->command('recommendation:setter')->dailyAt('13:00');
-      // $schedule->command('recommendation:setter')->dailyAt('18:00');
-      // $schedule->command('recommendation:setter')->dailyAt('21:00');
+       $schedule->command('recommendation:setter')->dailyAt('8:00');
+       $schedule->command('recommendation:setter')->dailyAt('11:00');
+       $schedule->command('recommendation:setter')->dailyAt('13:00');
+       $schedule->command('recommendation:setter')->dailyAt('18:00');
+       $schedule->command('recommendation:setter')->dailyAt('21:00');
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
       //<-------------clean for recommendations-------------------------------------->
-      // $schedule->command('recommendation:cleaner')->dailyAt('4:00');
+       $schedule->command('recommendation:cleaner')->dailyAt('4:00');
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
       //<-------------Schedule for moods--------------------------------------------->
-      // $schedule->command('mood:notifier')->dailyAt('14:00');
+       $schedule->command('mood:notifier')->dailyAt('14:00');
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->

@@ -82,7 +82,7 @@ tr:nth-child(even) {
         <tr>
             <td>{{$categs->category_Id}}</td> <input type="hidden" name="Id" value="{{$categs->category_Id}}">
             <td>{{$categs->description}}</td>
-            <td><img src="{{$categs->image}}" alt="img"></td>
+            <td><img src="{{$categs->image}}" alt="img" width="100" height="100"></td>
 
             <td><a class="button Edit" name="{{$categs->category_Id}}" >Edit</a></td>
             <td><a class="button Delete" name="{{$categs->category_Id}}" >Delete</a></td>
@@ -91,7 +91,7 @@ tr:nth-child(even) {
         <tr>
             <td>{{$categs->category_Id}}</td> <input type="hidden" name="Id" value="{{$categs->category_Id}}">
             <td>{{$categs->description}}</td>
-            <td><img src="{{$categs->image}}" alt="img"></td>
+            <td><img src="{{$categs->image}}" alt="img" width="100" height="100"></td>
 
             <td><a class="button Edit" name="{{$categs->category_Id}}" >Edit</a></td>
             <td><img src="http://www.endlessicons.com/wp-content/uploads/2012/12/lock-icon-614x460.png" alt="lock" width="42" height="42"></td>
