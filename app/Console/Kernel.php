@@ -19,6 +19,7 @@ class Kernel extends ConsoleKernel
        Commands\cleanDeleteUser::class,
        Commands\testingcommand::class,
        Commands\moodNotifier::class,
+       Commands\recommendationCleaner::class,
     ];
 
     /**
