@@ -318,7 +318,7 @@ $beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
 $endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
 //Night
 $beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
-$endNight = DateTime::createFromFormat('H:i a', "9:00 pm");
+$endNight = DateTime::createFromFormat('H:i a', "11:00 pm");
 if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
 {
 //Morning
@@ -334,8 +334,6 @@ $timeOfDay =3;
 }
 //$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
 //------------store procedure replacement------------------------------
-
-/*
 $choosenRecom = DB::select('SELECT DISTINCT
     (recommendation_Id) 
 FROM
@@ -348,9 +346,11 @@ WHERE
         WHERE
             fk_user_Id = ?)
         AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
-*/
+
+//dd($choosenRecom[0]->recommendation_Id);
+
 DB::table('userrecommendation')->insert(
-    ['fk_user_Id' => $userid, 'fk_recommendation_Id' => 8]
+    ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
 );
 
 
