@@ -350,7 +350,7 @@ WHERE
 //dd($choosenRecom[0]->recommendation_Id);
 
 DB::table('userrecommendation')->insert(
-    ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
+    ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom]
 );
 
 //DB::insert('insert into userrecommendation (fk_user_Id, fk_recommendation_Id) values (?, ?)', [$userid, $choosenRecom[0]->recommendation_Id]);
