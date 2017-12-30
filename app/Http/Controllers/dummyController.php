@@ -332,10 +332,10 @@ $timeOfDay =2;
 //Night
 $timeOfDay =3;
 }
-$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+//$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
 //------------store procedure replacement------------------------------
 
-/*
+
 $choosenRecom = DB::select('SELECT DISTINCT
     (recommendation_Id) 
 FROM
@@ -352,7 +352,7 @@ WHERE
 DB::table('userrecommendation')->insert(
     ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
 );
-*/
+
 
 //DB::insert('insert into userrecommendation (fk_user_Id, fk_recommendation_Id) values (?, ?)', [$userid, $choosenRecom[0]->recommendation_Id]);
 //---------------------------------------------------------------------
