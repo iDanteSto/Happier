@@ -352,7 +352,7 @@ WHERE
 DB::table('userrecommendation')->insert(
     ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
 );
-dd("hola");
+
 //DB::insert('insert into userrecommendation (fk_user_Id, fk_recommendation_Id) values (?, ?)', [$userid, $choosenRecom[0]->recommendation_Id]);
 //---------------------------------------------------------------------
 //*****Succes ! a new recommendation has been assigned *****
