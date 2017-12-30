@@ -345,7 +345,7 @@ WHERE
             happier.preferred_categories
         WHERE
             fk_user_Id = ?)
-        AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
+        AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$timeOfDay,$userid]);
 
 //dd($choosenRecom[0]->recommendation_Id);
 
