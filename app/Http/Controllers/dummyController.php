@@ -261,7 +261,7 @@ public function dummyFunction2(Request $request)
 {   
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified and has
-$users = DB::select('SELECT 
+$users = DB::select('SELECT DISTINCT
 users.user_Id, frequency.timesAtDay, users.devicetoken
 FROM
 users,
