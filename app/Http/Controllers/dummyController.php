@@ -332,7 +332,6 @@ $timeOfDay =2;
 //Night
 $timeOfDay =3;
 }
-dd($timeOfDay);
 //$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
 //------------store procedure replacement------------------------------
 $choosenRecom = DB::select('SELECT DISTINCT
