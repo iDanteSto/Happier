@@ -59,89 +59,112 @@ class recommendationSetter extends Command
     */        
 
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
-//select all users that are verified and has ever logged in once 
-    $users = DB::select('SELECT 
-        users.user_Id, frequency.timesAtDay, users.devicetoken
-        FROM
-        users,
-        frequency,
-        userfrequency
-        WHERE
-        userfrequency.fk_frequency_Id = frequency.frequency_Id
-        AND users.status = ?
-        AND fk_user_Id = user_Id
-        AND devicetoken != ?', [2,""]);
+//select all users that are verified and has
+$users = DB::select('SELECT DISTINCT
+users.user_Id, frequency.timesAtDay, users.devicetoken
+FROM
+users,
+frequency,
+userfrequency
+WHERE
+userfrequency.fk_frequency_Id = frequency.frequency_Id
+AND users.status = ?
+AND fk_user_Id = user_Id
+AND devicetoken != ?', [2,""]);
 //if there is no confirmed users
 if (count($users))
 {
 //for every user , do the logic
-    foreach ($users as $usuarios) 
-    {
-        $currentDate = date('Y-m-d');
-        $userid = $usuarios->user_Id;
-        $userDeviceToken = $usuarios->devicetoken;
-        $timesAtDay = $usuarios->timesAtDay;
+foreach ($users as $usuarios) 
+{
+$currentDate = date('Y-m-d');
+$userid = $usuarios->user_Id;
+$userDeviceToken = $usuarios->devicetoken;
+$timesAtDay = $usuarios->timesAtDay;
 //count user recommendations within the current day
-        $recomCountCollection = DB::table('userrecommendation')
-        ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
-        ->where('fk_user_Id', '=', $userid)
-        ->whereDate('creation_date', $currentDate)
-        ->get();
-        $recomCount = $recomCountCollection[0]->recomCount;
+$recomCountCollection = DB::table('userrecommendation')
+->select(DB::raw('count(userRecommendation_Id) as recomCount'))
+->where('fk_user_Id', '=', $userid)
+->whereDate('creation_date', $currentDate)
+->get();
+$recomCount = $recomCountCollection[0]->recomCount;
 //compare the recomCount against the user frequency chosen to see if he can receive a new recommendation on the day
-        if($recomCount < $timesAtDay)
-        {
+if($recomCount < $timesAtDay)
+{
 //retrieve the number of recommendations of the user that he has not interacted with 
-           $recomReadyCollection = DB::table('userrecommendation')
-           ->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
-           ->where('fk_user_Id', '=', $userid)
-           ->where('fk_status_Id', '=', 2)
-           ->whereDate('creation_date', $currentDate)
-           ->get(); 
+$recomReadyCollection = DB::table('userrecommendation')
+->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
+->where('fk_user_Id', '=', $userid)
+->where('fk_status_Id', '=', 2)
+->whereDate('creation_date', $currentDate)
+->get(); 
 //place the number of recommendations of the user that he has not interacted with on a variable to use it                 
-           $recomReady = $recomReadyCollection[0]->recomCount2;
+$recomReady = $recomReadyCollection[0]->recomCount2;
 //check if the user has a pending recommendation to interact with and if is eligible to get a new one
-           if($recomReady == 0)
+if($recomReady == 0)
 {//the user is eligible to get a new recommendation
 //*****'The user is ready to receive a recommendation *****
 //--***********************************recommendation process***************------------------------------------------------
-    $timeOfDay =0;
+$timeOfDay =0;
 //date("h:i:sa")
 //Current server time
-    $currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
+$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
 //Morning
-    $beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
-    $endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
+$beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
+$endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
 //Evening
-    $beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
-    $endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
+$beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
+$endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
 //Night
-    $beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
-    $endNight = DateTime::createFromFormat('H:i a', "9:00 pm");
-    if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
-    {
-  //Morning
-      $timeOfDay = 1;   
-  }else if($currentTime >= $beginEvening && $currentTime <= $endEvening)
-  { 
-  //Evening
-      $timeOfDay =2;
-  }else if($currentTime >= $beginNight && $currentTime <= $endNight)
-  {
-  //Night
-      $timeOfDay =3;
-  }
-  $assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+$beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
+$endNight = DateTime::createFromFormat('H:i a', "11:00 pm");
+if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
+{
+//Morning
+$timeOfDay = 1;   
+}else if($currentTime >= $beginEvening && $currentTime <= $endEvening)
+{ 
+//Evening
+$timeOfDay =2;
+}else if($currentTime >= $beginNight && $currentTime <= $endNight)
+{
+//Night
+$timeOfDay =3;
+}
+//$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+//------------store procedure replacement------------------------------
+$choosenRecom = DB::select('SELECT DISTINCT
+    (recommendation_Id) 
+FROM
+    recommendation
+WHERE
+    recommendation.fk_category_Id IN (SELECT 
+            fk_category_Id
+        FROM
+            happier.preferred_categories
+        WHERE
+            fk_user_Id = ?)
+        AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
+
+//dd($choosenRecom[0]->recommendation_Id);
+
+DB::table('userrecommendation')->insert(
+    ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
+);
+
+
+//DB::insert('insert into userrecommendation (fk_user_Id, fk_recommendation_Id) values (?, ?)', [$userid, $choosenRecom[0]->recommendation_Id]);
+//---------------------------------------------------------------------
 //*****Succes ! a new recommendation has been assigned *****
 //|****************************************|
 //New one assigned Notificacion logic here
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('Sorpresa!');
-$notificationBuilder->setBody('Tienes una nueva recomendacion')
-      ->setClickAction('ACTIVITY_REC')
-            ->setSound('default');
+$notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
+$notificationBuilder->setBody('Text holder')
+->setClickAction('ACTIVITY_REC')
+->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
 $option = $optionBuilder->build();
@@ -163,10 +186,10 @@ $downstreamResponse->numberModification();
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('No te olvides de nosotros!');
-$notificationBuilder->setBody('Aun tienes que interactuar con una recomendacion pendiente')
-      ->setClickAction('ACTIVITY_REC')
-            ->setSound('default');
+$notificationBuilder = new PayloadNotificationBuilder('Aun tienes que interactuar con una recomendacion pendiente!');
+$notificationBuilder->setBody('Text holder')
+->setClickAction('ACTIVITY_REC')
+->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
 $dataBuilder->addData(['a_data' => 'my_data']);
 $option = $optionBuilder->build();
@@ -188,14 +211,14 @@ else
 }
 //return nothing
 
-   
+
 
 
 
 }else
 {
-  //Do nothing
-  
+//Do nothing
+
 }
 
 
@@ -205,5 +228,9 @@ else
 
 
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
     }
 }
