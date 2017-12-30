@@ -332,7 +332,27 @@ $timeOfDay =2;
 //Night
 $timeOfDay =3;
 }
-$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+//$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
+//------------store procedure replacement------------------------------
+$choosenRecom = DB::select('SELECT DISTINCT
+    (recommendation_Id) 
+FROM
+    recommendation
+WHERE
+    recommendation.fk_category_Id IN (SELECT 
+            fk_category_Id
+        FROM
+            happier.preferred_categories
+        WHERE
+            fk_user_Id = ?)
+        AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
+
+//dd($choosenRecom[0]->recommendation_Id);
+
+$insertRecom = DB::table('userrecommendation')->insert(
+    ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
+);
+//---------------------------------------------------------------------
 //*****Succes ! a new recommendation has been assigned *****
 //|****************************************|
 //New one assigned Notificacion logic here
