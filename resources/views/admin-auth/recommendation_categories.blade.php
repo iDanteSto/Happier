@@ -43,7 +43,7 @@ tr:nth-child(even) {
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<form class="form-edit" method="GET" action="{{ url('avatar_categ_edit') }}">
+<form class="form-edit" method="GET" action="{{ url('categ_edit') }}">
 <div class="container">
     <div class="">
         <div class="col-md-8 col-md-offset-2">
@@ -161,14 +161,14 @@ tr:nth-child(even) {
 $(document).on("click", ".Edit", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/avatar_categ_edit/"+$(this).attr('name');
+    window.location.href = "/categ_edit/"+$(this).attr('name');
  });
 
 
 $(document).on("click", ".Delete", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
+    window.location.href = "/categ_delete/"+$(this).attr('name');
  });
 
 </script>

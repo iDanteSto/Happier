@@ -118,10 +118,11 @@ return redirect('/dashboard');
 public function CreateAvatar(Request $request)
 {
 //insert on cloudinary-------------------------	
-$filename = $request->file;
+/*$filename = $request->file;
 //dd($filename);
 $randomgen = Str::random(5);
-$publicId = $request->name.$randomgen;
+$removeSpaces = str_replace(array(' '), null,$request->name.$randomgen);
+$publicId = $removeSpaces;
 Cloudder::upload($filename, $publicId);
 $arrayOfImageData=Cloudder::getResult();
 //Function to format the url and remove ""
@@ -132,6 +133,20 @@ $arrayOfImageData=Cloudder::getResult();
 DB::table('avatar')->insert(
     ['name' => $request->name, 'description' => $request->description , 'link' => $arrayOfImageData['url'] , 'fk_avatar_categories_Id' => $request->fkCategId]
 );
+//--------------------------------------------
+return redirect('/avatars');
+*/
+$InsertAvatar = DB::table('avatar')->insert(
+    ['name' => $request->name, 'description' => $request->description , 'link' => "holder" , 'fk_avatar_categories_Id' => $request->fkCategId]
+);
+$idOfAvatar = DB::getPdo()->lastInsertId();
+$filename = $request->file;
+$publicId = "avatar_image".$idOfAvatar;
+Cloudder::upload($filename, $publicId);
+$arrayOfImageData=Cloudder::getResult();
+DB::table('avatar')
+->where('avatar_Id', $idOfAvatar)
+->update(array('link' => $arrayOfImageData['url']));
 //--------------------------------------------
 return redirect('/avatars');
 }
