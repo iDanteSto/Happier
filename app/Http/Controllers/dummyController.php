@@ -311,14 +311,14 @@ $timeOfDay =0;
 //Current server time
 $currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
 //Morning
-$beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
-$endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
+$beginMorning = DateTime::createFromFormat('H\h i\m s\s', "08:00");
+$endMorning = DateTime::createFromFormat('H\h i\m s\s', "12:59");
 //Evening
-$beginEvening = DateTime::createFromFormat('H:i a', "1:00 pm");
-$endEvening = DateTime::createFromFormat('H:i a', "5:59 pm");
+$beginEvening = DateTime::createFromFormat('H\h i\m s\s', "13:00");
+$endEvening = DateTime::createFromFormat('H\h i\m s\s', "17:00");
 //Night
-$beginNight = DateTime::createFromFormat('H:i a', "6:00 pm");
-$endNight = DateTime::createFromFormat('H:i a', "11:00 pm");
+$beginNight = DateTime::createFromFormat('H\h i\m s\s', "18:00");
+$endNight = DateTime::createFromFormat('H\h i\m s\s', "23:00");
 if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
 {
 //Morning
@@ -349,7 +349,7 @@ WHERE
 
 //dd($choosenRecom[0]->recommendation_Id);
 
-dd($currentTime);
+dd($timeOfDay);
 
 
 DB::table('userrecommendation')->insert(
