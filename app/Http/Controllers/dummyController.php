@@ -334,6 +334,8 @@ $timeOfDay =3;
 }
 //$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
 //------------store procedure replacement------------------------------
+
+dd($timeOfDay);
 $choosenRecom = DB::select('SELECT DISTINCT
     (recommendation_Id) 
 FROM
