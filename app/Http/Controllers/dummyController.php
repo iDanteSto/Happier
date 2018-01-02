@@ -290,7 +290,7 @@ $recomCountCollection = DB::table('userrecommendation')
 ->get();
 $recomCount = $recomCountCollection[0]->recomCount;
 //compare the recomCount against the user frequency chosen to see if he can receive a new recommendation on the day
-if($recomCount < $timesAtDay)
+if($recomCount <= $timesAtDay)
 {
 //retrieve the number of recommendations of the user that he has not interacted with 
 $recomReadyCollection = DB::table('userrecommendation')
