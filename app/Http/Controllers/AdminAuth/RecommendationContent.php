@@ -10,6 +10,7 @@ use Hash;
 use DB;
 use Illuminate\Support\Str;
 use JD\Cloudder\Facades\Cloudder;
+use View;
 
 class RecommendationContent extends Controller
 {
@@ -98,22 +99,58 @@ return redirect('/recommendation_categories');
 }
 //-------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-
-
-
-
-
-
-//recommendations
+//recommendations----------------------------------------------------------------------------------------------------------------------------------------
 public function ShowRecommendations()
 {
 if(Auth::guard('admin_user')->user())
-            {
-			return view('admin-auth.recommendations');  		
-            }
+{//if there is admin logged in
+$availableRecommendations ['availableRecommendations'] = DB::table('recommendation')->get();
+$availableCategories ['availableCategories'] = DB::table('category')->get();
+$availableTimesofDay ['availableTimesofDay'] = DB::table('timesofday')->get();
+//$checkIfEditable ['checkIfEditable'] = DB::select('SELECT distinct(fk_category_Id) from recommendation');
+//return view('admin-auth.recommendations',$availableRecommendations,$availableCategories,$availableFrequencies);
+return View::make('admin-auth.recommendations')->with($availableRecommendations)->with($availableCategories)->with($availableTimesofDay);
+}//if there is no admin logged in
 return redirect('/dashboard');   
 }
 
+public function CreateRecommendation(Request $request)
+{
+//insert on cloudinary-------------------------	
+	/*
+$filename = $request->file;
+$randomgen = Str::random(5);
+$removeSpaces= str_replace(array(' '), null,$request->description.$randomgen);
+$publicId = $removeSpaces;
+Cloudder::upload($filename, $publicId);
+$arrayOfImageData=Cloudder::getResult();*/
+//Function to format the url and remove ""
+//$urlFormatted = str_replace(array('"'), null,$arrayOfImageData['url']);
+//dd($urlFormatted);
+//--------------------------------------------
+//insert on DB--------------------------------
+$InsertRecomm = DB::table('recommendation')->insert(
+    ['name' => $request->name,'description' => $request->description,'fk_category_Id' => $request->fkCategId,'image' => "holder",'timeofday' => $request->TimesofDay_Id]
+);
+$idOfRecomm = DB::getPdo()->lastInsertId();
+$filename = $request->file;
+$publicId = "recomm_image".$idOfRecomm;
+Cloudder::upload($filename, $publicId);
+$arrayOfImageData=Cloudder::getResult();
+DB::table('recommendation')
+->where('recommendation_Id', $idOfRecomm)
+->update(array('image' => $arrayOfImageData['url']));
+//--------------------------------------------
+return redirect('/recommendations');
+}
 
+
+
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------------------------
 }
