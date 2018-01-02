@@ -335,7 +335,7 @@ $timeOfDay =3;
 //$assign = DB::select("call recomendationSetter($userid,$timeOfDay)");
 //------------store procedure replacement------------------------------
 
-dd($timeOfDay);
+
 $choosenRecom = DB::select('SELECT DISTINCT
     (recommendation_Id) 
 FROM
@@ -348,7 +348,7 @@ WHERE
         WHERE
             fk_user_Id = ?)
         AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
-
+dd($choosenRecom);
 //dd($choosenRecom[0]->recommendation_Id);
 DB::table('userrecommendation')->insert(
     ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
