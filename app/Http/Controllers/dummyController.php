@@ -261,27 +261,15 @@ public function dummyFunction2(Request $request)
 {   
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
 //select all users that are verified and has
-$users = DB::select('SELECT DISTINCT
-users.user_Id, frequency.timesAtDay, users.devicetoken
-FROM
-users,
-frequency,
-userfrequency
-WHERE
-userfrequency.fk_frequency_Id = frequency.frequency_Id
-AND users.status = ?
-AND fk_user_Id = user_Id
-AND devicetoken != ?', [2,""]);
+
 //if there is no confirmed users
-if (count($users))
-{
+
 //for every user , do the logic
-foreach ($users as $usuarios) 
-{
+
 $currentDate = date('Y-m-d');
-$userid = $usuarios->user_Id;
-$userDeviceToken = $usuarios->devicetoken;
-$timesAtDay = $usuarios->timesAtDay;
+$userid = $request->userid;
+$userDeviceToken = $request->devicetoken;
+$timesAtDay = $request->timesAtDay;
 //count user recommendations within the current day
 $recomCountCollection = DB::table('userrecommendation')
 ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
@@ -416,21 +404,12 @@ else
 
 
 
-
-}else
-{
-//Do nothing
-
-}
-
-
-
 //Exiting
 
 
 
 //<---------------------------------------------------------------------------------Big Monster-------------------------------------------------------------------------->
-}
+
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
