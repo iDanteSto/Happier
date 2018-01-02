@@ -143,10 +143,56 @@ DB::table('recommendation')
 //--------------------------------------------
 return redirect('/recommendations');
 }
-
-
-
-
+public function DeleteRecommendation($id)
+{
+$RecommendationInfo = DB::table('recommendation')->where('recommendation_Id', $id)->get();
+$slice1 = str_after($RecommendationInfo[0]->image, 'v');
+$slice2 = str_after($slice1, '/');
+$firstswap = strrev($slice2);
+$slice3 = str_after($firstswap, '.');
+$secondswap = strrev($slice3);
+$publicId = $secondswap;
+Cloudder::delete($publicId);
+DB::table('recommendation')->where('recommendation_Id', '=', $id)->delete();
+return redirect('/recommendations');   	
+}
+public function EditRecommendation($id)
+{
+$availableCategories ['availableCategories'] = DB::table('category')->get();	
+$recommendationInfo ['recommendationInfo'] = DB::table('recommendation')->where('recommendation_Id', $id)->get();
+return view('admin-auth.recommendations_edit', $availableCategories,$recommendationInfo);
+}
+public function UpdateRecommendation(Request $request)
+{/*
+//--------------------Delete from cloudinary-----------------
+/*	
+$AvatarInfo = DB::table('avatar')->where('avatar_Id', $request->avatar_id)->get();
+$slice1 = str_after($AvatarInfo[0]->link, 'v');
+$slice2 = str_after($slice1, '/');
+$firstswap = strrev($slice2);
+$slice3 = str_after($firstswap, '.');
+$secondswap = strrev($slice3);
+$publicId = $secondswap;
+Cloudder::delete($publicId);
+//-----------------------------------------------------------
+*/
+/*
+//--------------------upload to cloudinary-------------------
+$filename = $request->file;
+$randomgen = Str::random(5);
+$publicId = $request->name.$randomgen;
+Cloudder::upload($filename, $publicId);
+//obtain info of cloudinary img-----------------------------
+$arrayOfImageData=Cloudder::getResult();
+//----------------------------------------------------------
+*/
+//--------------------update on DB--------------------------
+DB::table('recommendation')
+->where('recommendation_Id', $request->recommendation_Id)
+->update(array('name' => $request->name,'description' => $request->description,'fk_category_Id' => $request->fkCategId));
+//----------------------------------------------------------
+return redirect('/recommendations');  
+}
 
 
 

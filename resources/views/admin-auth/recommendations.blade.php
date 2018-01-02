@@ -65,13 +65,13 @@ tr:nth-child(even) {
                          <br>
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Decription</th>
-        <th>Categ ID</th>
-        <th>Image</th>
-        <th>time of day</th>
-        <th>Commands</th>
-        <th>Commands</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Categoria</th>
+        <th>Imagen</th>
+        <th>Tiempo del dia</th>
+        <th>Comandos</th>
+        <th>Comandos</th>
     </tr>  
                    
                      
@@ -81,11 +81,13 @@ tr:nth-child(even) {
             <td>{{$Recommendation->recommendation_Id}}</td> <input type="hidden" name="Id" value="{{$Recommendation->recommendation_Id}}">
             <td>{{$Recommendation->name}}</td>
             <td>{{$Recommendation->description}}</td>
-            <td>{{$Recommendation->fk_category_Id}}</td>
+<?php $Categname = DB::table('category')->select('description')->where('category_Id', $Recommendation->fk_category_Id)->get(); ?>           
+            <td>{{$Categname[0]->description}}</td>
             <td><img src="{{$Recommendation->image}}" alt="img" width="100" height="100"></td>
-            <td>{{$Recommendation->timeofday}}</td>
-            <td><a class="button Edit" name="{{$Recommendation->recommendation_Id}}" >Edit</a></td>
-            <td><a class="button Delete" name="{{$Recommendation->recommendation_Id}}" >Delete</a></td>
+<?php $Timeofdayname = DB::table('timesofday')->select('description')->where('TimesofDay_Id', $Recommendation->timeofday)->get(); ?>         
+            <td>{{$Timeofdayname[0]->description}}</td>
+            <td><a class="button Edit" name="{{$Recommendation->recommendation_Id}}" >Editar</a></td>
+            <td><a class="button Delete" name="{{$Recommendation->recommendation_Id}}" >Borrar</a></td>
         </tr>
 @endforeach
 
@@ -107,14 +109,14 @@ tr:nth-child(even) {
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Recommendation Creator</div>
+                <div class="panel-heading"><b>Crear Recomendacion</b></div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('recommendation_create') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
@@ -124,7 +126,7 @@ tr:nth-child(even) {
                         </div>
 
                         <div class="form-group">
-                            <label for="Description" class="col-md-4 control-label">Description</label>
+                            <label for="Description" class="col-md-4 control-label">Descripcion</label>
 
                             <div class="col-md-6">
                                 <input id="description" type="text" class="form-control" name="description" required autofocus>
@@ -134,7 +136,7 @@ tr:nth-child(even) {
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Image</label>
+                            <label for="password" class="col-md-4 control-label">Imagen</label>
 
                             <div class="col-md-6">
                                <input type="file" name="file" id="file" multiple>
@@ -143,7 +145,7 @@ tr:nth-child(even) {
                         </div>
 
                         <div class="form-group">
-                            <label for="Category" class="col-md-4 control-label">Category</label>
+                            <label for="Category" class="col-md-4 control-label">Categoria</label>
 
                             <div class="col-md-6">
                              
@@ -157,7 +159,7 @@ tr:nth-child(even) {
                         </div>
 
                         <div class="form-group">
-                            <label for="Frequency" class="col-md-4 control-label">Time Of Day</label>
+                            <label for="Frequency" class="col-md-4 control-label">Tiempo del dia</label>
 
                             <div class="col-md-6">
                              
@@ -174,7 +176,7 @@ tr:nth-child(even) {
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Upload Recommendation
+                                    Subir Recomendacion
                                 </button>
                                 
                             </div>
@@ -190,14 +192,14 @@ tr:nth-child(even) {
 $(document).on("click", ".Edit", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/avatar_edit/"+$(this).attr('name');
+    window.location.href = "/recommendation_edit/"+$(this).attr('name');
  });
 
 
 $(document).on("click", ".Delete", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/avatar_delete/"+$(this).attr('name');
+    window.location.href = "/recommendation_delete/"+$(this).attr('name');
  });
 </script>
 @endsection

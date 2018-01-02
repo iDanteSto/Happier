@@ -130,12 +130,9 @@ Route::post('categ_update','AdminAuth\RecommendationContent@UpdateCateg')->name(
 Route::get('recommendations','AdminAuth\RecommendationContent@ShowRecommendations')->name('recommendations'); //*
 
 Route::post('recommendation_create','AdminAuth\RecommendationContent@CreateRecommendation')->name('recommendation_create');  
-
-
-
-
-
-
+Route::get('recommendation_delete/{id}','AdminAuth\RecommendationContent@DeleteRecommendation')->name('recommendation_delete'); 
+Route::get('recommendation_edit/{id}','AdminAuth\RecommendationContent@EditRecommendation')->name('recommendation_edit');  
+Route::post('recommendation_update','AdminAuth\RecommendationContent@UpdateRecommendation')->name('recommendation_update'); 
 ///News routes--------------------------------------------------------------------------------------------------------------
 Route::get('news','AdminAuth\NewsContent@ShowNews')->name('news'); 
 //------------------------------------------------------------------------------------------------------------------------------
