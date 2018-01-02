@@ -350,7 +350,7 @@ WHERE
 
 //dd($choosenRecom[0]->recommendation_Id);
 
-return $choosenRecom . $timeOfDay  . $currentTime;
+return $choosenRecom;
 
 
 DB::table('userrecommendation')->insert(
