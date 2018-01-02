@@ -309,16 +309,16 @@ if($recomReady == 0)
 $timeOfDay =0;
 //date("h:i:sa")
 //Current server time
-$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
+$currentTime = DateTime::createFromFormat('H\h i\m s\s',date('H\h i\m s\s'));
 //Morning
-$beginMorning = DateTime::createFromFormat('H\h i\m s\s', "08:00");
-$endMorning = DateTime::createFromFormat('H\h i\m s\s', "12:59");
+$beginMorning = DateTime::createFromFormat('H\h i\m s\s', "08h 00m 00s");
+$endMorning = DateTime::createFromFormat('H\h i\m s\s', "12h 59m 00s");
 //Evening
-$beginEvening = DateTime::createFromFormat('H\h i\m s\s', "13:00");
-$endEvening = DateTime::createFromFormat('H\h i\m s\s', "17:00");
+$beginEvening = DateTime::createFromFormat('H\h i\m s\s', "13h 00m 00s");
+$endEvening = DateTime::createFromFormat('H\h i\m s\s', "17h 00m 00s");
 //Night
-$beginNight = DateTime::createFromFormat('H\h i\m s\s', "18:00");
-$endNight = DateTime::createFromFormat('H\h i\m s\s', "23:00");
+$beginNight = DateTime::createFromFormat('H\h i\m s\s', "18h 00m 00s");
+$endNight = DateTime::createFromFormat('H\h i\m s\s', "23h 00m 00s");
 if ($currentTime >= $beginMorning && $currentTime <= $endMorning)
 {
 //Morning
@@ -348,10 +348,6 @@ WHERE
         AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
 
 //dd($choosenRecom[0]->recommendation_Id);
-
-dd($timeOfDay);
-
-
 DB::table('userrecommendation')->insert(
     ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
 );
