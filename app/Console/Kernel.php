@@ -32,8 +32,8 @@ class Kernel extends ConsoleKernel
     {   //here you assign the commands to be executed at wich schedule [*_*]
     
       //<-------------Schedule for recommendations----------------------------------->
-       $schedule->command('recommendation:setter')->dailyAt('08:00');
-       $schedule->command('recommendation:setter')->dailyAt('11:00');
+       $schedule->command('recommendation:setter')->dailyAt('8');
+       $schedule->command('recommendation:setter')->dailyAt('11');
        $schedule->command('recommendation:setter')->dailyAt('13:00');
        //$schedule->command('recommendation:setter')->dailyAt('14:31');//for test
        $schedule->command('recommendation:setter')->dailyAt('18:00');
