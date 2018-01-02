@@ -346,7 +346,7 @@ WHERE
         WHERE
             fk_user_Id = ?)
         AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
-dd($currentTime);
+dd($timeOfDay);
 //dd($choosenRecom[0]->recommendation_Id);
 DB::table('userrecommendation')->insert(
     ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
