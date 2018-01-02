@@ -279,7 +279,6 @@ if (count($users))
 foreach ($users as $usuarios) 
 {
 $currentDate = date('Y-m-d');
-$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
 $userid = $usuarios->user_Id;
 $userDeviceToken = $usuarios->devicetoken;
 $timesAtDay = $usuarios->timesAtDay;
@@ -310,7 +309,7 @@ if($recomReady == 0)
 $timeOfDay =0;
 //date("h:i:sa")
 //Current server time
-
+$currentTime = DateTime::createFromFormat('H:i a',date("h:i:sa"));
 //Morning
 $beginMorning = DateTime::createFromFormat('H:i a', "8:00 am");
 $endMorning = DateTime::createFromFormat('H:i a', "12:59 pm");
@@ -350,7 +349,7 @@ WHERE
 
 //dd($choosenRecom[0]->recommendation_Id);
 
-return $currentTime;
+dd($currentTime);
 
 
 DB::table('userrecommendation')->insert(
