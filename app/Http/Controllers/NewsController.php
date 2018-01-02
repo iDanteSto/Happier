@@ -25,17 +25,14 @@ $news = DB::table('news')
 ->get();
 if (count($news)) 
 {
-$author = DB::table('users')
-->where('user_Id', '=',$news[0]->fk_user_Id)
-->get();
-
+$author = "Admin";
 // in case we only need the news info without author    return $news
 
 
 //----------protect-----------------
 
 return response()->json(array(
-'Autor'=>$author[0]->nickname , 
+'Autor'=>$author, 
 'title' => $news[0]->title , 
 'content' => $news[0]->content ,
 'image' => $news[0]->image ,
