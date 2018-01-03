@@ -22,7 +22,7 @@
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Edit Recommendation</div>
+                <div class="panel-heading">Editar Recomendaciones</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('recommendation_update') }}" enctype="multipart/form-data">
@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <input type="hidden" name="recommendation_Id" value="{{$recommendationInfo[0]->recommendation_Id}}">
 
-                            <label for="name" class="col-md-4 control-label">Name</label>
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="{{$recommendationInfo[0]->name}}" required autofocus>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="Description" class="col-md-4 control-label">Description</label>
+                            <label for="Description" class="col-md-4 control-label">Descripcion</label>
 
                             <div class="col-md-6">
                                 <input id="description" type="text" class="form-control" name="description" value="{{$recommendationInfo[0]->description}}" required autofocus>
@@ -52,7 +52,7 @@
                         
 
                         <div class="form-group">
-                            <label for="Category" class="col-md-4 control-label">Category</label>
+                            <label for="Category" class="col-md-4 control-label">Categoria</label>
 <?php $currentCategName = DB::table('category')->select('description')->where('category_Id', $recommendationInfo[0]->fk_category_Id)->get(); ?>
                             <div class="col-md-6">
                              
@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Update Recommendation
+                                    Actualizar Recomendacion
                                 </button>
                                 
                             </div>

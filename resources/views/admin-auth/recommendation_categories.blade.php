@@ -48,27 +48,27 @@ tr:nth-child(even) {
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Show</div>
+                <div class="panel-heading"></div>
 
                 <div class="panel-body" align="left">
                    
                         
 <table>                        
-                        <div class="col-md-5">
-                            <label for="name" class="">Name</label>
+                       
+                           
 
                          <br>
     <tr>
         <th>ID</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th></th>
-        <th>Commands</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Comandos</th>
+        <th>Comandos</th>
     </tr>  
-                        </div>
+                        
 
                         <div class="col-md-5">
-                            <label for="password-confirm" class="">Description</label>
+                         
 @foreach($availableCategories as $categs)
 <?php 
     $disponible = true; 
@@ -118,13 +118,13 @@ tr:nth-child(even) {
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Avatar Creator</div>
+                <div class="panel-heading">Crear Avatar</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('categ_create') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="Description" class="col-md-4 control-label">Description</label>
+                            <label for="Description" class="col-md-4 control-label">Descripcion</label>
 
                             <div class="col-md-6">
                                 <input id="description" type="text" class="form-control" name="description" required autofocus>
@@ -134,7 +134,7 @@ tr:nth-child(even) {
                         </div>
 
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Image</label>
+                            <label for="password" class="col-md-4 control-label">Imagen</label>
 
                             <div class="col-md-6">
                                <input type="file" name="file" id="file" multiple>
@@ -144,7 +144,7 @@ tr:nth-child(even) {
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Upload Category
+                                    Crear Categoria
                                 </button>
                                 
                             </div>
