@@ -135,6 +135,9 @@ Route::get('recommendation_edit/{id}','AdminAuth\RecommendationContent@EditRecom
 Route::post('recommendation_update','AdminAuth\RecommendationContent@UpdateRecommendation')->name('recommendation_update'); 
 ///News routes--------------------------------------------------------------------------------------------------------------
 Route::get('news','AdminAuth\NewsContent@ShowNews')->name('news'); 
+
+Route::post('news_create','AdminAuth\NewsContent@CreateNews')->name('news_create');  
+
 //------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -184,7 +184,7 @@ if (count($allRecoms))
 return $allRecoms;
 }else
 {
-return response()->json(['error'=> 'There was an error']);
+return response()->json(['error'=> 'No tienes historial']);
 }
 }
 
@@ -217,7 +217,7 @@ if (count($allRecomsGlobal))
 return $allRecomsGlobal;
 }else
 {
-return response()->json(['error'=> 'There was an error']);
+return response()->json(['error'=> 'No tienes historial']);
 }
 }
 

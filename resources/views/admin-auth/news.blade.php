@@ -43,55 +43,109 @@ tr:nth-child(even) {
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-
+<form class="form-edit" method="GET" action="{{ url('categ_edit') }}">
 <div class="container">
-    <div class="fixposition2">
+    <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">News page</div>
+                <div class="panel-heading"></div>
 
-<form class="form-horizontal" method="POST" action="{{ url('avatar_categ_register') }}">
-                <div class="panel-body">
+                <div class="panel-body" align="left">
                    
                         
-                        
-                        <div class="col-md-5">
-                            <label for="name" class="col-md-4 control-label">Name</label>
+<table>                        
+                       
+                           
 
-                            <div class="">
-                                <input id="name" type="text" class="form-horizontal" name="name" value="" required >
-
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        
-
+                         <br>
+    <tr>
+        <th>ID</th>
+        <th>Titulo</th>
+        <th>Contenido</th>
+        <th>Imagen</th>
+        <th>Status</th>
+        <th>Fecha de creacion</th>
+        <th>Comandos</th>
+        <th>Comandos</th>
+    </tr>  
                         
 
-                        <div class="col-md-5">
-                            <label for="description" class="col-md-4 control-label">Description</label>
+                        
+                         
+@foreach($availableNews as $item)
 
-                            <div class="">
-                                <input id="description" type="text" class="form-horizontal" name="description" required>
-                            </div>
-                        </div>
+        <tr>
+            <td>{{$item->news_Id}}</td> <input type="hidden" name="Id" value="{{$item->news_Id}}">
+            <td>{{$item->title}}</td>
+            <td>{{$item->content}}</td>
+            <td><img src="{{$item->image}}" alt="img" width="100" height="100"></td>
+            <td>{{$item->status}}</td>
+            <td>{{$item->date_created}}</td>
+            <td><a class="button Edit" name="{{$item->news_Id}}" >Edit</a></td>
+            <td><a class="button Delete" name="{{$item->news_Id}}" >Delete</a></td>
+        </tr>
+   
+@endforeach
 
-                        <div class="col-md-1">
+
                             
-                                <button type="submit" class="btn btn-primary" >
-                                
-                                    Submit
+                       
+</table>
+                        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+
+<div class="">
+    <div class="">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Crear Noticia</div>
+
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{ url('categ_create') }}" enctype="multipart/form-data">
+                        {{ csrf_field() }}
+                        <div class="form-group">
+                            <label for="title" class="col-md-4 control-label">Titulo</label>
+
+                            <div class="col-md-6">
+                                <input id="title" type="text" class="form-control" name="title" required autofocus>
+
+                               
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="content" class="col-md-4 control-label">Contenido</label>
+
+                            <div class="col-md-6">
+                                <input id="content" type="text" class="form-control" name="title" required autofocus>
+
+                               
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password" class="col-md-4 control-label">Imagen</label>
+
+                            <div class="col-md-6">
+                               <input type="file" name="file" id="file" multiple>
+                              
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Crear Categoria
                                 </button>
                                 
-                         
+                            </div>
                         </div>
-</div> 
-</form>                   
+                    </form>
                 </div>
             </div>
         </div>
@@ -103,14 +157,14 @@ tr:nth-child(even) {
 $(document).on("click", ".Edit", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/avatar_categ_edit/"+$(this).attr('name');
+    window.location.href = "/categ_edit/"+$(this).attr('name');
  });
 
 
 $(document).on("click", ".Delete", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
+    window.location.href = "/categ_delete/"+$(this).attr('name');
  });
 
 </script>
