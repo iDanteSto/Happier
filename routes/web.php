@@ -137,7 +137,9 @@ Route::post('recommendation_update','AdminAuth\RecommendationContent@UpdateRecom
 Route::get('news','AdminAuth\NewsContent@ShowNews')->name('news'); 
 
 Route::post('news_create','AdminAuth\NewsContent@CreateNews')->name('news_create');  
-
+Route::get('news_delete/{id}','AdminAuth\NewsContent@DeleteNews')->name('news_delete'); 
+Route::get('news_edit/{id}','AdminAuth\NewsContent@EditNews')->name('news_edit');  
+Route::post('news_update','AdminAuth\NewsContent@UpdateNews')->name('news_update'); 
 //------------------------------------------------------------------------------------------------------------------------------
 
 

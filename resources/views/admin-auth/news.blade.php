@@ -43,7 +43,7 @@ tr:nth-child(even) {
 </style>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-<form class="form-edit" method="GET" action="{{ url('categ_edit') }}">
+<form class="form-edit" method="GET" action="{{ url('news_edit') }}">
 <div class="container">
     <div class="">
         <div class="col-md-8 col-md-offset-2">
@@ -107,7 +107,7 @@ tr:nth-child(even) {
                 <div class="panel-heading">Crear Noticia</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ url('categ_create') }}" enctype="multipart/form-data">
+                    <form class="form-horizontal" method="POST" action="{{ url('news_create') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
                             <label for="title" class="col-md-4 control-label">Titulo</label>
@@ -123,7 +123,7 @@ tr:nth-child(even) {
                             <label for="content" class="col-md-4 control-label">Contenido</label>
 
                             <div class="col-md-6">
-                                <input id="content" type="text" class="form-control" name="title" required autofocus>
+                                <input id="content" type="text" class="form-control" name="content" required autofocus>
 
                                
                             </div>
@@ -140,7 +140,7 @@ tr:nth-child(even) {
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Crear Categoria
+                                    Crear Noticia
                                 </button>
                                 
                             </div>
@@ -157,14 +157,14 @@ tr:nth-child(even) {
 $(document).on("click", ".Edit", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/categ_edit/"+$(this).attr('name');
+    window.location.href = "/news_edit/"+$(this).attr('name');
  });
 
 
 $(document).on("click", ".Delete", function() {
 //   console.log("inside";   <-- here it is
     console.log($(this).attr('name'));
-    window.location.href = "/categ_delete/"+$(this).attr('name');
+    window.location.href = "/news_delete/"+$(this).attr('name');
  });
 
 </script>
