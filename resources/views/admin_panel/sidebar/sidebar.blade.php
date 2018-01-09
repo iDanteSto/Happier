@@ -16,9 +16,7 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
-              <li><a class="" href="{!!url('admin_register')!!}">Register</a></li>
-              <li><a class="" href="form_validation.html">Edit</a></li>
-              <li><a class="" href="form_validation.html">Delete</a></li>
+              <li><a class="" href="{!!url('adminspage')!!}">Administrators</a></li>
             </ul>
           </li>
           <li class="sub-menu">

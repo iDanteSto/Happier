@@ -10,8 +10,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\AdminUser;
 use Hash;
+use DB;
+use View;
 
-class RegisterController extends Controller
+class AdminController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -57,6 +59,19 @@ class RegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
     }
+public function showRegistrationForm()
+    {
+         if(Auth::guard('admin_user')->user())
+            {
+                $availableAdmins ['availableAdmins'] = DB::table('admin_users')->get();  
+                //$currentUser = Auth::guard('admin_user')->user();
+               
+                return View::make('admin-auth.adminspage')->with($availableAdmins);
+                //->with($currentUser)
+            }
+            return redirect('/dashboard');
+        //return view('auth.register');
+    }
 
     /**
      * Create a new user instance after a valid registration.
@@ -64,28 +79,9 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+public function create(Request $request)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
-     public function showRegistrationForm()
-    {
-         if(Auth::guard('admin_user')->user())
-            {
-                return view('admin-auth.register');
-            }
-            return redirect('/dashboard');
-        //return view('auth.register');
-    }
-
-    public function register(Request $request)
-    {
-
+    
         /*
         $this->validator($request->all())->validate();
 
@@ -105,6 +101,16 @@ $AdminUser = new AdminUser([
 ]);
 $AdminUser->save();//if success will throw a succes message      
 
-return redirect('/admin_register');           
-    }
+return redirect('/adminspage');      
+}
+
+
+public function DeleteAdmin($id)
+{
+DB::table('admin_users')->where('id', '=', $id)->delete();
+return redirect('/adminspage');   
+}
+
+     
+    
 }

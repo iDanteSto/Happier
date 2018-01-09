@@ -97,8 +97,10 @@ Route::get('admin_password/reset/{token}','AdminAuth\ResetPasswordController@sho
 Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
 
 //Admins------------------------------------------------------------------------------------------------------------------------
-Route::get('admin_register','AdminAuth\RegisterController@showRegistrationForm')->name('admin_register');        
-Route::post('admin_register','AdminAuth\RegisterController@register')->name('admin_register');       
+Route::get('adminspage','AdminAuth\AdminController@showRegistrationForm')->name('adminspage');        
+Route::post('admin_create','AdminAuth\AdminController@createAdmin')->name('admin_create');  
+Route::get('admin_delete/{id}','AdminAuth\AdminController@DeleteAdmin')->name('admin_delete');   
+     
 //------------------------------------------------------------------------------------------------------------------------------
 
 
