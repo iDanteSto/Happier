@@ -429,23 +429,7 @@ $person = User::firstOrCreate(
 $userId = $person->id;
 if($userId == null){$userId = $person->user_Id;}
 } //end of if
-if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);
-//test area-----------------------------------------------
-//Asignate every category available to the user as a standard
-$categsIds = DB::select('SELECT distinct(category_Id) FROM category;');
-foreach ($categsIds as $categ) {
-DB::table('preferred_categories')->insert(
-['fk_user_Id' => $person->user_Id, 'fk_category_Id' => $categ->category_Id]
-);
-}
-//assignate standard avatars-----------------------------------------------------------------------  
-$avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
-foreach ($avatarIds as $avatars) {
-DB::table('avatar_permission')->insert(
-['fk_user_Id' => $person->user_Id, 'fk_avatar_Id' => $avatars->avatar_Id]
-);
-//test area--------------------------------------
-}
+if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
 //create social provider dependancys
 DB::table('social_provider')->insert(
 ['fk_user_Id' => $userId,
