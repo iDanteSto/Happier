@@ -449,6 +449,12 @@ DB::table('social_provider')->insert(
 //'provider_Id' => $providerId,
 'provider' => $provider]
 );
+//update avatar
+User::where('user_Id', '=', $userId)
+->update([
+'imagelink' => "http://res.cloudinary.com/storagefeed/image/upload/v1510772763/Avatars/ico2.png"
+]);
+//
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
 return response()->json(array('token'=>$userd->remember_token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 }
