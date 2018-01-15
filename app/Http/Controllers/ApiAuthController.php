@@ -427,16 +427,7 @@ $person = User::firstOrCreate(
 $userId = $person->id;
 if($userId == null){$userId = $person->user_Id;}
 } //end of if
-if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);
-//assignate standard avatars-----------------------------------------------------------------------  
-$avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
-foreach ($avatarIds as $avatars) {
-DB::table('avatar_permission')->insert(
-['fk_user_Id' => $person->user_Id, 'fk_avatar_Id' => $avatars->avatar_Id]
-);
-}
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-}
+if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
 //create social provider dependancys
 DB::table('social_provider')->insert(
 ['fk_user_Id' => $userId,
