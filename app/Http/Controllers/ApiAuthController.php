@@ -79,7 +79,7 @@ $userid = $user->user_Id;//place id on a variable to use it
 //user creation dependancys to protect the system as if it was registered and confirmed@@@@@@@@@@@@@@@@@@@@@@@@
 User::where(['email'=>$request->email])->update(['status' =>'2','verifyToken'=>NULL]);
 
-
+/*
 DB::table('userfrequency')->insert(
 ['fk_frequency_Id' => 3, 'fk_user_Id' => $userid]
 );
@@ -98,6 +98,7 @@ DB::table('avatar_permission')->insert(
 ['fk_user_Id' => $userid, 'fk_avatar_Id' => $avatars->avatar_Id]
 );
 }
+*/
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 /*
 DB::table('users')
