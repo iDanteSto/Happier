@@ -289,7 +289,7 @@ $recomReadyCollection = DB::table('userrecommendation')
 ->get(); 
 //place the number of recommendations of the user that he has not interacted with on a variable to use it                 
 $recomReady = $recomReadyCollection[0]->recomCount2;
-dd($recomReadyCollection[0]->recomCount2);
+
 //check if the user has a pending recommendation to interact with and if is eligible to get a new one
 if($recomReady == 0)
 {//the user is eligible to get a new recommendation
@@ -338,7 +338,7 @@ WHERE
             fk_user_Id = ?)
         AND recommendation.timeofday = ?  ORDER BY RAND() LIMIT 0,1', [$userid,$timeOfDay]);
 
-//dd($choosenRecom[0]->recommendation_Id);
+dd($choosenRecom[0]->recommendation_Id);
 DB::table('userrecommendation')->insert(
     ['fk_user_Id' => $userid, 'fk_recommendation_Id' => $choosenRecom[0]->recommendation_Id]
 );
