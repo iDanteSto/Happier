@@ -234,7 +234,7 @@ foreach ($avatarIds as $avatars) {
 DB::table('avatar_permission')->insert(
 ['fk_user_Id' => $user->user_Id, 'fk_avatar_Id' => $avatars->avatar_Id]
 );
-}
+								 }
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 /*
 //Asignate every category available to the user as a standard
@@ -427,7 +427,22 @@ $person = User::firstOrCreate(
 $userId = $person->id;
 if($userId == null){$userId = $person->user_Id;}
 } //end of if
-if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);}
+if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>'1']);
+
+DB::table('userfrequency')->insert(
+['fk_frequency_Id' => 3, 'fk_user_Id' => $userId]
+);
+//assignate standard avatars-----------------------------------------------------------------------  
+$avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
+foreach ($avatarIds as $avatars) {
+DB::table('avatar_permission')->insert(
+['fk_user_Id' => $userId, 'fk_avatar_Id' => $avatars->avatar_Id]
+);
+								 }
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+						}
 //create social provider dependancys
 DB::table('social_provider')->insert(
 ['fk_user_Id' => $userId,
