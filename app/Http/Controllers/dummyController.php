@@ -295,7 +295,7 @@ if($recomReady == 0)
 {//the user is eligible to get a new recommendation
 //*****'The user is ready to receive a recommendation *****
 //--***********************************recommendation process***************------------------------------------------------
-$timeOfDay =3;
+$timeOfDay =0;
 //date("h:i:sa")
 //Current server time
 $currentTime = DateTime::createFromFormat('H\h i\m s\s',date('H\h i\m s\s'));
