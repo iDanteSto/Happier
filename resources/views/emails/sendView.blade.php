@@ -12,31 +12,31 @@
     /* FONTS */
     @media screen {
         @font-face {
-          font-family: 'Lato';
+          font-family: 'FredokaOne-Regular';
           font-style: normal;
           font-weight: 400;
-          src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v11/qIIYRU-oROkIk8vfvxw6QvesZW2xOQ-xsNqO47m55DA.woff) format('woff');
+          src: url('{{ public_path('fonts/FredokaOne-Regular.tff') }}');
         }
         
         @font-face {
-          font-family: 'Lato';
+          font-family: 'FredokaOne-Regular';
           font-style: normal;
           font-weight: 700;
-          src: local('Lato Bold'), local('Lato-Bold'), url(https://fonts.gstatic.com/s/lato/v11/qdgUG4U09HnJwhYI-uK18wLUuEpTyoUstqEm5AMlJo4.woff) format('woff');
+          src: url('{{ public_path('fonts/FredokaOne-Regular.tff') }}');
         }
         
         @font-face {
-          font-family: 'Lato';
+          font-family: 'FredokaOne-Regular';
           font-style: italic;
           font-weight: 400;
-          src: local('Lato Italic'), local('Lato-Italic'), url(https://fonts.gstatic.com/s/lato/v11/RYyZNoeFgb0l7W3Vu1aSWOvvDin1pK8aKteLpeZ5c0A.woff) format('woff');
+          src: url('{{ public_path('fonts/FredokaOne-Regular.tff') }}');
         }
         
         @font-face {
-          font-family: 'Lato';
+          font-family: 'FredokaOne-Regular';
           font-style: italic;
           font-weight: 700;
-          src: local('Lato Bold Italic'), local('Lato-BoldItalic'), url(https://fonts.gstatic.com/s/lato/v11/HkF_qI1x_noxlxhrhMQYELO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+          src: url('{{ public_path('fonts/FredokaOne-Regular.tff') }}');
         }
     }
     
