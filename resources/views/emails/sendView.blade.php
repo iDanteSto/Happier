@@ -49,7 +49,10 @@
     /* RESET STYLES */
     img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
     table { border-collapse: collapse !important; }
-    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+     body {
+        font-family: 'Fredoka One', cursive;
+        font-size: 48px;
+      }
 
     /* iOS BLUE LINKS */
     a[x-apple-data-detectors] {
