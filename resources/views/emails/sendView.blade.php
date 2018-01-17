@@ -8,13 +8,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 <style type="text/css">
     /* FONTS */
     @media screen {
        
         
         @font-face {
-          font-family: 'FredokaOne-Regular';
+          font-family: 'Fredoka One', cursive;
           font-style: normal;
           src: url('public/fonts/FredokaOne-Regular.tff'),
           url('public/fonts/FredokaOne-Regular.tff') format('opentype');
@@ -32,7 +33,10 @@
     /* RESET STYLES */
     img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
     table { border-collapse: collapse !important; }
-    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+    body {
+        font-family: 'Fredoka One', cursive;
+        font-size: 40px;
+      }
 
     /* iOS BLUE LINKS */
     a[x-apple-data-detectors] {
