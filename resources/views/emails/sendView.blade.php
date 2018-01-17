@@ -16,7 +16,8 @@
         @font-face {
           font-family: 'FredokaOne-Regular';
           font-style: normal;
-          src: url('{{ public_path('FredokaOne-Regular.tff') }}');
+          src: url('public/fonts/FredokaOne-Regular.tff'),
+          url('public/fonts/FredokaOne-Regular.tff') format('opentype');
         }
        
         
