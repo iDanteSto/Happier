@@ -11,33 +11,16 @@
 <style type="text/css">
     /* FONTS */
     @media screen {
-        @font-face {
-          font-family: 'FredokaOne-Regular';
-          font-style: normal;
-          font-weight: 400;
-          src: url('{{ public_path('../public/fonts/FredokaOne-Regular.tff') }}');
-        }
+       
         
         @font-face {
           font-family: 'FredokaOne-Regular';
           font-style: normal;
-          font-weight: 700;
-          src: url('{{ public_path('../public/fonts/FredokaOne-Regular.tff') }}');
+          src: url('{{ public_path('FredokaOne-Regular.tff') }}');
         }
+       
         
-        @font-face {
-          font-family: 'FredokaOne-Regular';
-          font-style: italic;
-          font-weight: 400;
-          src: url('{{ public_path('../public/fonts/FredokaOne-Regular.tff') }}');
-        }
-        
-        @font-face {
-          font-family: 'FredokaOne-Regular';
-          font-style: italic;
-          font-weight: 700;
-          src: url('{{ public_path('../public/fonts/FredokaOne-Regular.tff') }}');
-        }
+      
     }
     
     /* CLIENT-SPECIFIC STYLES */
