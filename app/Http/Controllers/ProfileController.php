@@ -221,7 +221,32 @@ return response()->json(['error'=> 'No tienes historial']);
 }
 }
 
-
+/*
+|--------------------------------------------------------------------------
+| Nickname Changer
+|--------------------------------------------------------------------------
+|
+| changes the nickname of the user
+|
+*/
+public function ChangeNickname(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;
+$nickname = $request->nickname;
+$reqv = Validator::make($request->all(), [
+'nickname' => 'required|unique:users|max:18|alpha_num|min:6',
+]);
+//if fails to succes one of the rules , display errors
+if ($reqv->fails())
+{
+return $reqv->errors();
+}//if everything its fine
+DB::table('users')
+->where('user_Id', $userid)
+->update(array('nickname' => $nickname));
+return "Se cambio el nombre con Exito!";
+}
 
 
 

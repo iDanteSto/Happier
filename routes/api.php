@@ -58,6 +58,10 @@ Route::get('/user/userCategsAndFrequencyLoader', 'configurationController@userCa
 Route::post('/user/userCategsAndFrequencySetter', 'configurationController@userCategsAndFrequencySetter');//Setter--*	
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
+//Profile.Nickname------------------------------------------------------------------------------------------------------------------------------------!									
+Route::patch('/user/ChangeNickname', 'ProfileController@ChangeNickname');//Setter--	*														              |
+//----------------------------------------------------------------------------------------------------------------------------------------------------|
+
 //Profile.Avatar--------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/avatarLoader', 'ProfileController@avatarLoader');//Loader--not gonna be used 													      |
 Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--	*														              |
