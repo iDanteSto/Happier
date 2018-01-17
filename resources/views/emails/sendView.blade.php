@@ -12,17 +12,33 @@
 <style type="text/css">
     /* FONTS */
     @media screen {
-       
+        @font-face {
+          font-family: 'Fredoka One', cursive;
+          font-style: normal;
+          font-weight: 400;
+          
+        }
         
         @font-face {
           font-family: 'Fredoka One', cursive;
           font-style: normal;
-          src: url('public/fonts/FredokaOne-Regular.tff'),
-          url('public/fonts/FredokaOne-Regular.tff') format('opentype');
+          font-weight: 700;
+         
         }
-       
         
-      
+        @font-face {
+         font-family: 'Fredoka One', cursive;
+          font-style: italic;
+          font-weight: 400;
+          
+        }
+        
+        @font-face {
+          font-family: 'Fredoka One', cursive;
+          font-style: italic;
+          font-weight: 700;
+          
+        }
     }
     
     /* CLIENT-SPECIFIC STYLES */
@@ -33,10 +49,7 @@
     /* RESET STYLES */
     img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
     table { border-collapse: collapse !important; }
-    body {
-        font-family: 'Fredoka One', cursive;
-        font-size: 40px;
-      }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
 
     /* iOS BLUE LINKS */
     a[x-apple-data-detectors] {
@@ -63,7 +76,7 @@
 <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
 
 <!-- HIDDEN PREHEADER TEXT -->
-<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Fredoka One', sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
     Bienvenida.
 </div>
 
@@ -80,7 +93,7 @@
                 <tr>
                     <td align="center" valign="top" style="padding: 40px 10px 40px 10px;">
                         <a href="http://litmus.com" target="_blank">
-                            <img alt="Logo" src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_150/v1504031885/logov1.png" style="display: block; width: 150px; max-width: 150px; min-width: 150px; color: #ffffff; font-size: 18px;" border="0">
+                            <img alt="Logo" src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_150/v1504031885/logov1.png" style="display: block; width: 150px; max-width: 150px; min-width: 150px; font-family: 'Lato', Helvetica, Arial, sans-serif; color: #ffffff; font-size: 18px;" border="0">
                         </a>
                     </td>
                 </tr>
@@ -102,7 +115,7 @@
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                 <tr>
-                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111;  font-size: 25px; font-weight: 900; letter-spacing: 4px; line-height: 48px;">
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Fredoka One', sans-serif; font-size: 25px; font-weight: 900; letter-spacing: 4px; line-height: 48px;">
                       <h1 style="font-size: 20px; font-weight: 900; margin: 0;">Solo un paso mas para cambiar tu vida de manera positiva!</h1>
                     </td>
                 </tr>
@@ -125,7 +138,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
               <!-- COPY -->
               <tr>
-                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666;  font-size: 18px; font-weight: 400; line-height: 25px;" >
+                <td bgcolor="#ffffff" align="left" style="padding: 20px 30px 20px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
                   <p style="margin: 0;">Para activar tu cuenta y empezar a disfrutar de los beneficios de ser miembro de la comunidad , presiona el boton </p>
                 </td>
               </tr>
@@ -137,7 +150,7 @@
                       <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 20px 30px;">
                         <table border="0" cellspacing="0" cellpadding="0">
                           <tr>
-                              <td align="center" style="border-radius: 3px;" bgcolor="#ffee39"><a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}" target="_blank" style="font-size: 20px; color: #000000; text-decoration: none; color: #000000; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Verificar Email</a></td>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#ffee39"><a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #000000; text-decoration: none; color: #000000; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Verificar Email</a></td>
                           </tr>
                         </table>
                       </td>
@@ -147,7 +160,7 @@
               </tr>
               <!-- COPY -->
               <tr>
-                <td bgcolor="#ffffff" align="left" style="padding: 5px 30px 30px 30px; color: #666666;  font-size: 18px; font-weight: normal; line-height: 25px;" >
+                <td bgcolor="#ffffff" align="left" style="padding: 5px 30px 30px 30px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: normal; line-height: 25px;" >
                   <p style="margin: 0;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas volutpat pulvinar magna sit amet semper.</p>
                 </td>
               </tr>
@@ -157,7 +170,7 @@
               
               <!-- COPY -->
               <tr>
-                <td bgcolor="#ffffff" align="left" style="padding: 15px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-size: 18px; font-weight: 400; line-height: 25px;" >
+                <td bgcolor="#ffffff" align="left" style="padding: 15px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;" >
                   <p style="margin: 0;">Saludos,<br>Equipo Happier</p>
                 </td>
               </tr>
@@ -200,7 +213,7 @@
 <![endif]-->
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                     <tr>
-                        <td bgcolor="#ffffff" align="left" style="padding: 30px 30px 30px 30px; color: #666666; font-size: 14px; font-weight: 900; line-height: 18px;" >
+                        <td bgcolor="#ffffff" align="left" style="padding: 30px 30px 30px 30px; color: #666666; font-family: Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 900; line-height: 18px;" >
                             <p style="margin: 0;">Ciqno Studio   <br>Direccion : XXXXXXX  <br>Telefono : xxxxxx<a href="" style="color: #5db3ec;"></a></p>
                         </td>
                     </tr>
