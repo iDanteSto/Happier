@@ -11,36 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet">
 <style type="text/css">
     /* FONTS */
-    @media screen {
-        @font-face {
-          font-family: 'Fredoka One', cursive;
-          font-style: normal;
-          font-weight: 400;
-          
-        }
-        
-        @font-face {
-          font-family: 'Fredoka One', cursive;
-          font-style: normal;
-          font-weight: 700;
-         
-        }
-        
-        @font-face {
-         font-family: 'Fredoka One', cursive;
-          font-style: normal;
-          font-weight: 400;
-          
-        }
-        
-        @font-face {
-          font-family: 'Fredoka One', cursive;
-          font-style: normal;
-          font-weight: 700;
-          
-        }
-    }
-    
+   
     /* CLIENT-SPECIFIC STYLES */
   
 
@@ -52,25 +23,12 @@
       }
 
     /* iOS BLUE LINKS */
-    a[x-apple-data-detectors] {
-        color: inherit !important;
-        text-decoration: none !important;
-        font-size: inherit !important;
-        font-family: inherit !important;
-        font-weight: inherit !important;
-        line-height: inherit !important;
-    }
+   
     
     /* MOBILE STYLES */
-    @media screen and (max-width:600px){
-        h1 {
-            font-size: 32px !important;
-            line-height: 32px !important;
-        }
-    }
+   
 
     /* ANDROID CENTER FIX */
-    div[style*="margin: 16px 0;"] { margin: 0 !important; }
 </style>
 </head>
 <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
@@ -115,8 +73,8 @@
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                 <tr>
-                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111; font-family: 'Fredoka One', sans-serif; font-size: 25px; font-weight: 900; letter-spacing: 4px; line-height: 48px;">
-                      <h1 style="font-size: 20px; font-weight: 900; margin: 0;">Solo un paso mas para cambiar tu vida de manera positiva!</h1>
+                    <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111;letter-spacing: 4px; line-height: 48px;">
+                      <h1 style=" margin: 0;">Solo un paso mas para cambiar tu vida de manera positiva!</h1>
                     </td>
                 </tr>
             </table>
