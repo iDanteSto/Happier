@@ -28,29 +28,26 @@
         
         @font-face {
          font-family: 'Fredoka One', cursive;
-          font-style: italic;
+          font-style: normal;
           font-weight: 400;
           
         }
         
         @font-face {
           font-family: 'Fredoka One', cursive;
-          font-style: italic;
+          font-style: normal;
           font-weight: 700;
           
         }
     }
     
     /* CLIENT-SPECIFIC STYLES */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
-    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
-    img { -ms-interpolation-mode: bicubic; }
+  
 
     /* RESET STYLES */
-    img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
-    table { border-collapse: collapse !important; }
+    
      body {
-        font-family: 'Fredoka One', cursive;
+        font-family: 'Fredoka One', normal;
         font-size: 48px;
       }
 
