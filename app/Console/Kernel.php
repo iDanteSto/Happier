@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
        Commands\deleteNotConfUsers::class,
        Commands\recommendationSetter::class,
        Commands\cleanDeleteUser::class,
+       Commands\cleanDeleteAllUsers::class,
        Commands\testingcommand::class,
        Commands\moodNotifier::class,
        Commands\recommendationCleaner::class,
