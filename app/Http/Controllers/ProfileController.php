@@ -167,6 +167,7 @@ fk_recommendation_Id,
 recommendation.name,
 recommendation.description,
 recommendation.image,
+recommendation.fk_category_Id,
 creation_date,
 status.description as status
 FROM
@@ -202,6 +203,7 @@ fk_recommendation_Id,
 recommendation.name,
 recommendation.description,
 recommendation.image,
+recommendation.fk_category_Id,
 creation_date,
 status.description as status
 FROM
