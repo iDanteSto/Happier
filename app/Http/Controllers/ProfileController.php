@@ -237,7 +237,7 @@ $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden i
 $userid = $user->user_Id;
 $displayname = $request->displayname;
 $reqv = Validator::make($request->all(), [
-'displayname' => 'required|max:18|alpha_num|min:6',
+'displayname' => 'required|max:25|min:6',
 ]);
 //if fails to succes one of the rules , display errors
 if ($reqv->fails())
