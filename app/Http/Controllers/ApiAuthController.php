@@ -141,7 +141,7 @@ DB::table('users')
 ->where('email', $request->email)
 ->update(['remember_token' => $token]);
 //echo 'Login succesful';
-return response()->json(array('token'=>$token,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
+return response()->json(array('token'=>$token,'displayname'=>$userd->displayname,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 }else
 {//error from if [2]
 return response()->json(['error'=> 'This email its not Confirmed , Please check your email']);
