@@ -459,7 +459,7 @@ User::where('user_Id', '=', $userId)
 ]);
 //
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
-return response()->json(array('token'=>$userd->remember_token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
+return response()->json(array('token'=>$userd->remember_token,'email'=>$userEmail,'displayname'=>$userd->displayname,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 }
 /*
 |--------------------------------------------------------------------------
@@ -498,7 +498,7 @@ DB::table('users')
 "remember_token" => $token,
 ));
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
-return response()->json(array('checkSPExistence'=>$check,'token'=>$token,'email'=>$userEmail,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
+return response()->json(array('checkSPExistence'=>$check,'token'=>$token,'email'=>$userEmail,'displayname'=>$userd->displayname,'nickname'=>$userd->nickname,'image'=>$userd->imagelink,'status'=>$userd->status));
 }else
 {
 $check = 0;
