@@ -235,7 +235,7 @@ public function ChangeDisplayName(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-$nickname = $request->displayname;
+$displayname = $request->displayname;
 $reqv = Validator::make($request->all(), [
 'displayname' => 'required|max:18|alpha_num|min:6',
 ]);
