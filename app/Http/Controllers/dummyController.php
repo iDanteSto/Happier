@@ -174,7 +174,6 @@ public function dummyFunction0(Request $request)
 //DB::table('userrecommendation')->where('fk_status_Id', '=', 2)->delete();
 //return 'Success cleaning all pending recommendations';
     $users = DB::table('users')->distinct()->get();
-dd($users);
 foreach ($users as $usuarios) 
 {
         DB::table('usermeditation')->where('fk_user_Id', '=', $usuarios->$user_Id)->delete();
