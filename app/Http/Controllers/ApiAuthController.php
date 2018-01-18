@@ -174,6 +174,7 @@ return $reqv->errors();
 }
 $user = new User([
 //fields to be taken from the post and placed on the DB
+'displayname' => $request->input('nickname'),
 'nickname' => $request->input('nickname'),
 'email' => $request->input('email'),
 'password' => Hash::make($request->input('password')),
@@ -422,6 +423,7 @@ return $reqv->errors();
 //create the user with given nickname
 $person = User::firstOrCreate(
 ['email'=> $userEmail,
+'displayname' => $nickname,
 'nickname'=> $nickname,
 "remember_token" => $token]
 );
