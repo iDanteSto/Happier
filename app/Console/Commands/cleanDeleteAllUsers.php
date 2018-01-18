@@ -40,7 +40,7 @@ class cleanDeleteAllUsers extends Command
     public function handle()
     {
         //
-$users = DB::table('users')->select('user_Id');
+$users = DB::table('users')->get();
 
 foreach ($users as $usuarios) 
 {
