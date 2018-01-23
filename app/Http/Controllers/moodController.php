@@ -120,6 +120,51 @@ else
 }         
 }
 /*
+|--------------------------------------------------------------------------
+| Mood Loader
+|--------------------------------------------------------------------------
+|
+| Loads  user last value of the mood in order to update the mood bar on the front end
+|
+*/
+public function moodAverageLoader(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;
+
+$weekAverages = DB::select
+(
+'SELECT 
+avg(mood) as Average 
+FROM usermood 
+WHERE created_at >    DATE_SUB(NOW(), INTERVAL 5 WEEK) and fk_user_Id = ?
+GROUP BY WEEK(created_at)',[$userid]
+);
+
+/*
+$weekAverages = DB::table('usermood')
+                     ->select(DB::raw('avg(mood) as Average'))
+                     ->where('created_at', '>', 'DATE_SUB(NOW(), INTERVAL 5 WEEK)')
+                     ->where('fk_user_Id', '=', 326)
+                     ->groupBy('WEEK(created_at)')
+                     ->orderBy('created_at')
+                     ->get();
+*/
+
+
+
+if($weekAverages)
+{
+//if it exist redirect to the app route with the parameters
+return $weekAverages;
+}
+else
+    {
+        return "No hay informacion";
+    } 
+  
+}
+/*
 
 |--------------------------------------------------------------------------
 | Mood Completer

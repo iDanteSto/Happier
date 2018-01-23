@@ -78,6 +78,7 @@ Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHist
 Route::get('/user/moodLoader', 'moodController@moodLoader');//																	  |
 Route::get('/user/moodCheckerNotifier', 'moodController@moodCheckerNotifier');//
 Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//	
+Route::get('/user/moodAverageLoader', 'moodController@moodAverageLoader');//		
 //dummy test
 Route::get('/user/dummyFunctionMoodnotif', 'dummyController@dummyFunctionMoodnotif');//Dummy test notifs	
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
