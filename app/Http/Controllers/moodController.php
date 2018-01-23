@@ -137,8 +137,9 @@ $weekAverages = DB::select
 'SELECT 
 avg(mood) as Average 
 FROM usermood 
-WHERE created_at >    DATE_SUB(NOW(), INTERVAL 5 WEEK) and fk_user_Id = ?
-GROUP BY WEEK(created_at)',[$userid]
+WHERE created_at >    DATE_SUB(NOW(), INTERVAL 5 WEEK) and fk_user_Id = 326
+GROUP BY WEEK(created_at)
+ORDER BY created_at desc limit 8',[$userid]
 );
 
 /*
