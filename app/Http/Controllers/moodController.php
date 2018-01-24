@@ -157,7 +157,12 @@ $weekAverages = DB::table('usermood')
 if($weekAverages)
 {
 //if it exist redirect to the app route with the parameters
-return $weekAverages;
+
+//reverse for fitting purposes
+$reversed = array_reverse($weekAverages);
+
+
+return $reversed;
 }
 else
     {
