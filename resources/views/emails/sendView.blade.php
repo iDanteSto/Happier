@@ -12,7 +12,7 @@
 <style type="text/css">
     /* FONTS */
     @media screen {
-      
+
     font-family: 'Fredoka One';
 
     }
@@ -95,7 +95,7 @@ font-family: 'Fredoka One';
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111;letter-spacing: 4px; line-height: 48px;">
-                      <h1 >Solo un paso mas para cambiar tu vida de manera positiva!</h1>
+                      <h1 >Solo un paso mas para cambiar tu vida de manera positivaa!</h1>
                     </td>
                 </tr>
             </table>
