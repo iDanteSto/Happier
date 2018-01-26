@@ -8,15 +8,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-
+<link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet"> 
 <style type="text/css">
     /* FONTS */
     @media screen {
-    @font-face {
-    font-family: Fredoka One;
-    src: url('/fonts/FredokaOne-Regular.tff');
-}
+    
+
     }
+body
+{
+font-family: 'Fredoka One';
+}
     
     /* CLIENT-SPECIFIC STYLES */
     body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
