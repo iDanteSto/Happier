@@ -12,7 +12,8 @@
 <style type="text/css">
     /* FONTS */
     @media screen {
-    
+      
+    font-family: 'Fredoka One';
 
     }
 body
