@@ -21,14 +21,13 @@ font-family: 'Fredoka One';
 }
     
     /* CLIENT-SPECIFIC STYLES */
-    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
     table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
     img { -ms-interpolation-mode: bicubic; }
 
     /* RESET STYLES */
     img { border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
     table { border-collapse: collapse !important; }
-    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; }
+  
 
     /* iOS BLUE LINKS */
     a[x-apple-data-detectors] {
@@ -55,7 +54,7 @@ font-family: 'Fredoka One';
 <body style="background-color: #f4f4f4; margin: 0 !important; padding: 0 !important;">
 
 <!-- HIDDEN PREHEADER TEXT -->
-<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Lato', Helvetica, Arial, sans-serif; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
+<div style="display: none; font-size: 1px; color: #fefefe; line-height: 1px; font-family: 'Fredoka One'; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
     Bienvenida.
 </div>
 
@@ -95,7 +94,7 @@ font-family: 'Fredoka One';
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;" >
                 <tr>
                     <td bgcolor="#ffffff" align="center" valign="top" style="padding: 40px 20px 20px 20px; border-radius: 4px 4px 0px 0px; color: #111111;letter-spacing: 4px; line-height: 48px;">
-                      <h1 style="font-size: 20px; font-weight: 900; margin: 0;">Solo un paso mas para cambiar tu vida de manera positiva!</h1>
+                      <h1 >Solo un paso mas para cambiar tu vida de manera positiva!</h1>
                     </td>
                 </tr>
             </table>
