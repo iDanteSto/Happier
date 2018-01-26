@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/test', function () {
+    return view('test');
+});
 //Route::get('verifyEmailFirst', 'ApiAuthController@verifyEmailFirst')->name('verifyEmailFirst');
 Route::get('verify/{email}/{verifyToken}', 'ApiAuthController@sendEmailDone')->name('sendEmailDone');
 Route::get('recovery/{email}/{changeToken}', 'ApiAuthController@sendRecoveryEmail')->name('sendRecoveryEmail');
