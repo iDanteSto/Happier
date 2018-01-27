@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="{{ config('app.locale') }}">
+<html>
                                     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        
 
         <title>Happier Confirmation Email</title>
-
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <!-- links -->
 <link href="https://fonts.googleapis.com/css?family=Fredoka+One" rel="stylesheet"> 
 <!-- links -->
@@ -50,9 +50,10 @@ font-family: 'Fredoka One';
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
-  <td style="">
-    info
-  </td>
+  <td width="75%">
+ &reg; Someone, somewhere 2013<br/>
+ Unsubscribe to this newsletter instantly
+</td>
 </tr><!-- fifth segment -->
 </table>     
 
