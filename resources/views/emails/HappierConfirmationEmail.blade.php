@@ -14,19 +14,19 @@
 <style type="text/css">
 body
 {
-font-family: 'Fredoka One';
+font-family: 'Fredoka One' , 'Comic Sans MS';
 }
 .black
 {
-font-family: 'Fredoka One';
+font-family: 'Fredoka One' , 'Comic Sans MS';
 color: black;
 }
 .white
 {
-font-family: 'Fredoka One';
+font-family: 'Fredoka One' , 'Comic Sans MS';
 color: white;
 font-size: 23px;
-font-family: 'Comic Sans MS';
+
 
 
 }
