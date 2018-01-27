@@ -46,8 +46,8 @@ font-size: 23px;
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
-    <a href="#" >
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="cursor:default;" />
+    <a href="#" style="pointer-events:none;">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
@@ -61,15 +61,15 @@ font-size: 23px;
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
-    <a href="#">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="cursor:default;" />
+    <a href="#" style="pointer-events:none;">
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
-    <a href="#" >
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="cursor:default;" />
+    <a href="#" style="pointer-events:none;">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
   </a>
   </td>
 </tr><!-- fourth segment -->
