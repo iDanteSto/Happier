@@ -14,16 +14,16 @@
 <style type="text/css">
 body
 {
-font-family: 'Fredoka One';
+font-family: 'Fredoka One' , 'Comic Sans MS';
 }
 .black
 {
-font-family: 'Fredoka One';
+font-family: 'Fredoka One' , 'Comic Sans MS';
 color: black;
 }
 .white
 {
-font-family: 'Fredoka One';
+font-family: 'Fredoka One' , 'Comic Sans MS';
 color: white;
 font-size: 23px;
 }
@@ -46,23 +46,23 @@ font-size: 23px;
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
+    <a href="#" style="pointer-events:none;">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp1.1.png"  width="757" height="460" style="display: block;" />
+  </a>
   </td>
 </tr><!-- first segment -->
-<tr><!-- second segment -->
-  <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white">
-    Por favor verifica tu correo presionando el boton.<br/><br/>
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/conf4.4.png"  width="191" height="37" style="display: block;"  />
-  </td>
-</tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
+    <a href="#" style="pointer-events:none;">
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp2.1.png" height="195" style="display: block;" />
+   </a>
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
+    <a href="#" style="pointer-events:none;">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp3.1.png" height="593" style="display: block;" />
+  </a>
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
