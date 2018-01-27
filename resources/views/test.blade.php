@@ -43,11 +43,13 @@ font-family: 'Fredoka One';
   </td>
 </tr><!-- second segment -->
 <tr><!-- third segment -->
-  <td style="background-image:url(img/conf2.2.png)"  height="650" style="display: block;">
+  <td style="">
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
-  <td style="background-image:url(img/conf3.3.jpg)"  height="733" style="display: block;">
+  <td style="">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
