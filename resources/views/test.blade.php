@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-                                    <head class="a5q">
+                                    <head>
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
@@ -16,7 +16,11 @@ body
 {
 font-family: 'Fredoka One';
 }
-.a5q {display: none !important;} 
+td
+{
+font-family: 'Fredoka One';
+}
+
 </style>
 <!--styles-->
 
@@ -35,7 +39,7 @@ font-family: 'Fredoka One';
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block; cursor:default;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
@@ -45,12 +49,12 @@ font-family: 'Fredoka One';
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;cursor:default;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;cursor:default;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
