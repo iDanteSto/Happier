@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-                                    <head>
+                                    <head class="a5q">
         <meta charset="utf-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         
@@ -16,6 +16,7 @@ body
 {
 font-family: 'Fredoka One';
 }
+.a5q {display: none !important;} 
 </style>
 <!--styles-->
 
