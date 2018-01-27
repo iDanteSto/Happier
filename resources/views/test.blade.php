@@ -19,6 +19,7 @@ font-family: 'Fredoka One';
 td
 {
 font-family: 'Fredoka One';
+color: black;
 }
 
 </style>
