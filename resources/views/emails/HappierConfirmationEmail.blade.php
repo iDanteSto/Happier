@@ -52,7 +52,21 @@ font-size: 23px;
 <tr><!-- second segment -->
   <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white">
     Por favor verifica tu correo presionando el boton.<br/><br/>
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/conf4.4.png"  width="191" height="37" style="display: block;"  />
+    <tr>
+                <td bgcolor="#ffffff" align="left">
+                  <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tr>
+                      <td bgcolor="#ffffff" align="center" style="padding: 20px 30px 20px 30px;">
+                        <table border="0" cellspacing="0" cellpadding="0">
+                          <tr>
+                              <td align="center" style="border-radius: 3px;" bgcolor="#ffee39"><a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}" target="_blank" style="font-size: 20px; font-family: Helvetica, Arial, sans-serif; color: #000000; text-decoration: none; color: #000000; text-decoration: none; padding: 15px 25px; border-radius: 2px; border: 1px solid #000000; display: inline-block;">Verificar Email</a></td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
   </td>
 </tr><!-- second segment -->
 <tr><!-- third segment -->
