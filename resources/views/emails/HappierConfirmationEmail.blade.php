@@ -27,7 +27,7 @@ font-family: 'Fredoka One' , 'Comic Sans MS';
 color: white;
 font-size: 23px;
 }
-img.g-img + div {display:none;}
+
 </style>
 <!--styles-->
 
@@ -46,7 +46,9 @@ img.g-img + div {display:none;}
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
-    <img class="g-img" src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
+    <a href="#">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
+  </a>
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
@@ -59,12 +61,16 @@ img.g-img + div {display:none;}
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
-     <img class="g-img" src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
+    <a href="#">
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
+   </a>
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
-    <img class="g-img" src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
+    <a href="#">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
+  </a>
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
