@@ -47,24 +47,18 @@ font-size: 23px;
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp1.1.png"  width="757" height="460" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082941/Email%20Assets/confirmed1.1.png"  height="789" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
 <tr><!-- third segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp2.1.png" height="195" style="display: block;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082940/Email%20Assets/confirmed2.1.png" height="430" style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
-<tr><!-- fourth segment -->
-  <td style="">
-    <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp3.1.png" height="593" style="display: block;" />
-  </a>
-  </td>
-</tr><!-- fourth segment -->
+
 <tr><!-- fifth segment -->
   <td width="75%" class="black">
  Si recibiste este correo por error haz clic aqui<br/>
