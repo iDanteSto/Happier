@@ -29,7 +29,7 @@ font-size: 23px;
 }
 @media screen and (min-width: 600px) {
 table, td, span, p, div {
-font-family: 'Fredoka One' !important;}
+font-family: 'Open Sans',!important;}
 }
 </style>
 <!--styles-->
@@ -55,7 +55,6 @@ font-family: 'Fredoka One' !important;}
 <tr><!-- second segment -->
   <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white">
     Por favor verifica tu correo presionando el boton.<br/><br/>
-    <
     <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}">
     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/conf4.4.png"  width="191" height="37" style="display: block;"  />
     </a>
