@@ -34,7 +34,7 @@ font-family: 'Fredoka One';
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block; cursor: pointer;" />
+    <img style="cursor:default;" src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block; cursor: pointer;" />
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
@@ -44,12 +44,12 @@ font-family: 'Fredoka One';
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
+     <img style="cursor:default;" src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
+    <img style="cursor:default;" src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
