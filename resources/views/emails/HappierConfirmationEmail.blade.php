@@ -26,6 +26,9 @@ color: black;
 font-family: 'Fredoka One';
 color: white;
 font-size: 23px;
+font-family: 'Comic Sans MS';
+
+
 }
 </style>
 <!--styles-->
