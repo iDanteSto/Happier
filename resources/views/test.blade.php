@@ -34,7 +34,7 @@ font-family: 'Fredoka One';
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
-    <img src="img/conf1.1.png" alt="Creating Email Magic" width="757" height="460" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
