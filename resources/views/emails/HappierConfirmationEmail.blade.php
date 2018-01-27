@@ -47,7 +47,7 @@ font-size: 23px;
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/conf1.1.png"  width="757" height="460" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/Email%20Assets/conf1.1.png"  width="757" height="460" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
@@ -55,21 +55,21 @@ font-size: 23px;
   <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white">
     Por favor verifica tu correo presionando el boton.<br/><br/>
     <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/conf4.4.png"  width="191" height="37" style="display: block;"  />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/Email%20Assets/conf4.4.png"  width="191" height="37" style="display: block;"  />
     </a>
   </td>
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015668/conf2.2.png" height="600" style="display: block;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517079864/Email%20Assets/conf2.2.png" height="600" style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/conf3.3.jpg" height="733" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3.jpg" height="733" style="display: block;" />
   </a>
   </td>
 </tr><!-- fourth segment -->
