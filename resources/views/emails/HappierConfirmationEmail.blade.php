@@ -27,10 +27,6 @@ font-family: 'Fredoka One';
 color: white;
 font-size: 23px;
 }
-@media screen and (min-width: 600px) {
-table, td, span, p, div {
-font-family: 'Open Sans',!important;}
-}
 </style>
 <!--styles-->
 
