@@ -54,9 +54,9 @@ font-size: 23px;
 <tr><!-- second segment -->
   <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white">
     Por favor verifica tu correo presionando el boton.<br/><br/>
-    <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}">
+    <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}"></a>
     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/conf4.4.png"  width="191" height="37" style="display: block;"  />
-    </a>
+    
   </td>
 </tr><!-- second segment -->
 <tr><!-- third segment -->
