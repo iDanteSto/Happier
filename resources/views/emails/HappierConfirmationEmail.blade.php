@@ -50,7 +50,10 @@ font-size: 23px;
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
-  <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white" style="font-family: 'Fredoka One'">
+  <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white" style="
+font-family: 'Fredoka One';
+color: white;
+font-size: 23px;">
     Por favor verifica tu correo presionando el boton.<br/><br/>
     <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}">
     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/conf4.4.png"  width="191" height="37" style="display: block;"  />
@@ -68,7 +71,10 @@ font-size: 23px;
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
-  <td width="75%" class="black" style="font-family: 'Fredoka One'">
+  <td width="75%" style="
+font-family: 'Fredoka One';
+color: black;
+font-size: 23px;">
  Si recibiste este correo por error haz clic aqui<br/>
  Por favor, no respondas a esta cuenta , si tienes alguna duda sobre HAPPIER haz clic aqui.<br/>
  Happier es una marca registrada. Happier y todos sus elementos graficos son propiedad de Ciqno Digital Media, <br/>
