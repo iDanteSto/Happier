@@ -54,8 +54,10 @@ font-family: 'Fredoka One';
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
   <td width="75%">
- &reg; Someone, somewhere 2013<br/>
- Unsubscribe to this newsletter instantly
+ Si recibiste este correo por error haz clic aqui<br/>
+ Por favor, no respondas a esta cuenta , si tienes alguna duda sobre HAPPIER haz clic aqui.<br/>
+ Happier es una marca registrada. Happier y todos sus elementos graficos son propiedad de Ciqno Digital Media, <br/>
+ todos los derechos reservados.<br/>
 </td>
 </tr><!-- fifth segment -->
 </table>     
