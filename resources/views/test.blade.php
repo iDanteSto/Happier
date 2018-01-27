@@ -33,7 +33,8 @@ font-family: 'Fredoka One';
             
 <table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
 <tr><!-- first segment -->
-  <td style="background-image:url(img/conf1.1.png)"  height="460" style="display: block;">
+  <td style="">
+    <img src="img/conf1.1.png" alt="Creating Email Magic" width="757" height="460" style="display: block;" />
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
