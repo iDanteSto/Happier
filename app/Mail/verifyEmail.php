@@ -34,7 +34,7 @@ class verifyEmail extends Mailable
     public function build()
     {
        
-        return $this->view('test');
+        return $this->view('emails.sendView');
        
     }
 }
