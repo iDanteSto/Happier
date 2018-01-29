@@ -179,7 +179,7 @@ $user = new User([
 'email' => $request->input('email'),
 'password' => Hash::make($request->input('password')),
 'verifyToken' => Str::random(40),
-'imagelink' => "http://res.cloudinary.com/storagefeed/image/upload/v1510772763/Avatars/ico2.png",
+'imagelink' => "http://res.cloudinary.com/storagefeed/image/upload/v1517263932/Avatars/ico0.png",
 ]);
 $user->save();//if success will throw a succes message 
 Mail::to($user['email'])->send(new verifyEmail($user));
@@ -455,7 +455,7 @@ DB::table('social_provider')->insert(
 //update avatar
 User::where('user_Id', '=', $userId)
 ->update([
-'imagelink' => "http://res.cloudinary.com/storagefeed/image/upload/v1510772763/Avatars/ico2.png"
+'imagelink' => "http://res.cloudinary.com/storagefeed/image/upload/v1517263932/Avatars/ico0.png"
 ]);
 //
 $userd = User::where('email', '=', $userEmail)->firstOrFail();
