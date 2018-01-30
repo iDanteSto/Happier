@@ -15,10 +15,11 @@
 body
 {
             font-family: 'Fredoka One' , 'Comic Sans MS';
-            width: 100%;
-            height: 100%;
-            min-width: 550px;
-            min-height: 600px;
+            max-width: 1180px;
+            width: 98%;
+            margin: 0px auto;
+            text-align: left;
+            background-color:#eee;
 }
 .black
 {
