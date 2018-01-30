@@ -52,23 +52,32 @@ font-size: 23px;
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082941/Email%20Assets/confirmed1.1.png"  width="600px" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_378/v1517081304/Email%20Assets/exp1.1.png"    style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
 <tr><!-- third segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082940/Email%20Assets/confirmed2.1.png" width="600px" style="display: block;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_378/v1517081304/Email%20Assets/exp2.1.png"  style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
-
+<tr><!-- fourth segment -->
+  <td style="">
+    <a href="#" style="pointer-events:none;">
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/c_scale,w_378/v1517081304/Email%20Assets/exp3.1.png"  style="display: block;" />
+  </a>
+  </td>
+</tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
-  <td width="75%" class="black">
+  <td width="20%" class="black">
  Si recibiste este correo por error haz clic aqui<br/>
- Por favor, no respondas a esta cuenta , si tienes alguna duda sobre HAPPIER haz clic aqui.<br/>
- Happier es una marca registrada. Happier y todos sus elementos graficos son propiedad de Ciqno Digital Media, <br/>
+ Por favor, no respondas a esta cuenta ,<br/>
+ si tienes alguna duda sobre HAPPIER haz clic aqui.<br/>
+ Happier es una marca registrada. Happier y todos <br/>
+ sus elementos graficos son propiedad de <br/>
+  Ciqno Digital Media, <br/>
  todos los derechos reservados.<br/>
 </td>
 </tr><!-- fifth segment -->
