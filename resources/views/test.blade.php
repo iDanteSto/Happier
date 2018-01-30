@@ -14,7 +14,12 @@
 <style type="text/css">
 body
 {
-font-family: 'Fredoka One' , 'Comic Sans MS';
+            font-family: 'Fredoka One' , 'Comic Sans MS';
+            max-width: 1180px;
+            width: 98%;
+            margin: 0px auto;
+            text-align: left;
+            background-color:#eee;
 }
 .black
 {
@@ -43,7 +48,7 @@ font-size: 23px;
                 </div>
             </div>-->
             
-<table align="center" border="0" cellpadding="1" cellspacing="0" width="757">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="757">
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">

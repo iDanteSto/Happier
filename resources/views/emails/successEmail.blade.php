@@ -14,7 +14,12 @@
 <style type="text/css">
 body
 {
-font-family: 'Fredoka One' , 'Comic Sans MS';
+            font-family: 'Fredoka One' , 'Comic Sans MS';
+            max-width: 1180px;
+            width: 98%;
+            margin: 0px auto;
+            text-align: left;
+            background-color:#eee;
 }
 .black
 {
