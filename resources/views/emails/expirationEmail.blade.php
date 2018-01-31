@@ -52,7 +52,7 @@ font-size: 23px;
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517363795/Email%20Assets/exp1v2.png"  width="757" height="460" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517081304/Email%20Assets/exp1.1.png"  width="757" height="460" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
