@@ -123,6 +123,7 @@ recommendation
 WHERE
 fk_user_Id = ?
 AND fk_recommendation_Id = recommendation.recommendation_Id
+AND userrecommendation.fk_status_Id in (1,4)
 AND recommendation.fk_category_Id = ?' , [$userid,$category]);
 //Assigned recommendations to a local variable
 $asign = $asignadas[0]->Contador;
