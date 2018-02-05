@@ -121,10 +121,10 @@ else
 }
 /*
 |--------------------------------------------------------------------------
-| Mood Loader
+| Mood Average Loader
 |--------------------------------------------------------------------------
 |
-| Loads  user last value of the mood in order to update the mood bar on the front end
+| Loads  the user moods averages of the last 8 weeks (counting from his begining)
 |
 */
 public function moodAverageLoader(Request $request)

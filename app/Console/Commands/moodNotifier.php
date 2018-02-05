@@ -60,10 +60,16 @@ if (count($users))
 
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 //$userid = $user->user_Id;//place id on a variable to use it 
-$currentDate = Carbon::now()->format('Y-m-d');
-
+$minDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+$maxDate = Carbon::now()->endOfWeek()->format('Y-m-d');        
+//$currentDate = Carbon::now()->format('Y-m-d');
+/*
 $checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
 ->where('created_at','=', $currentDate)
+->first();
+*/
+$checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
+->whereBetween('created_at', [$minDate, $maxDate])
 ->first();
 /*
 $checkToSendNotification = DB::table('usermood')

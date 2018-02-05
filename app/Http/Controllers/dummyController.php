@@ -105,64 +105,47 @@ return $check;
 
 
 public function dummyFunctionMoodnotif(Request $request)
-{  
-//array of all users
-$users = User::where('status', '=', 2)->get();
-//if there is no confirmed users
-if (count($users))
 {
-//for every user , do the logic
-    foreach ($users as $user) 
-    {
-        $userid = $user->user_Id;
-        $userDeviceToken = $user->devicetoken;
+//array of all users
+//$user = User::where('user_Id', '=', 326)->get();
+$user = User::where('user_Id', '=', 326)->firstOrFail();
+//if there is no confirmed users
 
+
+//for every user , do the logic
+  
+$userid = $user->user_Id;
+$userDeviceToken = $user->devicetoken;
 
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 //$userid = $user->user_Id;//place id on a variable to use it 
-$currentDate = Carbon::now()->format('Y-m-d');
+$minDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+$maxDate = Carbon::now()->endOfWeek()->format('Y-m-d');
+//$currentDate        = "2018-03-28";
+//$currentDate = Carbon::now()->format('Y-m-d');
+
+//return "Fecha ahora " .$currentDate . " El inicio de semana es " .$minDate . "El fin de la semana es " . $maxDate; 
 
 $checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
-->where('created_at','=', $currentDate)
+->whereBetween('created_at', [$minDate, $maxDate])
 ->first();
-/*
-$checkToSendNotification = DB::table('usermood')
-         ->where('fk_user_Id', $userid)
-         ->where('created_at', $currentDate)
-         //->orderBy('created_at','descendant')
-         ->pluck('created_at')->first();
-*/
+
 //dd($checkToSendNotification);
 
 if (count($checkToSendNotification)) 
 {
 //return "Did  nothing!";
+    return 'no';
 }
 else
 {
-//<-------------------Push Notification---------------------------------------------------->
-$optionBuilder = new OptionsBuilder();
-$optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('Como te sientes hoy?');
-$notificationBuilder->setBody('Clickea aqui para ir a la app a ver tu mood')
-      ->setClickAction('ACTIVITY_PROF')
-            ->setSound('default');
-$dataBuilder = new PayloadDataBuilder();
-$dataBuilder->addData(['moodOn' => 'yes']);
-$option = $optionBuilder->build();
-$notification = $notificationBuilder->build();
-$data = $dataBuilder->build();
-$token = $userDeviceToken;
-$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
-$downstreamResponse->numberSuccess();
-$downstreamResponse->numberFailure();
-$downstreamResponse->numberModification();
-//<-------------------Push Notification---------------------------------------------------->
 //return "Notification Sent!";
+    return 'si';
 } 
-}//close foreach
-}//close if
-}
+
+
+    } 
+
 
 
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

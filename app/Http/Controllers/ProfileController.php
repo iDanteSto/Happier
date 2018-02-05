@@ -106,7 +106,7 @@ return $avatarsInfo;
 | Individual Summary Loader
 |--------------------------------------------------------------------------
 |
-| Loads the data of user recommendations 
+| Loads the data of user recommendations number of recommendations done , percentage etc
 |
 */
 public function summaryLoader(Request $request)
@@ -152,9 +152,14 @@ return response()->json(array('asignadas'=>$asign,'completas'=>$compl,'porcentaj
 return response()->json(array('asignadas'=>0,'completas'=>0,'porcentaje' =>0));
 }//if there is nothing , return nothing
 }
-
-
-
+/*
+|--------------------------------------------------------------------------
+|  Recommendation by category Loader
+|--------------------------------------------------------------------------
+|Loads the data of user recommendations by given category
+| 
+|
+*/
 public function userRecomsHistoryLoader(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
@@ -188,12 +193,14 @@ return $allRecoms;
 return response()->json(['error'=> 'No tienes historial']);
 }
 }
-
-
-
-
-
-
+/*
+|--------------------------------------------------------------------------
+| All recommendations loader
+|--------------------------------------------------------------------------
+|
+| Loads all the data of all of the user recommendations
+|
+*/
 public function userRecomsHistoryAllLoader(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();
