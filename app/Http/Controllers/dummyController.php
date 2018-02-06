@@ -254,7 +254,6 @@ public function dummyFunction(Request $request)
 {   
 //array of all users
 $users = User::where('status', '=', 2)->get();
-dd($users);
 //if there is no confirmed users
 if (count($users))
 {
