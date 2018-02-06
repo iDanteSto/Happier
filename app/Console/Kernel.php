@@ -50,7 +50,7 @@ class Kernel extends ConsoleKernel
       //<---------------------------------------------------------------------------->
 
       //<-------------Schedule for moods--------------------------------------------->
-       $schedule->command('mood:notifier')->dailyAt('16:00');
+       $schedule->command('mood:notifier')->dailyAt('14:00');
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
