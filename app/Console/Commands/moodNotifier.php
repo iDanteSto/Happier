@@ -27,7 +27,7 @@ class moodNotifier extends Command
      *
      * @var string
      */
-    protected $description = 'Checks if the user has an entry on the day , if he doesnt it will send a notification to remember him to do it';
+    protected $description = 'Checks if the user has an entry on the week , if he doesnt it will send a notification to remember him to do it';
 
     /**
      * Create a new command instance.
