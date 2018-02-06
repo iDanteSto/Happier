@@ -237,6 +237,9 @@ DB::table('avatar_permission')->insert(
 ['fk_user_Id' => $user->user_Id, 'fk_avatar_Id' => $avatars->avatar_Id]
 );
 								 }
+DB::table('preferred_categories')->insert(
+['fk_user_Id' => $user->user_Id, 'fk_category_Id' => 1]
+);								 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 /*
 //Asignate every category available to the user as a standard
@@ -435,6 +438,9 @@ if($person->status == 0){User::where(['email'=>$userEmail])->update(['status' =>
 DB::table('userfrequency')->insert(
 ['fk_frequency_Id' => 3, 'fk_user_Id' => $userId]
 );
+DB::table('preferred_categories')->insert(
+['fk_user_Id' => $userId, 'fk_category_Id' => 1]
+);		
 //assignate standard avatars-----------------------------------------------------------------------  
 $avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
 foreach ($avatarIds as $avatars) {
