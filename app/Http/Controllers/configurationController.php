@@ -89,9 +89,7 @@ DB::table('users')
 ->where('user_Id', $userid)
 ->update(['status' => 3]);
 
-
-
-return $userid;
+return "La cuenta entro en estado de hibernacion";
 }
 /*
 |--------------------------------------------------------------------------
@@ -113,6 +111,7 @@ DB::table('users')
 ->where('user_Id', $userid)
 ->update(['status' => 2]);
 
+return "Hibernacion Cancelada";
 }
 
 
