@@ -50,6 +50,12 @@ class Kernel extends ConsoleKernel
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
+      //<-------------revert expired hibernations ----------------------------------->
+       $schedule->command('userHibernation:reverter')->dailyAt('04:00');
+      //
+      // notes :important to keep the system running stable
+      //<----------------------------------------------------------------------------> 
+
       //<-------------Schedule for moods--------------------------------------------->
        $schedule->command('mood:notifier')->dailyAt('14:00');
       //
