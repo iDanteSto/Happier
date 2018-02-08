@@ -9,7 +9,8 @@ use Hash;
 use Validator;
 use Illuminate\Support\Str;
 use JD\Cloudder\Facades\Cloudder;
-
+use App\UserHibernation;
+use Carbon\Carbon;
 
 class configurationController extends Controller
 {
@@ -56,4 +57,64 @@ DB::table('userfrequency')
 ->where('fk_user_Id', $userid)
 ->update(['fk_frequency_Id' => $request->frequency_Id]);
 }
+/*
+|--------------------------------------------------------------------------
+| Creates hibernation state
+|--------------------------------------------------------------------------
+|
+| This function puts the user on hibernation state 3
+|
+*/
+public function hibernateUser(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;//place id on a variable to use it 
+$durationName = $request->durationName;
+$durationNumber = $request->durationNumber;
+$currentDate = Carbon::now()->format('Y-m-d');;
+
+//create or update hibernation for user
+$createhibernateStatus = UserHibernation::updateOrCreate([
+	//where
+    'fk_user_Id'   => $userid,]
+,
+[
+	//data to be updated or inserted
+    'name'     => $durationName,
+    'duration' => $durationNumber,
+    'creation_date'     => $currentDate
+]);
+//update status hibernation on users table
+DB::table('users')
+->where('user_Id', $userid)
+->update(['status' => 3]);
+
+
+
+return $userid;
+}
+/*
+|--------------------------------------------------------------------------
+| Cancel hibernation state
+|--------------------------------------------------------------------------
+|
+| This function puts the user on normal 2 state
+|
+*/
+public function hibernateCancel(Request $request)
+{
+$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+$userid = $user->user_Id;//place id on a variable to use it 
+
+//delete userhibernation on DB
+DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
+//update status to 2 on DB
+DB::table('users')
+->where('user_Id', $userid)
+->update(['status' => 2]);
+
+}
+
+
+
 }

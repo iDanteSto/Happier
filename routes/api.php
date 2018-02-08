@@ -56,6 +56,8 @@ Route::get('/user/meditationLoader', 'meditationController@meditationLoader');//
 //Configuration.categories and frequency--------------------------------------------------------------------------------------------------------------|
 Route::get('/user/userCategsAndFrequencyLoader', 'configurationController@userCategsAndFrequencyLoader');//Loader--*								  |
 Route::post('/user/userCategsAndFrequencySetter', 'configurationController@userCategsAndFrequencySetter');//Setter--*	
+Route::post('/user/hibernateUser', 'configurationController@hibernateUser');//
+Route::get('/user/hibernateCancel', 'configurationController@hibernateCancel');//
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Profile.Nickname------------------------------------------------------------------------------------------------------------------------------------!									
@@ -76,7 +78,7 @@ Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHist
 //Route::post('/user/moodSetter', 'moodController@moodSetter');//timer-Setter not gonna be used <----											          |
 //Route::get('/user/moodChecker', 'moodController@moodChecker');//front checker 																		  |
 Route::get('/user/moodLoader', 'moodController@moodLoader');//																	  |
-Route::get('/user/moodCheckerNotifier', 'moodController@moodCheckerNotifier');//
+Route::get('/user/moodCheckerNotifier', 'moodController@moodCheckerNotifier');//not used , used by cron on kernel
 Route::patch('/user/moodCreateorUpdater', 'moodController@moodCreateorUpdater');//	
 Route::get('/user/moodAverageLoader', 'moodController@moodAverageLoader');//		
 //dummy test

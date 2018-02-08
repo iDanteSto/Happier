@@ -21,6 +21,7 @@ class Kernel extends ConsoleKernel
        Commands\testingcommand::class,
        Commands\moodNotifier::class,
        Commands\recommendationCleaner::class,
+       Commands\userHibernationReverter::class,
     ];
 
     /**

@@ -126,7 +126,7 @@ $userd = User::where('email', '=', $request->email)->firstOrFail();
 //starting value of token
 $token = null;
 // if [2]  : checks if user status is 1:confirmed but new to the app or 0:default,not confirmed, if not sends an error  and [2] confirmed and not new to the app
-if($userd->status == 1 or $userd->status == 2)
+if($userd->status == 1 or $userd->status == 2 or $userd->status == 3)
 {
 try
 {//method attempt from jtwauth library , checks model for User.php(check on the database if the user and password match)
