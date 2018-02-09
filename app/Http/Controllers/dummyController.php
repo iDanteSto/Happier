@@ -184,7 +184,7 @@ $now = Carbon::now();
 $length = $end->diffInDays($now); 
 
 //we want to change the status to ignored if it has 3 days
-if(!$length >= $userHibernationstate->duration)
+if(!($length >= $userHibernationstate->duration))
 {
 //It has less than the expiration days so it wont do anything
 return $length . $userHibernationstate->duration;    
