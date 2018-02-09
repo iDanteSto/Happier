@@ -186,11 +186,9 @@ $length = $end->diffInDays($now);
 //we want to change the status to ignored if it has 3 days
 if(!($length >= $userHibernationstate->duration))
 {
-//It has less than the expiration days so it wont do anything
-return $length . $userHibernationstate->duration;    
+//It has less than the expiration days so it wont do anything   
 }else
-{
-return $length . $userHibernationstate->duration . "lo hizo";    
+{  
 //delete userhibernation on DB
 DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
 //update status to 2 on DB
