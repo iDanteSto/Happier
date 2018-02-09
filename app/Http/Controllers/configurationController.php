@@ -71,7 +71,7 @@ $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden i
 $userid = $user->user_Id;//place id on a variable to use it 
 $durationName = $request->durationName;
 $durationNumber = $request->durationNumber;
-$currentDate = Carbon::now()->format('Y-m-d');;
+$currentDate = Carbon::now()->format('Y-m-d H');;
 
 //create or update hibernation for user
 $createhibernateStatus = UserHibernation::updateOrCreate([
