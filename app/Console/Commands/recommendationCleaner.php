@@ -73,7 +73,7 @@ $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
 //we want to change the status to ignored if it has 3 days
-if(!$length >= 3)
+if(!($length >= 3))
 {
 //It has less than 3 days so it wont do anything
 }else
