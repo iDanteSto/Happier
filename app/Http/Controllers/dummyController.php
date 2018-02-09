@@ -190,7 +190,7 @@ if(!$length >= $userHibernationstate->duration)
 return $length . $userHibernationstate->duration;    
 }else
 {
-return "entro a hacerlo";    
+return $length . $userHibernationstate->duration . "lo hizo";    
 //delete userhibernation on DB
 DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
 //update status to 2 on DB
