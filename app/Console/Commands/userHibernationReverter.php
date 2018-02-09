@@ -73,7 +73,7 @@ $length = $end->diffInDays($now);
 //we want to change the status to ignored if it has 3 days
 if(!$length >= $userHibernationstate->duration)
 {
-//It has less than 3 days so it wont do anything
+//It has less than the expiration days so it wont do anything
 }else
 {
 //delete userhibernation on DB

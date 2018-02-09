@@ -153,76 +153,53 @@ else
 //------------------------------------------------------------------------Dummy functions to test recommendationSetter commands------------------------------------------------------------------------
 public function dummyFunction0(Request $request)
 {   
-//Cleans all the pending recommendations
-//DB::table('userrecommendation')->where('fk_status_Id', '=', 2)->delete();
-//return 'Success cleaning all pending recommendations';
-    /*
-$anyDate    = "2018-03-01"; 
-$objDT      = new DateTime($anyDate);
-$weekNum    = $objDT->format('W');     //<== RETURNS THE WEEK NUMBER OF $anyDate
-
-dd($weekNum);  
-*/
-/*
-$firstDayOfMonth    = "2018-01-01";
-    $currentDate        = "2018-03-28";
-    $dtCurrent          = new \DateTime($currentDate);
-    $dtFirstOfMonth     = new \DateTime($firstDayOfMonth);
-    $numWeeks           = 1 + ( intval($dtCurrent->format("W")) - 
-                                intval($dtFirstOfMonth->format("W")));
-
-    dd($numWeeks); 
-*/
-//$date = Carbon::now(); // or $date = new Carbon();
-/*    
-$date = Carbon::create(2018, 2, 01);
-$date->setISODate(2018,5); // 2016-10-17 23:59:59.000000
-echo $date->startOfWeek(); // 2016-10-17 00:00:00.000000
-echo $date->endOfWeek(); // 2016-10-23 23:59:59.000000
-*/
-//dd($date->endOfWeek());
-
-   
-$mm= "01";
-$yy= "2018";
-$startdate=date($yy."-".$mm."-01") ;
-$current_date=date('Y-m-t');
-$ld= cal_days_in_month(CAL_GREGORIAN, $mm, $yy);
-$lastday=$yy.'-'.$mm.'-'.$ld;
-$start_date = date('Y-m-d', strtotime($startdate));
-$end_date = date('Y-m-d', strtotime($lastday));
-$end_date1 = date('Y-m-d', strtotime($lastday." + 6 days"));
-$count_week=0;
-$week_array = array();
-
-for($date = $start_date; $date <= $end_date1; $date = date('Y-m-d', strtotime($date. ' + 7 days')))
+     //array of all users
+$users = User::where('status', '=', 3)->get();
+if (!count($users))
 {
-    $getarray= $this->getWeekDates($date, $start_date, $end_date);
-
-
-
-echo "<br>";
-$week_array[]=$getarray;
-    echo "\n";
-$count_week++;
-
+//Do nothing because there is no users
+}else
+{
+foreach ($users as $user) 
+{
+//Declare variable with collection information
+$userid = $user->user_Id;  
+//Compare dates to check if its time to revert the hibernation  
+//------------------------------------------------------------------------------
+//obtain hibernation information
+$userHibernationstate = DB::table('userhibernation')
+                     ->where('fk_user_Id', '=', $userid)
+                     ->first();
+if(!count($userHibernationstate))
+{
+//Empty collection , there is no hibernation info on DB
+//Do nothing  
+}else
+{    
+//parse to carbon format                     
+$end = Carbon::parse($userHibernationstate->creation_date);
+//obtain now date on carbon format
+$now = Carbon::now();
+//compare date obtained with the current date to obtain the difference on days
+$length = $end->diffInDays($now); 
+return $length . $userHibernationstate->duration;
+//we want to change the status to ignored if it has 3 days
+if(!$length >= $userHibernationstate->duration)
+{
+//It has less than the expiration days so it wont do anything
+}else
+{
+//delete userhibernation on DB
+DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
+//update status to 2 on DB
+DB::table('users')
+->where('user_Id', $userid)
+->update(['status' => 2]);    
 }
-
-// its give the number of week for the given month and year
-echo $count_week;
-//print_r($week_array);
-//-----------------------------------------------------------------------
-
-//-------------------------------------------------------------------------
-for($i=0;$i<$count_week;$i++)
-{   
-$start= $week_array[$i]['ssdate'];
-echo "--";
-
-$week_array[$i]['eedate'];
-echo "<br>";
-}
-
+}                     
+//------------------------------------------------------------------------------
+}//end for each
+}//end if to see if there is users   
 }
 
 public static function getWeekDates($date, $start_date, $end_date)
