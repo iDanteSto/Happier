@@ -182,13 +182,15 @@ $end = Carbon::parse($userHibernationstate->creation_date);
 $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
-return $length . $userHibernationstate->duration;
+
 //we want to change the status to ignored if it has 3 days
 if(!$length >= $userHibernationstate->duration)
 {
 //It has less than the expiration days so it wont do anything
+return $length . $userHibernationstate->duration;    
 }else
 {
+return "entro a hacerlo";    
 //delete userhibernation on DB
 DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
 //update status to 2 on DB
