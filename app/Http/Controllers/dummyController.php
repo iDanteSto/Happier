@@ -182,7 +182,7 @@ $end = Carbon::parse($userHibernationstate->creation_date);
 $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
-return $userHibernationstate->creation_date;
+return $length . $userHibernationstate->duration;
 //we want to change the status to ignored if it has 3 days
 if(!$length >= $userHibernationstate->duration)
 {
