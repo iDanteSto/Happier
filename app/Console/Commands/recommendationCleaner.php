@@ -73,16 +73,16 @@ $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
 //we want to change the status to ignored if it has 3 days
-if(!$length >= 3)
+if($length >= 3)
 {
-//It has less than 3 days so it wont do anything
-}else
-{
-//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored    
+//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored        
 DB::table('userrecommendation')
           ->where('fk_status_Id', 2)
           ->where('fk_user_Id', $userid)
-          ->update(['fk_status_Id' => 4]);         
+          ->update(['fk_status_Id' => 4]);  
+}else
+{
+//It has less than 3 days so it wont do anything    
 }
 }                     
 //------------------------------------------------------------------------------

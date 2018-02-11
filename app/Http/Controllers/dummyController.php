@@ -243,10 +243,17 @@ return $array1;
 public function dummyFunction(Request $request)
 {   
 //array of all users
-$user = User::where('email', '=', $request->email)->get();
+$users = User::where('status', '=', 2)->get();
+if (!count($users))
+{
 //Do nothing because there is no users
+}else
+{
+foreach ($users as $user) 
+{
 //Declare variable with collection information
-$userid = $user[0]->user_Id; 
+$userid = $user->user_Id;
+//return $users;
 //Compare dates if there is pending status recommendation     
 //------------------------------------------------------------------------------
 //obtain latest user recommendation with pending status 2
@@ -255,7 +262,6 @@ $userRecommendation = DB::table('userrecommendation')
                      ->where('fk_status_Id', '=', 2)
                      ->orderBy('creation_date', 'asc')
                      ->first();
-                 
 if(!count($userRecommendation))
 {
 //Empty collection , there is no pending status recommendations   
@@ -269,21 +275,23 @@ $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
 //we want to change the status to ignored if it has 3 days
-if(!$length >= 3)
+if($length >= 3)
 {
-dd("no hace nada");    
-//It has less than 3 days so it wont do anything
-}else
-{
-dd("cambio a 4");    
-//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored    
+return  "si entra " .$length;  
 DB::table('userrecommendation')
           ->where('fk_status_Id', 2)
           ->where('fk_user_Id', $userid)
-          ->update(['fk_status_Id' => 4]);         
+          ->update(['fk_status_Id' => 4]);  
+//It has less than 3 days so it wont do anything
+}else
+{
+//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored 
+return  "no entra " . $length;            
 }
 }                     
 //------------------------------------------------------------------------------
+}//end for each
+}//end if to see if there is users   
     
 }
 
