@@ -242,7 +242,11 @@ return $array1;
 public function dummyFunction(Request $request)
 {   
 //array of all users
-$users = User::where('status', '=', 2)->get();
+$users = User::where('status', '=', 2)
+->orWhere('status','=',3)
+->get();
+
+return $users;
 if (!count($users))
 {
 //Do nothing because there is no users

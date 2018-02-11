@@ -42,7 +42,9 @@ class recommendationCleaner extends Command
     public function handle()
     {
 //array of all users
-$users = User::where('status', '=', 2)->get();
+$users = User::where('status', '=', 2)
+->orWhere('status','=',3)
+->get();
 if (!count($users))
 {
 //Do nothing because there is no users
