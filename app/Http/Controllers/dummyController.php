@@ -166,7 +166,7 @@ else
 //------------------------------------------------------------------------Dummy functions to test recommendationSetter commands------------------------------------------------------------------------
 public function dummyFunction0(Request $request)
 {   
-     //array of all users
+//array of all users
 $users = User::where('status', '=', 3)->get();
 if (!count($users))
 {
@@ -195,24 +195,23 @@ $end = Carbon::parse($userHibernationstate->creation_date);
 $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
-
 //we want to change the status to ignored if it has 3 days
-if(!($length >= $userHibernationstate->duration))
-{
-//It has less than the expiration days so it wont do anything   
-}else
-{  
+if($length >= $userHibernationstate->duration)
+{ 
 //delete userhibernation on DB
 DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
 //update status to 2 on DB
 DB::table('users')
 ->where('user_Id', $userid)
 ->update(['status' => 2]);    
+}else
+{
+//It has less than the expiration days so it wont do anything
 }
 }                     
 //------------------------------------------------------------------------------
 }//end for each
-}//end if to see if there is users   
+}//end if to see if there is users    
 }
 
 public static function getWeekDates($date, $start_date, $end_date)
@@ -277,16 +276,14 @@ $length = $end->diffInDays($now);
 //we want to change the status to ignored if it has 3 days
 if($length >= 3)
 {
-return  "si entra " .$length;  
+//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored        
 DB::table('userrecommendation')
           ->where('fk_status_Id', 2)
           ->where('fk_user_Id', $userid)
           ->update(['fk_status_Id' => 4]);  
-//It has less than 3 days so it wont do anything
 }else
 {
-//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored 
-return  "no entra " . $length;            
+//It has less than 3 days so it wont do anything    
 }
 }                     
 //------------------------------------------------------------------------------

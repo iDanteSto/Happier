@@ -41,7 +41,7 @@ class userHibernationReverter extends Command
      */
     public function handle()
     {
-     //array of all users
+//array of all users
 $users = User::where('status', '=', 3)->get();
 if (!count($users))
 {
@@ -71,17 +71,17 @@ $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
 //we want to change the status to ignored if it has 3 days
-if(!($length >= $userHibernationstate->duration))
-{
-//It has less than the expiration days so it wont do anything
-}else
-{
+if($length >= $userHibernationstate->duration)
+{ 
 //delete userhibernation on DB
 DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
 //update status to 2 on DB
 DB::table('users')
 ->where('user_Id', $userid)
 ->update(['status' => 2]);    
+}else
+{
+//It has less than the expiration days so it wont do anything
 }
 }                     
 //------------------------------------------------------------------------------
