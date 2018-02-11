@@ -51,7 +51,7 @@ if (!count($users))
 foreach ($users as $user) 
 {
 //Declare variable with collection information
-$userid = $user[0]->user_Id;
+$userid = $user->user_Id;
 //Compare dates if there is pending status recommendation     
 //------------------------------------------------------------------------------
 //obtain latest user recommendation with pending status 2
