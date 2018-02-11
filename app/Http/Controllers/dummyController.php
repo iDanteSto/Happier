@@ -13,7 +13,20 @@ use DB;
 use DateTime;
 use Carbon\Carbon;
 use App\UserMood;
-
+use Tymon\JWTAuth\Facades\JWTAuth;
+use Hash;
+use Validator;
+use Illuminate\Support\Str;
+use Mail;
+use App\Mail\verifyEmail;
+use App\Mail\recoveryEmail;
+use App\Http\Controllers\Config;
+//use App\Http\Controllers\Socialite;
+use Socialite;
+use App\socialProvider;
+use App\socialProviders;
+use Illuminate\Support\Facades\Route;
+use View;
 
 class dummyController extends Controller
 {
@@ -229,17 +242,11 @@ return $array1;
 
 public function dummyFunction(Request $request)
 {   
-     //array of all users
-$users = User::where('status', '=', 2)->get();
-if (!count($users))
-{
+//array of all users
+$user = User::where('email', '=', $request->email)->get();
 //Do nothing because there is no users
-}else
-{
-foreach ($users as $user) 
-{
 //Declare variable with collection information
-$userid = $user->user_Id;  
+$userid = $user[0]->user_Id; 
 //Compare dates if there is pending status recommendation     
 //------------------------------------------------------------------------------
 //obtain latest user recommendation with pending status 2
@@ -248,6 +255,7 @@ $userRecommendation = DB::table('userrecommendation')
                      ->where('fk_status_Id', '=', 2)
                      ->orderBy('creation_date', 'asc')
                      ->first();
+                 
 if(!count($userRecommendation))
 {
 //Empty collection , there is no pending status recommendations   
@@ -261,13 +269,13 @@ $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
 //we want to change the status to ignored if it has 3 days
-if(!($length >= 3))
+if(!$length >= 3)
 {
+dd("no hace nada");    
 //It has less than 3 days so it wont do anything
-    return $end.$length . "no cambios";
 }else
 {
-    return $end.$length . "si cambios";
+dd("cambio a 4");    
 //Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored    
 DB::table('userrecommendation')
           ->where('fk_status_Id', 2)
@@ -276,8 +284,7 @@ DB::table('userrecommendation')
 }
 }                     
 //------------------------------------------------------------------------------
-}//end for each
-}//end if to see if there is users   
+    
 }
 
 

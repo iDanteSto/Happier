@@ -41,7 +41,7 @@ class recommendationCleaner extends Command
      */
     public function handle()
     {
-     //array of all users
+//array of all users
 $users = User::where('status', '=', 2)->get();
 if (!count($users))
 {
@@ -51,7 +51,7 @@ if (!count($users))
 foreach ($users as $user) 
 {
 //Declare variable with collection information
-$userid = $user->user_Id;  
+$userid = $user[0]->user_Id;
 //Compare dates if there is pending status recommendation     
 //------------------------------------------------------------------------------
 //obtain latest user recommendation with pending status 2
