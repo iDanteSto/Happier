@@ -45,13 +45,13 @@ class Kernel extends ConsoleKernel
       //<---------------------------------------------------------------------------->
 
       //<-------------clean for recommendations-------------------------------------->
-       $schedule->command('recommendation:cleaner')->dailyAt('04:00');
+       $schedule->command('recommendation:cleaner')->dailyAt('23:59');
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
       //<-------------revert expired hibernations ----------------------------------->
-       $schedule->command('userHibernation:reverter')->dailyAt('04:00');
+       $schedule->command('userHibernation:reverter')->dailyAt('23:59');
       //
       // notes :important to keep the system running stable
       //<----------------------------------------------------------------------------> 
