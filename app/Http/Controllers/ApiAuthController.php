@@ -104,7 +104,8 @@ DB::table('avatar_permission')->insert(
 DB::table('users')
 ->where('user_Id', $userid)
 ->update(array('status' => 2));
-*/            
+*/ 
+return "Exito!";           
 }
 /*
 |--------------------------------------------------------------------------
