@@ -201,7 +201,7 @@ $now = Carbon::createFromFormat('Y-m-d H', '2018-02-14 23');
 
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
-dd($length);
+dd($length+1);
 //we want to change the status to ignored if it has 3 days
 if($length >= 3)
 {
