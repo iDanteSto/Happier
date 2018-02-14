@@ -197,7 +197,7 @@ if(!count($userRecommendation))
 //parse to carbon format                     
 $end = Carbon::parse($userRecommendation->creation_date);
 //obtain now date on carbon format
-$now = Carbon::createFromFormat('Y-m-d H', '2018-02-16 23');
+$now = Carbon::now();
 
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
