@@ -167,7 +167,10 @@ else
 public function dummyFunction0(Request $request)
 {   
 //array of all users
-$users = User::where('status', '=', 3)->get();
+$users = User::where('status', '=', 2)
+->orWhere('status','=',3)
+->get();
+
 if (!count($users))
 {
 //Do nothing because there is no users
@@ -176,42 +179,44 @@ if (!count($users))
 foreach ($users as $user) 
 {
 //Declare variable with collection information
-$userid = $user->user_Id;  
-//Compare dates to check if its time to revert the hibernation  
+$userid = $user->user_Id;
+//Compare dates if there is pending status recommendation     
 //------------------------------------------------------------------------------
-//obtain hibernation information
-$userHibernationstate = DB::table('userhibernation')
+//obtain latest user recommendation with pending status 2
+$userRecommendation = DB::table('userrecommendation')
                      ->where('fk_user_Id', '=', $userid)
+                     ->where('fk_status_Id', '=', 2)
+                     ->orderBy('creation_date', 'asc')
                      ->first();
-if(!count($userHibernationstate))
+if(!count($userRecommendation))
 {
-//Empty collection , there is no hibernation info on DB
+//Empty collection , there is no pending status recommendations   
 //Do nothing  
 }else
 {    
 //parse to carbon format                     
-$end = Carbon::parse($userHibernationstate->creation_date);
+$end = Carbon::parse($userRecommendation->creation_date);
 //obtain now date on carbon format
-$now = Carbon::now();
+$now = Carbon::createFromFormat('Y-m-d H', '2018-02-16 22');
+
 //compare date obtained with the current date to obtain the difference on days
 $length = $end->diffInDays($now); 
 //we want to change the status to ignored if it has 3 days
-if($length >= $userHibernationstate->duration)
-{ 
-//delete userhibernation on DB
-DB::table('userhibernation')->where('fk_user_Id', '=', $userid)->delete();
-//update status to 2 on DB
-DB::table('users')
-->where('user_Id', $userid)
-->update(['status' => 2]);    
+if($length >= 3)
+{
+//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored        
+DB::table('userrecommendation')
+          ->where('fk_status_Id', 2)
+          ->where('fk_user_Id', $userid)
+          ->update(['fk_status_Id' => 4]);  
 }else
 {
-//It has less than the expiration days so it wont do anything
+//It has less than 3 days so it wont do anything    
 }
 }                     
 //------------------------------------------------------------------------------
 }//end for each
-}//end if to see if there is users    
+}//end if to see if there is users     
 }
 
 public static function getWeekDates($date, $start_date, $end_date)

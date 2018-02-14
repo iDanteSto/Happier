@@ -44,7 +44,8 @@ Route::get('/user/recommendationLoader', 'recommendationController@recommendatio
 Route::patch('/user/recommendationRejecter', 'recommendationController@recommendationRejecter');//front-Rejecter--*									  |
 Route::patch('/user/recommendationChanger', 'recommendationController@recommendationChanger');//front-Changer maybe not gonna be used <----			  |
 Route::patch('/user/recommendationSaver', 'recommendationController@recommendationSaver');//Saver maybe not gonna be used <----		                  |
-Route::get('/user/recommendationSmallHistory', 'recommendationController@recommendationSmallHistory');//retrieves last 50 recoms for a small peek     |
+Route::get('/user/recommendationSmallHistory', 'recommendationController@recommendationSmallHistory');//retrieves last 50 recoms for a small peek   
+Route::post('/user/recommendationSetter2', 'recommendationController@recommendationSetter2');//************Timer-Setter not gonna be used this <----  
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Meditation------------pending ----------------------------------------------------------------------------------------------------------------------|
