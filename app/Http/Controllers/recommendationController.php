@@ -149,7 +149,7 @@ $recomReadyCollection = DB::table('userrecommendation')
 ->select(DB::raw('count(userRecommendation_Id) as recomCount2'))
 ->where('fk_user_Id', '=', $userid)
 ->where('fk_status_Id', '=', 2)
-->whereDate('creation_date', $currentDate)
+//->whereDate('creation_date', $currentDate)
 ->get(); 
 //place the number of recommendations of the user that he has not interacted with on a variable to use it                 
 $recomReady = $recomReadyCollection[0]->recomCount2;
