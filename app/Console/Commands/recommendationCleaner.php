@@ -73,7 +73,7 @@ $end = Carbon::parse($userRecommendation->creation_date);
 //obtain now date on carbon format
 $now = Carbon::now();
 //compare date obtained with the current date to obtain the difference on days
-$length = $end->diffInDays($now); 
+$length = $end->diffInDays($now)+1; 
 //we want to change the status to ignored if it has 3 days
 if($length >= 3)
 {
