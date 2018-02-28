@@ -62,7 +62,7 @@ tr:nth-child(even) {
 <?= \Lava::render('LineChart', 'demochart' , 'temps_div') ?>
 <select name="years">
 <option value="0" disabled selected>Selecciona el año</option>    
-  <?php   for($i = 0; $i <= $diffinYears; $i++){  ?>  
+  <?php   for($i = 0; $i <=$diffinYears; $i++){  ?>  
   <option value="{{$earliestyearOnlyYear+$i}}">{{$earliestyearOnlyYear+$i}}</option>
 <?php 
                                                  } ?>

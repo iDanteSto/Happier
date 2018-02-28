@@ -51,13 +51,14 @@ $latest = DB::table('users')
 					 ->orderBy('created_at' , 'desc')
                      ->first();
 
-$earliestCarbon = Carbon::parse($earliest->created_at);
-$latestCarbon = Carbon::parse($latest->created_at);
+//$earliestCarbon = Carbon::parse($earliest->created_at);
+//$latestCarbon = Carbon::parse($latest->created_at);
+$earliestCarbon = Carbon::createFromFormat('Y-m-d H:i:s', $earliest->created_at)->year;  
+$latestCarbon = Carbon::createFromFormat('Y-m-d H:i:s', $latest->created_at)->year;                    
 //$year = Carbon::createFromFormat('Y-m-d H:i:s', $earliest->creation_date)->year;
 //dd($year);       
 //$yearend = Carbon::createFromFormat('Y-m-d H:i:s', $endate)->year;
-$diffinYears =  $latestCarbon->diffInYears($earliestCarbon);
-
+$diffinYears =  $latestCarbon - $earliestCarbon ;
 //obtain earliest year user registration
 $earliestyearOnlyYear = Carbon::createFromFormat('Y-m-d H:i:s', $earliest->created_at)->year;                     
 //---------------------------------------------------
