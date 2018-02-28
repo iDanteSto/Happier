@@ -41,30 +41,26 @@ public function Show_metrics_report($year)
 {
 if(Auth::guard('admin_user')->user())
             {
-//-----obtain valid years
-$earliest = DB::table('userrecommendation')
-                     ->select('creation_date')
-					 ->orderBy('creation_date')
+//-----obtain valid years for users registration limit to see on table ----
+$earliest = DB::table('users')
+                     ->select('created_at')
+					 ->orderBy('created_at')
                      ->first();
-$latest = DB::table('userrecommendation')
-                     ->select('creation_date')
-					 ->orderBy('creation_date' ,'desc')
+$latest = DB::table('users')
+                     ->select('created_at')
+					 ->orderBy('created_at' , 'desc')
                      ->first();
 
-$earliestCarbon = Carbon::parse($earliest->creation_date);
-$latestCarbon = Carbon::parse($latest->creation_date);
+$earliestCarbon = Carbon::parse($earliest->created_at);
+$latestCarbon = Carbon::parse($latest->created_at);
 //$year = Carbon::createFromFormat('Y-m-d H:i:s', $earliest->creation_date)->year;
 //dd($year);       
 //$yearend = Carbon::createFromFormat('Y-m-d H:i:s', $endate)->year;
 $diffinYears =  $latestCarbon->diffInYears($earliestCarbon);
-//-----
-$earliestyear = DB::table('users')
-                     ->select('created_at')
-					 ->orderBy('created_at')
-                     ->first();
-$earliestyearOnlyYear = Carbon::createFromFormat('Y-m-d H:i:s', $earliestyear->created_at)->year;                     
 
-
+//obtain earliest year user registration
+$earliestyearOnlyYear = Carbon::createFromFormat('Y-m-d H:i:s', $earliest->created_at)->year;                     
+//---------------------------------------------------
 if($year != 0)
 {
 $lava = new Lavacharts; // See note below for Laravel
