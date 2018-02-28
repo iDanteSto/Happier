@@ -190,6 +190,8 @@ return [
         LaravelFCM\FCMServiceProvider::class,
         //laravel collective
         Collective\Html\HtmlServiceProvider::class,
+        //lavacharts
+        Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
         
 
     ],
@@ -248,6 +250,7 @@ return [
         'FCMGroup' => LaravelFCM\Facades\FCMGroup::class, // Optional
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
     ],
 
 ];

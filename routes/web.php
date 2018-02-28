@@ -155,5 +155,6 @@ Route::get('users_report','AdminAuth\ReportsManager@Show_users_report')->name('u
 Route::get('recommendations_report','AdminAuth\ReportsManager@Show_recommendations_report')->name('recommendations_report'); 
 //Metrics routes--------------------------------------------------------------------------------------------------
 Route::get('metrics_report','AdminAuth\ReportsManager@Show_metrics_report')->name('metrics_report'); 
+Route::get('metrics_report/{year}','AdminAuth\ReportsManager@Show_metrics_report')->name('metrics_report');  
 //------------------------------------------------------------------------------------------------------------------------------
 //[Admin panel*********************************************************************************************************************]

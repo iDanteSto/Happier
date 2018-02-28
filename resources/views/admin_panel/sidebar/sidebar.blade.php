@@ -19,6 +19,7 @@
               <li><a class="" href="{!!url('adminspage')!!}">Administrators</a></li>
             </ul>
           </li>
+          <!--
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_desktop"></i>
@@ -31,6 +32,7 @@
               <li><a class="" href="grids.html">D</a></li>
             </ul>
           </li>
+          -->
           <li class="sub-menu">
             <a href="javascript:;" class="">
                           <i class="icon_documents_alt"></i>
@@ -53,9 +55,11 @@
                           <span class="menu-arrow arrow_carrot-right"></span>
                       </a>
             <ul class="sub">
+              <!--
               <li><a class="" href="{!!url('users_report')!!}">Users</a></li>
               <li><a class="" href="{!!url('recommendations_report')!!}">Recommendations</a></li>
-              <li><a class="" href="{!!url('metrics_report')!!}">Metrics</a></li>
+              -->
+              <li><a class="" href="{!!url('metrics_report/2017')!!}">Metrics</a></li>
             </ul>
           </li>
         </ul>

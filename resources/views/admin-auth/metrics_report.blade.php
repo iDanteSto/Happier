@@ -44,74 +44,84 @@ tr:nth-child(even) {
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 
-<div class="container">
-    <div class="fixposition2">
+<div class="fixposition">
+    <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">metrics_report page</div>
+                <div class="panel-heading">Usuarios Registrados</div>
 
 <form class="form-horizontal" method="POST" action="{{ url('avatar_categ_register') }}">
                 <div class="panel-body">
                    
+                
+                     
+ <?php if($year != 0)
+ {
+?>
+<div id="temps_div"></div>
+<?= \Lava::render('LineChart', 'demochart' , 'temps_div') ?>
+<select name="years">
+<option value="0" disabled selected>Selecciona el año</option>    
+  <?php   for($i = 0; $i <= $diffinYears+1; $i++){  ?>  
+  <option value="{{$earliestyearOnlyYear+$i}}">{{$earliestyearOnlyYear+$i}}</option>
+<?php 
+                                                 } ?>
+</select> 
+<?php                                                
+ }
+
+
+  ?>                       
+
                         
-                        
-                        <div class="col-md-5">
-                            <label for="name" class="col-md-4 control-label">Name</label>
 
-                            <div class="">
-                                <input id="name" type="text" class="form-horizontal" name="name" value="" required >
 
-                                @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                 
 
-                        
-
-                        
-
-                        <div class="col-md-5">
-                            <label for="description" class="col-md-4 control-label">Description</label>
-
-                            <div class="">
-                                <input id="description" type="text" class="form-horizontal" name="description" required>
-                            </div>
-                        </div>
-
-                        <div class="col-md-1">
-                            
-                                <button type="submit" class="btn btn-primary" >
-                                
-                                    Submit
-                                </button>
-                                
-                         
-                        </div>
 </div> 
 </form>                   
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+
+<div class="fixposition2">
+    <div class="">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Recommendaciones</div>
+
+<form class="form-horizontal" method="POST" action="{{ url('avatar_categ_register') }}">
+                <div class="panel-body">
+                   
+                        
+                        
+<div id="chart-div"></div>
+// With Lava class alias
+<?= Lava::render('DonutChart', 'IMDB', 'chart-div') ?>              
+
+                        
+
+
+                 
+
+</div> 
+</form>                   
+                </div>
+            </div>
+        </div>
+    </div>
 
 <script>
 
-$(document).on("click", ".Edit", function() {
-//   console.log("inside";   <-- here it is
-    console.log($(this).attr('name'));
-    window.location.href = "/avatar_categ_edit/"+$(this).attr('name');
- });
+
+$('select').change(function(){
+    console.log($(this).attr('value'));
+    window.location.href = "/metrics_report/"+$(this).attr('value'); 
+});
 
 
-$(document).on("click", ".Delete", function() {
-//   console.log("inside";   <-- here it is
-    console.log($(this).attr('name'));
-    window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
- });
 
 </script>
 @endsection
