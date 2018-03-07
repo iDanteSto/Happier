@@ -73,7 +73,7 @@ return view('admin-auth.news_edit', $InfoNews);
 public function UpdateNews(Request $request)
 {
 DB::table('news')
-            ->where('news_Id', $request->input('id'))
+            ->where('news_Id', $request->input('NewsId'))
             ->update(array('title' => $request->input('title'),'content' => $request->input('content')));
 return redirect('/news');    
 }

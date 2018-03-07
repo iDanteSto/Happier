@@ -1,60 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Mar 2018 02:10:14 GMT -->
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="img/favicon.png">
 
-  <title>404 | Creative - Bootstrap 3 Responsive Admin Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bootstrap CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <!-- bootstrap theme -->
-  <link href="css/bootstrap-theme.css" rel="stylesheet">
-  <!--external css-->
-  <!-- font icon -->
-  <link href="css/elegant-icons-style.css" rel="stylesheet" />
-  <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <!-- Custom styles -->
-  <link href="css/style.css" rel="stylesheet">
-  <link href="css/style-responsive.css" rel="stylesheet" />
+    <title>INSPINIA | 404 Error</title>
 
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
-  <!--[if lt IE 9]>
-    <script src="js/html5shiv.js"></script>
-    <script src="js/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
-    <!-- =======================================================
-      Theme Name: NiceAdmin
-      Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-      Author: BootstrapMade
-      Author URL: https://bootstrapmade.com
-    ======================================================= -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
 </head>
 
-<body>
-  <div class="page-404">
-    <p class="text-404">404</p>
+<body class="gray-bg">
 
-    <h2>Aww Snap!</h2>
-    <p>Something went wrong or that page doesn’t exist yet. <br><a href="{{ url('admin_login') }}">Return Home</a></p>
-  </div>
-  <div class="credits">
-          <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version form: https://bootstrapmade.com/buy/?theme=NiceAdmin
-          -->
-          <a href="https://bootstrapmade.com/">Free Bootstrap Templates</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
+    <div class="middle-box text-center animated fadeInDown">
+        <h1>404</h1>
+        <h3 class="font-bold">Pagina No encontrada</h3>
+
+        <div class="error-desc">
+            Lo siento, pero la pagina que estas buscando no ha sido encontrada.
         </div>
+        <a class="btn btn-warning btn-rounded" href="{{ url('admin_login') }}">Volver</a>
+    </div>
 
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
 </body>
 
+
+<!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/404.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 01 Mar 2018 02:10:14 GMT -->
 </html>

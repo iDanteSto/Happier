@@ -58,15 +58,10 @@ DB::table('avatar_categories')->insert(
 return redirect('/avatar_categories');           
 }
 
-
+/*
 public function editCategory($id)
 {
-	/*
-DB::table('avatar_categories')
-            ->where('id', 1)
-            ->update(['votes' => 1]);
-return redirect('/avatar_categories');    
-*/
+
 //$idtest = $categs->avatar_categories_Id;
 $InfoCateg ['InfoCateg'] = DB::table('avatar_categories')->where('avatar_categories_Id', $id)->get();
 //$InfoCateg = DB::table('avatar_categories')->where('avatar_categories_Id', $id)->get();
@@ -74,14 +69,14 @@ $InfoCateg ['InfoCateg'] = DB::table('avatar_categories')->where('avatar_categor
 return view('admin-auth.avatar_categories_edit', $InfoCateg);
 //return view::make('admin-auth.avatar_categories_edit')->with('categs', $idtest);      
 }
-
+*/
 public function UpdateCategory(Request $request)
 {
 
 
 //dd($request->input('description'));	
 DB::table('avatar_categories')
-            ->where('avatar_categories_Id', $request->input('id'))
+            ->where('avatar_categories_Id', $request->input('CategId'))
             ->update(array('name' => $request->input('name'),'description' => $request->input('description')));
 return redirect('/avatar_categories');
 //return view::make('admin-auth.avatar_categories_edit')->with('categs', $idtest);      
@@ -184,7 +179,7 @@ $arrayOfImageData=Cloudder::getResult();
 */
 //--------------------update on DB--------------------------
 DB::table('avatar')
-->where('avatar_Id', $request->avatar_id)
+->where('avatar_Id', $request->AvatarId)
 ->update(array('name' => $request->name,'description' => $request->description,'fk_avatar_categories_Id' => $request->fkCategId));
 //----------------------------------------------------------
 return redirect('/avatars');  

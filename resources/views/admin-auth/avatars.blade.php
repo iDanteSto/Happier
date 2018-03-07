@@ -1,165 +1,142 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-.positioner {
-   
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-}
-.fixposition {
-   
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-}
-.fixposition2 {
-   
-    position: fixed;
-    top: 90%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-}
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
 
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
 
 <form class="form-edit" method="GET" action="{{ url('avatar_categ_edit') }}">
-<div class="">
-    <div class="">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Show</div>
-
-                <div class="panel-body" align="left">
-                   
-                        
-<table>                        
-                      
-                            
-
-                         <br>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Decription</th>
-        <th>Link</th>
-        <th>Categ ID</th>
-        <th>Commands</th>
-        <th>Commands</th>
-    </tr>  
-                   
-                     
-                          
-@foreach($existingAvatars as $Avatars)
-        <tr>
-            <td>{{$Avatars->avatar_Id}}</td> <input type="hidden" name="Id" value="{{$Avatars->avatar_Id}}">
-            <td>{{$Avatars->name}}</td>
-            <td>{{$Avatars->description}}</td>
-            <td><img src="{{$Avatars->link}}" alt="img" width="100" height="100"></td>
-            <td>{{$Avatars->fk_avatar_categories_Id}}</td>
-            <td><a class="button Edit" name="{{$Avatars->avatar_Id}}" >Edit</a></td>
-            <td><a class="button Delete" name="{{$Avatars->avatar_Id}}" >Delete</a></td>
-        </tr>
-@endforeach
-
-
-                            
-                    
-</table>
-                        
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Avatars</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table">
+                        <tbody>
+                            @foreach($existingAvatars as $Avatars)
+                                <tr>
+                                    
+                                    <td><img src="{{$Avatars->link}}" alt="img" width="60" height="60" class="img-rounded"></td>
+                                    <td>{{$Avatars->name}}</td>
+                                    <td>{{$Avatars->description}}</td>
+                                    @foreach($availableCategories as $categs)
+                                    @if ($Avatars->fk_avatar_categories_Id == $categs->avatar_categories_Id)
+                                    <td><strong>{{$categs->name}}</strong></td>
+                                    @break
+                                    @endif  
+                                    @endforeach 
+                                    <td>
+                                        <a class="btn btn-white btn-bitbucket" data-myname="{{$Avatars->name}}" data-mydescription="{{$Avatars->description}}" data-myid="{{$Avatars->avatar_Id}}" data-toggle="modal" data-target="#editAvatar"><i class="fa fa-wrench"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-w-s btn-danger"  name="{{$Avatars->avatar_Id}}">Eliminar</button>
+                                    </td>
+                                </tr>
+                            @endforeach 
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 
+
+<div id="editAvatar" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar el Avatar</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="form-horizontal" method="POST" action="{{ url('avatar_update') }}">
+                <div class="form-group">
+                    <div class="col-md-8">
+                    <label>Nombre</label> 
+                    <input id="name" type="text" class="form-control" name="name" value="" required>  
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                    <label>Descripcion</label>  
+                    <input id="description" type="text" class="form-control" name="description"  value="" required >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">
+                            <label for="Category">Categoria</label>
+                                <select class="form-control m-b" id="fkCategId" name="fkCategId">
+  @foreach($availableCategories as $categs)                                   
+  <option value="{{$categs->avatar_categories_Id}}" >{{$categs->name}}</option>
+  @endforeach        
+                                </select>
+                            </div>
+                        </div>
+                        <input id="AvatarId" type="hidden" class="form-control" name="AvatarId"  value="">
+                <div class="form-group">
+                    <div class="col-md-8">
+                    <button class="btn btn-w-m btn-warning" type="submit"><strong>Actualizar</strong></button>
+                    </div>
+                </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <div class="">
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Avatar Creator</div>
-
+                <div class="panel-heading">Crear un Avatar</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('CreateAvatar') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
-
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
-
-                               
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="Description" class="col-md-4 control-label">Description</label>
-
+                            <label for="Description" class="col-md-4 control-label">Descripcion</label>
                             <div class="col-md-6">
                                 <input id="description" type="text" class="form-control" name="description" required autofocus>
-
-                               
                             </div>
                         </div>
-
                         <div class="form-group">
-                            <label for="password" class="col-md-4 control-label">Image</label>
-
+                            <label for="Category" class="col-md-4 control-label">Categoria</label>
                             <div class="col-md-6">
-                               <input type="file" name="file" id="file" multiple>
-                              
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="Category" class="col-md-4 control-label">Category</label>
-
-                            <div class="col-md-6">
-                             
-                                <select id="fkCategId" name="fkCategId">
-   @foreach($availableCategories as $categs)                                   
+                                <select class="form-control m-b" id="fkCategId" name="fkCategId">
+  @foreach($availableCategories as $categs)                                   
   <option value="{{$categs->avatar_categories_Id}}" >{{$categs->name}}</option>
   @endforeach        
                                 </select>
-                        
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label for="imagen" class="col-md-4 control-label">Imagen</label>
+                            <div class="col-md-6">
+                               <input type="file" name="file" id="file" multiple>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Upload Avatar
+                                <button type="submit" class="btn btn-w-m btn-warning" style="width: 100%">
+                                    Crear avatar
                                 </button>
-                                
                             </div>
                         </div>
                     </form>
@@ -169,18 +146,29 @@ tr:nth-child(even) {
     </div>
 </div>
 
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script>
-$(document).on("click", ".Edit", function() {
-//   console.log("inside";   <-- here it is
-    console.log($(this).attr('name'));
-    window.location.href = "/avatar_edit/"+$(this).attr('name');
- });
+$('#editAvatar').on('show.bs.modal',function(event){
+     //var category_id = $(this).attr('name');
+     var button = $(event.relatedTarget)
+     var AvatarId = button.data('myid')
+     var Name = button.data('myname')
+     var Description = button.data('mydescription')
+     var modal = $(this)
+     modal.find('.modal-body #name').val(Name)
+     modal.find('.modal-body #description').val(Description)
+     modal.find('.modal-body #AvatarId').val(AvatarId)
+     //$('#myModal').modal('show');
+});
+//JS to delete categorie
+ $(document).on("click", ".btn-danger", function() {
+        //   console.log("inside";   <-- here it is
+        console.log($(this).attr('name'));
+        window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
+    });
 
-
-$(document).on("click", ".Delete", function() {
-//   console.log("inside";   <-- here it is
-    console.log($(this).attr('name'));
-    window.location.href = "/avatar_delete/"+$(this).attr('name');
- });
 </script>
 @endsection

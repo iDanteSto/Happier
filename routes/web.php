@@ -81,7 +81,7 @@ Route::get('admin_login','AdminAuth\LoginController@showLoginForm')->name('admin
   
 Route::post('admin_login','AdminAuth\LoginController@login')->name('admin_login');         //                
   
-Route::post('admin_logout','AdminAuth\LoginController@logout')->name('admin_logout');     //                 
+Route::any('admin_logout','AdminAuth\LoginController@logout')->name('admin_logout');     //                 
   
 Route::post('admin_password/email','AdminAuth\ForgotPasswordController@sendResetLinkEmail')->name('admin_password/email');   
   
@@ -101,7 +101,7 @@ Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
 
 //Admins------------------------------------------------------------------------------------------------------------------------
 Route::get('adminspage','AdminAuth\AdminController@showRegistrationForm')->name('adminspage');        
-Route::post('admin_create','AdminAuth\AdminController@createAdmin')->name('admin_create');  
+Route::post('admin_create','AdminAuth\AdminController@create')->name('admin_create');  
 Route::get('admin_delete/{id}','AdminAuth\AdminController@DeleteAdmin')->name('admin_delete');   
      
 //------------------------------------------------------------------------------------------------------------------------------
@@ -114,7 +114,7 @@ Route::get('admin_delete/{id}','AdminAuth\AdminController@DeleteAdmin')->name('a
 //avatar_categories routes--------------------------------------------------------------------------------------------------
 Route::get('avatar_categories','AdminAuth\AvatarContent@showAvatarContent')->name('avatar_categories'); 
 Route::post('avatar_categ_register','AdminAuth\AvatarContent@registerCategory')->name('avatar_categ_register');   
-Route::get('avatar_categ_edit/{id}','AdminAuth\AvatarContent@editCategory')->name('avatar_categ_edit');  
+//Route::get('avatar_categ_edit/{id}','AdminAuth\AvatarContent@editCategory')->name('avatar_categ_edit');  
 Route::post('avatar_categ_update','AdminAuth\AvatarContent@UpdateCategory')->name('avatar_categ_update');   
 Route::get('avatar_categories_delete/{id}','AdminAuth\AvatarContent@DeleteCategory')->name('avatar_categories_delete'); 
 ///avatars routes-----------------------------------------------------------------------------------------------------------
@@ -122,14 +122,14 @@ Route::get('avatars','AdminAuth\AvatarContent@ShowAvatars')->name('avatars'); //
 
 Route::post('CreateAvatar','AdminAuth\AvatarContent@CreateAvatar')->name('CreateAvatar');  
 Route::get('avatar_delete/{id}','AdminAuth\AvatarContent@DeleteAvatar')->name('avatar_delete'); 
-Route::get('avatar_edit/{id}','AdminAuth\AvatarContent@EditAvatar')->name('avatar_edit');  
+//Route::get('avatar_edit/{id}','AdminAuth\AvatarContent@EditAvatar')->name('avatar_edit');  
 Route::post('avatar_update','AdminAuth\AvatarContent@UpdateAvatar')->name('avatar_update'); 
 ///Recommendation_categories routes-----------------------------------------------------------------------------------------
 Route::get('recommendation_categories','AdminAuth\RecommendationContent@ShowCategs')->name('recommendation_categories'); //*
 
 Route::post('categ_create','AdminAuth\RecommendationContent@CreateCateg')->name('categ_create');  
 Route::get('categ_delete/{id}','AdminAuth\RecommendationContent@DeleteCateg')->name('categ_delete'); 
-Route::get('categ_edit/{id}','AdminAuth\RecommendationContent@EditCateg')->name('categ_edit');  
+//Route::get('categ_edit/{id}','AdminAuth\RecommendationContent@EditCateg')->name('categ_edit');  
 Route::post('categ_update','AdminAuth\RecommendationContent@UpdateCateg')->name('categ_update'); 
 ///Recommendations routes---------------------------------------------------------------------------------------------------
 Route::get('recommendations','AdminAuth\RecommendationContent@ShowRecommendations')->name('recommendations'); //*
@@ -143,7 +143,7 @@ Route::get('news','AdminAuth\NewsContent@ShowNews')->name('news');
 
 Route::post('news_create','AdminAuth\NewsContent@CreateNews')->name('news_create');  
 Route::get('news_delete/{id}','AdminAuth\NewsContent@DeleteNews')->name('news_delete'); 
-Route::get('news_edit/{id}','AdminAuth\NewsContent@EditNews')->name('news_edit');  
+//Route::get('news_edit/{id}','AdminAuth\NewsContent@EditNews')->name('news_edit');  
 Route::post('news_update','AdminAuth\NewsContent@UpdateNews')->name('news_update'); 
 //------------------------------------------------------------------------------------------------------------------------------
 
@@ -154,7 +154,7 @@ Route::get('users_report','AdminAuth\ReportsManager@Show_users_report')->name('u
 //Recommendations routes--------------------------------------------------------------------------------------------------
 Route::get('recommendations_report','AdminAuth\ReportsManager@Show_recommendations_report')->name('recommendations_report'); 
 //Metrics routes--------------------------------------------------------------------------------------------------
-Route::get('metrics_report','AdminAuth\ReportsManager@Show_metrics_report')->name('metrics_report'); 
-Route::get('metrics_report/{year}','AdminAuth\ReportsManager@Show_metrics_report')->name('metrics_report');  
+Route::get('metrics_report','AdminAuth\ReportsManager@Show_metrics_reports')->name('metrics_report'); 
+//Route::get('metrics_report/{year}','AdminAuth\ReportsManager@Show_metrics_report')->name('metrics_report');  
 //------------------------------------------------------------------------------------------------------------------------------
 //[Admin panel*********************************************************************************************************************]

@@ -1,113 +1,157 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Creative - Bootstrap 3 Responsive Admin Template">
-  <meta name="author" content="GeeksLabs">
-  <meta name="keyword" content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
-  <link rel="shortcut icon" href="https://cdn.onlinewebfonts.com/svg/img_233159.png">
-<style>
-.body {
-  
-    background-color: #576072
-    
-}
-</style>
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<title>{{ config('app.name', 'Laravel') }}</title>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
-  <!-- Bootstrap CSS -->
-  <!-- bootstrap theme -->
-  {!!Html::style('css/bootstrap.min.css')!!}
-  {!!Html::style('css/bootstrap-theme.css')!!}
-  <!--external css-->
-  <!-- font icon -->
-  {!!Html::style('css/elegant-icons-style.css')!!}
-  {!!Html::style('css/font-awesome.min.css')!!}
-  <!-- full calendar css-->
-  {!!Html::style('css/bootstrap-theme.css')!!}
-  {!!Html::style('assets/fullcalendar/fullcalendar/fullcalendar.css')!!}
-  <!-- easy pie chart-->
-  {!!Html::style('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css')!!}
-  <!-- owl carousel -->
-  {!!Html::style('css/owl.carousel.css')!!}
-  {!!Html::style('css/jquery-jvectormap-1.2.2.css')!!}
-  <!-- Custom styles -->
-  {!!Html::style('css/fullcalendar.css')!!}
-  {!!Html::style('css/widgets.css')!!}
-  {!!Html::style('css/style.css')!!}
-  {!!Html::style('css/style-responsive.css')!!}
-  {!!Html::style('css/xcharts.min.css')!!}
-  {!!Html::style('css/jquery-ui-1.10.4.min.css')!!}
-    <!-- Styles -->
-    <!--<script src="{{ asset('js/app.js') }}"></script> --!>
-    <!-- javascripts -->
-  {!!Html::script('js/jquery.js')!!}
-  {!!Html::script('js/jquery-ui-1.10.4.min.js')!!}
-  {!!Html::script('js/jquery-1.8.3.min.js')!!}
-  {!!Html::script('js/jquery-ui-1.9.2.custom.min.js')!!}
-  <!-- bootstrap -->
-  {!!Html::script('js/bootstrap.min.js')!!}
-  <!-- nice scroll -->
-  {!!Html::script('js/jquery.scrollTo.min.js')!!}
-  {!!Html::script('js/jquery.nicescroll.js')!!}
-  <!-- charts scripts -->
-  {!!Html::script('assets/jquery-knob/js/jquery.knob.js')!!}
-  {!!Html::script('js/jquery.sparkline.js')!!}
-  {!!Html::script('assets/jquery-easy-pie-chart/jquery.easy-pie-chart.js')!!}
-  {!!Html::script('js/owl.carousel.js')!!}
-  <!-- jQuery full calendar -->
-  {!!Html::script('js/fullcalendar.min.js')!!}
-    <!-- Full Google Calendar - Calendar -->
-  {!!Html::script('assets/fullcalendar/fullcalendar/fullcalendar.js')!!}
-    <!--script Tables this page only-->
-  {!!Html::script('js/calendar-custom.js')!!}
-  {!!Html::script('js/jquery.rateit.min.js')!!}
-    <!-- custom select -->
-  {!!Html::script('js/jquery.customSelect.min.js')!!}  
-  {!!Html::script('assets/chart-master/Chart.js')!!} 
-    <!--custome script for all page-->
-  {!!Html::script('js/scripts.js')!!} 
-    <!-- custom script for this page-->
-  {!!Html::script('js/sparkline-chart.js')!!}
-  {!!Html::script('js/easy-pie-chart.js')!!}
-  {!!Html::script('js/jquery-jvectormap-1.2.2.min.js')!!}
-  {!!Html::script('js/jquery-jvectormap-world-mill-en.js')!!} 
-  {!!Html::script('js/xcharts.min.js')!!}
-  {!!Html::script('js/jquery.autosize.min.js')!!}
-  {!!Html::script('js/jquery.placeholder.min.js')!!} 
-  {!!Html::script('js/gdp-data.js')!!}  
-  {!!Html::script('js/morris.min.js')!!}  
-  {!!Html::script('js/sparklines.js')!!}  
-  {!!Html::script('js/charts.js')!!}        
-  {!!Html::script('js/jquery.slimscroll.min.js')!!} 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <!-- Toastr style -->
+    <link href="css/plugins/toastr/toastr.min.css" rel="stylesheet">
+
+    <!-- Gritter -->
+    <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
+
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
-<body class="body">
-    
-<section id="container" class="">
-
                         @if (Auth::guard('admin_user')->user())
-                            @include('admin_panel.header.header')
-                            @include('admin_panel.sidebar.sidebar')
-                            @yield('content')
-                            @yield('content_god')
-                        @elseif (!Auth::guest())
-                           
+                            <body class="body">
+	<div id="wrapper">
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="http://res.cloudinary.com/storagefeed/image/upload/v1520231254/logohappier.png" height="100" width="100" />
+                             </span>
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">Panel de Administracion Happier</strong>
+                             </span> </span> </a>
+                            
+                        </div>
+                        <div class="logo-element" >
+                            HAPP
+                        </div>
+                    </li>
+                    <li>
+                        <a href="{!!url('admin_login')!!}"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="{!!url('adminspage')!!}"><i class="fa fa-star"></i> <span class="nav-label">Administradores</span></a>
+                    </li>
+                    <li class="active">
+                        <a><i class="fa fa-database"></i> <span class="nav-label">Contenido</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="{!!url('avatar_categories')!!}">Categorias de Avatars</a></li>
+                            <li><a href="{!!url('avatars')!!}">Avatars</a></li>
+                            <li><a href="{!!url('recommendation_categories')!!}">Categorias de recomendaciones</a></li>
+                            <li><a href="{!!url('recommendations')!!}">Recomendaciones</a></li>
+                            <li><a href="{!!url('news')!!}">Noticias</a></li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a><i class="fa fa-pie-chart"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="{!!url('metrics_report')!!}">Metricas</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+        	<div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                    </div>
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li>
+                            <span class="m-r-sm text-muted welcome-message">Bienvenido a Happier</span>
+                        </li>
+                        </li>
+                        <li>
+                            <a href="{{ url('/admin_logout')}}">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>
+                        </li>
+                        
+                    </ul>
+
+                </nav>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="wrapper wrapper-content">
+						@yield('content')
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Flot -->
+    <script src="js/plugins/flot/jquery.flot.js"></script>
+    <script src="js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="js/plugins/flot/jquery.flot.spline.js"></script>
+    <script src="js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="js/plugins/flot/jquery.flot.pie.js"></script>
+
+    <!-- Peity -->
+    <script src="js/plugins/peity/jquery.peity.min.js"></script>
+    <script src="js/demo/peity-demo.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="js/inspinia.js"></script>
+    <script src="js/plugins/pace/pace.min.js"></script>
+
+    <!-- jQuery UI -->
+    <script src="js/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- GITTER -->
+    <script src="js/plugins/gritter/jquery.gritter.min.js"></script>
+
+    <!-- Sparkline -->
+    <script src="js/plugins/sparkline/jquery.sparkline.min.js"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="js/demo/sparkline-demo.js"></script>
+
+    <!-- ChartJS-->
+    <script src="js/plugins/chartJs/Chart.min.js"></script>
+
+    <!-- Toastr -->
+    <script src="js/plugins/toastr/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // setTimeout(function() {
+            //     toastr.options = {
+            //         closeButton: true,
+            //         progressBar: true,
+            //         showMethod: 'slideDown',
+            //         timeOut: 4000
+            //     };
+            //     toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+
+            // }, 1300);
+        });
+    </script>
+</body>
+                     <!--   @elseif (!Auth::guest()) -->
                         @else
                             @yield('content')
                         @endif
-                    
-                    
-          
-            
-</section>
-
-
-    <!-- Scripts -->
-    
-</body>
 
 </html>

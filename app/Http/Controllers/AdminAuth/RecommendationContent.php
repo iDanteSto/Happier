@@ -92,7 +92,7 @@ $toPublicId = $removeSpaces;
 Cloudder::rename($publicId, $toPublicId);
 */
 DB::table('category')
-->where('category_Id', $request->id)
+->where('category_Id', $request->CategId)
 ->update(array('description' => $request->description));
 //----------------------------------------------------------
 return redirect('/recommendation_categories');  	
@@ -187,8 +187,9 @@ $arrayOfImageData=Cloudder::getResult();
 //----------------------------------------------------------
 */
 //--------------------update on DB--------------------------
+
 DB::table('recommendation')
-->where('recommendation_Id', $request->recommendation_Id)
+->where('recommendation_Id', $request->RecomId)
 ->update(array('name' => $request->name,'description' => $request->description,'fk_category_Id' => $request->fkCategId));
 //----------------------------------------------------------
 return redirect('/recommendations');  

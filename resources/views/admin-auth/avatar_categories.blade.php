@@ -2,213 +2,175 @@
 
 @section('content')
 
-<style>
-.fixposition {
-   
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-}
-.fixposition2 {
-   
-
-    position: fixed;
-    top: 90%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-}
-
-table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    width: 100%;
-}
-
-td, th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-
-}
-
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
-</style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <form class="form-edit" method="GET" action="{{ url('avatar_categ_edit') }}">
-<div class="container">
-    <div class="fixposition">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Show</div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Categorias de Avatars</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table">
+                        <tbody>
+                        <?php 
+                        $editableArray = [];
+                        $editlenght = count($checkIfEditable);
+                        ?>
+                        @foreach($availableCategories as $categs)
+                        <?php 
+                            $disponible = true; 
+                            foreach ($checkIfEditable as $obj) { 
+                                if($categs->avatar_categories_Id == $obj->fk_avatar_categories_Id){ 
+                                    $disponible = false;
+                                }
+                            } 
+                            if($disponible){ ?>
+                                <tr>
+                                    <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
+                                    <td>{{$categs->name}}</td>
+                                    <td>{{$categs->description}}</td>
 
-                <div class="panel-body" align="left">
-                   
-                        
-<table>                        
-                        <div class="col-md-5">
-                            <label for="name" class="">Name</label>
-
-                         <br>
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Decription</th>
-        <th>Commands</th>
-    </tr>  
-                        </div>
-
-                        <div class="col-md-5">
-                            <label for="password-confirm" class="">Description</label>
-
-
-<?php 
-$editableArray = [];
-$editlenght = count($checkIfEditable);
-/*
-foreach ($checkIfEditable as $checkIfEditables)
-{
-$editableArray = array_fill(0, $editlenght, $checkIfEditables->fk_avatar_categories_Id);
-}
-*/
-//$checkIfEditable->toArray();
-
-//dd($checkIfEditable); 
-/*
-if (in_array(4, {{$checkIfEditable[0]->fk_avatar_categories_Id}})) {
-        echo "si";
-    } else {
-        echo "no";
-    }
-
-
-
-    foreach ($checkIfEditable[0]->fk_avatar_categories_Id as $obj) {
-        # code...
-    }
-*/
-
-?>
-@foreach($availableCategories as $categs)
-<?php 
-    $disponible = true; 
-    foreach ($checkIfEditable as $obj) { 
-        if($categs->avatar_categories_Id == $obj->fk_avatar_categories_Id){ 
-            $disponible = false;
-        }
-    } 
-
-    if($disponible){ ?>
-        <tr>
-            <td>{{$categs->avatar_categories_Id}}</td> <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
-            <td>{{$categs->name}}</td>
-            <td>{{$categs->description}}</td>
-
-            <td><a class="button Edit" name="{{$categs->avatar_categories_Id}}" >Edit</a></td>
-            <td><a class="button Delete" name="{{$categs->avatar_categories_Id}}" >Delete</a></td>
-        </tr>
-    <?php }else{ ?>
-        <tr>
-            <td>{{$categs->avatar_categories_Id}}</td> <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
-            <td>{{$categs->name}}</td>
-            <td>{{$categs->description}}</td>
-
-            <td><a class="button Edit" name="{{$categs->avatar_categories_Id}}" >Edit</a></td>
-            <td><img src="http://www.endlessicons.com/wp-content/uploads/2012/12/lock-icon-614x460.png" alt="lock" width="42" height="42"></td>
-        </tr>
-    <?php 
-        } 
-    ?>
-@endforeach
-
-
-                            
-                        </div>
-</table>
-                        
+                                    <td>
+                                        <a class="btn btn-white btn-bitbucket" data-myname="{{$categs->name}}" data-mydescription="{{$categs->description}}" data-myid="{{$categs->avatar_categories_Id}}" data-toggle="modal" data-target="#edit"><i class="fa fa-wrench"></i></a>
+                                    </td>
+                                    <td><button type="button" class="btn btn-w-s btn-danger"  name="{{$categs->avatar_categories_Id}}">Eliminar</button></td>
+                                </tr>
+                            <?php }else{ ?>
+                                <tr>
+                                    <input type="hidden" name="Id" value="{{$categs->avatar_categories_Id}}">
+                                    <td>{{$categs->name}}</td>
+                                    <td>{{$categs->description}}</td>
+                                    <td>
+                                        <a class="btn btn-white btn-bitbucket" data-myname="{{$categs->name}}" data-mydescription="{{$categs->description}}" data-myid="{{$categs->avatar_categories_Id}}" data-toggle="modal" data-target="#edit"><i class="fa fa-wrench"></i></a>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            <?php 
+                                } 
+                            ?>
+                        @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </form>
 
+ <div id="edit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Edita la Categoria</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="form-horizontal" method="POST" action="{{ url('avatar_categ_update') }}">
+                <div class="form-group">
+                    <div class="col-md-8">
+                    <label>Nombre</label> 
+                    <input id="name" type="text" class="form-control" name="name" value="" required>  
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-8">    
+                    <label for="exampleTextarea">Descripcion</label>
+                    <textarea class="form-control" id="description" rows="3" name="description" value="" required ></textarea>
+                    </div>
+                    </div>
+                       
+                        <input id="CategId" type="hidden" class="form-control" name="CategId"  value="">
+                <div class="form-group">
+                    <div class="col-md-8">
+                    <button class="btn btn-w-m btn-warning" type="submit"><strong>Actualizar</strong></button>
+                    </div>
+                </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-<div class="container">
-    <div class="fixposition2">
-        <div class="col-md-8 col-md-offset-2">
+<div class="">
+    <div class="">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
-                <div class="panel-heading">Avatar Categories Creator</div>
-
-<form class="form-horizontal" method="POST" action="{{ url('avatar_categ_register') }}">
+                <div class="panel-heading">Crear Nueva Categoria de Avatar</div>
                 <div class="panel-body">
-                   
-                        
-                        
-                        <div class="col-md-5">
-                            <label for="name" class="col-md-4 control-label">Name</label>
-
-                            <div class="">
-                                <input id="name" type="text" class="form-horizontal" name="name" value="" required >
-
+                    <form class="form-horizontal" method="POST" action="{{ url('avatar_categ_register') }}">
+                        {{ csrf_field() }}
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="name" class="col-md-4 control-label">Nombre</label>
+                            <div class="col-md-8">
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required>
                                 @if ($errors->has('name'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
                                 @endif
                             </div>
                         </div>
-
-                        
-
-                        
-
-                        <div class="col-md-5">
-                            <label for="description" class="col-md-4 control-label">Description</label>
-
-                            <div class="">
-                                <input id="description" type="text" class="form-horizontal" name="description" required>
+                        <div class="form-group">
+                            <label for="description" class="col-md-4 control-label">Descripcion</label>
+                            <div class="col-md-8">
+                                <input id="description" type="text" class="form-control" name="description" required>
                             </div>
                         </div>
-
-                        <div class="col-md-1">
-                            
-                                <button type="submit" class="btn btn-primary" >
-                                
-                                    Submit
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+                                <button type="submit" class="btn btn-w-m btn-warning" style="width: 100%">
+                                    Registrar
                                 </button>
-                                
-                         
+                            </div>
                         </div>
-</div> 
-</form>                   
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
 <script>
-
-$(document).on("click", ".Edit", function() {
-//   console.log("inside";   <-- here it is
-    console.log($(this).attr('name'));
-    window.location.href = "/avatar_categ_edit/"+$(this).attr('name');
- });
-
-
-$(document).on("click", ".Delete", function() {
-//   console.log("inside";   <-- here it is
-    console.log($(this).attr('name'));
-    window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
- });
+//js to show modal with data
+$('#edit').on('show.bs.modal',function(event){
+     //var category_id = $(this).attr('name');
+     var button = $(event.relatedTarget)
+     var CategId = button.data('myid')
+     var Name = button.data('myname')
+     var Description = button.data('mydescription')
+     var modal = $(this)
+     modal.find('.modal-body #name').val(Name)
+     modal.find('.modal-body #description').val(Description)
+     modal.find('.modal-body #CategId').val(CategId)
+     //$('#myModal').modal('show');
+});
+//JS to delete categorie
+ $(document).on("click", ".btn-danger", function() {
+        //   console.log("inside";   <-- here it is
+        console.log($(this).attr('name'));
+        window.location.href = "/avatar_categories_delete/"+$(this).attr('name');
+    });
 
 </script>
 @endsection

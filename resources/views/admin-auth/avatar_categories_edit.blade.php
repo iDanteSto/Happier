@@ -2,21 +2,6 @@
 
 @section('content')
 
-<style>
-.fixposition2 {
-   
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    width: 60%;
-}
-
-</style>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
 <div class="container">
     <div class="fixposition2">
         <div class="col-md-8 col-md-offset-2">

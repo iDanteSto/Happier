@@ -37,10 +37,12 @@ return redirect('/dashboard');
 
 
 //Metrics reports
-public function Show_metrics_report($year)
+/*
+public function Show_metrics_report()
 {
 if(Auth::guard('admin_user')->user())
             {
+ $year = 2017;               
 //-----obtain valid years for users registration limit to see on table ----
 $earliest = DB::table('users')
                      ->select('created_at')
@@ -146,7 +148,12 @@ return view('admin-auth.metrics_report' , ["year"=>$year]);
             }
 return redirect('/dashboard');   
 }
-
+*/
+public function Show_metrics_reports()
+{    
+    
+return view('admin-auth.metrics_report');
+}
 
 
 
