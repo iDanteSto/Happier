@@ -1,53 +1,103 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-.positioner {
-  
 
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-</style>
-<!--position: absolute;
-  margin: auto;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 200px;
-  height: 200px;  -->
+                   
 <div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="positioner">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-
-                        @if (Auth::guard('admin_user')->user())
-                            
-                        <img src="https://www.caremonkey.com/wp-content/uploads/2015/09/CareMonkey-Admin.png" alt="Dude" height="300" width="300">
-                            
-                        @elseif (!Auth::guest())
-                             You shouldn't be here
-                        @else
-                        @endif
-                    
+  <div class="panel-group">
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading" align="center"><strong>Avatars</strong></div>
+            <div class="panel-body">
+              <div class="col-md-6">
+                <a href="{!!url('avatar_categories')!!}">
+                      <div class="ibox">
+                          <div class="ibox-content product-box" style ="background-color: gold">
+                              <div class="product-imitation">
+                                    <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
+                              </div>
+                              <div class="product-desc">
+                                  <p class="product-name" align="center"> Categoria</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                <a href="{!!url('avatars')!!}">
+                      <div class="ibox">
+                          <div class="ibox-content product-box" style ="background-color: gold">
+                              <div class="product-imitation">
+                                    <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
+                              </div>
+                              <div class="product-desc">
+                                  <p class="product-name" align="center"> Avatars</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
                 </div>
             </div>
+          </div>
         </div>
-    </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading" align="center"><strong>Recomendaciones</strong></div>
+            <div class="panel-body">
+              <div class="col-md-6">
+                <a href="{!!url('recommendation_categories')!!}">
+                      <div class="ibox">
+                          <div class="ibox-content product-box" style ="background-color: gold">
+                              <div class="product-imitation">
+                                    <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
+                              </div>
+                              <div class="product-desc">
+                                  <p class="product-name" align="center"> Categoria</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                <a href="{!!url('recommendations')!!}">
+                      <div class="ibox">
+                          <div class="ibox-content product-box" style ="background-color: gold">
+                              <div class="product-imitation">
+                                    <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
+                              </div>
+                              <div class="product-desc">
+                                  <p class="product-name" align="center"> Recom</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="panel panel-default">
+            <div class="panel-heading" align="center"><strong>Noticias</strong></div>
+            <div class="panel-body">
+              <div class="col-md-12">
+                <a href="{!!url('news')!!}">
+                      <div class="ibox">
+                          <div class="ibox-content product-box" style ="background-color: gold">
+                              <div class="product-imitation">
+                                    <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
+                              </div>
+                              <div class="product-desc">
+                                  <p class="product-name" align="center"> Noticia</p>
+                              </div>
+                          </div>
+                      </div>
+                    </a>
+                </div>
+            </div>
+          </div>
+        </div>
+  </div>
 </div>
 
-
+                    
 @endsection

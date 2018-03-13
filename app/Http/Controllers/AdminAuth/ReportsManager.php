@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\AdminUser;
 use Hash;
+use Input;
 use DB;
 use Khill\Lavacharts\Lavacharts;
 use App\User;
@@ -37,7 +38,7 @@ return redirect('/dashboard');
 
 
 //Metrics reports
-/*
+
 public function Show_metrics_report()
 {
 if(Auth::guard('admin_user')->user())
@@ -146,13 +147,66 @@ return view('admin-auth.metrics_report' , ["year"=>$year]);
 //---------------------------------------------------------------
 			 	
             }
-return redirect('/dashboard');   
+    return redirect('/dashboard');   
 }
-*/
-public function Show_metrics_reports()
-{    
-    
-return view('admin-auth.metrics_report');
+
+
+public function Show_metrics_reports() {    
+        if(Auth::guard('admin_user')->user()){
+    //users per month info         
+    $arraymonths = User::select(DB::raw("COUNT(*) as count ,  MONTHNAME(created_at) as month"))
+    ->whereYear('created_at', 2017)
+    ->orderBy("created_at")
+    ->groupBy(DB::raw("month(created_at)"))
+    ->get()->toArray();
+    $meses = array();
+    $usuarios = array();
+    foreach($arraymonths as $data){
+        array_push($meses, $data['month']);
+        array_push($usuarios, $data['count']);
+    }
+    $data = array();
+    $data['meses'] = $meses;
+    $data['usuarios'] = $usuarios;
+    //-----options for select dropdown------------------------
+    $earliest = DB::table('users')
+         ->select('created_at')
+         ->orderBy('created_at')
+         ->first();
+    $latest = DB::table('users')
+         ->select('created_at')
+         ->orderBy('created_at' , 'desc')
+         ->first();
+    $earliestCarbon = Carbon::createFromFormat('Y-m-d H:i:s', $earliest->created_at)->year;  
+    $latestCarbon = Carbon::createFromFormat('Y-m-d H:i:s', $latest->created_at)->year;                    
+    $diffinYears =  $latestCarbon - $earliestCarbon ;
+    //---------------------------------------------------------
+    return view('admin-auth.metrics_report', ['data' => $data])->with('diffinYears',$diffinYears)->with('earliestCarbon',$earliestCarbon);
+                                            }else
+                                            {
+                                                return redirect('/dashboard');   
+                                            }
+}
+
+public function get_metrics_graph(Request $request){
+    $year = $request->year;
+    $arraymonths = User::select(DB::raw("COUNT(*) as count ,  MONTHNAME(created_at) as month"))
+    ->whereYear('created_at', $year)
+    ->orderBy("created_at")
+    ->groupBy(DB::raw("month(created_at)"))
+    ->get()->toArray();
+
+    $meses = array();
+    $usuarios = array();
+
+    foreach($arraymonths as $data){
+        array_push($meses, $data['month']);
+        array_push($usuarios, $data['count']);
+    }
+    $data = array();
+    $data['meses'] = $meses;
+    $data['usuarios'] = $usuarios;
+    return $data;
 }
 
 

@@ -57,7 +57,7 @@
             </div>
             <div class="form-group">
                 <div class="col-md-8">    
-                    <label for="exampleTextarea">Descripcion</label>
+                    <label for="textarea">Descripcion</label>
                     <textarea class="form-control" id="description" rows="5" name="description" value="" required ></textarea>
                 </div>
             </div>
@@ -97,20 +97,20 @@
                     <form class="form-horizontal" method="POST" action="{{ url('recommendation_create') }}" enctype="multipart/form-data">
                         {{ csrf_field() }}
                         <div class="form-group">
-                            <label for="name" class="col-md-4 control-label">Nombre</label>
                             <div class="col-md-8">
+                            <label for="name">Nombre</label>
                                 <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-md-8">    
-                                <label for="exampleTextarea">Descripcion</label>
+                                <label for="textarea" >Descripcion</label>
                                 <textarea class="form-control" id="description" rows="5" name="description" value="" required ></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Category" class="col-md-4 control-label">Categoria</label>
                             <div class="col-md-8">
+                                <label for="Category">Categoria</label>
                                 <select class="form-control m-b" id="fkCategId" name="fkCategId">
                                     @foreach($availableCategories as $categs)                                   
                                     <option value="{{$categs->category_Id}}" >{{$categs->description}}</option>
@@ -119,8 +119,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="Frequency" class="col-md-4 control-label">Tiempo del dia</label>
                             <div class="col-md-8">
+                                <label for="Frequency">Tiempo del dia</label>
                                 <select  class="form-control m-b" id="TimesofDay_Id" name="TimesofDay_Id">
                                   @foreach($availableTimesofDay as $times)                                   
                                   <option value="{{$times->TimesofDay_Id}}" >{{$times->description}}</option>
@@ -129,13 +129,13 @@
                           </div>
                       </div>
                       <div class="form-group">
-                        <label for="imagen" class="col-md-4 control-label">Imagen</label>
                         <div class="col-md-8">
+                        <label for="imagen">Imagen</label>
                            <input type="file" name="file" id="file" multiple>      
                        </div>
                    </div>
                    <div class="form-group">
-                    <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-8">
                         <button type="submit" class="btn btn-w-m btn-warning" style="width: 100%">
                             Crear Recomendacion
                         </button>
