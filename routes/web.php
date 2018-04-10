@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Mail;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('admin_login');
+    
 });
 Route::get('/test', function () {
     return view('test');

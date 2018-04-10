@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function forma_alta_clientes()
+    {
+        return view('altaclientes');
+    }
+
+
+
+
+
 }
