@@ -48,7 +48,7 @@ font-size: 23px;
                 </div>
             </div>-->
             
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="757">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="800">
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
