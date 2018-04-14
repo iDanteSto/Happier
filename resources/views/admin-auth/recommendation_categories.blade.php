@@ -6,7 +6,7 @@
         <div class="col-lg-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>Categorias de Recomendaciones</h5>
+                    <h5>Temas de Recomendaciones</h5>
                     <div class="ibox-tools">
                         <a class="collapse-link">
                             <i class="fa fa-chevron-up"></i>
@@ -92,7 +92,7 @@
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Crear una Categoria de Recomendacion</div>
+                <div class="panel-heading">Crear un Tema de Recomendacion</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ url('categ_create') }}" enctype="multipart/form-data">
                         <div class="form-group">
@@ -110,7 +110,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-w-m btn-warning" style="width: 100%">
-                                    Crear categoria
+                                    Crear Tema
                                 </button>
                             </div>
                         </div>

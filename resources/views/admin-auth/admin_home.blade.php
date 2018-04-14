@@ -17,7 +17,7 @@
                                     <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
                               </div>
                               <div class="product-desc">
-                                  <p class="product-name" align="center"> Categoria</p>
+                                  <p class="product-name" align="center"> Categorias</p>
                               </div>
                           </div>
                       </div>
@@ -52,7 +52,7 @@
                                     <img alt="logo" src="{{url('/img/archive_img.png')}}" width="100" height="100">
                               </div>
                               <div class="product-desc">
-                                  <p class="product-name" align="center"> Categoria</p>
+                                  <p class="product-name" align="center"> Temas</p>
                               </div>
                           </div>
                       </div>

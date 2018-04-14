@@ -38,7 +38,7 @@
                         </div>
                     </li>
                     <li>
-                        <a href="{!!url('admin_login')!!}"><i class="fa fa-desktop"></i> <span class="nav-label">Dashboard</span></a>
+                        <a href="{!!url('admin_login')!!}"><i class="fa fa-desktop"></i> <span class="nav-label">Inicio</span></a>
                     </li>
                     <li>
                         <a href="{!!url('adminspage')!!}"><i class="fa fa-star"></i> <span class="nav-label">Administradores</span></a>
@@ -48,7 +48,7 @@
                         <ul class="nav nav-second-level">
                             <li><a href="{!!url('avatar_categories')!!}">Categorias de Avatars</a></li>
                             <li><a href="{!!url('avatars')!!}">Avatars</a></li>
-                            <li><a href="{!!url('recommendation_categories')!!}">Categorias de recomendaciones</a></li>
+                            <li><a href="{!!url('recommendation_categories')!!}">Temas de recomendaciones</a></li>
                             <li><a href="{!!url('recommendations')!!}">Recomendaciones</a></li>
                             <li><a href="{!!url('news')!!}">Noticias</a></li>
                         </ul>
