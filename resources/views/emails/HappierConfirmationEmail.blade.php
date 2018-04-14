@@ -52,29 +52,29 @@ font-size: 23px;
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/Email%20Assets/conf1.1v2.png"  width="800" height="601" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/Email%20Assets/conf1.1v2.png"  width="804" height="601" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
 <tr><!-- second segment -->
-  <td style="padding: 60px 0 40px 0;" align="center" bgcolor="#787878" class="white">
+  <td style="padding: 59px 0 40px 0;" align="center" bgcolor="#787878" class="white">
     Por favor verifica tu correo presionando el boton.<br/><br/>
     <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/Email%20Assets/conf4.4v2.png"  width="200" height="37" style="display: block;"  />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/Email%20Assets/conf4.4v2.png"  width="200" height="50" style="display: block;"  />
     </a>
   </td>
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517079864/Email%20Assets/conf2.2v2.png" height="203" style="display: block;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517079864/Email%20Assets/conf2.2v2.png" height="204" style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3v2.jpg" height="1080" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3v2.jpg" height="1083" style="display: block;" />
   </a>
   </td>
 </tr><!-- fourth segment -->
