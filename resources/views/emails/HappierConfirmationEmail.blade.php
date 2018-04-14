@@ -74,12 +74,12 @@ font-size: 23px;
 <tr><!-- fourth segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3v2.jpg" height="1083" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3v2.jpg" height="1080" style="display: block;" />
   </a>
   </td>
 </tr><!-- fourth segment -->
 <tr><!-- fifth segment -->
-  <td width="100%" class="black">
+  <td width="75%" class="black">
  Si recibiste este correo por error haz clic aqui<br/>
  Por favor, no respondas a esta cuenta , si tienes alguna duda sobre HAPPIER haz clic aqui.<br/>
  Happier es una marca registrada. Happier y todos sus elementos graficos son propiedad de Ciqno Digital Media, <br/>
