@@ -48,11 +48,11 @@ font-size: 23px;
                 </div>
             </div>-->
             
-<table align="center" border="0" cellpadding="0" cellspacing="0" width="800">
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="600">
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/Email%20Assets/conf1.1v2.png"  width="804" height="601" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015546/Email%20Assets/conf1.1v2.png"  width="757" height="682" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
@@ -60,21 +60,21 @@ font-size: 23px;
   <td style="padding: 59px 0 40px 0;" align="center" bgcolor="#787878" class="white">
     Por favor verifica tu correo presionando el boton.<br/><br/>
     <a href="{{route('sendEmailDone',["email" => $user->email,"verifyToken"=>$user->verifyToken])}}">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/Email%20Assets/conf4.4v2.png"  width="200" height="50" style="display: block;"  />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517018719/Email%20Assets/conf4.4v2.png"  width="191" height="36" style="display: block;"  />
     </a>
   </td>
 </tr><!-- second segment -->
 <tr><!-- third segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517079864/Email%20Assets/conf2.2v2.png" height="204" style="display: block;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517079864/Email%20Assets/conf2.2v2.png" width="756" height="192" style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
 <tr><!-- fourth segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3v2.jpg" height="1080" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517015674/Email%20Assets/conf3.3v2.jpg" width="756" height="1019" style="display: block;" />
   </a>
   </td>
 </tr><!-- fourth segment -->

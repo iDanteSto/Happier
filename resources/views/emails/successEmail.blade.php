@@ -52,14 +52,14 @@ font-size: 23px;
 <tr><!-- first segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082941/Email%20Assets/confirmed1.1.png"  height="789" style="display: block;" />
+    <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082941/Email%20Assets/confirmed1.1v2.png"  height="715" style="display: block;" />
   </a>
   </td>
 </tr><!-- first segment -->
 <tr><!-- third segment -->
   <td style="">
     <a href="#" style="pointer-events:none;">
-     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082940/Email%20Assets/confirmed2.1.png" height="430" style="display: block;" />
+     <img src="http://res.cloudinary.com/storagefeed/image/upload/v1517082940/Email%20Assets/confirmed2.1v2.png" height="479" style="display: block;" />
    </a>
   </td>
 </tr><!-- third segment -->
