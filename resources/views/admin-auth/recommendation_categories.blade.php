@@ -90,7 +90,7 @@
 
 
 <div class="">
-    <p>Los Temas de recomendaicon son estaticas en la app , asi que no se podran borrar para asi mantener el ID que tienen designado en esta</p>
+    <p>Los Temas de recomendacion son estaticas en la app , asi que no se podran borrar para asi mantener el ID que tienen designado en esta</p>
     
     <div class="">
         <div class="col-md-8 col-md-offset-2">
