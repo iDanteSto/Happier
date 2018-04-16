@@ -35,7 +35,8 @@
                                         <td>
                                         <a class="btn btn-white btn-bitbucket" data-myname="" data-mydescription="" data-myid="{{$categs->category_Id}}" data-toggle="modal" data-target="#edit"><i class="fa fa-wrench"></i></a>
                                         </td>
-                                        <td><button type="button" class="btn btn-w-s btn-danger"  name="{{$categs->category_Id}}">Eliminar</button></td>
+                                        <!--Los temas de recomendacion no se deben borrar , ya que son estaticos en la app-->
+                                        <!--<td><button type="button" class="btn btn-w-s btn-danger"  name="{{$categs->category_Id}}">Eliminar</button></td> -->
                                     </tr>
                                 <?php }else{ ?>
                                     <tr>
@@ -89,6 +90,8 @@
 
 
 <div class="">
+    <p>Los Temas de recomendaicon son estaticas en la app , asi que no se podran borrar para asi mantener el ID que tienen designado en esta</p>
+    
     <div class="">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
