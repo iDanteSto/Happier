@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {   //here you assign the commands to be executed at wich schedule [*_*]
-    /*
+    
       //<-------------Schedule for recommendations----------------------------------->
        $schedule->command('recommendation:setter')->dailyAt('08:00');
        $schedule->command('recommendation:setter')->dailyAt('11:00');
@@ -61,7 +61,7 @@ class Kernel extends ConsoleKernel
       //
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
-*/
+
     }
 
     /**
