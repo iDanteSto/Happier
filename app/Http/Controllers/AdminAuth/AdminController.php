@@ -61,9 +61,9 @@ class AdminController extends Controller
     }
 public function showRegistrationForm()
     {
-         if(Auth::guard('admin_user')->user())
+         if(Auth::guard('admin_user')->user()->level == '1')
             {
-                $availableAdmins ['availableAdmins'] = DB::table('admin_users')->get();  
+                $availableAdmins ['availableAdmins'] = DB::table('admin_users')->orderBy('level' , 'desc')->get();  
                 //$currentUser = Auth::guard('admin_user')->user();
                
                 return View::make('admin-auth.adminspage')->with($availableAdmins);
@@ -104,6 +104,20 @@ $AdminUser->save();//if success will throw a succes message
 return redirect('/adminspage');      
 }
 
+public function create_guest(Request $request)
+{
+    
+//if fails to succes one of the rules , display errors
+$AdminUser = new AdminUser([
+//fields to be taken from the post and placed on the DB
+'name' => $request->input('name'),
+'email' => $request->input('email'),
+'password' => Hash::make($request->input('password')),
+'level' => 0,
+]);
+$AdminUser->save();//if success will throw a succes message      
+return redirect('/adminspage');      
+}
 
 public function DeleteAdmin($id)
 {

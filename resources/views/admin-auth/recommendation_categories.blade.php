@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if (Auth::guard('admin_user')->user()->level == '1')
 <form class="form-edit" method="GET" action="{{ url('categ_edit') }}">
     <div class="row">
         <div class="col-lg-12">
@@ -123,6 +125,140 @@
         </div>
     </div>
 </div>
+@else
+<!--********************************admin level 1************************************************************-->
+<form class="form-edit" method="GET" action="{{ url('categ_edit') }}">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>Temas de Recomendaciones</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <table class="table">
+                        <tbody>
+                        <?php 
+                        $editableArray = [];
+                        $editlenght = count($checkIfEditable);
+                        ?>
+                            @foreach($availableCategories as $categs)
+                            <?php 
+                                $disponible = true; 
+                                foreach ($checkIfEditable as $obj) { 
+                                    if($categs->category_Id == $obj->fk_category_Id){ 
+                                        $disponible = false;
+                                    }
+                                } 
+                                if($disponible){ ?>
+                                    <tr>
+                                        <td><img src="{{$categs->image}}" alt="img" width="60" height="60" class="img-rounded"></td>
+                                        <td>{{$categs->description}}</td>
+                                        <td>
+                                        <a class="btn btn-white btn-bitbucket" data-myname="" data-mydescription="" data-myid="{{$categs->category_Id}}" data-toggle="modal" data-target="#edit"><i class="fa fa-wrench"></i></a>
+                                        </td>
+                                        <!--Los temas de recomendacion no se deben borrar , ya que son estaticos en la app-->
+                                        <!--<td><button type="button" class="btn btn-w-s btn-danger"  name="{{$categs->category_Id}}">Eliminar</button></td> -->
+                                    </tr>
+                                <?php }else{ ?>
+                                    <tr>
+                                        <td><img src="{{$categs->image}}" alt="img" width="60" height="60" class="img-rounded"></td>
+                                        <td>{{$categs->description}}</td>
+                                        <td>
+                                        <a class="btn btn-white btn-bitbucket" data-mydescription="{{$categs->description}}" data-myid="{{$categs->category_Id}}" data-toggle="modal" data-target="#edit"><i class="fa fa-wrench"></i></a>
+                                        </td>
+                                    </tr>
+                                <?php 
+                                    } 
+                                ?>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="edit" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editar Categoria</h4>
+      </div>
+      <div class="modal-body">
+        <form role="form" class="form-horizontal" method="POST" action="{{ url('categ_update') }}">
+                <div class="form-group">
+                    <div class="col-md-8">
+                    <label>Descripcion</label>  
+                    <input id="description" type="text" class="form-control" name="description"  value="" disabled>
+                    </div>
+                </div>
+                        <input id="CategId" type="hidden" class="form-control" name="CategId"  value="" disabled>
+                <div class="form-group">
+                    <div class="col-md-8">
+                    
+                    </div>
+                </div>
+        </form>
+        <button class="btn btn-primary disabled" type="submit"><strong>Actualizar</strong></button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="">
+    <p>Los Temas de recomendacion son estaticas en la app , asi que no se podran borrar para asi mantener el ID que tienen designado en esta</p>
+    
+    <div class="">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="panel panel-default">
+                <div class="panel-heading">Crear un Tema de Recomendacion</div>
+                <div class="panel-body">
+                    <form class="form-horizontal" method="POST" action="{{ url('categ_create') }}" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="Description" class="col-md-4 control-label">Descripcion</label>
+                            <div class="col-md-6">
+                                <input id="description" type="text" class="form-control" name="description" disabled>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="imagen" class="col-md-4 control-label">Imagen</label>
+                            <div class="col-md-6">
+                               <input type="file" name="file" id="file" multiple disabled>
+                            </div>
+                        </div>
+                        </form>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary disabled" style="width: 100%">
+                                    Crear Tema
+                                </button>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endif
+
+
+
+
+
+
 
 
 <script src="js/jquery-3.1.1.min.js"></script>

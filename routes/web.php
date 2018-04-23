@@ -103,6 +103,7 @@ Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
 //Admins------------------------------------------------------------------------------------------------------------------------
 Route::get('adminspage','AdminAuth\AdminController@showRegistrationForm')->name('adminspage');        
 Route::post('admin_create','AdminAuth\AdminController@create')->name('admin_create');  
+Route::post('guest_create','AdminAuth\AdminController@create_guest')->name('guest_create'); 
 Route::get('admin_delete/{id}','AdminAuth\AdminController@DeleteAdmin')->name('admin_delete');   
      
 //------------------------------------------------------------------------------------------------------------------------------

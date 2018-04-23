@@ -40,9 +40,12 @@
                     <li>
                         <a href="{!!url('admin_login')!!}"><i class="fa fa-desktop"></i> <span class="nav-label">Inicio</span></a>
                     </li>
+                     @if (Auth::guard('admin_user')->user()->level == '1')
                     <li>
                         <a href="{!!url('adminspage')!!}"><i class="fa fa-star"></i> <span class="nav-label">Administradores</span></a>
                     </li>
+                     @else
+                     @endif
                     <li class="active">
                         <a><i class="fa fa-database"></i> <span class="nav-label">Contenido</span> <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -64,6 +67,11 @@
             </div>
         </nav>
 
+<?php 
+
+$arrayUser = Auth::guard('admin_user')->user();
+//$arrayUser->name
+ ?>
         <div id="page-wrapper" class="gray-bg dashbard-1">
         	<div class="row border-bottom">
                 <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
@@ -72,7 +80,7 @@
                     </div>
                     <ul class="nav navbar-top-links navbar-right">
                         <li>
-                            <span class="m-r-sm text-muted welcome-message">Bienvenido a Happier</span>
+                            <span class="m-r-sm text-muted welcome-message">Bienvenido a Happier <strong>{{$arrayUser->name}}</strong></span>
                         </li>
                         </li>
                         <li>

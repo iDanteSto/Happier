@@ -9,7 +9,7 @@ class AdminUser extends User
 
 
 protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'level',
     ];
     
 protected $table = "admin_users";
