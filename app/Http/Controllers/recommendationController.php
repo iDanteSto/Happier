@@ -365,30 +365,30 @@ $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden i
 $userid = $user->user_Id;//place id on a variable to use it 
 
 $recommendationInfo = DB::select('SELECT 
-userrecommendation.userRecommendation_Id AS userrecom_Id,
-recommendation.name AS recom_name,
-recommendation.description AS recom_desc,
-recommendation.image AS recom_image,
-category.description AS cat_desc,
-category.category_Id AS category_Id,
-category.image AS cat_image
-FROM
-recommendation,
-userrecommendation,
-category
-WHERE
-userrecommendation.fk_user_Id = ?
-AND userrecommendation.fk_recommendation_Id = recommendation.recommendation_Id
-AND category.category_Id = recommendation.fk_category_Id
+    userrecommendation.userRecommendation_Id AS userrecom_Id,
+    recommendation.name AS recom_name,
+    recommendation.description AS recom_desc,
+    recommendation.image AS recom_image,
+    category.description AS cat_desc,
+    category.category_Id AS category_Id,
+    category.image AS cat_image
+    FROM
+    recommendation,
+    userrecommendation,
+    category
+    WHERE
+    userrecommendation.fk_user_Id = ?
+    AND userrecommendation.fk_recommendation_Id = recommendation.recommendation_Id
+    AND category.category_Id = recommendation.fk_category_Id
 AND userrecommendation.fk_status_Id = ? ORDER BY RAND() limit 0,1', [$userid, 2]);//retrieve peferred_categories from the user
 
 
 if (count($recommendationInfo)) {
-return response()->json(array('recommendation_Info'=>$recommendationInfo));
+    return response()->json(array('recommendation_Info'=>$recommendationInfo));
 
 }else
 {
-return 'Parece ser que por el momento no hay mas recomendaciones , espera a tu siguiente recomendacion';
+    return 'Parece ser que por el momento no hay mas recomendaciones , espera a tu siguiente recomendacion';
 }
 }
 /*
