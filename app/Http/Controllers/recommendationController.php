@@ -26,6 +26,7 @@ class recommendationController extends Controller
 |--------------------------------------------------------------------------
 |
 | Checks if the user has interacted with his last recommendation assigned
+  if has fk_status_Id = 2 pending 
 |
 */
 public function recommendationChecker(Request $request)
@@ -41,6 +42,7 @@ $recomCounter = DB::table('userrecommendation')
 ->select(DB::raw('count(userRecommendation_Id) as recomCount'))
 ->where('fk_user_Id', '=', $userid)
 ->where('fk_status_Id', '=', 2)
+//->where('fk_status_Id', '=', 5)
 //->whereDate('creation_date', $currentDate)
 ->get();
 $recomCount = $recomCounter[0]->recomCount;
@@ -288,8 +290,6 @@ return 'Error!';
 DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and userRecommendation_Id = ?' , [1,$userid,$userRecommendationID]);
 return 'Exito!';
 }
-
-
 }
 /*
 |--------------------------------------------------------------------------
@@ -312,8 +312,31 @@ return 'Error!';
 DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and userRecommendation_Id = ?' , [3,$userid,$userRecommendationID]);
 return 'Exito!';
 }
-
 }
+/*
+|--------------------------------------------------------------------------
+| Recommendation Set On Process
+|--------------------------------------------------------------------------
+|
+| This function change the current Recommendation to "On Process" status 5
+|
+
+    public function recommendationOnProcess(Request $request)
+    {
+        dd("hola on process");
+        $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+        $userid = $user->user_Id;
+        $userRecommendationID = $request->userRecommendationID;
+        if($userRecommendationID == null or $userRecommendationID  == "")
+        {
+            return 'Error!';
+        }else
+        {
+            DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and userRecommendation_Id = ?' , [5,$userid,$userRecommendationID]);
+            return 'Exito!';
+        }
+    }
+*/
 /*
 |--------------------------------------------------------------------------
 | Recommendation Changer
@@ -322,6 +345,7 @@ return 'Exito!';
 | This function change the current Recommendation to "Rechazada" status 3 and assing a new one
 |
 */
+/*   
 public function recommendationChanger(Request $request)
 { 
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
@@ -333,22 +357,45 @@ $result = DB::select("call recomendationSetter($userid,@NOMBRE,@DESCRIPCION,@ID,
 
 
 }
-
+*/
 /*
 |--------------------------------------------------------------------------
 | Recommendation Saver
 |--------------------------------------------------------------------------
 |
-| This function change the current Recommendation to "Guardada" status 4 
+| This function change the current Recommendation to "Guardada" status 6 
 |
 */
-public function recommendationSaver(Request $request)
-{ 
-$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
-$userid = $user->user_Id;
-$recommendationID = $request->recommendationID;
-DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and fk_recommendation_Id = ?' , [4,$userid,$recommendationID]);
-}
+
+    public function recommendationSaver(Request $request)
+    { 
+        
+        $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+        $userid = $user->user_Id;
+        $recommendationID = $request->recommendationID;
+        $days = $request->days;
+
+        //update info date
+        $DatetoUpdate = date("Y/m/d");
+        //schedule date
+        $mytime = Carbon::now();
+        $ScheduleDate = $mytime->addDays($days)->toDateTimeString();
+
+
+        if($recommendationID == null or $recommendationID  == "")
+        {
+                return 'Error!';
+        }else
+        {
+                DB::table('userrecommendation')
+                ->where('fk_user_Id', $userid)
+                ->where('fk_recommendation_Id', $recommendationID)
+                ->update(['fk_status_Id' => 5, 'schedule_date' => $ScheduleDate,'updated_at' => $DatetoUpdate]);
+            
+                return 'Exito!';
+        }
+        //DB::update('UPDATE userrecommendation SET fk_status_Id = ? WHERE fk_user_Id = ? and fk_recommendation_Id = ?' , [6,$userid,$recommendationID]);
+    }
 
 
 /*
@@ -365,6 +412,7 @@ $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden i
 $userid = $user->user_Id;//place id on a variable to use it 
 
 $recommendationInfo = DB::select('SELECT 
+    FK_TYPE AS recomm_type,
     userrecommendation.userRecommendation_Id AS userrecom_Id,
     recommendation.name AS recom_name,
     recommendation.description AS recom_desc,

@@ -23,6 +23,8 @@
                                 <td><img src="{{$Recommendation->image}}" alt="img" width="60" height="60" class="img-rounded"></td>
                                 <td>{{$Recommendation->name}}</td>
                                 <td>{{$Recommendation->description}}</td>
+                                <?php $Typename = DB::table('recommendation_type')->select('name')->where('recommendation_type_Id', $Recommendation->FK_TYPE)->get(); ?>           
+                                <td><strong>{{$Typename[0]->name}}</strong></td>
                                 <?php $Categname = DB::table('category')->select('description')->where('category_Id', $Recommendation->fk_category_Id)->get(); ?>           
                                 <td><strong>{{$Categname[0]->description}}</strong></td>
                                 <?php $Timeofdayname = DB::table('timesofday')->select('description')->where('TimesofDay_Id', $Recommendation->timeofday)->get(); ?>         
@@ -62,10 +64,19 @@
                     <textarea class="form-control" id="description" rows="5" name="description" value="" required ></textarea>
                 </div>
             </div>
-
+            <div class="form-group">
+                            <div class="col-md-8">
+                                <label for="Category">Tipo de Recomendacion</label>
+                                <select class="form-control m-b" id="FK_TYPE" name="FK_TYPE">
+                                    @foreach($availableRecommendationTypes as $types)                                   
+                                    <option value="{{$types->recommendation_type_Id}}" >{{$types->name}}</option>
+                                    @endforeach        
+                                </select>
+                            </div>
+                        </div>
             <div class="form-group">
                 <div class="col-md-8">
-                    <label for="Category">Categoria</label>
+                    <label for="Category">Tema</label>
                     <select class="form-control m-b" id="fkCategId" name="fkCategId">
                       @foreach($availableCategories as $categs)                                   
                       <option value="{{$categs->category_Id}}" >{{$categs->description}}</option>
@@ -110,7 +121,17 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-8">
-                                <label for="Category">Categoria</label>
+                                <label for="Category">Tipo de Recomendacion</label>
+                                <select class="form-control m-b" id="FK_TYPE" name="FK_TYPE">
+                                    @foreach($availableRecommendationTypes as $types)                                   
+                                    <option value="{{$types->recommendation_type_Id}}" >{{$types->name}}</option>
+                                    @endforeach        
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-8">
+                                <label for="Category">Tema</label>
                                 <select class="form-control m-b" id="fkCategId" name="fkCategId">
                                     @foreach($availableCategories as $categs)                                   
                                     <option value="{{$categs->category_Id}}" >{{$categs->description}}</option>

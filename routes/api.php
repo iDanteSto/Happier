@@ -41,7 +41,8 @@ Route::get('/user/recommendationChecker', 'recommendationController@recommendati
 Route::post('/user/recommendationSetter', 'recommendationController@recommendationSet');//************Timer-Setter not gonna be used this <----       |
 Route::patch('/user/recommendationComplete', 'recommendationController@recommendationComplete');//front-Completer--*                                  |
 Route::get('/user/recommendationLoader', 'recommendationController@recommendationLoader');//front-Loader--*											  |
-Route::patch('/user/recommendationRejecter', 'recommendationController@recommendationRejecter');//front-Rejecter--*									  |
+Route::patch('/user/recommendationRejecter', 'recommendationController@recommendationRejecter');//front-Rejecter--*		
+Route::patch('/user/recommendationSaver', 'recommendationController@recommendationSaver');//front-change to on save with a date to schedule--*		
 Route::patch('/user/recommendationChanger', 'recommendationController@recommendationChanger');//front-Changer maybe not gonna be used <----			  |
 Route::patch('/user/recommendationSaver', 'recommendationController@recommendationSaver');//Saver maybe not gonna be used <----		                  |
 Route::get('/user/recommendationSmallHistory', 'recommendationController@recommendationSmallHistory');//retrieves last 50 recoms for a small peek   

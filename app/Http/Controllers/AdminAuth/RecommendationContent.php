@@ -107,9 +107,14 @@ if(Auth::guard('admin_user')->user())
 $availableRecommendations ['availableRecommendations'] = DB::table('recommendation')->get();
 $availableCategories ['availableCategories'] = DB::table('category')->get();
 $availableTimesofDay ['availableTimesofDay'] = DB::table('timesofday')->get();
+$availableRecommendationTypes ['availableRecommendationTypes'] = DB::table('recommendation_type')->get();
 //$checkIfEditable ['checkIfEditable'] = DB::select('SELECT distinct(fk_category_Id) from recommendation');
 //return view('admin-auth.recommendations',$availableRecommendations,$availableCategories,$availableFrequencies);
-return View::make('admin-auth.recommendations')->with($availableRecommendations)->with($availableCategories)->with($availableTimesofDay);
+return View::make('admin-auth.recommendations')
+->with($availableRecommendations)
+->with($availableCategories)
+->with($availableTimesofDay)
+->with($availableRecommendationTypes);
 }//if there is no admin logged in
 return redirect('/dashboard');   
 }
@@ -130,7 +135,12 @@ $arrayOfImageData=Cloudder::getResult();*/
 //--------------------------------------------
 //insert on DB--------------------------------
 $InsertRecomm = DB::table('recommendation')->insert(
-    ['name' => $request->name,'description' => $request->description,'fk_category_Id' => $request->fkCategId,'image' => "holder",'timeofday' => $request->TimesofDay_Id]
+    ['name' => $request->name,'description' => $request->description,
+    'fk_category_Id' => $request->fkCategId,
+    'image' => "holder",
+    'timeofday' => $request->TimesofDay_Id,
+    'FK_TYPE' => $request->FK_TYPE
+	]
 );
 $idOfRecomm = DB::getPdo()->lastInsertId();
 $filename = $request->file;
@@ -190,7 +200,10 @@ $arrayOfImageData=Cloudder::getResult();
 
 DB::table('recommendation')
 ->where('recommendation_Id', $request->RecomId)
-->update(array('name' => $request->name,'description' => $request->description,'fk_category_Id' => $request->fkCategId));
+->update(array('name' => $request->name,
+	'description' => $request->description,
+	'FK_TYPE' => $request->FK_TYPE,
+	'fk_category_Id' => $request->fkCategId));
 //----------------------------------------------------------
 return redirect('/recommendations');  
 }
