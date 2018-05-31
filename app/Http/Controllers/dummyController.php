@@ -160,88 +160,78 @@ else
     } 
 
 
-
 //-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //------------------------------------------------------------------------Dummy functions to test recommendationSetter commands------------------------------------------------------------------------
 public function dummyFunction0(Request $request)
-{   
+{      
 //array of all users
-$users = User::where('status', '=', 2)
-->orWhere('status','=',3)
-->get();
+$users = User::where('status', '=', 2)->get();
+//if there is no confirmed users
+if (count($users))
+{
+//for every user , do the logic
+    foreach ($users as $user) 
+    {
+        $userid = $user->user_Id;
+        $userDeviceToken = $user->devicetoken;
+        $username = $user->displayname;
 
-if (!count($users))
-{
-//Do nothing because there is no users
-}else
-{
-foreach ($users as $user) 
-{
-//Declare variable with collection information
-$userid = $user->user_Id;
-//Compare dates if there is pending status recommendation     
-//------------------------------------------------------------------------------
-//obtain latest user recommendation with pending status 2
-$userRecommendation = DB::table('userrecommendation')
-                     ->where('fk_user_Id', '=', $userid)
-                     ->where('fk_status_Id', '=', 2)
-                     ->orderBy('creation_date', 'asc')
-                     ->first();
-if(!count($userRecommendation))
-{
-//Empty collection , there is no pending status recommendations   
-//Do nothing  
-}else
-{    
-//parse to carbon format                     
-$end = Carbon::parse($userRecommendation->creation_date);
-//obtain now date on carbon format
-$now = Carbon::now();
 
-//compare date obtained with the current date to obtain the difference on days
-$length = $end->diffInDays($now)+1; 
+//$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
+//$userid = $user->user_Id;//place id on a variable to use it 
+$minDate = Carbon::now()->startOfWeek()->format('Y-m-d');
+$maxDate = Carbon::now()->endOfWeek()->format('Y-m-d');        
+//$currentDate = Carbon::now()->format('Y-m-d');
+/*
+$checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
+->where('created_at','=', $currentDate)
+->first();
+*/
+$checkToSendNotification = UserMood::where('fk_user_Id', '=', $userid)
+->whereBetween('created_at', [$minDate, $maxDate])
+->first();
+/*
+$checkToSendNotification = DB::table('usermood')
+         ->where('fk_user_Id', $userid)
+         ->where('created_at', $currentDate)
+         //->orderBy('created_at','descendant')
+         ->pluck('created_at')->first();
+*/
+//dd($checkToSendNotification);
 
-//we want to change the status to ignored if it has 3 days
-if($length >= 3)
+if (count($checkToSendNotification)) 
 {
-//Update all(for secutiry reasons all , not only the obtained) pending recommendations to status 4 ignored        
-DB::table('userrecommendation')
-          ->where('fk_status_Id', 2)
-          ->where('fk_user_Id', $userid)
-          ->update(['fk_status_Id' => 4]);  
-}else
-{
-//It has less than 3 days so it wont do anything    
+//return "Did  nothing!";
 }
-}                     
-//------------------------------------------------------------------------------
-}//end for each
-}//end if to see if there is users     
-}
-
-public static function getWeekDates($date, $start_date, $end_date)
+else
 {
-    $week =  date('W', strtotime($date));
-    $year =  date('Y', strtotime($date));
-    $from = date("Y-m-d", strtotime("{$year}-W{$week}+1"));
-    if($from < $start_date) $from = $start_date;
-
-    $to = date("Y-m-d", strtotime("{$year}-W{$week}-6")); 
-    if($to > $end_date) $to = $end_date;
-
-$array1 = array(
-        "ssdate" => $from,
-        "eedate" => $to,
-);
-
-return $array1;
-
-   //echo "Start Date-->".$from."End Date -->".$to;
-   
-
-
+//<-------------------Push Notification---------------------------------------------------->
+$optionBuilder = new OptionsBuilder();
+$optionBuilder->setTimeToLive(60*20);
+$notificationBuilder = new PayloadNotificationBuilder('Recuerda decirnos como te has sentido esta semana');
+$notificationBuilder->setBody($username.'¿Qué tal ha estado tu semana? Compártenoslo
+    La semana está a punto de acabar, no dejes de decirnos como te has
+sentido')
+      ->setClickAction('ACTIVITY_PROF')
+            ->setSound('default');
+$dataBuilder = new PayloadDataBuilder();
+$dataBuilder->addData(['moodOn' => 'yes']);
+$option = $optionBuilder->build();
+$notification = $notificationBuilder->build();
+$data = $dataBuilder->build();
+$token = $userDeviceToken;
+$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+$downstreamResponse->numberSuccess();
+$downstreamResponse->numberFailure();
+$downstreamResponse->numberModification();
+//<-------------------Push Notification---------------------------------------------------->
+//return "Notification Sent!";
+} 
+}//close foreach
+}//close if
 }
+
 
 
 

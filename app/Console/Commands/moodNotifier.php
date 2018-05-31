@@ -56,6 +56,7 @@ if (count($users))
     {
         $userid = $user->user_Id;
         $userDeviceToken = $user->devicetoken;
+        $username = $user->displayname;
 
 
 //$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
@@ -89,8 +90,10 @@ else
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('Como te sientes hoy?');
-$notificationBuilder->setBody('Clickea aqui para ir a la app a ver tu mood')
+$notificationBuilder = new PayloadNotificationBuilder('Recuerda decirnos como te has sentido esta semana');
+$notificationBuilder->setBody($username.'¿Qué tal ha estado tu semana? Compártenoslo
+    La semana está a punto de acabar, no dejes de decirnos como te has
+sentido')
       ->setClickAction('ACTIVITY_PROF')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
