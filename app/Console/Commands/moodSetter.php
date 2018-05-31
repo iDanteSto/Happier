@@ -42,7 +42,7 @@ class moodSetter extends Command
     public function handle()
     {
 $users = DB::select('SELECT 
-        users.user_Id, users.devicetoken
+        users.user_Id, users.devicetoken , users.displayname
         FROM
         users
         WHERE
@@ -55,6 +55,7 @@ if (count($users))
     foreach ($users as $usuarios) 
     {
         $userid = $usuarios->user_Id;
+        $username = $usuarios->displayname;
         $userDeviceToken = $usuarios->devicetoken;
 
 
@@ -85,8 +86,10 @@ DB::table('usermood')->insert(
 //<-------------------Push Notification---------------------------------------------------->
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
-$notificationBuilder = new PayloadNotificationBuilder('Como te sientes esta semana?');
-$notificationBuilder->setBody('Text holder')
+$notificationBuilder = new PayloadNotificationBuilder('Recuerda decirnos como te has sentido esta semana');
+$notificationBuilder->setBody($username.'¿Qué tal ha estado tu semana? Compártenoslo
+    La semana está a punto de acabar, no dejes de decirnos como te has
+sentido')
       ->setClickAction('ACTIVITY_PROF')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();

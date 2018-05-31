@@ -155,8 +155,8 @@ class recommendationSetter extends Command
         //<-------------------Push Notification---------------------------------------------------->
             $optionBuilder = new OptionsBuilder();
             $optionBuilder->setTimeToLive(60*20);
-            $notificationBuilder = new PayloadNotificationBuilder('Tienes una nueva recomendacion!');
-            $notificationBuilder->setBody('Text holder')
+            $notificationBuilder = new PayloadNotificationBuilder('Tienes una Nueva Recomendación');
+            $notificationBuilder->setBody('Hay una Nueva Recomendación')
             ->setClickAction('ACTIVITY_REC')
             ->setSound('default');
             $dataBuilder = new PayloadDataBuilder();
@@ -180,8 +180,8 @@ class recommendationSetter extends Command
         //<-------------------Push Notification---------------------------------------------------->
             $optionBuilder = new OptionsBuilder();
             $optionBuilder->setTimeToLive(60*20);
-            $notificationBuilder = new PayloadNotificationBuilder('Aun tienes que interactuar con una recomendacion pendiente!');
-            $notificationBuilder->setBody('Text holder')
+            $notificationBuilder = new PayloadNotificationBuilder('Tienes una Recomendación Pendiente');
+            $notificationBuilder->setBody('Aún hay una Recomendación Pendiente')
             ->setClickAction('ACTIVITY_REC')
             ->setSound('default');
             $dataBuilder = new PayloadDataBuilder();
