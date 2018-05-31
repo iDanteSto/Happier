@@ -91,9 +91,7 @@ else
 $optionBuilder = new OptionsBuilder();
 $optionBuilder->setTimeToLive(60*20);
 $notificationBuilder = new PayloadNotificationBuilder('Recuerda decirnos como te has sentido esta semana');
-$notificationBuilder->setBody($username.'¿Qué tal ha estado tu semana? Compártenoslo
-    La semana está a punto de acabar, no dejes de decirnos como te has
-sentido')
+$notificationBuilder->setBody($username.'¿Qué tal ha estado tu semana? Compártenoslo, la semana está a punto de acabar, no dejes de decirnos como te has sentido')
       ->setClickAction('ACTIVITY_PROF')
             ->setSound('default');
 $dataBuilder = new PayloadDataBuilder();
