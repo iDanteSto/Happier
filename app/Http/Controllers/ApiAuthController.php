@@ -41,15 +41,8 @@ if exist it returns a 1   , if not it returns a 0
 public function userCheckExistence(Request $request)
 {//get the info of the user to check
 $user = User::where('email', '=', $request->email)->get();
-/*
-$userExist = DB::table('users')
-->select(DB::raw('count(user_Id)as exist'))
-->where('email', '=', $request->email)
-->get();
-return $userExist;  */ 
 if (count($user))//if it exist records 
 {
-//dd($user[0]->remember_token);
 			if($request->remember_token != $user[0]->remember_token)//compare remember token from db to given by the app
 			{
 			return 	0;//Force logout
@@ -76,35 +69,8 @@ public function upgradeStatus(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;//place id on a variable to use it 
-//user creation dependancys to protect the system as if it was registered and confirmed@@@@@@@@@@@@@@@@@@@@@@@@
+//user creation dependancys to protect the system as if it was registered and confirmed
 User::where(['email'=>$request->email])->update(['status' =>'2','verifyToken'=>NULL]);
-
-/*
-DB::table('userfrequency')->insert(
-['fk_frequency_Id' => 3, 'fk_user_Id' => $userid]
-);
-
-//Asignate every category available to the user as a standard---------------------------------------------------
-$categsIds = DB::select('SELECT distinct(category_Id) FROM category;');
-foreach ($categsIds as $categ) {
-DB::table('preferred_categories')->insert(
-['fk_user_Id' => $userid, 'fk_category_Id' => $categ->category_Id]
-);
-}
-//assignate standard avatars-----------------------------------------------------------------------  
-$avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
-foreach ($avatarIds as $avatars) {
-DB::table('avatar_permission')->insert(
-['fk_user_Id' => $userid, 'fk_avatar_Id' => $avatars->avatar_Id]
-);
-}
-*/
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-/*
-DB::table('users')
-->where('user_Id', $userid)
-->update(array('status' => 2));
-*/ 
 return "Exito!";           
 }
 /*
@@ -241,23 +207,6 @@ DB::table('avatar_permission')->insert(
 DB::table('preferred_categories')->insert(
 ['fk_user_Id' => $user->user_Id, 'fk_category_Id' => 1]
 );								 
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-/*
-//Asignate every category available to the user as a standard
-$categsIds = DB::select('SELECT distinct(category_Id) FROM category;');
-foreach ($categsIds as $categ) {
-DB::table('preferred_categories')->insert(
-['fk_user_Id' => $user->user_Id, 'fk_category_Id' => $categ->category_Id]
-);
-}
-//assignate standard avatars-----------------------------------------------------------------------  
-$avatarIds = DB::select('SELECT distinct(avatar_Id) FROM avatar where fk_avatar_categories_Id = ?',[1]);
-foreach ($avatarIds as $avatars) {
-DB::table('avatar_permission')->insert(
-['fk_user_Id' => $user->user_Id, 'fk_avatar_Id' => $avatars->avatar_Id]
-);
-}
-*/
 //Return Succes html template
 return View::make('emails.successEmail');
 }else
@@ -266,14 +215,6 @@ return View::make('emails.successEmail');
 return View::make('emails.expirationEmail');
 } 
 }
-/*
-|
-| 
-|
-|
-| 
-|---------------------------------------------------------------------------
-*/
 /*
 |--------------------------------------------------------------------------
 | Update User Function
@@ -383,7 +324,7 @@ User::where('email', '=', $request->email)
 'changeToken' => null
 ]);
 }
-//------------------------------------------------------------------------functions to test facebook login functions-------------------------------------------------------------------------
+
 /*
 |--------------------------------------------------------------------------
 | Updater
@@ -449,8 +390,6 @@ DB::table('avatar_permission')->insert(
 ['fk_user_Id' => $userId, 'fk_avatar_Id' => $avatars->avatar_Id]
 );
 								 }
-//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-
 
 						}
 //create social provider dependancys
@@ -515,55 +454,6 @@ if (count($checknicks)){$hasnick = 1;}
 }
 return response()->json(array('checkSPExistence'=>$check,'email'=>$userEmail,'hasNick'=>$hasnick));
 }
-
-/*
-|--------------------------------------------------------------------------
-| NOT GONNA BE USED--Check existance on users table --NOT GONNA BE USED
-|--------------------------------------------------------------------------
-|
-| Checks if the user exist with the given email  if it exist return 1 , if its not 0
-| requires : -email
-| 
-| 
-|
-*/
-/*
-public function SPManagerAndroidExistence(Request $request)
-{
-$userEmail = $request->email;
-$hasnick=0;
-$checknicks = DB::select('select nickname from users where email = ?', [$userEmail]);
-if (count($checknicks)){$hasnick = 1;}
-//return $hasnick;
-return response()->json(['hasnick'=> $hasnick]);
-}
-*/
-//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

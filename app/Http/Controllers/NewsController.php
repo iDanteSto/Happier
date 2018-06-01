@@ -19,7 +19,6 @@ class NewsController extends Controller
 public function newsLoader(Request $request)
 {
 $news = DB::table('news')
-//->where('date_created', '=',date("Y-m-d"))
 ->where('status', '=',1)
 ->latest('date_created')
 ->get();
@@ -38,24 +37,6 @@ return response()->json(array(
 'image' => $news[0]->image ,
 'date_created' => $news[0]->date_created ,
 ));
-
-//-----------------------------------
-//-----test area----------------------
-/*
-return response()->json([
-'Autor'=>$author[0]->nickname , 
-'title' => $news[0]->title , 
-'content' => $news[0]->content ,
-'image' => $news[0]->image ,
-'date_created' => $news[0]->date_created ,
-]);
-
-*/
-//-------------------------------------
-
-
-
-
 
 }else
 {

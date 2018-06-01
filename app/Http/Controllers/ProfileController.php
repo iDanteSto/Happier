@@ -25,38 +25,6 @@ DB::table('users')
 ->update(array('imagelink' => $newImagelink));
 
 return response()->json(['succes!'=> 'Se cambio el avatar!'], 200);
-
-/*  --------------------------------NOT GONNA BE USED-------------------------------------------------------------------------------------
-$user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
-$userid = $user->user_Id;
-$oldImgUrl = $user->userImage;
-$filename = $request->filename;
-$randomgen = Str::random(5);
-$publicId = $userid . 'profilepic' .$randomgen;
-$finder = substr(strrchr($oldImgUrl, '/'), 1 );
-$fmfinder = strstr($finder, '.', true); 
-
-list($width, $height, $type, $attributes) = getimagesize($filename);
-$weight = filesize ($filename);
-
-Cloudder::upload($filename, $publicId);
-$si = Cloudder::getResult();
-
-if($fmfinder != 'defaultPerson_fuyg1y' )
-{
-Cloudder::destroyImage($fmfinder);
-Cloudder::delete($fmfinder);
-}
-
-DB::table('users')
-->where('email', $request->email)
-->update(['userImage' => $si['url']]);
-
-$user = User::where('email', '=', $request->email)->firstOrFail();
-
-
-return response()->json(array('usuario'=>$user->nickname,'imagen'=>$user->userImage,'width'=>$width,'height'=>$height,'weight'=>$weight));
---------------------------------NOT GONNA BE USED-------------------------------------------------------------------------------------*/
 }
 /*
 |--------------------------------------------------------------------------
@@ -70,13 +38,6 @@ public function avatarLoader(Request $request)
 {
 $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
 $userid = $user->user_Id;
-
-
-/*
-DB::table('')
-->where('email', $request->email)
-->update(['userImage' => $si['url']]);
-*/
 $avatarsInfo = DB::select('SELECT 
 avatar.avatar_Id,
 avatar.name,
@@ -90,16 +51,7 @@ AND fk_avatar_Id = avatar_Id',[$userid]);
 
 return $avatarsInfo;
 
-//return response()->json(array('id'=>$avatarsInfo->avatar_Id,'name'=>$avatarsInfo->name,'link'=>$avatarsInfo->link,));
-
-
 }
-
-
-/*test area -------------------------------------------------------------------------------------------------------------------*/
-
-/*test area -------------------------------------------------------------------------------------------------------------------*/
-
 
 /*
 |--------------------------------------------------------------------------
