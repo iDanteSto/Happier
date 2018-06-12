@@ -124,7 +124,7 @@ return 'Exito!';
         
         $user = User::where('email', '=', $request->email)->firstOrFail();//get hidden info of the session to compare and retrieve of the database
         $userid = $user->user_Id;
-        $recommendationID = $request->recommendationID;
+        $userRecommendationID = $request->userRecommendationID;
         $days = $request->days;
 
         //update info date
@@ -134,14 +134,14 @@ return 'Exito!';
         $ScheduleDate = $mytime->addDays($days)->toDateTimeString();
 
 
-        if($recommendationID == null or $recommendationID  == "")
+        if($userRecommendationID == null or $userRecommendationID  == "")
         {
                 return 'Error!';
         }else
         {
                 DB::table('userrecommendation')
                 ->where('fk_user_Id', $userid)
-                ->where('fk_recommendation_Id', $recommendationID)
+                ->where('fk_recommendation_Id', $userRecommendationID)
                 ->update(['fk_status_Id' => 5, 'schedule_date' => $ScheduleDate,'updated_at' => $DatetoUpdate]);
             
                 return 'Exito!';
