@@ -141,7 +141,7 @@ return 'Exito!';
         {
                 DB::table('userrecommendation')
                 ->where('fk_user_Id', $userid)
-                ->where('fk_recommendation_Id', $userRecommendationID)
+                ->where('userRecommendation_Id', $userRecommendationID)
                 ->update(['fk_status_Id' => 5, 'schedule_date' => $ScheduleDate,'updated_at' => $DatetoUpdate]);
             
                 return 'Exito!';
