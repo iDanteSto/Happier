@@ -37,9 +37,60 @@ class dummyController extends Controller
 
     public function dummyFunction0(Request $request)
     {      
-        dd("test");
+		//array of all users that has schedulables recommendations
+		$users = DB::select('
+		SELECT 
+		    user_Id, devicetoken, displayname
+		FROM
+		    users
+		WHERE
+		    status = ?
+        AND user_Id IN (SELECT 
+            fk_user_Id
+        FROM
+            userrecommendation
+        WHERE
+            fk_status_Id = ?)', [2,5]);
+		//$users = User::where('status', '=', 2)->get();
+		if (count($users))
+		{
+			//for every user , do the logic
+			foreach ($users as $user) 
+			{
+				$userid = $user->user_Id;
+				$userDeviceToken = $user->devicetoken;
+				$username = $user->displayname;
+				$todayDate = Carbon::now();
+				$scheduledDate = DB::table('userrecommendation')
+				->where('fk_user_Id', $userid)
+				->where('fk_status_Id', 5)
+				->where('schedule_date','=', $todayDate)
+				->pluck('schedule_date')->first();
+				if (count($scheduledDate)) 
+				{	
+					$optionBuilder = new OptionsBuilder();
+					$optionBuilder->setTimeToLive(60*20);
+					$notificationBuilder = new PayloadNotificationBuilder('Aviso Fecha Agendada Recomendacion');
+					$notificationBuilder->setBody($username.'Estas listo para completar esta recomendacion?')
+					->setClickAction('ACTIVITY_RECSCHEDULED')
+					->setSound('default');
+					$dataBuilder = new PayloadDataBuilder();
+					$dataBuilder->addData(['scheduleRecomOn' => 'yes']);
+					$option = $optionBuilder->build();
+					$notification = $notificationBuilder->build();
+					$data = $dataBuilder->build();
+					$token = $userDeviceToken;
+					$downstreamResponse = FCM::sendTo($token, $option, $notification, $data);
+					$downstreamResponse->numberSuccess();
+					$downstreamResponse->numberFailure();
+					$downstreamResponse->numberModification();
+				}
+				else
+				{
+					//return "Did  nothing!";
+				} 
+			}//close foreach
+		}//close if	    
     }
-
-
 
 }

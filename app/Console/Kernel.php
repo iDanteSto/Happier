@@ -40,7 +40,8 @@ class Kernel extends ConsoleKernel
        //$schedule->command('recommendation:setter')->dailyAt('14:31');//for test
        $schedule->command('recommendation:setter')->dailyAt('18:00');
        $schedule->command('recommendation:setter')->dailyAt('21:00');
-      //
+      //scheduled Recommendations notifier
+       $schedule->command('scheduled:notifier')->dailyAt('10:00');
       // notes :important to keep the system running stable
       //<---------------------------------------------------------------------------->
 
