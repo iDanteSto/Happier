@@ -71,7 +71,7 @@ class scheduledRecomNotifier extends Command
                 $scheduledDate = DB::table('userrecommendation')
                 ->where('fk_user_Id', $userid)
                 ->where('fk_status_Id', 5)
-                ->where('schedule_date','=', $todayDate)
+                ->where('schedule_date', $todayDate)
                 ->pluck('schedule_date')->first();
                 if (count($scheduledDate)) 
                 {   
