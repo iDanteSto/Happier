@@ -38,6 +38,7 @@ class dummyController extends Controller
     public function dummyFunction0(Request $request)
     {      
         //array of all users that has schedulables recommendations
+        $todayDate = Carbon::now()->format('y-m-d');
         $users = DB::select('
         SELECT 
             user_Id, devicetoken, displayname
@@ -60,7 +61,6 @@ class dummyController extends Controller
                 $userid = 451;
                 $userDeviceToken = $user->devicetoken;
                 $username = $user->displayname;
-                $todayDate = Carbon::now();
                 $scheduledDate = DB::table('userrecommendation')
                 ->where('fk_user_Id', $userid)
                 ->where('fk_status_Id', 5)
