@@ -58,7 +58,7 @@ class dummyController extends Controller
             //for every user , do the logic
             foreach ($users as $user) 
             {
-                $userid = 451;
+                $userid = $user->user_Id;
                 $userDeviceToken = $user->devicetoken;
                 $username = $user->displayname;
                 $scheduledDate = DB::table('userrecommendation')
@@ -66,7 +66,6 @@ class dummyController extends Controller
                 ->where('fk_status_Id', 5)
                 ->where('schedule_date', $todayDate)
                 ->pluck('schedule_date')->first();
-                dd($scheduledDate);
                 if (count($scheduledDate)) 
                 {   
                     $optionBuilder = new OptionsBuilder();
