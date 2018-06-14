@@ -79,7 +79,7 @@ class scheduledRecomNotifier extends Command
                     $optionBuilder->setTimeToLive(60*20);
                     $notificationBuilder = new PayloadNotificationBuilder('Aviso Fecha Agendada Recomendacion');
                     $notificationBuilder->setBody($username.'Estas listo para completar esta recomendacion?')
-                    ->setClickAction('ACTIVITY_RECSCHEDULED')
+                    ->setClickAction('ACTIVITY_REC')
                     ->setSound('default');
                     $dataBuilder = new PayloadDataBuilder();
                     $dataBuilder->addData(['scheduleRecomOn' => 'yes']);
