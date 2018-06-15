@@ -209,8 +209,8 @@ public function userScheduledRecomsHistoryLoader(Request $request)
 	WHERE
 	fk_user_Id = ?
 	AND fk_recommendation_Id = recommendation.recommendation_Id
-	AND fk_status_Id = status_Id AND recommendation.FK_TYPE = ?
-order by creation_date desc' , [$userid , 2]);
+	AND fk_status_Id = status_Id AND recommendation.FK_TYPE = ? AND fk_status_Id = ?
+order by creation_date desc' , [$userid , 2 , 5]);
 	if (count($allRecomsGlobal)) 
 	{
 		return $allRecomsGlobal;
