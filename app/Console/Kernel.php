@@ -53,7 +53,7 @@ class Kernel extends ConsoleKernel
       //<---------------------------------------------------------------------------->
 
       //<-------------revert expired hibernations ----------------------------------->
-      // $schedule->command('userHibernation:reverter')->dailyAt('23:59');
+       $schedule->command('userHibernation:reverter')->dailyAt('23:59');
       //
       // notes :important to keep the system running stable
       //<----------------------------------------------------------------------------> 
