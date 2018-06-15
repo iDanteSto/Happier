@@ -67,10 +67,11 @@ Route::patch('/user/ChangeDisplayName', 'ProfileController@ChangeDisplayName');/
 Route::get('/user/avatarLoader', 'ProfileController@avatarLoader');//Loader--not gonna be used 													      |
 Route::patch('/user/avatarSetter', 'ProfileController@avatarSetter');//Setter--	*														              |
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
-//Profile.Summary-------------------------------------------------------------------------------------------------------------------------------------|
+//Profile.Summary Recommendations-------------------------------------------------------------------------------------------------------------------------------------|
 Route::get('/user/summaryLoader', 'ProfileController@summaryLoader');//Loader--*																	  |
 Route::get('/user/userRecomsHistoryLoader', 'ProfileController@userRecomsHistoryLoader');//Loader--*	
-Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHistoryAllLoader');//Loader												  
+Route::get('/user/userRecomsHistoryAllLoader', 'ProfileController@userRecomsHistoryAllLoader');//Loader	
+Route::get('/user/userScheduledRecomsHistoryLoader', 'ProfileController@userScheduledRecomsHistoryLoader');//Loader	scheduled recommendations											  
 //----------------------------------------------------------------------------------------------------------------------------------------------------|
 
 //Mood------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -182,6 +182,48 @@ return $allRecomsGlobal;
 return response()->json(['error'=> 'No tienes historial']);
 }
 }
+/*
+|--------------------------------------------------------------------------
+| Schedule type recommendations loader
+|--------------------------------------------------------------------------
+|
+| Loads all the data of all of the user recommendations of the scheduled type
+|
+*/
+public function userScheduledRecomsHistoryLoader(Request $request)
+{
+	$user = User::where('email', '=', $request->email)->firstOrFail();
+	$userid = $user->user_Id;
+	$allRecomsGlobal = DB::select('SELECT 
+	fk_recommendation_Id,
+	recommendation.name,
+	recommendation.description,
+	recommendation.image,
+	recommendation.fk_category_Id,
+	creation_date,
+	status.description as status
+	FROM
+	userrecommendation,
+	recommendation,
+	status
+	WHERE
+	fk_user_Id = ?
+	AND fk_recommendation_Id = recommendation.recommendation_Id
+	AND fk_status_Id = status_Id AND recommendation.FK_TYPE = ?
+order by creation_date desc' , [$userid , 2]);
+	if (count($allRecomsGlobal)) 
+	{
+		return $allRecomsGlobal;
+	}else
+	{
+		return response()->json(['error'=> 'No tienes historial']);
+	}
+}
+
+
+
+
+
 
 /*
 |--------------------------------------------------------------------------
