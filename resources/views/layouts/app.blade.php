@@ -14,7 +14,7 @@
 
     <!-- Gritter -->
     <link href="js/plugins/gritter/jquery.gritter.css" rel="stylesheet">
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link href="css/animate.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 </head>
@@ -141,19 +141,13 @@ $arrayUser = Auth::guard('admin_user')->user();
 
     <!-- Toastr -->
     <script src="js/plugins/toastr/toastr.min.js"></script>
-
+    
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready(function() {
-            // setTimeout(function() {
-            //     toastr.options = {
-            //         closeButton: true,
-            //         progressBar: true,
-            //         showMethod: 'slideDown',
-            //         timeOut: 4000
-            //     };
-            //     toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
-
-            // }, 1300);
+$(document).ready( function () {
+    $('#table_id').DataTable();
+} ); 
         });
     </script>
 </body>

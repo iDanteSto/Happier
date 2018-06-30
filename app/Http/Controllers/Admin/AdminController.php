@@ -22,6 +22,7 @@ class AdminController extends Controller
 		if (Auth::guard('admin_user')->user())
              {
 				return view('admin-auth.admin_home');
+				
              }else
              {
              	return view('admin-auth.404error');

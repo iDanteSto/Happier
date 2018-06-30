@@ -195,6 +195,7 @@ public function userScheduledRecomsHistoryLoader(Request $request)
 	$user = User::where('email', '=', $request->email)->firstOrFail();
 	$userid = $user->user_Id;
 	$allRecomsGlobal = DB::select('SELECT 
+	userRecommendation_Id,	
 	fk_recommendation_Id,
 	recommendation.name,
 	recommendation.description,
