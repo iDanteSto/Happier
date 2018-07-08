@@ -99,7 +99,7 @@ Route::get('admin_password/reset/{token}','AdminAuth\ResetPasswordController@sho
 //[Admin panel*********************************************************************************************************************]
 //dashboard
 Route::get('/dashboard','Admin\AdminController@dashboard')->name('dashboard');
-
+Route::post('get_metrics_graph','AdminAuth\AdminController@get_metrics_graph'); 
 //Admins------------------------------------------------------------------------------------------------------------------------
 Route::get('adminspage','AdminAuth\AdminController@showRegistrationForm')->name('adminspage');        
 Route::post('admin_create','AdminAuth\AdminController@create')->name('admin_create');  
