@@ -57,8 +57,8 @@ class AdminController extends Controller
     $diffinYears =  $latestCarbon - $earliestCarbon ;
     //---------------------------------------------------------
     //counters of cards
-    $adminscount = DB::table('admin_users')->where('level', '<>', 1)->count();
-    $guestcount = DB::table('admin_users')->where('level', '<>', 0)->count();
+    $adminscount = DB::table('admin_users')->where('level', '=', 1)->count();
+    $guestcount = DB::table('admin_users')->where('level', '=', 0)->count();
     $userscount = DB::table('users')->count();
     //---------------------------------------------------------
     //table of users
