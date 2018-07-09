@@ -190,24 +190,9 @@
       <div class="col-lg-8-offset-2">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                      <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
+                      <i class="fa fa-bar-chart-o fa-fw"></i> Usuarios
                       <div class="pull-right">
                           <div class="btn-group">
-                              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                  Actions
-                                  <span class="caret"></span>
-                              </button>
-                              <ul class="dropdown-menu pull-right" role="menu">
-                                  <li><a href="#">Action</a>
-                                  </li>
-                                  <li><a href="#">Another action</a>
-                                  </li>
-                                  <li><a href="#">Something else here</a>
-                                  </li>
-                                  <li class="divider"></li>
-                                  <li><a href="#">Separated link</a>
-                                  </li>
-                              </ul>
                           </div>
                       </div>
                   </div>
@@ -348,21 +333,26 @@
 
 
 //pie chart test
+var pendings =  {{ $RecomStats[0]->pendiente}};
+var completeds =  {{ $RecomStats[0]->completa}};
+var rejecteds =  {{ $RecomStats[0]->rechazada}};
+var ignoreds =  {{ $RecomStats[0]->ignorada}};
+var saved =  {{ $RecomStats[0]->guardada}};
 
 new Chart(document.getElementById("pie-chart"), {
     type: 'pie',
     data: {
-      labels: ["Pendientes","Aceptadas", "Rechazadas", "Ignoradas"],
+      labels: ["Pendientes","Completas", "Rechazadas", "Ignoradas" , "Guardadas"],
       datasets: [{
         label: "Population (millions)",
-        backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f"],
-        data: [45,34,78,467]
+        backgroundColor: ["#e7f215", "#0fed0b","#f4424b","#8e6704","#5bc0de"],
+        data: [pendings,completeds,rejecteds,ignoreds , saved]
       }]
     },
     options: {
       title: {
         display: true,
-        text: 'Actividad Global'
+        text: ''
       }
     }
 });

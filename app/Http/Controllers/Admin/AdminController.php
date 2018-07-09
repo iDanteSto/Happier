@@ -63,7 +63,15 @@ class AdminController extends Controller
     //---------------------------------------------------------
     //table of users
     $availableUsers ['availableUsers'] = DB::table('users')->get();
-    //dd($availableUsers);
+    //---------------------------------------------------------
+    //global recommendation stats
+    $RecomStats ['RecomStats']= DB::select('SELECT userRecommendation_Id,
+                                    sum(fk_status_Id = ?) as pendiente,
+                                    sum(fk_status_Id = ?) as completa,
+                                    sum(fk_status_Id = ?) as rechazada,
+                                    sum(fk_status_Id = ?) as ignorada,
+                                    sum(fk_status_Id = ?) as guardada
+                                  FROM userrecommendation' , [2,1,3,4,5]);
     //---------------------------------------------------------
     return view('admin-auth.admin_home', ['data' => $data])
     ->with('diffinYears',$diffinYears)
@@ -72,6 +80,7 @@ class AdminController extends Controller
     ->with('guestcount',$guestcount)
     ->with('userscount',$userscount)
     ->with($availableUsers)
+    ->with($RecomStats)
     ;	
              }else
              {
