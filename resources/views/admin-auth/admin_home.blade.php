@@ -216,19 +216,39 @@
                       <table id="table_id" class="display">
                       <thead>
                             <tr>
-                                <th>Column 1</th>
-                                <th>Column 2</th>
+                                <th>nickname</th>
+                                <th>email</th>
+                                <th>status</th>
+                                <th>Pendientes</th>
+                                <th>Completas</th>
+                                <th>Rechazadas</th>
+                                <th>Ignoradas</th>
+                                <th>Guardadas</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Row 1 Data 1</td>
-                                <td>Row 1 Data 2</td>
-                            </tr>
-                            <tr>
-                                <td>Row 2 Data 1</td>
-                                <td>Row 2 Data 2</td>
-                            </tr>
+                        @foreach ($availableUsers as $userAtribute)
+                                <tr>
+                                    <input type="hidden" name="Id" value="{{$userAtribute->user_Id}}">
+                                    <td>{{$userAtribute->nickname}}</td>
+                                    <td>{{$userAtribute->email}}</td>
+                                    <td align="center">{{$userAtribute->status}}</td>
+                                    <?php
+                                    $RecommendationInfo = DB::select('SELECT userRecommendation_Id,
+                                    sum(fk_status_Id = ?) as pendiente,
+                                    sum(fk_status_Id = ?) as completa,
+                                    sum(fk_status_Id = ?) as rechazada,
+                                    sum(fk_status_Id = ?) as ignorada,
+                                    sum(fk_status_Id = ?) as guardada
+                                  FROM userrecommendation WHERE fk_user_Id = ?' , [2,1,3,4,5,$userAtribute->user_Id]);
+                                     ?>
+                                    <td align="center">{{$RecommendationInfo[0]->pendiente}}</td>
+                                    <td align="center">{{$RecommendationInfo[0]->completa}}</td>
+                                    <td align="center">{{$RecommendationInfo[0]->rechazada}}</td>
+                                    <td align="center">{{$RecommendationInfo[0]->ignorada}}</td>
+                                    <td align="center">{{$RecommendationInfo[0]->guardada}}</td>
+                                </tr>
+                        @endforeach
                         </tbody>
                     </table> 
                   </div>

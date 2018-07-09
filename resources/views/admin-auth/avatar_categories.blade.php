@@ -15,6 +15,7 @@
                         </a>
                     </div>
                 </div>
+                <!--Table-->
                 <div class="ibox-content">
                     <table class="table">
                         <tbody>
@@ -58,6 +59,7 @@
                         </tbody>
                     </table>
                 </div>
+                <!--Table-->
             </div>
         </div>
     </div>

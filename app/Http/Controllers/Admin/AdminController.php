@@ -61,12 +61,17 @@ class AdminController extends Controller
     $guestcount = DB::table('admin_users')->where('level', '<>', 0)->count();
     $userscount = DB::table('users')->count();
     //---------------------------------------------------------
+    //table of users
+    $availableUsers ['availableUsers'] = DB::table('users')->get();
+    //dd($availableUsers);
+    //---------------------------------------------------------
     return view('admin-auth.admin_home', ['data' => $data])
     ->with('diffinYears',$diffinYears)
     ->with('earliestCarbon',$earliestCarbon)
     ->with('adminscount',$adminscount)
     ->with('guestcount',$guestcount)
     ->with('userscount',$userscount)
+    ->with($availableUsers)
     ;	
              }else
              {
