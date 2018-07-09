@@ -56,13 +56,6 @@
                             <li><a href="{!!url('news')!!}">Noticias</a></li>
                         </ul>
                     </li>
-                    <li class="active">
-                        <a><i class="fa fa-pie-chart"></i> <span class="nav-label">Reportes</span> <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="{!!url('metrics_report')!!}">Metricas</a></li>
-                        </ul>
-                    </li>
-                    
                 </ul>
             </div>
         </nav>
