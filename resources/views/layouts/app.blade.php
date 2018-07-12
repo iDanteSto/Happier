@@ -19,7 +19,7 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
                         @if (Auth::guard('admin_user')->user())
-                            <body class="body">
+<body class="body">
 	<div id="wrapper">
         <nav class="navbar-default navbar-static-side" role="navigation">
             <div class="sidebar-collapse">
