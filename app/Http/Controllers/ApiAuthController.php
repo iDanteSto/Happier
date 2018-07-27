@@ -132,7 +132,7 @@ public function registeruser(Request $request)
 $reqv = Validator::make($request->all(), [
 'nickname' => 'required|unique:users|max:18|alpha_num|min:6',
 'email' => 'required|email|unique:users|max:50|min:8',
-'password' => 'required|min:8|alpha_num|max:18',
+'password' => 'required|min:6|alpha_num|max:18',
 ]);
 //if fails to succes one of the rules , display errors
 if ($reqv->fails())
