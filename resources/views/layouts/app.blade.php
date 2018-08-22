@@ -81,7 +81,7 @@ $arrayUser = Auth::guard('admin_user')->user();
                                 <i class="fa fa-sign-out"></i> Log out
                             </a>
                         </li>
-                        
+                        <!--comentario prueba-->
                     </ul>
 
                 </nav>
