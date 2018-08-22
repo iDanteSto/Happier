@@ -209,7 +209,7 @@
                                 <th>Rechazadas</th>
                                 <th>Ignoradas</th>
                                 <th>Guardadas</th>
-                                <th>WeekMood</th>
+                                <th>Mood Semanal</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -218,7 +218,6 @@
                                     <input type="hidden" name="Id" value="{{$userAtribute->user_Id}}">
                                     <td>{{$userAtribute->nickname}}</td>
                                     <td>{{$userAtribute->email}}</td>
-
                                     <td align="center">{{$userAtribute->status}}</td>
                                     <?php
                                     $RecommendationInfo = DB::select('SELECT userRecommendation_Id,
@@ -229,20 +228,23 @@
                                     sum(fk_status_Id = ?) as guardada
                                   FROM userrecommendation WHERE fk_user_Id = ?' , [2,1,3,4,5,$userAtribute->user_Id]);
 
-                                 /*  $MoodAveragee = DB::select(
-                                    'SELECT DISTINCT(mood)
-                                    FROM happier.usermood 
+                                    $Avgmood = DB::select('SELECT 
+                                    distinct(avg(mood)) as Average 
+                                    FROM usermood 
                                     WHERE created_at >    DATE_SUB(NOW(), INTERVAL 1 WEEK) and fk_user_Id = ?
                                     GROUP BY WEEK(created_at)
-                                    ORDER BY created_at desc limit 1',[$userAtribute->user_Id]
-                                    );*/
-                                 ?>
+                                    ORDER BY created_at desc limit 1' , [$userAtribute->user_Id]);
+                                     ?>
                                     <td align="center">{{$RecommendationInfo[0]->pendiente}}</td>
                                     <td align="center">{{$RecommendationInfo[0]->completa}}</td>
                                     <td align="center">{{$RecommendationInfo[0]->rechazada}}</td>
                                     <td align="center">{{$RecommendationInfo[0]->ignorada}}</td>
                                     <td align="center">{{$RecommendationInfo[0]->guardada}}</td>
-                                   <!-- <td align="center">{{$MoodAveragee[0]->mood}}</td>-->
+                                    @if (count($Avgmood) == 1)
+                                    <td align="center"><?php echo bcdiv($Avgmood[0]->Average, 1, 1);?></td>    
+                                    @elseif (count($Avgmood) < 1)
+                                    <td align="center">0</td>    
+                                    @endif
                                 </tr>
                         @endforeach
                         </tbody>
