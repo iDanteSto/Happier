@@ -28,6 +28,7 @@ class AdminController extends Controller
 
 		if (Auth::guard('admin_user')->user())
              {
+               
     //users per month info         
     $arraymonths = User::select(DB::raw("COUNT(*) as count ,  MONTHNAME(created_at) as month"))
     ->whereYear('created_at', 2017)
@@ -72,7 +73,7 @@ class AdminController extends Controller
                                     sum(fk_status_Id = ?) as ignorada,
                                     sum(fk_status_Id = ?) as guardada
                                   FROM userrecommendation' , [2,1,3,4,5]);
-    //---------------------------------------------------------
+    //--------------------------------------------------------- 
     return view('admin-auth.admin_home', ['data' => $data])
     ->with('diffinYears',$diffinYears)
     ->with('earliestCarbon',$earliestCarbon)
